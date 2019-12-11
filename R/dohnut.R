@@ -23,14 +23,18 @@ sq_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = 
     n = ceiling(as.numeric(max_dimension) / (1000 * 2 * d))
   }
   dohnuts = NULL
+  # convert to a lapply? Probably not worth it from a speed perspective
   for(i in 1:n) {
     if(i == 1) {
       dohnut_i = sf::st_buffer(c, d * 1000)
+      circle_previous = dohnut_i
     } else {
+      circle_i = sf::st_buffer(c, d * i * 1000)
       dohnut_i = sf::st_difference(
-        sf::st_buffer(c, d * i * 1000),
-        sf::st_union(dohnuts)
+        circle_i,
+        circle_previous
         )
+      circle_previous = circle_i
     }
     dohnut_i = sf::st_sf(dohnut_i)
     dohnuts = rbind(dohnuts, dohnut_i)
@@ -38,5 +42,5 @@ sq_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = 
   if(!intersection) {
     return(dohnuts)
   }
-  sf::st_intersection(x, dohnuts)
+  sf::st_sf(sf::st_intersection(x, dohnuts))
 }

@@ -56,7 +56,10 @@ Or dohnuts
 
 ```{r}
 plot(sq_dohnut(x, n = 4))
-plot(sq_dohnut(x, d = 4))
+dohnut_4km = sq_dohnut(x, d = 4)
+dohnut_4km
+plot(sf::st_geometry(dohnut_4km))
+plot(dohnut_4km[3, ], col = "blue", add = TRUE)
 ```
 
 
