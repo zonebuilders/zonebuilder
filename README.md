@@ -41,8 +41,23 @@ The aim is to be able to break up geographical space into discrete
 chunks. The syntax is designed to be user friendly, e.g.:
 
 ``` r
-q = sq_quadrat(sq_study_region, 4) # break into 4
+x = sq_study_region
+q = sq_quadrat(x, 4) # break into 4
 plot(q)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+Or dohnuts
+
+``` r
+plot(sq_dohnut(x, n = 4))
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+``` r
+plot(sq_dohnut(x, d = 4))
+```
+
+<img src="man/figures/README-unnamed-chunk-4-2.png" width="100%" />
