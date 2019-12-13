@@ -40,23 +40,23 @@ devtools::install_github("robinlovelace/sfzoner")
 ```{r}
 library(sf)
 devtools::load_all()
-plot(sq_study_region)
+plot(sz_study_region)
 ```
 
 The aim is to be able to break up geographical space into discrete chunks.
 The syntax is designed to be user friendly, e.g.:
 
 ```{r}
-x = sq_study_region
-q = sq_quadrat(x, 4) # break into 4
+x = sz_study_region
+q = sz_quadrat(x, 4) # break into 4
 plot(q)
 ```
 
 Or dohnuts
 
 ```{r}
-plot(sq_dohnut(x, n = 4))
-dohnut_4km = sq_dohnut(x, d = 4)
+plot(sz_dohnut(x, n = 4))
+dohnut_4km = sz_dohnut(x, d = 4)
 dohnut_4km
 plot(sf::st_geometry(dohnut_4km))
 plot(dohnut_4km[3, ], col = "blue", add = TRUE)

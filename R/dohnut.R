@@ -1,6 +1,6 @@
 #' Title
 #' 
-#' @inheritParams sq_quadrat
+#' @inheritParams sz_quadrat
 #' @param c
 #' @param n Number of dohnuts 
 #' @param d Distance between each dohnut ring in km
@@ -9,12 +9,12 @@
 #' @export
 #'
 #' @examples
-#' x = sq_study_region
+#' x = sz_study_region
 #' c = sf::st_centroid(x)
 #' 
-#' plot(sq_dohnut(x, n = 4))
-#' plot(sq_dohnut(x, d = 4))
-sq_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = TRUE) {
+#' plot(sz_dohnut(x, n = 4))
+#' plot(sz_dohnut(x, d = 4))
+sz_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = TRUE) {
   if(is.null(n)) {
     # note: split out into function
     b = sf::st_bbox(x)
