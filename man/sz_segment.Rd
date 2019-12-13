@@ -4,12 +4,12 @@
 \alias{sz_segment}
 \title{Title}
 \usage{
-sz_segment(x, ncol, nrow = NULL, intersection = TRUE)
+sz_segment(x, n = 4, starting_angle = 45, distance = 1e+05)
 }
 \arguments{
-\item{point}{}
+\item{n}{Number of segmentss}
 
-\item{n}{}
+\item{point}{}
 }
 \value{
 
@@ -21,4 +21,8 @@ Title
 point = sf::st_centroid(sz_region)
 n = 4
 segments = sz_segment(point, n)
+plot(segments, col = 1:n)
+n = 16
+segments = sz_segment(point, n)
+plot(segments, col = 1:n) # logo?
 }

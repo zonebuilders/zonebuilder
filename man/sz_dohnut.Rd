@@ -23,7 +23,6 @@ Title
 }
 \examples{
 x = sz_region
-
 plot(sz_dohnut(x, n = 4))
 plot(sz_dohnut(x, d = 4))
 }

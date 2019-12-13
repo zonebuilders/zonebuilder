@@ -41,5 +41,5 @@ sz_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = 
   if(!intersection) {
     return(dohnuts)
   }
-  sf::st_sf(sf::st_intersection(x, dohnuts))
+  sf::st_sf(geometry = sf::st_intersection(x, dohnuts))
 }

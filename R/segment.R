@@ -14,7 +14,7 @@
 #' n = 16
 #' segments = sz_segment(point, n)
 #' plot(segments, col = 1:n) # logo?
-sz_segment = function(x, n = 4, intersection = TRUE) {
+sz_segment = function(x, n = 4, starting_angle = 45, distance = 100000) {
   fr_matrix = matrix(sf::st_coordinates(point), ncol = 2)
   angles_deg = seq(0, to = 360, by = 360 / n) + starting_angle
   angles_rad = angles_deg / 180 * pi
