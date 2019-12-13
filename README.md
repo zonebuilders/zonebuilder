@@ -32,7 +32,7 @@ library(sf)
 #> Linking to GEOS 3.8.0, GDAL 3.0.2, PROJ 6.2.1
 devtools::load_all()
 #> Loading sfzoner
-plot(sz_study_region)
+plot(sz_region)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
@@ -41,7 +41,7 @@ The aim is to be able to break up geographical space into discrete
 chunks. The syntax is designed to be user friendly, e.g.:
 
 ``` r
-x = sz_study_region
+x = sz_region
 q = sz_quadrat(x, 4) # break into 4
 plot(q)
 ```

@@ -1,0 +1,33 @@
+#' Create lines radiating at equal angles from a point
+#'
+#' @param point 
+#' @param n 
+#' @param starting_angle 
+#' @param distance 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' point = sf::st_centroid(sz_region)
+#' n = 4
+#' l = sz_lines(point, n)
+#' d1 = sz_dohnut(x = sz_region, n = 4)
+#' i = sf::st_intersection(d1, l)
+#' plot(d1)
+#' plot(l, add = T)
+lwgeom::st_split(d1[1, ], l)
+#' plot(i)
+sz_lines = function(point, n, starting_angle = 45, distance = 100000) {
+  fr_matrix = matrix(sf::st_coordinates(point), ncol = 2)
+  angles_deg = seq(0, to = 360, by = 360 / n) + starting_angle
+  angles_rad = angles_deg / 180 * pi
+  x_coord_to = distance * cos(angles_rad) + fr_matrix[, 1]
+  y_coord_to = distance * sin(angles_rad) + fr_matrix[, 2]
+  to_matrix = cbind(x_coord_to, y_coord_to)
+  line_matrix_list = lapply(1:n, function(x) rbind(fr_matrix, to_matrix[x, ]))
+  sf::st_sfc(lapply(line_matrix_list, sf::st_linestring), crs = sf::st_crs(point))
+}
+
+# test: break up our dohnut
+

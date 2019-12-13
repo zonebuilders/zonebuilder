@@ -9,8 +9,7 @@
 #' @export
 #'
 #' @examples
-#' x = sz_study_region
-#' c = sf::st_centroid(x)
+#' x = sz_region
 #' 
 #' plot(sz_dohnut(x, n = 4))
 #' plot(sz_dohnut(x, d = 4))
@@ -38,6 +37,7 @@ sz_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = 
     }
     dohnut_i = sf::st_sf(dohnut_i)
     dohnuts = rbind(dohnuts, dohnut_i)
+    sf::st_crs(dohnuts) = sf::st_crs(x)
   }
   if(!intersection) {
     return(dohnuts)

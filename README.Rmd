@@ -40,14 +40,14 @@ devtools::install_github("robinlovelace/sfzoner")
 ```{r}
 library(sf)
 devtools::load_all()
-plot(sz_study_region)
+plot(sz_region)
 ```
 
 The aim is to be able to break up geographical space into discrete chunks.
 The syntax is designed to be user friendly, e.g.:
 
 ```{r}
-x = sz_study_region
+x = sz_region
 q = sz_quadrat(x, 4) # break into 4
 plot(q)
 ```
