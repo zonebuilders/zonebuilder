@@ -24,11 +24,13 @@
 sz_zone = function(x, point = NULL, n_circles,
                     n_segments = c(1, (1:(n_circles - 1)) * 4), # to  update
                     intersection = TRUE) {
-  dohnuts = sz_dohnut(x = x, n = n_circles)
+  dohnuts = sz_dohnut(x = x, point = point, n = n_circles)
+  if (missing(point)) point <- st_centroid(x)
+  
   dohnut_segments = dohnuts[1, ]
   # i = 2 # for testing
   for(i in 2:nrow(dohnuts)) {
-    segments = sz_segment(x = sf::st_centroid(x), n = n_segments[i])
+    segments = sz_segment(x = point, n = n_segments[i])
     dohnut_intersections = sf::st_intersection(dohnuts[i, ], segments)
     dohnut_segments = rbind(dohnut_segments, dohnut_intersections)
   }
