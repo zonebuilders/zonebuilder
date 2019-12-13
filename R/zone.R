@@ -4,7 +4,7 @@
 #' (concentric 2d rings or 'dohnuts') and then subdivides each annulus
 #' into a number of segments.
 #' 
-#' @param x
+#' @param x Region of interest
 #' @param point Optional midpoint of the region 
 #' @param n_circles Number of rings including the central circle
 #' @param n_segments Optional sequence of numbers

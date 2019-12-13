@@ -4,8 +4,13 @@
 \alias{sz_zone}
 \title{Generate zones covering a study region}
 \usage{
-sz_zone(x, point = NULL, n_circles, n_segments = c(1, (1:(n_circles -
-  1)) * 4), intersection = TRUE)
+sz_zone(
+  x,
+  point = NULL,
+  n_circles,
+  n_segments = c(1, (1:(n_circles - 1)) * 4),
+  intersection = TRUE
+)
 }
 \arguments{
 \item{x}{Region of interest}
@@ -18,6 +23,9 @@ sz_zone(x, point = NULL, n_circles, n_segments = c(1, (1:(n_circles -
 
 \item{intersection}{Not implemented yet}
 }
+\value{
+
+}
 \description{
 This function first divides geographic space into [annuli](https://en.wikipedia.org/wiki/Annulus_(mathematics)) 
 (concentric 2d rings or 'dohnuts') and then subdivides each annulus
@@ -28,5 +36,7 @@ z = sz_zone(sz_region, n_circles = 4)
 z
 plot(z, col = 1:nrow(z))
 z = sz_zone(sz_region, n_circles = 6)
+plot(z, col = 1:nrow(z))
+z = sz_zone(sz_region, n_circles = 6, n_segments = rep(12, 6))
 plot(z, col = 1:nrow(z))
 }

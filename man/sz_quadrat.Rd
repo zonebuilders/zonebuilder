@@ -15,6 +15,9 @@ sz_quadrat(x, ncol, nrow = NULL, intersection = TRUE)
 
 \item{intersection}{intersection}
 }
+\value{
+
+}
 \description{
 Title
 }
