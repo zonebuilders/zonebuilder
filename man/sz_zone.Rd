@@ -4,15 +4,19 @@
 \alias{sz_zone}
 \title{Generate zones covering a study region}
 \usage{
-sz_zone(x, n_circles, n_segments = c(1, (1:(n_circles - 1)) * 4),
-  intersection = TRUE)
+sz_zone(x, point = NULL, n_circles, n_segments = c(1, (1:(n_circles -
+  1)) * 4), intersection = TRUE)
 }
 \arguments{
+\item{x}{Region of interest}
+
+\item{point}{Optional midpoint of the region}
+
 \item{n_circles}{Number of rings including the central circle}
 
 \item{n_segments}{Optional sequence of numbers}
 
-\item{point}{Optional midpoint of the region}
+\item{intersection}{Not implemented yet}
 }
 \description{
 This function first divides geographic space into [annuli](https://en.wikipedia.org/wiki/Annulus_(mathematics)) 
