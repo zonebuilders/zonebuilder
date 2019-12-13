@@ -1,28 +1,28 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sfquadrants
+# sfzoner
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of sfquadrants is to …
+The goal of sfzoner is to …
 
 ## Installation
 
-You can install the released version of sfquadrants from
+You can install the released version of sfzoner from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("sfquadrants")
+install.packages("sfzoner")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("robinlovelace/sfquadrants")
+devtools::install_github("robinlovelace/sfzoner")
 ```
 
 ## Example
@@ -31,7 +31,7 @@ devtools::install_github("robinlovelace/sfquadrants")
 library(sf)
 #> Linking to GEOS 3.8.0, GDAL 3.0.2, PROJ 6.2.1
 devtools::load_all()
-#> Loading sfquadrants
+#> Loading sfzoner
 plot(sq_study_region)
 ```
 
