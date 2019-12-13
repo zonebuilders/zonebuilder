@@ -2,13 +2,14 @@
 % Please edit documentation in R/zone.R
 \name{sz_zone}
 \alias{sz_zone}
-\title{Generate zones covering a study region}
+\title{Generate zones covering a region of interest}
 \usage{
 sz_zone(
   x,
   point = NULL,
   n_circles,
   n_segments = c(1, (1:(n_circles - 1)) * 4),
+  distance = 1,
   intersection = TRUE
 )
 }
@@ -21,10 +22,12 @@ sz_zone(
 
 \item{n_segments}{Optional sequence of numbers}
 
+\item{distance}{Distance between each dohnut ring in km}
+
 \item{intersection}{Not implemented yet}
 }
 \value{
-
+An `sf` object containing zones covering the region
 }
 \description{
 This function first divides geographic space into [annuli](https://en.wikipedia.org/wiki/Annulus_(mathematics)) 

@@ -16,7 +16,7 @@ sz_lines(point, n, starting_angle = 45, distance = 1e+05)
 \item{distance}{Distance}
 }
 \value{
-
+Objects of class `sfc` containing linestring geometries
 }
 \description{
 Create lines radiating at equal angles from a point

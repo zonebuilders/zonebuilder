@@ -2,7 +2,7 @@
 % Please edit documentation in R/quadrat.R
 \name{sz_quadrat}
 \alias{sz_quadrat}
-\title{Title}
+\title{Divide a region into quadrats}
 \usage{
 sz_quadrat(x, ncol, nrow = NULL, intersection = TRUE)
 }
@@ -16,10 +16,10 @@ sz_quadrat(x, ncol, nrow = NULL, intersection = TRUE)
 \item{intersection}{intersection}
 }
 \value{
-
+An sf object
 }
 \description{
-Title
+Divide a region into quadrats
 }
 \examples{
 x = sz_region

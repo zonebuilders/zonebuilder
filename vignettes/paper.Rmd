@@ -1,0 +1,23 @@
+---
+title: "An automated geographic zoning system for cities with concentric segmented annuli"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{An automated geographic zoning system for cities with concentric segmented annuli}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(sfzoner)
+```
+
+Zoning systems have long been a topic of geographic research and political controversy.
+From a research perspective, the way in which
+

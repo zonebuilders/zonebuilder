@@ -5,7 +5,7 @@
 #' @param distance Distance in metres
 #' @inheritParams sz_zone
 #'
-#' @return
+#' @return An sf object with polygons representing segments dividing up geographic space
 #' @export
 #'
 #' @examples

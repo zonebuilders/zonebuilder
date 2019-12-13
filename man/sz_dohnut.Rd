@@ -4,7 +4,7 @@
 \alias{sz_dohnut}
 \title{Title}
 \usage{
-sz_dohnut(x = NULL, point = NULL, n = NULL, d = 1, intersection = TRUE)
+sz_dohnut(x = NULL, point = NULL, n = NULL, distance = 1, intersection = TRUE)
 }
 \arguments{
 \item{x}{x}
@@ -13,12 +13,12 @@ sz_dohnut(x = NULL, point = NULL, n = NULL, d = 1, intersection = TRUE)
 
 \item{n}{Number of dohnuts}
 
-\item{d}{Distance between each dohnut ring in km}
+\item{distance}{Distance between each dohnut ring in km}
 
 \item{intersection}{Intersection with x?}
 }
 \value{
-
+An sf object containing concentric donuts
 }
 \description{
 Title

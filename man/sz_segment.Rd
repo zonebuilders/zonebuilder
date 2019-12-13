@@ -16,7 +16,7 @@ sz_segment(x, n_segments = 4, starting_angle = 45, distance = 1e+05)
 \item{distance}{Distance in metres}
 }
 \value{
-
+An sf object with polygons representing segments dividing up geographic space
 }
 \description{
 Title

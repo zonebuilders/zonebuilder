@@ -5,7 +5,7 @@
 #' @param starting_angle Starting angle
 #' @param distance Distance
 #'
-#' @return
+#' @return Objects of class `sfc` containing linestring geometries
 #' @export
 #'
 #' @examples

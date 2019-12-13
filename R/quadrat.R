@@ -1,11 +1,11 @@
-#' Title
+#' Divide a region into quadrats
 #'
 #' @param x x 
 #' @param ncol ncol 
 #' @param nrow nrow
 #' @param intersection intersection
 #'
-#' @return
+#' @return An sf object
 #' @export
 #'
 #' @examples
