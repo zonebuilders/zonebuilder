@@ -24,4 +24,6 @@ Create lines radiating at equal angles from a point
 \examples{
 point = sf::st_centroid(sz_region)
 n = 4
+l = sz_lines(point, n)
+plot(l)
 }

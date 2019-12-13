@@ -3,3 +3,4 @@
 export(sz_dohnut)
 export(sz_lines)
 export(sz_quadrat)
+export(sz_segment)

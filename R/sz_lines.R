@@ -12,12 +12,7 @@
 #' point = sf::st_centroid(sz_region)
 #' n = 4
 #' l = sz_lines(point, n)
-#' d1 = sz_dohnut(x = sz_region, n = 4)
-#' i = sf::st_intersection(d1, l)
-#' plot(d1)
-#' plot(l, add = T)
-lwgeom::st_split(d1[1, ], l)
-#' plot(i)
+#' plot(l)
 sz_lines = function(point, n, starting_angle = 45, distance = 100000) {
   fr_matrix = matrix(sf::st_coordinates(point), ncol = 2)
   angles_deg = seq(0, to = 360, by = 360 / n) + starting_angle
