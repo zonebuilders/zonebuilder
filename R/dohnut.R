@@ -1,9 +1,12 @@
 #' Title
 #' 
 #' @inheritParams sz_quadrat
-#' @param c
+#' @param x Spatial object
+#' @param c Center point
 #' @param n Number of dohnuts 
 #' @param d Distance between each dohnut ring in km
+#' @param intersection Intersection with x?
+#' 
 #'
 #' @return
 #' @export

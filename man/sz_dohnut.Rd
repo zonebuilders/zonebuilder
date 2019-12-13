@@ -4,19 +4,19 @@
 \alias{sz_dohnut}
 \title{Title}
 \usage{
-sz_dohnut(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = TRUE)
+sz_dohnut(x, c = sf::st_centroid(x), n = NULL, d = 1,
+  intersection = TRUE)
 }
 \arguments{
-\item{x}{}
+\item{x}{Spatial object}
+
+\item{c}{Center point}
 
 \item{n}{Number of dohnuts}
 
 \item{d}{Distance between each dohnut ring in km}
 
-\item{intersection}{}
-}
-\value{
-
+\item{intersection}{Intersection with x?}
 }
 \description{
 Title

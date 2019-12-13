@@ -1,7 +1,9 @@
 #' Title
 #'
-#' @param point 
+#' @param x 
 #' @param n Number of segmentss
+#' @param starting_angle Starting angle
+#' @param distance distance
 #'
 #' @return
 #' @export
@@ -15,7 +17,7 @@
 #' segments = sz_segment(point, n)
 #' plot(segments, col = 1:n) # logo?
 sz_segment = function(x, n = 4, starting_angle = 45, distance = 100000) {
-  fr_matrix = matrix(sf::st_coordinates(point), ncol = 2)
+  fr_matrix = matrix(sf::st_coordinates(x), ncol = 2)
   angles_deg = seq(0, to = 360, by = 360 / n) + starting_angle
   angles_rad = angles_deg / 180 * pi
   x_coord_to = distance * cos(angles_rad) + fr_matrix[, 1]
@@ -25,5 +27,5 @@ sz_segment = function(x, n = 4, starting_angle = 45, distance = 100000) {
   coord_matrix_list = lapply(1:n, function(x)
     rbind(fr_matrix, to_matrix[x, ], to_matrix_next[x, ], fr_matrix))
   poly_list = lapply(coord_matrix_list, function(x) sf::st_polygon(list(x)))
-  sf::st_sfc(poly_list, crs = sf::st_crs(point))
+  sf::st_sfc(poly_list, crs = sf::st_crs(x))
 }

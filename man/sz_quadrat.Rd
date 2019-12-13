@@ -7,16 +7,13 @@
 sz_quadrat(x, ncol, nrow = NULL, intersection = TRUE)
 }
 \arguments{
-\item{x}{}
+\item{x}{x}
 
-\item{ncol}{}
+\item{ncol}{ncol}
 
-\item{nrow}{}
+\item{nrow}{nrow}
 
-\item{intersection}{}
-}
-\value{
-
+\item{intersection}{intersection}
 }
 \description{
 Title

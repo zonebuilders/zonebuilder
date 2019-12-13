@@ -1,9 +1,9 @@
 #' Create lines radiating at equal angles from a point
 #'
-#' @param point 
-#' @param n 
-#' @param starting_angle 
-#' @param distance 
+#' @param point Center point
+#' @param n Number of lines
+#' @param starting_angle Starting angle
+#' @param distance Distance
 #'
 #' @return
 #' @export

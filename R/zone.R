@@ -8,6 +8,7 @@
 #' @param point Optional midpoint of the region 
 #' @param n_circles Number of rings including the central circle
 #' @param n_segments Optional sequence of numbers
+#' @param intersection Not implemented yet
 #'
 #' @return
 #' @export
@@ -18,7 +19,7 @@
 #' plot(z, col = 1:nrow(z))
 #' z = sz_zone(sz_region, n_circles = 6)
 #' plot(z, col = 1:nrow(z))
-sz_zone = function(x, n_circles,
+sz_zone = function(x, point = NULL, n_circles,
                     n_segments = c(1, (1:(n_circles - 1)) * 4), # to  update
                     intersection = TRUE) {
   dohnuts = sz_dohnut(x = x, n = n_circles)

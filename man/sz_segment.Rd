@@ -11,9 +11,6 @@ sz_segment(x, n = 4, starting_angle = 45, distance = 1e+05)
 
 \item{point}{}
 }
-\value{
-
-}
 \description{
 Title
 }

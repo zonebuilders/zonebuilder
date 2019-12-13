@@ -7,16 +7,13 @@
 sz_lines(point, n, starting_angle = 45, distance = 1e+05)
 }
 \arguments{
-\item{point}{}
+\item{point}{Center point}
 
-\item{n}{}
+\item{n}{Number of lines}
 
-\item{starting_angle}{}
+\item{starting_angle}{Starting angle}
 
-\item{distance}{}
-}
-\value{
-
+\item{distance}{Distance}
 }
 \description{
 Create lines radiating at equal angles from a point

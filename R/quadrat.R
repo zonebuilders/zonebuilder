@@ -1,9 +1,9 @@
 #' Title
 #'
-#' @param x 
-#' @param ncol 
-#' @param nrow 
-#' @param intersection 
+#' @param x x 
+#' @param ncol ncol 
+#' @param nrow nrow
+#' @param intersection intersection
 #'
 #' @return
 #' @export
