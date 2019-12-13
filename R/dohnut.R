@@ -16,7 +16,11 @@
 sz_dohnut = function(x = NULL, point = NULL, n = NULL, distance = 1, intersection = TRUE) {
   
   if (missing(x) && missing(point)) stop("Please specify either x or point")
-  if (missing(point)) point = sf::st_centroid(x)
+  if (missing(point)) {
+    point = sf::st_centroid(x)
+  } else {
+    point <- st_geometry(point)
+  }
   
   if(is.null(n)) {
     if (is.null(x)) stop("Please specify either x or n (or both)")
