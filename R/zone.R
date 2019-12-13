@@ -19,6 +19,8 @@
 #' plot(z, col = 1:nrow(z))
 #' z = sz_zone(sz_region, n_circles = 6)
 #' plot(z, col = 1:nrow(z))
+#' z = sz_zone(sz_region, n_circles = 6, n_segments = rep(12, 6))
+#' plot(z, col = 1:nrow(z))
 sz_zone = function(x, point = NULL, n_circles,
                     n_segments = c(1, (1:(n_circles - 1)) * 4), # to  update
                     intersection = TRUE) {

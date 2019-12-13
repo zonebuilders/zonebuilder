@@ -15,22 +15,28 @@
 #' x = sz_region
 #' plot(sz_dohnut(x, n = 4))
 #' plot(sz_dohnut(x, d = 4))
-sz_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = TRUE) {
+sz_dohnut = function(x=NULL, point = NULL, n = NULL, d = 1, intersection = TRUE) {
+  
+  if (missing(x) && missing(point)) stop("Please specify either x or point")
+  if (missing(point)) point = sf::st_centroid(x)
+  
   if(is.null(n)) {
+    if (is.null(x)) stop("Please specify either x or n (or both)")
     # note: split out into function
     b = sf::st_bbox(x)
     max_dimension = max(c(abs(b[1] - b[3]), abs(b[2] - b[4]))) 
     # / cos(pi / 180 * 45) # add multiplier to account for hypotenuse issue
     n = ceiling(as.numeric(max_dimension) / (1000 * 2 * d))
   }
+
   dohnuts = NULL
   # convert to a lapply? Probably not worth it from a speed perspective
   for(i in 1:n) {
     if(i == 1) {
-      dohnut_i = sf::st_buffer(c, d * 1000)
+      dohnut_i = sf::st_buffer(point, d * 1000)
       circle_previous = dohnut_i
     } else {
-      circle_i = sf::st_buffer(c, d * i * 1000)
+      circle_i = sf::st_buffer(point, d * i * 1000)
       dohnut_i = sf::st_difference(
         circle_i,
         circle_previous
@@ -39,7 +45,7 @@ sz_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = 
     }
     dohnut_i = sf::st_sf(dohnut_i)
     dohnuts = rbind(dohnuts, dohnut_i)
-    sf::st_crs(dohnuts) = sf::st_crs(x)
+    sf::st_crs(dohnuts) = sf::st_crs(point)
   }
   if(!intersection) {
     return(dohnuts)
