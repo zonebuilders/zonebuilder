@@ -47,7 +47,7 @@ sz_dohnut = function(x=NULL, point = NULL, n = NULL, d = 1, intersection = TRUE)
     dohnuts = rbind(dohnuts, dohnut_i)
     sf::st_crs(dohnuts) = sf::st_crs(point)
   }
-  if(!intersection) {
+  if(!intersection || missing(x)) {
     return(dohnuts)
   }
   sf::st_sf(geometry = sf::st_intersection(x, dohnuts))
