@@ -10,7 +10,6 @@
 #'
 #' @examples
 #' x = sz_region
-#' 
 #' plot(sz_dohnut(x, n = 4))
 #' plot(sz_dohnut(x, d = 4))
 sz_dohnut = function(x, c = sf::st_centroid(x), n = NULL, d = 1, intersection = TRUE) {
