@@ -7,9 +7,13 @@
 sz_segment(x, n = 4, starting_angle = 45, distance = 1e+05)
 }
 \arguments{
+\item{x}{}
+
 \item{n}{Number of segmentss}
 
-\item{point}{}
+\item{starting_angle}{Starting angle}
+
+\item{distance}{distance}
 }
 \description{
 Title
