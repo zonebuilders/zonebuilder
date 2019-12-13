@@ -15,6 +15,9 @@ sz_lines(point, n, starting_angle = 45, distance = 1e+05)
 
 \item{distance}{Distance}
 }
+\value{
+
+}
 \description{
 Create lines radiating at equal angles from a point
 }
