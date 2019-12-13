@@ -29,7 +29,9 @@ sz_zone = function(x,
                    distance = 1,
                    intersection = TRUE) {
   dohnuts = sz_dohnut(x = x, n = n_circles, distance = distance)
-  if (missing(point)) point <- st_centroid(x)
+  if (is.null(point)) {
+    point = sf::st_centroid(x)
+  } 
   dohnut_segments = dohnuts[1, ]
   # i = 2 # for testing
   for(i in 2:nrow(dohnuts)) {
