@@ -16,13 +16,13 @@
 #' x_point = sf::st_centroid(zb_region)
 #' zb_doughnut(point = x_point, n = 4)
 create_rings = function(point, n_circles, distance = 1) {
-  circles <- lapply((1:n) * distance * 1000, function(d) {
+  circles <- lapply((1:n_circles) * distance * 1000, function(d) {
     doughnut_i = sf::st_buffer(point, d)
   })
   
   doughnuts_non_center <- mapply(function(x, y) sf::st_sf(geometry = sf::st_difference(x, y)),
                                  circles[-1], 
-                                 circles[-n], 
+                                 circles[-n_circles], 
                                  SIMPLIFY = FALSE)
   
   doughnuts <- do.call(rbind, 

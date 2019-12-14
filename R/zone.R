@@ -15,6 +15,7 @@
 #' @export
 #'
 #' @examples
+#' data(zb_region)
 #' z = zb_zone(zb_region, n_circles = 4)
 #' z
 #' plot(z, col = 1:nrow(z))
@@ -45,29 +46,20 @@ zb_zone = function(x = NULL,
     if (is.null(x)) stop("Please specify either x or n (or both)")
     n_circles = number_of_circles(x, distance)
   }
-  
+
   doughnuts = create_rings(point, n_circles, distance)
   n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
 
   segments = lapply(n_segments, create_segment, x = point)
   
-  doughnut_segments = mapply(function(x, y) {
+  doughnut_segments = do.call(rbind, mapply(function(x, y) {
     if (is.null(y)) {
       x
     } else {
       sf::st_intersection(x, y)
     }
-  }, split(doughnuts, 1:nrow(doughnuts)), segments, SIMPLIFY = FALSE)
+  }, split(doughnuts, 1:nrow(doughnuts)), segments, SIMPLIFY = FALSE))
   
-  
-  
-  doughnut_segments = doughnuts[1, ]
-  # i = 2 # for testing
-  for(i in 2:nrow(doughnuts)) {
-    segments = zb_segment(x = point, n_segments = n_segments[i])
-    doughnut_intersections = sf::st_intersection(doughnuts[i, ], segments)
-    doughnut_segments = rbind(doughnut_segments, doughnut_intersections)
-  }
   if(!is.null(x) && intersection) {
     doughnut_segments = sf::st_intersection(doughnut_segments, x)
   }

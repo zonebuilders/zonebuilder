@@ -20,7 +20,7 @@ number_of_circles <- function(x, distance) {
 }
 
 numbers_of_segments <- function(n_circles = 10, distance = 1, min_area = 1, max_different_numbers = 3, multiple_of = 4) {
-  areas <- doughnut_areas()
+  areas <- doughnut_areas(n_circles = n_circles, distance = distance)
   max_segments <- ((areas / min_area) %/% multiple_of) * multiple_of
   max_segments[1] <- 1
   max_segments

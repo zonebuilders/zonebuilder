@@ -4,14 +4,8 @@
 \alias{zb_zone}
 \title{Generate zones covering a region of interest}
 \usage{
-zb_zone(
-  x,
-  point = NULL,
-  n_circles,
-  n_segments = c(1, (1:(n_circles - 1)) * 4),
-  distance = 1,
-  intersection = TRUE
-)
+zb_zone(x = NULL, point = NULL, n_circles, n_segments = NA,
+  distance = 1, intersection = TRUE)
 }
 \arguments{
 \item{x}{Region of interest}
@@ -35,6 +29,7 @@ This function first divides geographic space into [annuli](https://en.wikipedia.
 into a number of segments.
 }
 \examples{
+data(zb_region)
 z = zb_zone(zb_region, n_circles = 4)
 z
 plot(z, col = 1:nrow(z))
