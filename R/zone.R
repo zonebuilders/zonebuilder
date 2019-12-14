@@ -26,7 +26,7 @@
 zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
-                   n_segments = NA,
+                   n_segments = c(1, (1:(n_circles - 1)) * 4), #NA
                    distance = 1,
                    intersection = TRUE) {
 
@@ -48,9 +48,15 @@ zb_zone = function(x = NULL,
     n_circles = number_of_circles(x, distance)
   }
 
-  
+  #browser()
   doughnuts = create_rings(point, n_circles, distance)
-  n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
+  
+  if (is.na(n_segments[1])) {
+    n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
+  } else {
+    n_segments = rep(n_segments, length.out = n_circles)
+  }
+  
 
   segments = lapply(n_segments, create_segment, x = point)
   
