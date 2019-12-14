@@ -21,7 +21,9 @@
 #' plot(z, col = 1:nrow(z))
 #' z = zb_zone(zb_region, n_circles = 6)
 #' plot(z, col = 1:nrow(z))
-#' z = zb_zone(zb_region, n_circles = 6, n_segments = rep(12, 6))
+#' z = zb_zone(zb_region, n_circles = 8)
+#' plot(z, col = 1:nrow(z))
+#' z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
 #' plot(z, col = 1:nrow(z))
 zb_zone = function(x = NULL,
                    point = NULL,
@@ -55,7 +57,6 @@ zb_zone = function(x = NULL,
     distance = distance + distance * (0:(n_circles-1)) * distance_growth
   }
 
-  #browser()
   doughnuts = create_rings(point, n_circles, distance)
   
   if (equal_area) {

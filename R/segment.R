@@ -21,7 +21,7 @@ create_segment = function(x, n_segments = 4, starting_angle = 0, distance = 1000
   fr_matrix = matrix(sf::st_coordinates(x), ncol = 2)
   #angles_deg = seq(0, to = 360, by = 360 / n_segments) + starting_angle
   #angles_rad = angles_deg / 180 * pi
-  
+
   angles_rad = get_angles(n_segments = n_segments, starting_angle = starting_angle)
   
   x_coord_to = distance * cos(angles_rad) + fr_matrix[, 1]

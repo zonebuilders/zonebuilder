@@ -20,7 +20,7 @@ number_of_circles = function(x, distance) {
   ceiling(as.numeric(max_dimension) / (1000 * 2 * distance))
 }
 
-numbers_of_segments = function(n_circles = 10, distance = rep(1, n_circles), max_different_numbers = 3, multiple_of = 4) {
+numbers_of_segments = function(n_circles = 10, distance = rep(1, n_circles)) {
   areas = doughnut_areas(n_circles = n_circles, distance = distance)
   areas / areas[1]
 }
