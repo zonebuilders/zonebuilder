@@ -1,4 +1,4 @@
-#' Title
+#' Make doughnut
 #' 
 #' @inheritParams sz_quadrat
 #' @param n Number of doughnuts 
@@ -13,6 +13,8 @@
 #' x = sz_region
 #' plot(sz_doughnut(x, n = 4))
 #' plot(sz_doughnut(x, d = 4))
+#' x_point = sf::st_centroid(sz_region)
+#' sz_doughnut(point = x_point)
 sz_doughnut = function(x = NULL, point = NULL, n = NULL, distance = 1, intersection = TRUE) {
   
   if (missing(x) && missing(point)) stop("Please specify either x or point")

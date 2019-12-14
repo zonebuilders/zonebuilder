@@ -22,22 +22,27 @@
 #' plot(z, col = 1:nrow(z))
 #' z = sz_zone(sz_region, n_circles = 6, n_segments = rep(12, 6))
 #' plot(z, col = 1:nrow(z))
-sz_zone = function(x,
+sz_zone = function(x = NULL,
                    point = NULL,
                    n_circles,
                    n_segments = c(1, (1:(n_circles - 1)) * 4), # to  update
                    distance = 1,
                    intersection = TRUE) {
-  doughnuts = sz_doughnut(x = x, n = n_circles, distance = distance)
-  if (is.null(point)) {
-    point = sf::st_centroid(x)
-  } 
+  
+  # if(sf::st_is_longlat(x)) # add lat lon checks
+  # browser()
+  doughnuts = sz_doughnut(x = x, point = point, n = n_circles, distance = distance, intersection = FALSE)
+  
+  
   doughnut_segments = doughnuts[1, ]
   # i = 2 # for testing
   for(i in 2:nrow(doughnuts)) {
     segments = sz_segment(x = point, n_segments = n_segments[i])
     doughnut_intersections = sf::st_intersection(doughnuts[i, ], segments)
     doughnut_segments = rbind(doughnut_segments, doughnut_intersections)
+  }
+  if(!is.null(x) && intersection) {
+    doughnut_segments = sf::st_intersection(doughnut_segments, x)
   }
   doughnut_segments
 }
