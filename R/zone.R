@@ -59,6 +59,8 @@ zb_zone = function(x = NULL,
 
   doughnuts = create_rings(point, n_circles, distance)
   
+
+  
   if (equal_area) {
     n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
   }
@@ -68,8 +70,11 @@ zb_zone = function(x = NULL,
   segments = lapply(n_segments, create_segment, x = point)
   
   if(!is.null(x) && intersection) {
+    ids = sapply(sf::st_intersects(doughnuts, x), length) > 0
     doughnuts = sf::st_intersection(doughnuts, x)
+    segments = segments[ids]
   }
+  
   
   
   doughnut_segments = do.call(rbind, mapply(function(x, y) {
