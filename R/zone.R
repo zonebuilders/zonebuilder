@@ -27,8 +27,10 @@ zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
                    # n_segments = c(1, (1:(n_circles - 1)) * 4), # NA
-                   n_segments = NULL,
+                   n_segments = 12,
                    distance = 1,
+                   distance_growth = 1,
+                   equal_area = FALSE,
                    intersection = TRUE) {
 
 
@@ -48,17 +50,20 @@ zb_zone = function(x = NULL,
     if (is.null(x)) stop("Please specify either x or n (or both)")
     n_circles = number_of_circles(x, distance)
   }
+  
+  if (length(distance) != n_circles) {
+    distance = distance + distance * (0:(n_circles-1)) * distance_growth
+  }
 
   #browser()
   doughnuts = create_rings(point, n_circles, distance)
   
-  if (is.null(n_segments)) {
+  if (equal_area) {
     n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
-  } else {
-    n_segments = rep(n_segments, length.out = n_circles)
   }
+  n_segments = rep(n_segments, length.out = n_circles)
+  n_segments[1] <- 1
   
-
   segments = lapply(n_segments, create_segment, x = point)
   
   if(!is.null(x) && intersection) {

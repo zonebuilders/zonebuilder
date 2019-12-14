@@ -15,8 +15,9 @@
 #' plot(zb_doughnut(x, d = 4))
 #' x_point = sf::st_centroid(zb_region)
 #' zb_doughnut(point = x_point, n = 4)
-create_rings = function(point, n_circles, distance = 1) {
-  circles = lapply((1:n_circles) * distance * 1000, function(d) {
+create_rings = function(point, n_circles, distance) {
+  csdistance = cumsum(distance)
+  circles = lapply(csdistance * 1000, function(d) {
     doughnut_i = sf::st_buffer(point, d)
   })
   
