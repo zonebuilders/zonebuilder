@@ -19,12 +19,17 @@
 #' plot(z, col = 1:nrow(z))
 #' z = sz_zone(sz_region, n_circles = 6)
 #' plot(z, col = 1:nrow(z))
-#' z = sz_zone(sz_region, n_circles = 6, n_segments = rep(12, 6))
+#' z = sz_zone(sz_region, n_circles = 6, n_segments = 12)
 #' plot(z, col = 1:nrow(z))
-sz_zone = function(x, point = NULL, n_circles,
+#' z = sz_zone(sz_region, n_circles = 7, n_segments = 12, d = 1:7)
+#' plot(z)
+sz_zone = function(x, point = NULL, n_circles, d = NULL,
                     n_segments = c(1, (1:(n_circles - 1)) * 4), # to  update
                     intersection = TRUE) {
-  dohnuts = sz_dohnut(x = x, n = n_circles)
+  if(length(n_segments) == 1) {
+    n_segments = rep(n_segments, rep(n_circles))
+  }
+  dohnuts = sz_dohnut(x = x, n = n_circles, d = d)
   dohnut_segments = dohnuts[1, ]
   # i = 2 # for testing
   for(i in 2:nrow(dohnuts)) {
