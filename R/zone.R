@@ -46,14 +46,10 @@ zb_zone = function(x = NULL,
     n_circles = number_of_circles(x, distance)
   }
   
-  browser()
-  
-  
   doughnuts = create_rings(point, n_circles, distance)
   n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
 
   segments = lapply(n_segments, create_segment, x = point)
-  
   
   doughnut_segments = mapply(function(x, y) {
     if (is.null(y)) {
