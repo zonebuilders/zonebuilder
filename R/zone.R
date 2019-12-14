@@ -25,15 +25,15 @@
 #' plot(z, col = 1:nrow(z))
 zb_zone = function(x = NULL,
                    point = NULL,
-                   n_circles,
+                   n_circles = NULL,
                    n_segments = NA,
                    distance = 1,
                    intersection = TRUE) {
 
 
   # checks    
-  if (missing(x) && missing(point)) stop("Please specify either x or point")
-  if (missing(point)) {
+  if (is.null(x) && is.null(point)) stop("Please specify either x or point")
+  if (is.null(point)) {
     point = sf::st_centroid(x)
   } else {
     point <- sf::st_geometry(point)
@@ -42,15 +42,22 @@ zb_zone = function(x = NULL,
     point <- stplanr::geo_select_aeq(point)
     if (!is.null(x)) x <- stplanr::geo_select_aeq(x)
   }
+  
   if(is.null(n_circles)) {
     if (is.null(x)) stop("Please specify either x or n (or both)")
     n_circles = number_of_circles(x, distance)
   }
 
+  
   doughnuts = create_rings(point, n_circles, distance)
   n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
 
   segments = lapply(n_segments, create_segment, x = point)
+  
+  if(!is.null(x) && intersection) {
+    doughnuts = sf::st_intersection(doughnuts, x)
+  }
+  
   
   doughnut_segments = do.call(rbind, mapply(function(x, y) {
     if (is.null(y)) {
@@ -60,9 +67,6 @@ zb_zone = function(x = NULL,
     }
   }, split(doughnuts, 1:nrow(doughnuts)), segments, SIMPLIFY = FALSE))
   
-  if(!is.null(x) && intersection) {
-    doughnut_segments = sf::st_intersection(doughnut_segments, x)
-  }
   doughnut_segments
 }
 
