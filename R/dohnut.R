@@ -19,7 +19,7 @@ sz_dohnut = function(x = NULL, point = NULL, n = NULL, distance = 1, intersectio
   if (missing(point)) {
     point = sf::st_centroid(x)
   } else {
-    point <- st_geometry(point)
+    point <- sf::st_geometry(point)
   }
   
   if(is.null(n)) {
