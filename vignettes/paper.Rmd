@@ -5,6 +5,7 @@ vignette: >
   %\VignetteIndexEntry{An automated geographic zoning system for cities with concentric segmented annuli}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: references.bib
 ---
 
 ```{r, include = FALSE}
@@ -14,10 +15,21 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r, eval=FALSE, echo=FALSE}
+# generate bibliography
+
+citr::tidy_bib_file(rmd_file = "vignettes/paper.Rmd", messy_bibliography = "~/uaf/allrefs.bib", file = "vignettes/references.bib")
+```
+
+
 ```{r setup}
 library(zonebuilder)
 ```
 
 Zoning systems have long been a topic of geographic research and political controversy.
 From a research perspective, the way in which
+
+@openshaw_optimal_1977
+
+# References
 
