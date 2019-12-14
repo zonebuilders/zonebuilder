@@ -22,7 +22,7 @@ sz_zone(
 
 \item{n_segments}{Optional sequence of numbers}
 
-\item{distance}{Distance between each dohnut ring in km}
+\item{distance}{Distance between each doughnut ring in km}
 
 \item{intersection}{Not implemented yet}
 }
@@ -31,7 +31,7 @@ An `sf` object containing zones covering the region
 }
 \description{
 This function first divides geographic space into [annuli](https://en.wikipedia.org/wiki/Annulus_(mathematics)) 
-(concentric 2d rings or 'dohnuts') and then subdivides each annulus
+(concentric 2d rings or 'doughnuts') and then subdivides each annulus
 into a number of segments.
 }
 \examples{

@@ -24,5 +24,5 @@ sz_lines = function(point, n, starting_angle = 45, distance = 100000) {
   sf::st_sfc(lapply(line_matrix_list, sf::st_linestring), crs = sf::st_crs(point))
 }
 
-# test: break up our dohnut
+# test: break up our doughnut
 

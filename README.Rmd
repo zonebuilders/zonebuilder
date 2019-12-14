@@ -52,14 +52,14 @@ q = sz_quadrat(x, 4) # break into 4
 plot(q)
 ```
 
-Or dohnuts
+Or doughnuts
 
 ```{r}
-plot(sz_dohnut(x, n = 4))
-dohnut_4km = sz_dohnut(x, d = 4)
-dohnut_4km
-plot(sf::st_geometry(dohnut_4km))
-plot(dohnut_4km[3, ], col = "blue", add = TRUE)
+plot(sz_doughnut(x, n = 4))
+doughnut_4km = sz_doughnut(x, d = 4)
+doughnut_4km
+plot(sf::st_geometry(doughnut_4km))
+plot(doughnut_4km[3, ], col = "blue", add = TRUE)
 ```
 
 

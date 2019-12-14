@@ -1,7 +1,7 @@
 #' Title
 #' 
 #' @inheritParams sz_quadrat
-#' @param n Number of dohnuts 
+#' @param n Number of doughnuts 
 #' @param intersection Intersection with x?
 #' @inheritParams sz_zone
 #' 
@@ -11,9 +11,9 @@
 #'
 #' @examples
 #' x = sz_region
-#' plot(sz_dohnut(x, n = 4))
-#' plot(sz_dohnut(x, d = 4))
-sz_dohnut = function(x = NULL, point = NULL, n = NULL, distance = 1, intersection = TRUE) {
+#' plot(sz_doughnut(x, n = 4))
+#' plot(sz_doughnut(x, d = 4))
+sz_doughnut = function(x = NULL, point = NULL, n = NULL, distance = 1, intersection = TRUE) {
   
   if (missing(x) && missing(point)) stop("Please specify either x or point")
   if (missing(point)) {
@@ -31,26 +31,26 @@ sz_dohnut = function(x = NULL, point = NULL, n = NULL, distance = 1, intersectio
     n = ceiling(as.numeric(max_dimension) / (1000 * 2 * distance))
   }
 
-  dohnuts = NULL
+  doughnuts = NULL
   # convert to a lapply? Probably not worth it from a speed perspective
   for(i in 1:n) {
     if(i == 1) {
-      dohnut_i = sf::st_buffer(point, distance * 1000)
-      circle_previous = dohnut_i
+      doughnut_i = sf::st_buffer(point, distance * 1000)
+      circle_previous = doughnut_i
     } else {
       circle_i = sf::st_buffer(point, distance * i * 1000)
-      dohnut_i = sf::st_difference(
+      doughnut_i = sf::st_difference(
         circle_i,
         circle_previous
         )
       circle_previous = circle_i
     }
-    dohnut_i = sf::st_sf(dohnut_i)
-    dohnuts = rbind(dohnuts, dohnut_i)
-    sf::st_crs(dohnuts) = sf::st_crs(point)
+    doughnut_i = sf::st_sf(doughnut_i)
+    doughnuts = rbind(doughnuts, doughnut_i)
+    sf::st_crs(doughnuts) = sf::st_crs(point)
   }
   if(!intersection || missing(x)) {
-    return(dohnuts)
+    return(doughnuts)
   }
-  sf::st_sf(geometry = sf::st_intersection(x, dohnuts))
+  sf::st_sf(geometry = sf::st_intersection(x, doughnuts))
 }
