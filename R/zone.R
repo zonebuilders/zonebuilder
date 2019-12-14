@@ -36,11 +36,11 @@ zb_zone = function(x = NULL,
   if (is.null(point)) {
     point = sf::st_centroid(x)
   } else {
-    point <- sf::st_geometry(point)
+    point = sf::st_geometry(point)
   }
   if (sf::st_is_longlat(point)) {
-    point <- stplanr::geo_select_aeq(point)
-    if (!is.null(x)) x <- stplanr::geo_select_aeq(x)
+    point = stplanr::geo_select_aeq(point)
+    if (!is.null(x)) x = stplanr::geo_select_aeq(x)
   }
   
   if(is.null(n_circles)) {
