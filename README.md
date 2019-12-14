@@ -1,28 +1,28 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sfzoner
+# zonebuilder
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of sfzoner is to …
+The goal of zonebuilder is to …
 
 ## Installation
 
-You can install the released version of sfzoner from
+You can install the released version of zonebuilder from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("sfzoner")
+install.packages("zonebuilder")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("robinlovelace/sfzoner")
+devtools::install_github("robinlovelace/zonebuilder")
 ```
 
 ## Example
@@ -31,8 +31,8 @@ devtools::install_github("robinlovelace/sfzoner")
 library(sf)
 #> Linking to GEOS 3.8.0, GDAL 3.0.2, PROJ 6.2.1
 devtools::load_all()
-#> Loading sfzoner
-plot(sz_region)
+#> Loading zonebuilder
+plot(zb_region)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
@@ -41,8 +41,8 @@ The aim is to be able to break up geographical space into discrete
 chunks. The syntax is designed to be user friendly, e.g.:
 
 ``` r
-x = sz_region
-q = sz_quadrat(x, 4) # break into 4
+x = zb_region
+q = zb_quadrat(x, 4) # break into 4
 plot(q)
 ```
 
@@ -51,13 +51,13 @@ plot(q)
 Or doughnuts
 
 ``` r
-plot(sz_doughnut(x, n = 4))
+plot(zb_doughnut(x, n = 4))
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
-doughnut_4km = sz_doughnut(x, d = 4)
+doughnut_4km = zb_doughnut(x, d = 4)
 doughnut_4km
 #> Simple feature collection with 8 features and 0 fields
 #> geometry type:  GEOMETRY

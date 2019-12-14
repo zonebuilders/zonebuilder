@@ -9,14 +9,14 @@
 #' @export
 #'
 #' @examples
-#' x = sz_region
-#' c = sf::st_centroid(sz_region)
-#' plot(sz_quadrat(x, ncol = 2), col = 2:5)
+#' x = zb_region
+#' c = sf::st_centroid(zb_region)
+#' plot(zb_quadrat(x, ncol = 2), col = 2:5)
 #' plot(c, add = TRUE, col = "white")
-#' plot(sz_quadrat(x, ncol = 3))
-#' plot(sz_quadrat(x, ncol = 4))
-#' plot(sz_quadrat(x, ncol = 4, intersection = FALSE))
-sz_quadrat = function(x, ncol, nrow = NULL, intersection = TRUE) {
+#' plot(zb_quadrat(x, ncol = 3))
+#' plot(zb_quadrat(x, ncol = 4))
+#' plot(zb_quadrat(x, ncol = 4, intersection = FALSE))
+zb_quadrat = function(x, ncol, nrow = NULL, intersection = TRUE) {
   g = sf::st_make_grid(x = x, n = ncol)
   if(!intersection) {
     return(g)

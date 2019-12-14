@@ -4,5 +4,5 @@
 #'
 #' @docType data
 #' @keywords datasets
-#' @name sz_region
+#' @name zb_region
 NULL

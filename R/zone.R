@@ -15,29 +15,60 @@
 #' @export
 #'
 #' @examples
-#' z = sz_zone(sz_region, n_circles = 4)
+#' z = zb_zone(zb_region, n_circles = 4)
 #' z
 #' plot(z, col = 1:nrow(z))
-#' z = sz_zone(sz_region, n_circles = 6)
+#' z = zb_zone(zb_region, n_circles = 6)
 #' plot(z, col = 1:nrow(z))
-#' z = sz_zone(sz_region, n_circles = 6, n_segments = rep(12, 6))
+#' z = zb_zone(zb_region, n_circles = 6, n_segments = rep(12, 6))
 #' plot(z, col = 1:nrow(z))
-sz_zone = function(x = NULL,
+zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles,
-                   n_segments = c(1, (1:(n_circles - 1)) * 4), # to  update
+                   n_segments = NA,
                    distance = 1,
                    intersection = TRUE) {
+
+
+  # checks    
+  if (missing(x) && missing(point)) stop("Please specify either x or point")
+  if (missing(point)) {
+    point = sf::st_centroid(x)
+  } else {
+    point <- sf::st_geometry(point)
+  }
+  if (sf::st_is_longlat(point)) {
+    point <- stplanr::geo_select_aeq(point)
+    if (!is.null(x)) x <- stplanr::geo_select_aeq(x)
+  }
+  if(is.null(n_circles)) {
+    if (is.null(x)) stop("Please specify either x or n (or both)")
+    n_circles = number_of_circles(x, distance)
+  }
   
-  # if(sf::st_is_longlat(x)) # add lat lon checks
-  # browser()
-  doughnuts = sz_doughnut(x = x, point = point, n = n_circles, distance = distance, intersection = FALSE)
+  browser()
+  
+  
+  doughnuts = create_rings(point, n_circles, distance)
+  n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
+
+  segments = lapply(n_segments, create_segment, x = point)
+  
+  
+  doughnut_segments = mapply(function(x, y) {
+    if (is.null(y)) {
+      x
+    } else {
+      sf::st_intersection(x, y)
+    }
+  }, split(doughnuts, 1:nrow(doughnuts)), segments, SIMPLIFY = FALSE)
+  
   
   
   doughnut_segments = doughnuts[1, ]
   # i = 2 # for testing
   for(i in 2:nrow(doughnuts)) {
-    segments = sz_segment(x = point, n_segments = n_segments[i])
+    segments = zb_segment(x = point, n_segments = n_segments[i])
     doughnut_intersections = sf::st_intersection(doughnuts[i, ], segments)
     doughnut_segments = rbind(doughnut_segments, doughnut_intersections)
   }
@@ -45,4 +76,10 @@ sz_zone = function(x = NULL,
     doughnut_segments = sf::st_intersection(doughnut_segments, x)
   }
   doughnut_segments
+}
+
+zb_doughnut = function(n_segments = 1, ...) {
+}
+
+zb_segment = function(n_circles = 1, ...) {
 }

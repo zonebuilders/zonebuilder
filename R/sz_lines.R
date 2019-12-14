@@ -9,11 +9,11 @@
 #' @export
 #'
 #' @examples
-#' point = sf::st_centroid(sz_region)
+#' point = sf::st_centroid(zb_region)
 #' n = 4
-#' l = sz_lines(point, n)
+#' l = zb_lines(point, n)
 #' plot(l)
-sz_lines = function(point, n, starting_angle = 45, distance = 100000) {
+zb_lines = function(point, n, starting_angle = 45, distance = 100000) {
   fr_matrix = matrix(sf::st_coordinates(point), ncol = 2)
   angles_deg = seq(0, to = 360, by = 360 / n) + starting_angle
   angles_rad = angles_deg / 180 * pi

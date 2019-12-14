@@ -13,26 +13,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-# sfzoner
+# zonebuilder
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of sfzoner is to ...
+The goal of zonebuilder is to ...
 
 ## Installation
 
-You can install the released version of sfzoner from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of zonebuilder from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("sfzoner")
+install.packages("zonebuilder")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("robinlovelace/sfzoner")
+devtools::install_github("robinlovelace/zonebuilder")
 ```
 
 ## Example
@@ -40,23 +40,23 @@ devtools::install_github("robinlovelace/sfzoner")
 ```{r}
 library(sf)
 devtools::load_all()
-plot(sz_region)
+plot(zb_region)
 ```
 
 The aim is to be able to break up geographical space into discrete chunks.
 The syntax is designed to be user friendly, e.g.:
 
 ```{r}
-x = sz_region
-q = sz_quadrat(x, 4) # break into 4
+x = zb_region
+q = zb_quadrat(x, 4) # break into 4
 plot(q)
 ```
 
 Or doughnuts
 
 ```{r}
-plot(sz_doughnut(x, n = 4))
-doughnut_4km = sz_doughnut(x, d = 4)
+plot(zb_doughnut(x, n = 4))
+doughnut_4km = zb_doughnut(x, d = 4)
 doughnut_4km
 plot(sf::st_geometry(doughnut_4km))
 plot(doughnut_4km[3, ], col = "blue", add = TRUE)
