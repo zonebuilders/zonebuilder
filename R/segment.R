@@ -24,8 +24,8 @@ zb_segment = function(x, n_segments = 4, starting_angle = -45, distance = 100000
 
   angles_rad = get_angles(n_segments = n_segments, starting_angle = starting_angle)
   
-  x_coord_to = distance * cos(angles_rad) + fr_matrix[, 1]
-  y_coord_to = distance * sin(angles_rad) + fr_matrix[, 2]
+  x_coord_to = distance * cos(angles_rad - 0.5 * pi) + fr_matrix[, 1]
+  y_coord_to = distance * -sin(angles_rad - 0.5 * pi) + fr_matrix[, 2]
   to_matrix = cbind(x_coord_to, y_coord_to)
   to_matrix_next = to_matrix[c(2:nrow(to_matrix), 1), ]
   coord_matrix_list = lapply(1:n_segments, function(x)

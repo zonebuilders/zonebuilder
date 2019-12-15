@@ -24,14 +24,13 @@
 #' plot(z_from_cent, col = 1:nrow(z))
 #' zb_region_sf = sf::st_sf(data.frame(n = 1), geometry = zb_region)
 #' z = zb_zone(zb_region_sf, n_circles = 3, n_segments = c(1, 4, 8))
-#' plot(z) # quadrant not respected 
+#' plot(z)
 #' plot(zb_zone(zb_region, n_circles = 6), col = 1:6)
 #' plot(zb_zone(zb_region, n_circles = 8), col = 1:8)
 #' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1, distance_growth = 0.1), col = 1:8)
 zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
-                   # n_segments = c(1, (1:(n_circles - 1)) * 4), # NA
                    n_segments = 12,
                    distance = 1,
                    distance_growth = 1,
@@ -60,10 +59,16 @@ zb_zone = function(x = NULL,
   # update n_circles
   n_circles = nrow(doughnuts)
 
+  clock_labels <- (identical(n_segments, 12))
+  # alternatives: add argument use_clock_labels? or another function with different params?
+    
   n_segments = rep(n_segments, length.out = n_circles)
   if (!segment_center) n_segments[1] <- 1
   
-  segments = lapply(n_segments, zb_segment, x = point)
+  segments = lapply(n_segments, 
+                    zb_segment, 
+                    x = point, 
+                    starting_angle = ifelse(clock_labels, 15, -45))
   
   if(!is.null(x) && intersection) {
     ids = sapply(sf::st_intersects(doughnuts, x), length) > 0
