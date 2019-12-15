@@ -1,4 +1,4 @@
-get_angles = function(n_segments = 4, starting_angle = 0, angles_mid = TRUE) {
+get_angles = function(n_segments = 4, starting_angle = -45, angles_mid = FALSE) {
   a = seq(starting_angle, starting_angle + 360, length.out = n_segments + 1)
   if (angles_mid) a = a - (360 / n_segments) / 2
   a / 180 * pi
