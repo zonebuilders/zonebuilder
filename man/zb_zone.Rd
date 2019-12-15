@@ -4,8 +4,16 @@
 \alias{zb_zone}
 \title{Generate zones covering a region of interest}
 \usage{
-zb_zone(x = NULL, point = NULL, n_circles, n_segments = NA,
-  distance = 1, intersection = TRUE)
+zb_zone(
+  x = NULL,
+  point = NULL,
+  n_circles = NULL,
+  n_segments = 12,
+  distance = 1,
+  distance_growth = 1,
+  equal_area = FALSE,
+  intersection = TRUE
+)
 }
 \arguments{
 \item{x}{Region of interest}
@@ -33,8 +41,16 @@ data(zb_region)
 z = zb_zone(zb_region, n_circles = 4)
 z
 plot(z, col = 1:nrow(z))
+z_from_cent = zb_zone(zb_region, point = zb_region_cent, n_circles = 8)
+plot(z_from_cent, col = 1:nrow(z))
+zb_region_sf = sf::st_sf(data.frame(n = 1), geometry = zb_region)
+z = zb_zone(zb_region_sf, n_circles = 3, n_segments = c(1, 4, 8))
+plot(z) # quadrant not respected 
 z = zb_zone(zb_region, n_circles = 6)
 plot(z, col = 1:nrow(z))
-z = zb_zone(zb_region, n_circles = 6, n_segments = rep(12, 6))
+z = zb_zone(zb_region, n_circles = 8)
 plot(z, col = 1:nrow(z))
+# z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
+# suggestion: split out new new function, reduce n. arguments
+# plot(z, col = 1:nrow(z))
 }

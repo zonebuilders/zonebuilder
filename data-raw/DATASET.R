@@ -21,3 +21,9 @@ plot(zb_region_centroid, add = TRUE, col = "red")
 
 usethis::use_data(zb_region_cent)
 
+
+# Triangular number sequence ----------------------------------------------
+
+n = 100
+zb_100_triangular_numbers = cumsum(1:100)
+usethis::use_data(zb_100_triangular_numbers)

@@ -16,7 +16,7 @@
 #' n = 16
 #' segments = zb_segment(point, n)
 #' plot(segments, col = 1:n) # logo?
-create_segment = function(x, n_segments = 4, starting_angle = 0, distance = 100000) {
+zb_segment = function(x, n_segments = 4, starting_angle = 0, distance = 100000) {
   if (n_segments == 1) return(NULL)
   fr_matrix = matrix(sf::st_coordinates(x), ncol = 2)
   #angles_deg = seq(0, to = 360, by = 360 / n_segments) + starting_angle

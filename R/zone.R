@@ -28,9 +28,9 @@
 #' plot(z, col = 1:nrow(z))
 #' z = zb_zone(zb_region, n_circles = 8)
 #' plot(z, col = 1:nrow(z))
-#' z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
+#' # z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
 #' # suggestion: split out new new function, reduce n. arguments
-#' plot(z, col = 1:nrow(z))
+#' # plot(z, col = 1:nrow(z))
 zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
@@ -40,8 +40,9 @@ zb_zone = function(x = NULL,
                    distance_growth = 1,
                    equal_area = FALSE,
                    intersection = TRUE) {
-
+  
   # checks and class coercion    
+  # sorry this now appears twice #### ----
   if (is.null(x) && is.null(point)) stop("Please specify either x or point")
   if (is(x, "sf")) x = sf::st_geometry(x)
   if (is.null(point)) {
@@ -49,6 +50,7 @@ zb_zone = function(x = NULL,
   } else {
     point = sf::st_geometry(point)
   }
+  # sorry this now appears twice #### ----
   
   # to implement
   # if (sf::st_is_longlat(point)) {
@@ -58,14 +60,13 @@ zb_zone = function(x = NULL,
   
   doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
 
-  
   if (equal_area) {
     n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
   }
   n_segments = rep(n_segments, length.out = n_circles)
   n_segments[1] <- 1
   
-  segments = lapply(n_segments, create_segment, x = point)
+  segments = lapply(n_segments, zb_segment, x = point)
   
   if(!is.null(x) && intersection) {
     ids = sapply(sf::st_intersects(doughnuts, x), length) > 0

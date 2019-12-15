@@ -11,13 +11,28 @@ doughnut_areas = function(n_circles, distance) {
   })
 }
 
-
-
-number_of_circles = function(x, distance) {
-  b = sf::st_bbox(x)
-  max_dimension = max(c(abs(b[1] - b[3]), abs(b[2] - b[4]))) 
+# n_circles = 10
+# x = zb_region
+# point = zb_region_midpoint
+find_distance_equal_dohnut = function(x, n_circles, point) {
+  if(is.null(point)) point = sf::st_centroid(x)
+  boundary_points = sf::st_cast(x, "POINT")
+  distances_to_points = sf::st_distance(boundary_points, point)
+  max_distance = as.numeric(max(distances_to_points)) / 1000
   # / cos(pi / 180 * 45) # add multiplier to account for hypotenuse issue
-  ceiling(as.numeric(max_dimension) / (1000 * 2 * distance))
+  max_distance / (n_circles)
+}
+
+# distance = 10
+# x = zb_region
+# number_of_circles(x, distance)
+number_of_circles = function(x, distance, point) {
+  if(is.null(point)) point = sf::st_centroid(x)
+  boundary_points = sf::st_cast(x, "POINT")
+  distances_to_points = sf::st_distance(boundary_points, point)
+  max_distance = as.numeric(max(distances_to_points)) / 1000
+  which(zb_100_triangular_numbers * distance > max_distance)[1]
+  # / cos(pi / 180 * 45) # add multiplier to account for hypotenuse issue
 }
 
 numbers_of_segments = function(n_circles = 10, distance = rep(1, n_circles)) {
