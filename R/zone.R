@@ -28,9 +28,6 @@
 #' plot(zb_zone(zb_region, n_circles = 6), col = 1:6)
 #' plot(zb_zone(zb_region, n_circles = 8), col = 1:8)
 #' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1), col = 1:8)
-#' # z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
-#' # suggestion: split out new new function, reduce n. arguments
-#' # plot(z, col = 1:nrow(z))
 zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
@@ -38,14 +35,13 @@ zb_zone = function(x = NULL,
                    n_segments = 12,
                    distance = 1,
                    distance_growth = 1,
-                   equal_area = FALSE,
                    intersection = TRUE) {
   
   # checks and class coercion    
   # sorry this now appears twice #### ----
   if (is.null(x) && is.null(point)) stop("Please specify either x or point")
-  if (is(x, "sf")) x = sf::st_geometry(x)
   if (is.null(point)) {
+    x = sf::st_geometry(x)
     point = sf::st_centroid(x)
   } else {
     point = sf::st_geometry(point)
@@ -60,9 +56,6 @@ zb_zone = function(x = NULL,
   
   doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
 
-  if (equal_area) {
-    n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
-  }
   n_segments = rep(n_segments, length.out = n_circles)
   n_segments[1] <- 1
   
@@ -84,3 +77,22 @@ zb_zone = function(x = NULL,
   
   doughnut_segments
 }
+
+# Create zones of equal area (to be documented)
+# z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
+# suggestion: split out new new function, reduce n. arguments
+# plot(z, col = 1:nrow(z))
+zb_zone_equal_area = function(x = NULL,
+                   point = NULL,
+                   n_circles = NULL,
+                   # n_segments = c(1, (1:(n_circles - 1)) * 4), # NA
+                   n_segments = 12,
+                   distance = 1,
+                   distance_growth = 1,
+                   intersection = TRUE) {
+  # Functions to calculate distances
+  n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
+  zb_zone(x, point, n_circles, n_segments, distance, intersection = intersection)
+  
+}
+  

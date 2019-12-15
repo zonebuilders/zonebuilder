@@ -20,8 +20,8 @@ zb_doughnut = function(x = NULL, point = NULL, n_circles = NULL, distance = NULL
   
   # checks and class coercion    
   if (is.null(x) && is.null(point)) stop("Please specify either x or point")
-  if (is(x, "sf")) x = sf::st_geometry(x)
   if (is.null(point)) {
+    x = sf::st_geometry(x)
     point = sf::st_centroid(x)
   } else {
     point = sf::st_geometry(point)

@@ -11,7 +11,6 @@ zb_zone(
   n_segments = 12,
   distance = 1,
   distance_growth = 1,
-  equal_area = FALSE,
   intersection = TRUE
 )
 }
@@ -51,7 +50,4 @@ plot(z) # quadrant not respected
 plot(zb_zone(zb_region, n_circles = 6), col = 1:6)
 plot(zb_zone(zb_region, n_circles = 8), col = 1:8)
 plot(zb_zone(zb_region, n_circles = 8, distance = 0.1), col = 1:8)
-# z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
-# suggestion: split out new new function, reduce n. arguments
-# plot(z, col = 1:nrow(z))
 }
