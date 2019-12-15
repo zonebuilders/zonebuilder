@@ -27,7 +27,7 @@
 #' plot(z) # quadrant not respected 
 #' plot(zb_zone(zb_region, n_circles = 6), col = 1:6)
 #' plot(zb_zone(zb_region, n_circles = 8), col = 1:8)
-#' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1), col = 1:8)
+#' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1, distance_growth = 0.1), col = 1:8)
 zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
@@ -56,6 +56,9 @@ zb_zone = function(x = NULL,
   # }
   
   doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
+  
+  # update n_circles
+  n_circles = nrow(doughnuts)
 
   n_segments = rep(n_segments, length.out = n_circles)
   if (!segment_center) n_segments[1] <- 1

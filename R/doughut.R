@@ -34,11 +34,11 @@ zb_doughnut = function(x = NULL, point = NULL, n_circles = NULL, distance = NULL
   }
   if(is.null(n_circles)) {
     if (is.null(x)) stop("Please specify either x or n (or both)")
-    n_circles = number_of_circles(x, distance, point)
+    n_circles = number_of_circles(x, distance, distance_growth, point)
   }
   
   if (length(distance) != n_circles) {
-    distance = distance + distance * (0:(n_circles-1)) * distance_growth
+    distance = get_distances(distance, distance_growth, n_circles)
   }
   create_rings(sf::st_geometry(point), n_circles, distance)
 }
