@@ -1,19 +1,29 @@
 Package: zonebuilder
-Title: Tools to Create Geographic Zones and Explore Zoning Systems
+Title: Tools to Create Geographic Zones and Explore Zoning
+    Systems
 Version: 0.0.0.9000
-Authors@R: c(
-  person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("aut", "cre"),
-      comment = c(ORCID = "0000-0001-5679-6536")),
-	person("Martijn", "Tennekes", email = "mtennekes@gmail.com", role = c("aut"))
-	)
-Description: This package provides function to help divide geographic space into discrete polygons (zones).
+Authors@R: 
+    c(person(given = "Robin",
+             family = "Lovelace",
+             role = c("aut", "cre"),
+             email = "rob00x@gmail.com",
+             comment = c(ORCID = "0000-0001-5679-6536")),
+      person(given = "Martijn",
+             family = "Tennekes",
+             role = "aut",
+             email = "mtennekes@gmail.com"))
+Description: This package provides function to help divide
+    geographic space into discrete polygons (zones).
 License: GPL-3
-Depends: R (>= 2.10) 
-Imports: sf
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.0.2
+Depends: 
+    R (>= 2.10)
+Imports: 
+    sf
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
