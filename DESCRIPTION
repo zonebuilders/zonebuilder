@@ -21,7 +21,8 @@ Imports:
     sf
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    tmap
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
