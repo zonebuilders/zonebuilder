@@ -35,6 +35,7 @@ zb_zone = function(x = NULL,
                    n_segments = 12,
                    distance = 1,
                    distance_growth = 1,
+                   segment_center = FALSE,
                    intersection = TRUE) {
   
   # checks and class coercion    
@@ -57,7 +58,7 @@ zb_zone = function(x = NULL,
   doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
 
   n_segments = rep(n_segments, length.out = n_circles)
-  n_segments[1] <- 1
+  if (!segment_center) n_segments[1] <- 1
   
   segments = lapply(n_segments, zb_segment, x = point)
   
