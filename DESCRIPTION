@@ -1,13 +1,12 @@
 Package: zonebuilder
-Title: What the Package Does (One Line, Title Case)
+Title: Tools to Create Geographic Zones and Explore Zoning Systems
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+  person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0001-5679-6536")),
+	person("Martijn", "Tennekes", email = "mtennekes@gmail.com", role = c("aut"))
+	)
+Description: This package provides function to help divide geographic space into discrete polygons (zones).
 License: GPL-3
 Depends: R (>= 2.10) 
 Imports: sf
