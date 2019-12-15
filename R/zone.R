@@ -60,6 +60,8 @@ zb_zone = function(x = NULL,
   
   doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
 
+  n_circles = length(sf::st_geometry(doughnuts))
+  
   if (equal_area) {
     n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
   }
