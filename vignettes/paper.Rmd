@@ -27,9 +27,22 @@ library(zonebuilder)
 ```
 
 Zoning systems have long been a topic of geographic research and political controversy.
-From a research perspective, the way in which
+From a research perspective, the way in which 
 
 @openshaw_optimal_1977
+
+# The CSA method of zone generation
+
+The 
+
+
+## Annuli distances
+
+The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in previous figures.
+<!-- Todo: add figures -->
+In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable.
+We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system.
+This linear growth leads to distances between each annuli boundary increasing in line with the steps in the [triangular number sequence](https://en.wikipedia.org/wiki/Triangular_number).
 
 # References
 

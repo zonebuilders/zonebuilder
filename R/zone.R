@@ -19,11 +19,17 @@
 #' z = zb_zone(zb_region, n_circles = 4)
 #' z
 #' plot(z, col = 1:nrow(z))
+#' z_from_cent = zb_zone(zb_region, point = zb_region_cent, n_circles = 8)
+#' plot(z_from_cent, col = 1:nrow(z))
+#' zb_region_sf = sf::st_sf(data.frame(n = 1), geometry = zb_region)
+#' z = zb_zone(zb_region_sf, n_circles = 3, n_segments = c(1, 4, 8))
+#' plot(z) # quadrant not respected 
 #' z = zb_zone(zb_region, n_circles = 6)
 #' plot(z, col = 1:nrow(z))
 #' z = zb_zone(zb_region, n_circles = 8)
 #' plot(z, col = 1:nrow(z))
 #' z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
+#' # suggestion: split out new new function, reduce n. arguments
 #' plot(z, col = 1:nrow(z))
 zb_zone = function(x = NULL,
                    point = NULL,
@@ -35,30 +41,22 @@ zb_zone = function(x = NULL,
                    equal_area = FALSE,
                    intersection = TRUE) {
 
-
-  # checks    
+  # checks and class coercion    
   if (is.null(x) && is.null(point)) stop("Please specify either x or point")
+  if (is(x, "sf")) x = sf::st_geometry(x)
   if (is.null(point)) {
     point = sf::st_centroid(x)
   } else {
     point = sf::st_geometry(point)
   }
-  if (sf::st_is_longlat(point)) {
-    point = stplanr::geo_select_aeq(point)
-    if (!is.null(x)) x = stplanr::geo_select_aeq(x)
-  }
   
-  if(is.null(n_circles)) {
-    if (is.null(x)) stop("Please specify either x or n (or both)")
-    n_circles = number_of_circles(x, distance)
-  }
+  # to implement
+  # if (sf::st_is_longlat(point)) {
+  #   point = stplanr::geo_select_aeq(point)
+  #   if (!is.null(x)) x = stplanr::geo_select_aeq(x)
+  # }
   
-  if (length(distance) != n_circles) {
-    distance = distance + distance * (0:(n_circles-1)) * distance_growth
-  }
-
-  doughnuts = create_rings(point, n_circles, distance)
-  
+  doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
 
   
   if (equal_area) {
@@ -75,8 +73,6 @@ zb_zone = function(x = NULL,
     segments = segments[ids]
   }
   
-  
-  
   doughnut_segments = do.call(rbind, mapply(function(x, y) {
     if (is.null(y)) {
       x
@@ -86,10 +82,4 @@ zb_zone = function(x = NULL,
   }, split(doughnuts, 1:nrow(doughnuts)), segments, SIMPLIFY = FALSE))
   
   doughnut_segments
-}
-
-zb_doughnut = function(n_segments = 1, ...) {
-}
-
-zb_segment = function(n_circles = 1, ...) {
 }
