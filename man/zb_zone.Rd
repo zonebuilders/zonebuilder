@@ -24,7 +24,9 @@ zb_zone(
 
 \item{n_segments}{Optional sequence of numbers}
 
-\item{distance}{Distance between each doughnut ring in km}
+\item{distance}{Distance  (km)}
+
+\item{distance_growth}{The rate at which the doughnut ring widths grow (km)}
 
 \item{intersection}{Not implemented yet}
 }
@@ -46,10 +48,9 @@ plot(z_from_cent, col = 1:nrow(z))
 zb_region_sf = sf::st_sf(data.frame(n = 1), geometry = zb_region)
 z = zb_zone(zb_region_sf, n_circles = 3, n_segments = c(1, 4, 8))
 plot(z) # quadrant not respected 
-z = zb_zone(zb_region, n_circles = 6)
-plot(z, col = 1:nrow(z))
-z = zb_zone(zb_region, n_circles = 8)
-plot(z, col = 1:nrow(z))
+plot(zb_zone(zb_region, n_circles = 6), col = 1:6)
+plot(zb_zone(zb_region, n_circles = 8), col = 1:8)
+plot(zb_zone(zb_region, n_circles = 8, distance = 0.1), col = 1:8)
 # z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
 # suggestion: split out new new function, reduce n. arguments
 # plot(z, col = 1:nrow(z))

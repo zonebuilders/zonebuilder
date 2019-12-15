@@ -8,10 +8,12 @@
 #' x = zb_region
 #' plot(zb_doughnut(x, n_circles = 4), reset = FALSE)
 #' plot(zb_region, add = TRUE)
-#' plot(zb_doughnut(x, distance = 4), reset = FALSE)
+#' z = zb_doughnut(x, distance = 0.5)
+#' plot(z, reset = FALSE)
 #' plot(zb_region, add = TRUE)
+#' plot(z[5, ], add = TRUE, col = "red")
 #' x_point = sf::st_centroid(zb_region)
-#' z = zb_doughnut(point = zb_region_cent, n_circles = 4, distance = 1)
+#' z = zb_doughnut(point = zb_region_cent, n_circles = 4, distance = 4:1)
 #' z
 #' plot(z)
 zb_doughnut = function(x = NULL, point = NULL, n_circles = NULL, distance = NULL, distance_growth = 1) {
