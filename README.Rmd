@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -76,4 +78,13 @@ This function gives you control over a number of parameters, as documented in th
 
 ```{r}
 args(zb_zone)
+```
+
+The zones are labeled by default in the following way. The rings are labels with capital letters, where A is the centre. The segments are numbers using clock hours, so 12, 3, 6, and 9 for north, east, south, west respectivly.  
+
+```{r}
+z = zb_zone(x)
+tm_shape(z) +
+  tm_polygons(col = "circle_id", legend.show = FALSE, palette = "magma") + 
+  tm_text("label")
 ```
