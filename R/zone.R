@@ -28,6 +28,16 @@
 #' plot(zb_zone(zb_region, n_circles = 6), col = 1:6)
 #' plot(zb_zone(zb_region, n_circles = 8), col = 1:8)
 #' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1, distance_growth = 0.1), col = 1:8)
+#' if (require(tmap)) {
+#'   z = zb_zone(zb_region, n_circles = 8)
+#'   
+#'   tmap_mode("view")
+#'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
+#'   
+#'   z = zb_zone(zb_region, n_circles = 8, n_segments = c(1, 4, 4, 8, 8, 16, 16, 16))
+#'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
+#' }
+#' 
 zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
@@ -54,6 +64,7 @@ zb_zone = function(x = NULL,
   #   if (!is.null(x)) x = stplanr::geo_select_aeq(x)
   # }
   
+  # create doughnuts
   doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
   
   # update n_circles
@@ -65,26 +76,50 @@ zb_zone = function(x = NULL,
   n_segments = rep(n_segments, length.out = n_circles)
   if (!segment_center) n_segments[1] <- 1
   
+  # create segments
   segments = lapply(n_segments, 
                     zb_segment, 
                     x = point, 
                     starting_angle = ifelse(clock_labels, 15, -45))
   
+  # transform to sf and number them
+  segments = lapply(segments, function(x) {
+    if (is.null(x)) return(x)
+    y = sf::st_as_sf(x)
+    y$segment_id = 1:nrow(y)
+    y
+  })
+  
+  # intersect doughnuts with x (the area polygon)
   if(!is.null(x) && intersection) {
-    ids = sapply(sf::st_intersects(doughnuts, x), length) > 0
-    doughnuts = sf::st_intersection(doughnuts, x)
-    segments = segments[ids]
+    zones_ids = which(sapply(sf::st_intersects(doughnuts, x), length) > 0)
+    doughnuts = suppressWarnings(sf::st_intersection(doughnuts, x))
+    segments = segments[zones_ids]
+  } else {
+    zones_ids = 1:n_circles
   }
   
-  doughnut_segments = do.call(rbind, mapply(function(x, y) {
+  # intersect the result with segments
+  doughnut_segments = do.call(rbind, mapply(function(i, x, y) {
     if (is.null(y)) {
+      x$segment_id = 1
+      x$circle_id = i
       x
     } else {
-      sf::st_intersection(x, y)
+      res = suppressWarnings(sf::st_intersection(x, y))
+      res$circle_id = i
+      res
     }
-  }, split(doughnuts, 1:nrow(doughnuts)), segments, SIMPLIFY = FALSE))
+  }, zones_ids, split(doughnuts, 1:length(zones_ids)), segments, SIMPLIFY = FALSE))
   
-  doughnut_segments
+  # attach labels
+  if (clock_labels) {
+    labels_df = zb_clock_labels(n_circles, segment_center = segment_center)
+  } else {
+    labels_df = zb_quadrant_labels(n_circles, n_segments, segment_center)
+  }
+  
+  merge(doughnut_segments, labels_df, by = c("circle_id", "segment_id"))
 }
 
 # Create zones of equal area (to be documented)
