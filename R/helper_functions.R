@@ -49,7 +49,7 @@ number_of_circles = function(x, distance, distance_growth, point) {
 
 distances = function(distance, distance_growth)
 
-numbers_of_segments = function(n_circles = 10, distance = rep(1, n_circles)) {
+number_of_segments = function(n_circles = 10, distance = rep(1, n_circles)) {
   areas = doughnut_areas(n_circles = n_circles, distance = distance)
   areas / areas[1]
 }

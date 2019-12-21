@@ -10,6 +10,7 @@
 #' @param n_segments Optional sequence of numbers
 #' @param distance Distance  (km)
 #' @param distance_growth The rate at which the doughnut ring widths grow (km)
+#' @param segment_center Should the central circle be divided into segments? `FALSE` by default.
 #' @param intersection Not implemented yet
 #'
 #' @return An `sf` object containing zones covering the region
@@ -130,12 +131,12 @@ zb_zone_equal_area = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
                    # n_segments = c(1, (1:(n_circles - 1)) * 4), # NA
-                   n_segments = 12,
+                   n_segments = NA,
                    distance = 1,
                    distance_growth = 1,
                    intersection = TRUE) {
   # Functions to calculate distances
-  n_segments = numbers_of_segments(n_circles = n_circles, distance = distance)
+  n_segments = number_of_segments(n_circles = n_circles, distance = distance)
   zb_zone(x, point, n_circles, n_segments, distance, intersection = intersection)
   
 }

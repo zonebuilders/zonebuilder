@@ -4,7 +4,7 @@
 \alias{zb_segment}
 \title{Title}
 \usage{
-zb_segment(x, n_segments = 4, starting_angle = 0, distance = 1e+05)
+zb_segment(x, n_segments = 4, starting_angle = -45, distance = 1e+05)
 }
 \arguments{
 \item{x}{Region of interest}
