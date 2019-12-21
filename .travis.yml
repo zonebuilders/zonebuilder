@@ -1,57 +1,16 @@
-language: r
-# tic documentation: https://docs.ropensci.org/tic/dev/
+language: R
+cache: packages
 
-
-# OS ---------------------------------------------------------------------------
-os: linux
-sudo: required
-dist: trusty
-
-before_install:
-  - sudo add-apt-repository ppa:ubuntugis/ppa --yes
-  - sudo apt-get --yes --force-yes update -qq
-  - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-
---- # meta ---------------------------------------------------------------------
-cache:
-  - packages
-  - ccache
-latex: false
-
-env:
-  global:
-    - MAKEFLAGS="-j 2"
---- # DO NOT CHANGE THE CODE BELOW ---------------------------------------------
-# Stages -----------------------------------------------------------------------
-
-before_install:
-  - echo -e "options(Ncpus = 8, repos = structure(c(CRAN = "https://cloud.r-project.org/")))" > $HOME/.Rprofile
-  - mkdir $HOME/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
-  - mkdir $HOME/.ccache && echo -e 'max_size = 5.0G\nsloppiness = include_file_ctime\nhash_dir=false' > $HOME/.ccache/ccache.conf
-  - R -q -e 'if (!requireNamespace("remotes")) install.packages("remotes")'
-  - R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
-  - R -q -e 'remotes::install_github("ropenscilabs/tic"); print(tic::dsl_load()); tic::prepare_all_stages()'
-  - R -q -e 'tic::before_install()'
-install:
-  - if [ "${TRAVIS_OS_NAME}" == "osx" ]; then brew install ccache; fi
-  - if [ "${TRAVIS_OS_NAME}" == "osx" ]; then export PATH="/usr/local/opt/ccache/libexec:$PATH"; fi
-  - R -q -e 'tic::install()'
-before_script: R -q -e 'tic::before_script()'
-script: R -q -e 'tic::script()'
-after_success: R -q -e 'tic::after_success()'
-after_failure: R -q -e 'tic::after_failure()'
-before_deploy: R -q -e 'tic::before_deploy()'
-
-# added to try to get it to deploy...
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github()'
   skip_cleanup: true
-# added to try to get it to deploy...
 
-after_deploy: R -q -e 'tic::after_deploy()'
-after_script: R -q -e 'tic::after_script()'
-# DO NOT CHANGE THE CODE ABOVE -------------------------------------------------
-
-# Custom user code -------------------------------------------------------------
+addons:
+    apt:
+        packages:
+            - libudunits2-dev
+            - libproj-dev
+            - libgeos-dev
+            - libgdal-dev
