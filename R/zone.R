@@ -10,6 +10,7 @@
 #' @param n_segments Optional sequence of numbers
 #' @param distance Distance  (km)
 #' @param distance_growth The rate at which the doughnut ring widths grow (km)
+#' @param starting_angle The angle of the first of the radii that create the segments (degrees)
 #' @param segment_center Should the central circle be divided into segments? `FALSE` by default.
 #' @param intersection Not implemented yet
 #'
@@ -17,34 +18,27 @@
 #' @export
 #'
 #' @examples
-#' data(zb_region)
 #' z = zb_zone(zb_region, n_circles = 4)
 #' z
-#' plot(z, col = 1:nrow(z))
-#' z_from_cent = zb_zone(zb_region, point = zb_region_cent, n_circles = 8)
-#' plot(z_from_cent, col = 1:nrow(z))
-#' zb_region_sf = sf::st_sf(data.frame(n = 1), geometry = zb_region)
-#' z = zb_zone(zb_region_sf, n_circles = 3, n_segments = c(1, 4, 8))
 #' plot(z)
-#' plot(zb_zone(zb_region, n_circles = 6), col = 1:6)
-#' plot(zb_zone(zb_region, n_circles = 8), col = 1:8)
-#' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1, distance_growth = 0.1), col = 1:8)
+#' plot(zb_zone(zb_region, point = zb_region_cent))
+#' plot(zb_zone(zb_region, n_circles = 6))
+#' plot(zb_zone(zb_region, starting_angle = -15))
+#' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1, distance_growth = 0.1))
 #' if (require(tmap)) {
 #'   z = zb_zone(zb_region, n_circles = 8)
-#'   
 #'   tmap_mode("view")
 #'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
-#'   
 #'   z = zb_zone(zb_region, n_circles = 8, n_segments = c(1, 4, 4, 8, 8, 16, 16, 16))
 #'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
 #' }
-#' 
 zb_zone = function(x = NULL,
                    point = NULL,
                    n_circles = NULL,
                    n_segments = 12,
                    distance = 1,
                    distance_growth = 1,
+                   starting_angle = 0,
                    segment_center = FALSE,
                    intersection = TRUE) {
   
@@ -71,7 +65,7 @@ zb_zone = function(x = NULL,
   # update n_circles
   n_circles = nrow(doughnuts)
 
-  clock_labels <- (identical(n_segments, 12))
+  clock_labels = (identical(n_segments, 12))
   # alternatives: add argument use_clock_labels? or another function with different params?
     
   n_segments = rep(n_segments, length.out = n_circles)
@@ -81,7 +75,8 @@ zb_zone = function(x = NULL,
   segments = lapply(n_segments, 
                     zb_segment, 
                     x = point, 
-                    starting_angle = ifelse(clock_labels, 15, -45))
+                    # starting_angle = ifelse(clock_labels, 15, -45))
+                    starting_angle = starting_angle)
   
   # transform to sf and number them
   segments = lapply(segments, function(x) {
