@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 # zonebuilder
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/zonebuilders/zonebuilder.svg?branch=master)](https://travis-ci.org/zonebuilders/zonebuilder)
 <!-- badges: end -->
 
 The goal of zonebuilder is to break up large regions into manageable zones for research and applied transport planning, to support the global transition away from fossil fuels in the transport sector, and towards more healthy modes of transport like walking, cycling and renewable electricity-powered public transport.
