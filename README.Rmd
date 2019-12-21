@@ -72,7 +72,9 @@ tmap_arrange(
 A new zoning system implemented in the function `zb_zone()` segments doughnuts of gradually increasing width to create concentric segmented annuli (CSA):
 
 ```{r}
-qtm(zb_zone(x))
+z = zb_zone(x)
+z
+qtm(z)
 ```
 
 This function gives you control over a number of parameters, as documented in the help pages and an in-progress academic paper.
