@@ -15,7 +15,7 @@ zb_quadrant_labels = function(n_circles, n_segments = 12, segment_center = FALSE
   # check n_segments
   if (any((n_segments %% 4) != 0 & n_segments != 1)) stop("n_segments should be equal to 1 or a multiple of 4")
   n_segments = rep(n_segments, length.out = n_circles)
-  if (!segment_center) n_segments[1] <- 1
+  if (!segment_center) n_segments[1] = 1
 
   two_decimals_required = any(n_segments >= 40)
   
@@ -25,7 +25,7 @@ zb_quadrant_labels = function(n_circles, n_segments = 12, segment_center = FALSE
     seg = (((1:j - 1)/j) %% 0.25) * j + 1
     
     if (two_decimals_required) {
-      seg <- sprintf("%02d", seg)
+      seg = sprintf("%02d", seg)
     }
     
     labels = if (j == 1) {
