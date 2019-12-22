@@ -22,13 +22,12 @@
 #' @export
 #'
 #' @examples
-#' z = zb_zone(zb_region, n_circles = 4)
+#' z = zb_zone(zb_region, point = zb_region_cent)
 #' z
 #' plot(z)
-#' plot(zb_zone(zb_region, point = zb_region_cent))
 #' plot(zb_zone(zb_region, n_circles = 2))
-#' plot(zb_zone(zb_region, starting_angle = 0))
-#' plot(zb_zone(zb_region, n_circles = 3, distance = 0.1, distance_growth = 0.1))
+#' plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0))
+#' plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0, distance_growth = 0.1))
 #' if (require(tmap)) {
 #'   # tmap_mode("view") # for interactive maps
 #'   z = zb_zone(zb_region, n_circles = 3)
@@ -68,15 +67,15 @@ zb_zone = function(x = NULL,
   
   # update n_circles
   n_circles = nrow(doughnuts)
-
+  
   clock_labels = (identical(n_segments, 12))
   if(!clock_labels && starting_angle == 15) {
-    starting_angle = 45
+    starting_angle = -45
   }
   # alternatives: add argument use_clock_labels? or another function with different params?
     
   n_segments = rep(n_segments, length.out = n_circles)
-  if (!segment_center) n_segments[1] <- 1
+  if (!segment_center) n_segments[1] = 1
   
   # create segments
   segments = lapply(n_segments, 
@@ -114,6 +113,9 @@ zb_zone = function(x = NULL,
       res
     }
   }, zones_ids, split(doughnuts, 1:length(zones_ids)), segments, SIMPLIFY = FALSE))
+  
+  doughnut_segments$segment_id = formatC(doughnut_segments$segment_id, width = 2, flag = 0)
+  # doughnut_segments$circle_id = formatC(doughnut_segments$circle_id, width = 2, flag = 0)
   
   # attach labels
   if (clock_labels) {

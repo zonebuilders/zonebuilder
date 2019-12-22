@@ -1,9 +1,9 @@
 zb_clock_labels = function(n_circles, segment_center = FALSE) {
   do.call(rbind, lapply(1:n_circles, function(i) {
     if (i==1L && !segment_center) {
-      data.frame(circle_id = i, segment_id = 1, label = "A", stringsAsFactors = TRUE)
+      data.frame(circle_id = i, segment_id = "01", label = "A", stringsAsFactors = FALSE)
     } else {
-      data.frame(circle_id = i, segment_id = 1:12, label = paste0(LETTERS[i], sprintf("%02d", 1:12)), stringsAsFactors = FALSE)
+      data.frame(circle_id = i, segment_id = formatC(1:12, width = 2, flag = "0"), label = paste0(LETTERS[i], sprintf("%02d", 1:12)), stringsAsFactors = FALSE)
     }
   }))
 }
@@ -36,6 +36,6 @@ zb_quadrant_labels = function(n_circles, n_segments = 12, segment_center = FALSE
       paste0(ring, quad, seg)
     }
     
-    data.frame(circle_id = i, segment_id = 1:j, label = labels, stringsAsFactors = FALSE)
+    data.frame(circle_id = i, segment_id = formatC(1:j, width = 2, flag = "0"), label = labels, stringsAsFactors = FALSE)
   }, 1:n_circles, n_segments, SIMPLIFY = FALSE))
 }

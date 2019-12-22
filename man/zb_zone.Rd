@@ -11,7 +11,7 @@ zb_zone(
   n_segments = 12,
   distance = 1,
   distance_growth = 1,
-  starting_angle = -15,
+  starting_angle = 15,
   segment_center = FALSE,
   intersection = TRUE
 )
@@ -49,13 +49,12 @@ be used to refer to segments in [clock position](https://en.wikipedia.org/wiki/C
 with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments.
 }
 \examples{
-z = zb_zone(zb_region, n_circles = 4)
+z = zb_zone(zb_region, point = zb_region_cent)
 z
 plot(z)
-plot(zb_zone(zb_region, point = zb_region_cent))
 plot(zb_zone(zb_region, n_circles = 2))
-plot(zb_zone(zb_region, starting_angle = 0))
-plot(zb_zone(zb_region, n_circles = 3, distance = 0.1, distance_growth = 0.1))
+plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0))
+plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0, distance_growth = 0.1))
 if (require(tmap)) {
   # tmap_mode("view") # for interactive maps
   z = zb_zone(zb_region, n_circles = 3)
