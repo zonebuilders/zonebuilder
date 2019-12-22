@@ -86,9 +86,7 @@
 <!-- You can install the released version of zonebuilder from [CRAN](https://CRAN.R-project.org) with: -->
 <p>Install it from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"robinlovelace/zonebuilder"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Skipping install of 'zonebuilder' from a github remote, the SHA1 (17e7530b) has not changed since last install.</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt;   Use `force = TRUE` to force installation</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"robinlovelace/zonebuilder"</span>)</a></code></pre></div>
 </div>
 <div id="using-zonebuilder" class="section level2">
 <h2 class="hasAnchor">
@@ -124,23 +122,23 @@
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; proj4string:    +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs</span></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; First 10 features:</span></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;    circle_id segment_id label                       geometry</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 1          1          1     A MULTIPOLYGON (((532101.7 17...</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 2          2          1   B01 POLYGON ((530325.3 182602.3...</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 3          2         10   B10 POLYGON ((528203.9 178928, ...</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; 4          2         11   B11 POLYGON ((528203.9 180481, ...</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; 5          2         12   B12 POLYGON ((528980.4 181825.8...</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; 6          2          2   B02 MULTIPOLYGON (((531808.8 18...</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; 7          2          3   B03 MULTIPOLYGON (((532067.6 17...</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; 8          2          4   B04 MULTIPOLYGON (((534101.7 17...</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 9          2          5   B05 POLYGON ((533999.5 178928, ...</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 10         2          6   B06 POLYGON ((533223 177583.2, ...</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 1          1         01     A MULTIPOLYGON (((532101.7 17...</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 2          2         01   B01 MULTIPOLYGON (((531808.8 18...</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 3          2         02   B02 MULTIPOLYGON (((532067.6 17...</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; 4          2         03   B03 MULTIPOLYGON (((534101.7 17...</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; 5          2         04   B04 POLYGON ((533999.5 178928, ...</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; 6          2         05   B05 POLYGON ((533223 177583.2, ...</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; 7          2         06   B06 POLYGON ((531878.2 176806.7...</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; 8          2         07   B07 MULTIPOLYGON (((530325.3 17...</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 9          2         08   B08 MULTIPOLYGON (((528980.4 17...</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 10         2         09   B09 POLYGON ((528203.9 178928, ...</span></a>
 <a class="sourceLine" id="cb5-23" data-line-number="23"><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(z)</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
 <p>This function gives you control over a number of parameters, as documented in the help pages and an in-progress academic paper.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/args.html">args</a></span>(zb_zone)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; function (x = NULL, point = NULL, n_circles = NULL, n_segments = 12, </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;     distance = 1, distance_growth = 1, starting_angle = -15, </span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;     segment_center = FALSE, intersection = TRUE) </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;     distance = 1, distance_growth = 1, starting_angle = 15, segment_center = FALSE, </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;     intersection = TRUE) </span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; NULL</span></a></code></pre></div>
 <p>The zones are labeled by default in the following way. The rings are labels with capital letters, where A is the centre. The segments are numbers using clock hours, so 12, 3, 6, and 9 for north, east, south, west respectivly.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">z =<span class="st"> </span><span class="kw"><a href="reference/zb_zone.html">zb_zone</a></span>(x, <span class="dt">n_circles =</span> <span class="dv">4</span>)</a>
