@@ -42,7 +42,7 @@ zb_zone = function(x = NULL,
                    n_segments = 12,
                    distance = 1,
                    distance_growth = 1,
-                   starting_angle = -15,
+                   starting_angle = 15,
                    segment_center = FALSE,
                    intersection = TRUE) {
   
@@ -70,7 +70,7 @@ zb_zone = function(x = NULL,
   n_circles = nrow(doughnuts)
 
   clock_labels = (identical(n_segments, 12))
-  if(!clock_labels && starting_angle == -15) {
+  if(!clock_labels && starting_angle == 15) {
     starting_angle = 45
   }
   # alternatives: add argument use_clock_labels? or another function with different params?
