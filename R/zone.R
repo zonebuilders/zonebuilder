@@ -4,6 +4,10 @@
 #' (concentric 2d rings or 'doughnuts') and then subdivides each annulus
 #' into a number of segments.
 #' 
+#' By default 12 segments are used for each annuli, resulting in a zoning system that can 
+#' be used to refer to segments in [clock position](https://en.wikipedia.org/wiki/Clock_position),
+#' with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments.
+#' 
 #' @param x Region of interest
 #' @param point Optional midpoint of the region 
 #' @param n_circles Number of rings including the central circle
@@ -22,14 +26,14 @@
 #' z
 #' plot(z)
 #' plot(zb_zone(zb_region, point = zb_region_cent))
-#' plot(zb_zone(zb_region, n_circles = 6))
-#' plot(zb_zone(zb_region, starting_angle = -15))
-#' plot(zb_zone(zb_region, n_circles = 8, distance = 0.1, distance_growth = 0.1))
+#' plot(zb_zone(zb_region, n_circles = 2))
+#' plot(zb_zone(zb_region, starting_angle = 0))
+#' plot(zb_zone(zb_region, n_circles = 3, distance = 0.1, distance_growth = 0.1))
 #' if (require(tmap)) {
-#'   z = zb_zone(zb_region, n_circles = 8)
-#'   tmap_mode("view")
+#'   # tmap_mode("view") # for interactive maps
+#'   z = zb_zone(zb_region, n_circles = 3)
 #'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
-#'   z = zb_zone(zb_region, n_circles = 8, n_segments = c(1, 4, 4, 8, 8, 16, 16, 16))
+#'   z = zb_zone(zb_region, distance = 3, n_segments = c(1, 4, 4, 8, 8))
 #'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
 #' }
 zb_zone = function(x = NULL,
@@ -38,7 +42,7 @@ zb_zone = function(x = NULL,
                    n_segments = 12,
                    distance = 1,
                    distance_growth = 1,
-                   starting_angle = 0,
+                   starting_angle = -15,
                    segment_center = FALSE,
                    intersection = TRUE) {
   
@@ -66,6 +70,9 @@ zb_zone = function(x = NULL,
   n_circles = nrow(doughnuts)
 
   clock_labels = (identical(n_segments, 12))
+  if(!clock_labels && starting_angle == -15) {
+    starting_angle = 45
+  }
   # alternatives: add argument use_clock_labels? or another function with different params?
     
   n_segments = rep(n_segments, length.out = n_circles)

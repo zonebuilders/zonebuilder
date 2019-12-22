@@ -33,7 +33,7 @@ install.packages("zonebuilder")
 
 Install it from [GitHub](https://github.com/) with:
 
-``` r
+```{r install-gh}
 # install.packages("devtools")
 devtools::install_github("robinlovelace/zonebuilder")
 ```
@@ -88,7 +88,7 @@ args(zb_zone)
 The zones are labeled by default in the following way. The rings are labels with capital letters, where A is the centre. The segments are numbers using clock hours, so 12, 3, 6, and 9 for north, east, south, west respectivly.  
 
 ```{r}
-z = zb_zone(x)
+z = zb_zone(x, n_circles = 4)
 tm_shape(z) +
   tm_polygons(col = "circle_id", legend.show = FALSE, palette = "magma") + 
   tm_text("label")

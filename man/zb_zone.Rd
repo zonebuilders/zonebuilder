@@ -11,7 +11,7 @@ zb_zone(
   n_segments = 12,
   distance = 1,
   distance_growth = 1,
-  starting_angle = 0,
+  starting_angle = -15,
   segment_center = FALSE,
   intersection = TRUE
 )
@@ -43,19 +43,24 @@ This function first divides geographic space into [annuli](https://en.wikipedia.
 (concentric 2d rings or 'doughnuts') and then subdivides each annulus
 into a number of segments.
 }
+\details{
+By default 12 segments are used for each annuli, resulting in a zoning system that can 
+be used to refer to segments in [clock position](https://en.wikipedia.org/wiki/Clock_position),
+with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments.
+}
 \examples{
 z = zb_zone(zb_region, n_circles = 4)
 z
 plot(z)
 plot(zb_zone(zb_region, point = zb_region_cent))
-plot(zb_zone(zb_region, n_circles = 6))
-plot(zb_zone(zb_region, starting_angle = -15))
-plot(zb_zone(zb_region, n_circles = 8, distance = 0.1, distance_growth = 0.1))
+plot(zb_zone(zb_region, n_circles = 2))
+plot(zb_zone(zb_region, starting_angle = 0))
+plot(zb_zone(zb_region, n_circles = 3, distance = 0.1, distance_growth = 0.1))
 if (require(tmap)) {
-  z = zb_zone(zb_region, n_circles = 8)
-  tmap_mode("view")
+  # tmap_mode("view") # for interactive maps
+  z = zb_zone(zb_region, n_circles = 3)
   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
-  z = zb_zone(zb_region, n_circles = 8, n_segments = c(1, 4, 4, 8, 8, 16, 16, 16))
+  z = zb_zone(zb_region, distance = 3, n_segments = c(1, 4, 4, 8, 8))
   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
 }
 }
