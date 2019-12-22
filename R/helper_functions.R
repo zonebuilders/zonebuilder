@@ -43,7 +43,7 @@ number_of_circles = function(x, distance, distance_growth, point) {
   max_distance = as.numeric(max(distances_to_points)) / 1000
   csdistances = cumsum(get_distances(distance, distance_growth, 100))
   
-  which(zb_100_triangular_numbers * distance > max_distance)[1]
+  which(zb_100_triangular_numbers * distance > max_distance)[1] + 1
   # / cos(pi / 180 * 45) # add multiplier to account for hypotenuse issue
 }
 

@@ -34,7 +34,7 @@ install.packages("zonebuilder")
 
 Install it from [GitHub](https://github.com/) with:
 
-```{r install-gh}
+```{r install-gh, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("robinlovelace/zonebuilder")
 ```
