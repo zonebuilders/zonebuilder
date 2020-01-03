@@ -38,7 +38,7 @@ zb_zone = function(x = NULL,
                    n_segments = 12,
                    distance = 1,
                    distance_growth = 1,
-                   starting_angle = 0,
+                   starting_angle = 30,
                    segment_center = FALSE,
                    intersection = TRUE) {
   
