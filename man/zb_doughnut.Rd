@@ -4,13 +4,8 @@
 \alias{zb_doughnut}
 \title{Make doughnuts}
 \usage{
-zb_doughnut(
-  x = NULL,
-  point = NULL,
-  n_circles = NULL,
-  distance = NULL,
-  distance_growth = 1
-)
+zb_doughnut(x = NULL, point = NULL, n_circles = NULL,
+  distance = NULL, distance_growth = 1)
 }
 \arguments{
 \item{x}{Region of interest}
