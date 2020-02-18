@@ -22,7 +22,9 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    tmap
+    tmap,
+    pct,
+    dplyr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

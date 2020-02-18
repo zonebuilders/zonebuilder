@@ -10,20 +10,34 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
 )
 ```
 
-You need the latest version of the package:
+## Introduction
+
+**zonebuilder** is a package for exploring zoning systems.
+This document contains ideas on challenges that can be tackled using zoning systems, example code to get started and suggestions of how to get involved.
+
+## Setup
+
+To ensure that you have the necessary software installed, try running the following lines of code in an R console (you need the latest version of the package):
 
 ```{r, eval=FALSE}
 remotes::install_github("zonebuilders/zonebuilder")
+remotes::install_github("itsleeds/pct")
 ```
 
 
 ```{r setup}
 library(zonebuilder)
+library(dplyr)
+library(tmap)
+tmap_mode("view")
 ```
+
 
 The aims of the hackathon:
 
@@ -34,12 +48,29 @@ The aims of the hackathon:
 
 - Demonstrate aggregagation of OD data into zoning system
 
+
 ```{r, eval=FALSE}
-library(dplyr)
-leeds = pct::get_pct_zones("west-yorkshire")
+zones_west_yorkshire = pct::get_pct_zones("west-yorkshire")
+zones_leeds_official = zones_west_yorkshire %>% filter(lad_name == "Leeds")
+zone_outline = zones_leeds_official %>%
+  sf::st_buffer(dist = 0.0001) %>% 
+  sf::st_union()
+leeds_centroid = tmaptools::geocode_OSM(q = "Leeds", as.sf = TRUE)
+zones_leeds_zb = zb_zone(x = zone_outline, point = leeds_centroid)
 ```
 
+```{r, echo=FALSE, eval=FALSE}
+saveRDS(zones_leeds_zb, "zones_leeds_zb.Rds")
+piggyback::pb_upload("zones_leeds_zb.Rds")
+```
 
+You can get and plot the output of the preceding code chunk with:
+
+```{r}
+zones_leeds_zb = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/zones_leeds_zb.Rds"))
+tm_shape(zones_leeds_zb) + tm_borders() +
+  tm_text("label")
+```
 
 ## Explore results of automated zoning system
 
