@@ -48,18 +48,20 @@ The aims of the hackathon:
 
 - Demonstrate aggregagation of OD data into zoning system
 
-
 ```{r, eval=FALSE}
 zones_west_yorkshire = pct::get_pct_zones("west-yorkshire")
 zones_leeds_official = zones_west_yorkshire %>% filter(lad_name == "Leeds")
-zone_outline = zones_leeds_official %>%
-  sf::st_buffer(dist = 0.0001) %>% 
-  sf::st_union()
+```
+
+
+```{r, eval=FALSE}
 leeds_centroid = tmaptools::geocode_OSM(q = "Leeds", as.sf = TRUE)
-zones_leeds_zb = zb_zone(x = zone_outline, point = leeds_centroid)
 ```
 
 ```{r, echo=FALSE, eval=FALSE}
+saveRDS(zones_leeds_official, "zones_leeds_official.Rds")
+piggyback::pb_upload("zones_leeds_official.Rds")
+piggyback::pb_download_url("zones_leeds_official.Rds")
 saveRDS(zones_leeds_zb, "zones_leeds_zb.Rds")
 piggyback::pb_upload("zones_leeds_zb.Rds")
 ```
@@ -67,7 +69,12 @@ piggyback::pb_upload("zones_leeds_zb.Rds")
 You can get and plot the output of the preceding code chunk with:
 
 ```{r}
-zones_leeds_zb = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/zones_leeds_zb.Rds"))
+leeds_centroid = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/leeds_centroid.Rds"))
+zones_leeds_official = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/zones_leeds_official.Rds"))
+zone_outline = zones_leeds_official %>%
+  sf::st_buffer(dist = 0.0001) %>% 
+  sf::st_union()
+zones_leeds_zb = zb_zone(x = zone_outline, point = leeds_centroid)
 tm_shape(zones_leeds_zb) + tm_borders() +
   tm_text("label")
 ```
@@ -79,23 +86,32 @@ tm_shape(zones_leeds_zb) + tm_borders() +
 
 ```{r, eval=FALSE}
 devtools::install_github("itsleeds/geofabrik")
-library(geofabric)
-mapview::mapview(geofabrik_zones)
-leeds_centroid = tmaptools::geocode_OSM(q = "Leeds", as.sf = TRUE)
-leeds_roads = get_geofabrik(name = leeds_centroid)
+library(geofabrik)
 leeds_shop_polygons = get_geofabrik(leeds_centroid, layer = "multipolygons", key = "shop", value = "supermarket")
-# leeds_shop_points = get_geofabrik(leeds_centroid, layer = "points", key = "amenity", value = "shop")
-mapview::mapview(leeds_shop_polygons) + mapview::mapview(leeds_centroid)
-leeds_5km_buffer = stplanr::geo_projected(leeds_centroid, sf::st_buffer, dist = 5000)
-mapview::mapview(leeds_5km_buffer)
-z = zb_zone(point = leeds_centroid, n_circles = 5)
-z = stplanr::geo_projected(leeds_5km_buffer, zb_zone,  n_circles = 5)
-library(sf)
-plot(z)
-mapview::mapview(z)
-z_supermarkets = aggregate(leeds_shop_polygons["shop"], z, FUN = length)
-plot(z_supermarkets)
 ```
+
+```{r, eval=FALSE, echo=FALSE}
+saveRDS(leeds_shop_polygons, "leeds_shop_polygons.Rds")
+piggyback::pb_upload("leeds_shop_polygons.Rds")
+piggyback::pb_download_url("leeds_shop_polygons.Rds")
+saveRDS(leeds_centroid, "leeds_centroid.Rds")
+piggyback::pb_upload("leeds_centroid.Rds")
+piggyback::pb_download_url("leeds_centroid.Rds")
+# leeds_roads = get_geofabrik(name = leeds_centroid)
+# leeds_shop_points = get_geofabrik(leeds_centroid, layer = "points", key = "amenity", value = "shop")
+```
+
+We have pre-saved the results as follows:
+
+```{r}
+leeds_shop_polygons = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/leeds_shop_polygons.Rds"))
+z = zb_zone(zones_leeds_official, point = leeds_centroid, n_circles = 5)
+z_supermarkets = aggregate(leeds_shop_polygons["shop"], z, FUN = length)
+tm_shape(z_supermarkets) +
+  tm_polygons("shop", alpha = 0.5, title = "N. Supermarkets")
+```
+
+
 
 ![](https://user-images.githubusercontent.com/1825120/74724776-bb289f00-5234-11ea-9915-54cf0c5b75e4.png)
 
