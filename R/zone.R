@@ -27,7 +27,7 @@
 #' plot(z)
 #' plot(zb_zone(zb_region, n_circles = 2))
 #' plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0))
-#' plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0, distance_growth = 0.1))
+#' plot(zb_zone(zb_region,n_circles = 2, starting_angle = 0, distance_growth = 0.1))
 #' 
 #' if (require(tmap)) {
 #'   # tmap_mode("view") # for interactive maps
@@ -54,12 +54,13 @@ zb_zone = function(x = NULL,
     point = sf::st_geometry(point)
   }
   # sorry this now appears twice #### ----
-  
-  # to implement
-  # if (sf::st_is_longlat(point)) {
-  #   point = stplanr::geo_select_aeq(point)
-  #   if (!is.null(x)) x = stplanr::geo_select_aeq(x)
-  # }
+
+  orig_crs = sf::st_crs(point)
+  if (sf::st_is_longlat(point)) {
+    crs = geo_select_aeq(point)
+    point = sf::st_transform(point, crs = crs)
+    if (!is.null(x)) x = sf::st_transform(x, crs = crs)
+  }
   
   # create doughnuts
   doughnuts = zb_doughnut(x, point, n_circles, distance, distance_growth)
@@ -126,7 +127,16 @@ zb_zone = function(x = NULL,
   df = merge(doughnut_segments, labels_df, by = c("circle_id", "segment_id"))
   
   order_id = order(df$circle_id * 100 + df$segment_id)
-  df[order_id, ]
+  z = sf::st_transform(df[order_id, ], crs = orig_crs)
+  if (!all(sf::st_is_valid(z))) {
+    if (!requireNamespace("lwgeom")) {
+      warning("sf object invalid. To fix it, install lwgeom, and rerun zb_zone")
+    } else {
+      z = lwgeom::st_make_valid(z)
+      z = suppressWarnings(st_cast(z, "MULTIPOLYGON")) # st_make_valid may return geometrycollections with empty points/lines
+    }
+  }
+  z
 }
 
 # Create zones of equal area (to be documented)
