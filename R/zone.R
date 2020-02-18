@@ -55,7 +55,6 @@ zb_zone = function(x = NULL,
   } else {
     point = sf::st_geometry(point)
   }
-  # sorry this now appears twice #### ----
 
   orig_crs = sf::st_crs(point)
   if (sf::st_is_longlat(point)) {
@@ -96,6 +95,16 @@ zb_zone = function(x = NULL,
   
   # intersect doughnuts with x (the area polygon)
   if(!is.null(x) && intersection) {
+    if (!all(sf::st_is_valid(x))) {
+      if (!requireNamespace("lwgeom")) {
+        stop("Combining polygons failed. Please install lwgeom and try again")
+      } else {
+        x = lwgeom::st_make_valid(x)
+      }
+    }
+    x = st_union(st_buffer(x, dist = 0.01)) #0.01 (in most crs's 1 cm) is arbitrary chosen, but works to resolve strange artefacts
+    
+    
     zones_ids = which(sapply(sf::st_intersects(doughnuts, x), length) > 0)
     doughnuts = suppressWarnings(sf::st_intersection(doughnuts, x))
     segments = segments[zones_ids]
