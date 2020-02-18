@@ -1,0 +1,81 @@
+---
+title: "Zonebuilder hackathon"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Zonebuilder hackathon}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+You need the latest version of the package:
+
+```{r, eval=FALSE}
+remotes::install_github("zonebuilders/zonebuilder")
+```
+
+
+```{r setup}
+library(zonebuilder)
+```
+
+The aims of the hackathon:
+
+- Explore results from automated zoning of a range of cities
+  - How many supermarkets in different zones of the city?
+  - Explore how mode and distance of travel changes depending on city zones
+- Number of houses vs estimated population in different zones using UK data
+
+- Demonstrate aggregagation of OD data into zoning system
+
+```{r, eval=FALSE}
+library(dplyr)
+leeds = pct::get_pct_zones("west-yorkshire")
+```
+
+
+
+## Explore results of automated zoning system
+
+### How many supermarkets in different zones of the city?
+
+
+```{r, eval=FALSE}
+devtools::install_github("itsleeds/geofabrik")
+library(geofabric)
+mapview::mapview(geofabrik_zones)
+leeds_centroid = tmaptools::geocode_OSM(q = "Leeds", as.sf = TRUE)
+leeds_roads = get_geofabrik(name = leeds_centroid)
+leeds_shop_polygons = get_geofabrik(leeds_centroid, layer = "multipolygons", key = "shop", value = "supermarket")
+# leeds_shop_points = get_geofabrik(leeds_centroid, layer = "points", key = "amenity", value = "shop")
+mapview::mapview(leeds_shop_polygons) + mapview::mapview(leeds_centroid)
+leeds_5km_buffer = stplanr::geo_projected(leeds_centroid, sf::st_buffer, dist = 5000)
+mapview::mapview(leeds_5km_buffer)
+z = zb_zone(point = leeds_centroid, n_circles = 5)
+z = stplanr::geo_projected(leeds_5km_buffer, zb_zone,  n_circles = 5)
+library(sf)
+plot(z)
+mapview::mapview(z)
+z_supermarkets = aggregate(leeds_shop_polygons["shop"], z, FUN = length)
+plot(z_supermarkets)
+```
+
+![](https://user-images.githubusercontent.com/1825120/74724776-bb289f00-5234-11ea-9915-54cf0c5b75e4.png)
+
+#### Explore how mode and distance of travel changes depending on city zones
+
+```{r}
+
+```
+
+
+Robin to create UK example
+
+Martijn to create example with NL example
+
