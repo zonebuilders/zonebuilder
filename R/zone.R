@@ -20,7 +20,9 @@
 #'
 #' @return An `sf` object containing zones covering the region
 #' @export
-#'
+#' @import sf
+#' @importFrom graphics plot text
+#' @importFrom grDevices hcl
 #' @examples
 #' z = zb_zone(zb_region, point = zb_region_cent)
 #' z

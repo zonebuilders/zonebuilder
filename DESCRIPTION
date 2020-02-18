@@ -18,11 +18,14 @@ License: GPL-3
 Depends: 
     R (>= 2.10)
 Imports: 
-    sf
+    sf,
+    graphics,
+    grDevices
 Suggests: 
     knitr,
     rmarkdown,
-    tmap
+    tmap,
+    lwgeom
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
