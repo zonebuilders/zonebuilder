@@ -128,9 +128,17 @@ into a number of segments." />
 into a number of segments.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zb_zone</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n_segments</span> <span class='kw'>=</span> <span class='fl'>12</span>,
-  <span class='kw'>distance</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>distance_growth</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>15</span>,
-  <span class='kw'>segment_center</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>intersection</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>zb_zone</span>(
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>n_segments</span> <span class='kw'>=</span> <span class='fl'>12</span>,
+  <span class='kw'>distance</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>distance_growth</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+  <span class='kw'>segment_center</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>intersection</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,7 +209,7 @@ with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments
 #&gt; 10         2          6   B06 MULTIPOLYGON (((530703.1 17...
 #&gt; 11         2          7   B07 MULTIPOLYGON (((529150.2 17...
 #&gt; 12         2          8   B08 POLYGON ((527805.3 178304.3...
-#&gt; 13         2          9   B09 POLYGON ((527028.9 179649.1...</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>z</span>)</div><div class='img'><img src='zb_zone-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>zb_region</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='img'><img src='zb_zone-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>zb_region</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='zb_zone-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>zb_region</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>distance_growth</span> <span class='kw'>=</span> <span class='fl'>0.1</span>))</div><div class='img'><img src='zb_zone-4.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; 13         2          9   B09 POLYGON ((527028.9 179649.1...</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>z</span>)</div><div class='img'><img src='zb_zone-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>zb_region</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='img'><img src='zb_zone-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>zb_region</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='zb_zone-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>zb_region</span>,<span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>distance_growth</span> <span class='kw'>=</span> <span class='fl'>0.1</span>))</div><div class='img'><img src='zb_zone-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>tmap</span>)) {
   <span class='co'># tmap_mode("view") # for interactive maps</span>
   <span class='no'>z</span> <span class='kw'>=</span> <span class='fu'>zb_zone</span>(<span class='no'>zb_region</span>, <span class='kw'>point</span> <span class='kw'>=</span> <span class='no'>zb_region_cent</span>)
