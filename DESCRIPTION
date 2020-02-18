@@ -25,6 +25,8 @@ Suggests:
     knitr,
     rmarkdown,
     tmap,
+    pct,
+    dplyr,
     lwgeom
 VignetteBuilder: 
     knitr
