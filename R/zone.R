@@ -28,11 +28,10 @@
 #' plot(zb_zone(zb_region, n_circles = 2))
 #' plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0))
 #' plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0, distance_growth = 0.1))
+#' 
 #' if (require(tmap)) {
 #'   # tmap_mode("view") # for interactive maps
-#'   z = zb_zone(zb_region, n_circles = 3)
-#'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
-#'   z = zb_zone(zb_region, distance = 3, n_segments = c(1, 4, 4, 8, 8))
+#'   z = zb_zone(zb_region, point = zb_region_cent)
 #'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
 #' }
 zb_zone = function(x = NULL,
@@ -104,7 +103,7 @@ zb_zone = function(x = NULL,
   # intersect the result with segments
   doughnut_segments = do.call(rbind, mapply(function(i, x, y) {
     if (is.null(y)) {
-      x$segment_id = 1
+      x$segment_id = 0
       x$circle_id = i
       x
     } else {
@@ -114,7 +113,7 @@ zb_zone = function(x = NULL,
     }
   }, zones_ids, split(doughnuts, 1:length(zones_ids)), segments, SIMPLIFY = FALSE))
   
-  doughnut_segments$segment_id = formatC(doughnut_segments$segment_id, width = 2, flag = 0)
+  # doughnut_segments$segment_id = formatC(doughnut_segments$segment_id, width = 2, flag = 0)
   # doughnut_segments$circle_id = formatC(doughnut_segments$circle_id, width = 2, flag = 0)
   
   # attach labels
@@ -124,7 +123,10 @@ zb_zone = function(x = NULL,
     labels_df = zb_quadrant_labels(n_circles, n_segments, segment_center)
   }
   
-  merge(doughnut_segments, labels_df, by = c("circle_id", "segment_id"))
+  df = merge(doughnut_segments, labels_df, by = c("circle_id", "segment_id"))
+  
+  order_id = order(df$circle_id * 100 + df$segment_id)
+  df[order_id, ]
 }
 
 # Create zones of equal area (to be documented)

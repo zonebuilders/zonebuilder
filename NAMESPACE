@@ -2,6 +2,9 @@
 
 export(zb_doughnut)
 export(zb_lines)
+export(zb_palette)
+export(zb_plot)
 export(zb_quadrat)
 export(zb_segment)
+export(zb_view)
 export(zb_zone)

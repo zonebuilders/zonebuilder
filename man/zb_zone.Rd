@@ -4,17 +4,9 @@
 \alias{zb_zone}
 \title{Generate zones covering a region of interest}
 \usage{
-zb_zone(
-  x = NULL,
-  point = NULL,
-  n_circles = NULL,
-  n_segments = 12,
-  distance = 1,
-  distance_growth = 1,
-  starting_angle = 15,
-  segment_center = FALSE,
-  intersection = TRUE
-)
+zb_zone(x = NULL, point = NULL, n_circles = NULL, n_segments = 12,
+  distance = 1, distance_growth = 1, starting_angle = 15,
+  segment_center = FALSE, intersection = TRUE)
 }
 \arguments{
 \item{x}{Region of interest}
@@ -55,11 +47,10 @@ plot(z)
 plot(zb_zone(zb_region, n_circles = 2))
 plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0))
 plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0, distance_growth = 0.1))
+
 if (require(tmap)) {
   # tmap_mode("view") # for interactive maps
-  z = zb_zone(zb_region, n_circles = 3)
-  tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
-  z = zb_zone(zb_region, distance = 3, n_segments = c(1, 4, 4, 8, 8))
+  z = zb_zone(zb_region, point = zb_region_cent)
   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
 }
 }
