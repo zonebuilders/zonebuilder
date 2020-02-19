@@ -1,0 +1,84 @@
+---
+title: "Zonebuilder hackathon"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Demo Dutch cities}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+  
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+You need the latest version of the package:
+  
+```{r, eval=FALSE}
+remotes::install_github("zonebuilders/zonebuilder")
+```
+
+
+For this demo, we need the following libraries:
+
+
+```{r setup}
+library(zonebuilder) # for the zoning system
+library(sf)          # for processing spatial data
+library(dplyr)       # for processing general data
+library(tmap)        # for visualizing spatial data
+```
+
+
+We will apply the zoning system to the main Dutch cities, and analyse commuting patterns between the zones. The data can be read as follows:
+
+
+```{r}
+NLD_cities = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_cities.Rds"))
+NLD_wijk_od = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_wijk_od.Rds"))
+NLD_wijk_centroids = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_wijk_centroids.Rds"))
+```
+
+Let's take a look at the `NLD_cities` data:
+
+```{r}
+NLD_cities %>% arrange(desc(population))
+```
+
+...and plot it on an interactive map:
+
+```{r}
+tmap_mode("view") # enable interactive mode in tmap
+qtm(NLD_cities, symbols.size = "population")
+```
+
+
+The following 
+
+
+```{r}
+zbs = do.call(rbind, lapply(1:nrow(NLD_cities), function(i) {
+  ci = NLD_cities[i, ]
+  
+  # Amsterdam 5, Eindhoven-Rotterdam 4, Roermond-Zeeland 2, others 3 
+  nrings = ifelse(ci$population < 60000, 2,
+           ifelse(ci$population < 220000, 3,
+           ifelse(ci$population < 800000, 4, 5)))
+  
+  zb = zb_zone(point = ci, n_circles = nrings) %>% 
+    mutate(name = ci$name,
+           labelplus = paste(ci$name, label, sep = "_"))
+  
+  zb
+}))
+```
+
+
+```{r}
+tm_shape(zbs) +
+  tm_polygons(col = "circle_id", id = "labelplus", style = "cat", palette = "YlOrBr") + 
+  tm_scale_bar()
+```
+

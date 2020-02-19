@@ -210,5 +210,7 @@ tm_shape(z_supermarkets) +
 
 Robin to create UK example
 
-Martijn to create example with NL example
 
+#### Demo Dutch cities and commuting
+
+See [demo Dutch cities vignette](https://zonebuilders.github.io/zonebuilder/articles/demo_dutch_cities.html)
