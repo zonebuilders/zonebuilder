@@ -25,12 +25,13 @@ zb_palette = function(z) {
 #' 
 #' @param z An `sf` object containing zones covering the region
 #' @export
-zb_view = function(z) {
+zb_view = function(z, alpha = 0.6) {
   if (requireNamespace("tmap")) {
     suppressMessages(tmap_mode("view"))
     z$color = zb_palette(z)
+    tm_basemap("OpenStreetMap") +
     tm_shape(z) + 
-      tm_fill("color", alpha = .6, id = "label", group = "Colours", popup.vars = c("circle_id", "segment_id", "label")) + 
+      tm_fill("color", alpha = alpha, id = "label", group = "Colours", popup.vars = c("circle_id", "segment_id", "label")) + 
     tm_shape(z, point.per = "unit") +
       tm_borders(group = "Borders") +
       tm_text("label", col = "black", size = "circle_id", group = "Labels")
