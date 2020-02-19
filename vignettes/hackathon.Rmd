@@ -81,6 +81,50 @@ tm_shape(zones_leeds_zb) + tm_borders() +
 
 ## Explore results of automated zoning system
 
+### Generate zones for different cities
+
+The zoning systems works well to represent cities that have a clear centre (monocentric cities) with city zones connected by radial and circular orbital routes, such as Erbil:
+
+```{r}
+city_name = "Erbil"
+city_centre = tmaptools::geocode_OSM(city_name, as.sf = TRUE)
+zones_erbil = zb_zone(point = city_centre, n_circles = 5) 
+tm_shape(zones_erbil) + tm_borders() +
+  tm_text("label") +
+  tm_basemap(server = leaflet::providers$OpenStreetMap)
+# zb_view(zones_erbil)
+```
+
+The zoning system works less well for other cities, e.g. cities with asymetric and polycentric urban morphologies such as Dhakar, shown below.
+
+```{r}
+city_name = "Dhaka"
+city_centre = tmaptools::geocode_OSM(city_name, as.sf = TRUE)
+zones_dhaka = zb_zone(point = city_centre, n_circles = 5)
+tm_shape(zones_dhaka) + tm_borders() +
+  tm_text("label") +
+  tm_basemap(server = leaflet::providers$OpenStreetMap)
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
+# Aim: get the largest cities in the world
+cities_worldwide = rnaturalearth::ne_download(scale = 10, type = "populated_places")
+
+city_names = c(
+  "Dheli",
+  "Mexico City",
+  "Tokyo",
+  "Beijing",
+)
+
+city_name = "Dheli"
+city_centre = tmaptools::geocode_OSM(city_name, as.sf = TRUE)
+zones_dhaka = zb_zone(point = city_centre, n_circles = 5)
+tm_shape(zones_dhaka) + tm_borders() +
+  tm_text("label")
+```
+
 ### How many supermarkets in different zones of the city?
 
 
