@@ -58,7 +58,7 @@ qtm(NLD_cities, symbols.size = "population")
 ```
 
 
-The following 
+The following code chunk generated zones for the Dutch cities:
 
 
 ```{r}
