@@ -30,6 +30,7 @@ The aims of the hackathon:
 - Explore results from automated zoning of a range of cities
   - How many supermarkets in different zones of the city?
   - Explore how mode and distance of travel changes depending on city zones
+  - Explore how to calculate traveltimes from zone to zone for different travel modalities
   - Explore how traveltimes from cityzones to citycentre for different modalities for multiple cities affect number of commuters
   - Find a datadriven method for defining the city centre (e.g. density of adresses, population density, building date, number of companies, number of nodes of the road infrastructure).
 - Number of houses vs estimated population in different zones using UK data
