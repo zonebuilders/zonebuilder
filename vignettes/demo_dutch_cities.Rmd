@@ -1,8 +1,8 @@
 ---
-title: "Zonebuilder hackathon"
+title: "Combining zoning systems"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Demo Dutch cities}
+  %\VignetteIndexEntry{Combining zoning systems}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,6 +13,9 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+This vignettes demonstrates possibilities when zoning systems from different cities meet.
+It raises the question: how should different systems be combined geographically?
 
 You need the latest version of the package:
   
