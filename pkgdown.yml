@@ -2,6 +2,7 @@ pandoc: '2.2'
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
+  demo_dutch_cities: demo_dutch_cities.html
   hackathon: hackathon.html
   paper: paper.html
 
