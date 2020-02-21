@@ -25,9 +25,11 @@ Suggests:
     knitr,
     rmarkdown,
     tmap,
+    tmaptools,
     pct,
     dplyr,
-    lwgeom
+    lwgeom,
+    leaflet
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

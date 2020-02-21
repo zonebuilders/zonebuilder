@@ -155,9 +155,7 @@ tm_shape(z_supermarkets) +
   tm_polygons("shop", alpha = 0.5, title = "N. Supermarkets")
 ```
 
-
-
-![](https://user-images.githubusercontent.com/1825120/74724776-bb289f00-5234-11ea-9915-54cf0c5b75e4.png)
+<!-- ![](https://user-images.githubusercontent.com/1825120/74724776-bb289f00-5234-11ea-9915-54cf0c5b75e4.png) -->
 
 #### Explore how mode and distance of travel changes depending on city zones
 
