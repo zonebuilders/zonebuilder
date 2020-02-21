@@ -4,10 +4,12 @@
 \alias{zb_plot}
 \title{Plot zones}
 \usage{
-zb_plot(z)
+zb_plot(z, palette = c("hcl", "rings", "dartboard"))
 }
 \arguments{
 \item{z}{An `sf` object containing zones covering the region}
+
+\item{palette}{Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)}
 }
 \description{
 This function opens a static map of the zones
