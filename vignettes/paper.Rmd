@@ -26,10 +26,71 @@ citr::tidy_bib_file(rmd_file = "vignettes/paper.Rmd", messy_bibliography = "~/ua
 library(zonebuilder)
 ```
 
+
+# notes and brainstorm
+
+Title alternatives:
+
+* Standard zoning system for cities
+* ClockBoard: a standard zoning system for cities
+
+Terminology; we need consistent terms for these things (in bold the suggestions):
+
+* Our zoning system. **ClockBoard**
+* (optionally) The whole system, so not only the default. **zonebuilder**
+* The individual zones. **zones**
+* The rings. **rings/circles/annuli**
+* The segments. **segments**
+* Bulls eye. **central zone/center/centre**
+* Distance (to the centre). **distance**
+* Clock hand. **direction/angle/cardinal direction/...**
+
+
+# Introduction
+
+
 Zoning systems have long been a topic of geographic research and political controversy.
 From a research perspective, the way in which 
 
 @openshaw_optimal_1977
+
+
+### Current situation
+
+
+Statistics, policy making and transport planning are often based on administrative regions. However, there are a couple of downsides to using administrative regions. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This make it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities.
+
+Grid tiles are popular in spatial statistics for a number of reasons. Most importantly the tiles have a constant area size, which makes comparibily possible. Moreover, the grid tiles will not change over time like administrative regions. However, one downside is that a grid requires a coordinate reference system (CRS), enforcing (approximately) equal area size. For continents or large countries, a CRS is always a compromis. Therefore, the areas of the tiles may vary, or the shape of the tiles may be sheared or warped.
+
+Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statitics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas.
+
+
+
+
+### Why is it needed/handy?
+
+* Locating cities. By having a ClockBoard zoning system for a city, it is immediate clear where the city centre is, and what the scale of the city is. 
+* Reference system of everyday live. The zone name contains information about the distance to the center as well as the cardinal direction. E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7". Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.   
+* Aggregation for descriptive statistics / comparability over cities. By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other.
+* Modelling urban cities. The zoning system can be used to model urban mobility.
+
+
+### Arguments / discussion
+
+Pros:
+
+* Most cities have a radial plan around a central area, which is often a historic centre or a central business area.
+Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also https://en.wikipedia.org/wiki/City_centre which describes the centre as the heart of the city)
+
+Cons:
+
+* Some cities have two or more centres. Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre.
+* In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft) 
+
+
+
+
+
 
 # The CSA method of zone generation
 
