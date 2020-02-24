@@ -1,5 +1,5 @@
 ---
-title: "An automated geographic zoning system for cities with concentric segmented annuli"
+title: "ClockBoard: a multi-purpose zoning system for cities"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{An automated geographic zoning system for cities with concentric segmented annuli}
@@ -10,9 +10,15 @@ bibliography: references.bib
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  echo = FALSE,
   collapse = TRUE,
   comment = "#>"
 )
+```
+
+```{r, eval=FALSE}
+refs = RefManageR::ReadZotero(group = "418217", .params = list(collection = "8S8LR8TK", limit = 100))
+RefManageR::WriteBib(refs, "references.bib")
 ```
 
 ```{r, eval=FALSE, echo=FALSE}
@@ -27,23 +33,30 @@ library(zonebuilder)
 ```
 
 
-# notes and brainstorm
+<!-- # notes and brainstorm -->
 
-Title alternatives:
+<!-- Target journals -->
+<!-- - JOSIS: http://www.josis.org/index.php/josis -->
 
-* Standard zoning system for cities
-* ClockBoard: a standard zoning system for cities
+<!-- Title alternatives: -->
 
-Terminology; we need consistent terms for these things (in bold the suggestions):
+<!-- * Standard zoning system for cities -->
+<!-- * ClockBoard: a standard zoning system for cities -->
+<!-- * ClockBoard: a multi-purpose zoning system for cities -->
+<!-- - An automated geographic zoning system for cities with concentric segmented annuli -->
 
-* Our zoning system. **ClockBoard**
-* (optionally) The whole system, so not only the default. **zonebuilder**
-* The individual zones. **zones**
-* The rings. **rings/circles/annuli**
-* The segments. **segments**
-* Bulls eye. **central zone/center/centre**
-* Distance (to the centre). **distance**
-* Clock hand. **direction/angle/cardinal direction/...**
+<!-- I agree with all of these, we could either define things as we go along or start with a definitions section -->
+<!-- Terminology; we need consistent terms for these things (in bold the suggestions): -->
+
+<!-- * Our zoning system. **ClockBoard** -->
+<!-- The name given to ways of dividing up geographical space: zoning system -->
+<!-- * The individual zones. **zones** or **areal units** -->
+<!-- * (optionally) The whole system, so not only the default. **zonebuilder** -->
+<!-- * The rings. **rings/circles/annuli** -->
+<!-- * The segments. **segments** -->
+<!-- * Bulls eye. **central zone/center/centre** -->
+<!-- * Distance (to the centre). **distance** -->
+<!-- * Clock hand. **direction/angle/cardinal direction/...** -->
 
 
 # Introduction
@@ -63,8 +76,6 @@ Statistics, policy making and transport planning are often based on administrati
 Grid tiles are popular in spatial statistics for a number of reasons. Most importantly the tiles have a constant area size, which makes comparibily possible. Moreover, the grid tiles will not change over time like administrative regions. However, one downside is that a grid requires a coordinate reference system (CRS), enforcing (approximately) equal area size. For continents or large countries, a CRS is always a compromis. Therefore, the areas of the tiles may vary, or the shape of the tiles may be sheared or warped.
 
 Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statitics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas.
-
-
 
 
 ### Why is it needed/handy?
@@ -92,7 +103,7 @@ Cons:
 
 
 
-# The CSA method of zone generation
+# Method
 
 The 
 
@@ -104,6 +115,23 @@ The radius of each annuli in the zoning system can be incremented by a fixed amo
 In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable.
 We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system.
 This linear growth leads to distances between each annuli boundary increasing in line with the steps in the [triangular number sequence](https://en.wikipedia.org/wiki/Triangular_number).
+
+## Number of segments
+
+## City extents
+
+# Applications
+
+## Inter-city statistical comparison
+
+Comparing two cities can be difficult due to incomparable zoning systems.
+Take the example of city A is provided in a detailed zoning system composed of hundreds of small, irregular areas while city B is composed only of 9 irregular zones
+
+, each of which has a drastically different official zoning system, is challenging  
+
+## Transport planning
+
+## Navigation and informal use
 
 # References
 
