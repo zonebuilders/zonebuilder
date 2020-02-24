@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ```{r, eval=FALSE}
 refs = RefManageR::ReadZotero(group = "418217", .params = list(collection = "8S8LR8TK", limit = 100))
-RefManageR::WriteBib(refs, "references.bib")
+RefManageR::WriteBib(refs, "vignettes/references.bib")
 ```
 
 ```{r, eval=FALSE, echo=FALSE}
@@ -26,6 +26,7 @@ RefManageR::WriteBib(refs, "references.bib")
 
 citr::tidy_bib_file(rmd_file = "vignettes/paper.Rmd", messy_bibliography = "~/uaf/allrefs.bib", file = "vignettes/references.bib")
 ```
+
 
 
 ```{r setup}
@@ -63,6 +64,9 @@ library(zonebuilder)
 
 
 Zoning systems have long been a topic of geographic research and political controversy.
+For even longer they have been used in a variety of applications, ranging from ... to 'tithe maps' depicting the land ownership and use in 19^th^ Century England [@bryant_worcestershire_2007]
+
+
 From a research perspective, the way in which 
 
 @openshaw_optimal_1977
