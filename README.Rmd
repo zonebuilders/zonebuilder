@@ -74,9 +74,7 @@ The idea behind this zoning system is based on the following principles:
 The package `zonebuilder` does not only create zoning systems based on the CloadBoard layout as illustrated below.
 
 
-The lower-level fuinctionm
-
-The functions `zb_doughnuts` generates rings:
+The function `zb_zone` makes use of `zb_doughnut` and `zb_segment`, which can also be used directly:
 
 ```{r}
 tmap_border = tm_shape(london_area) + tm_borders()
@@ -87,12 +85,19 @@ tmap_arrange(
 ```
 
 
+However, if the zones should be intersected with the administrative area, `zb_zone` can be used as follows:
+
 
 ```{r}
 tmap_arrange(
-  qtm(zb_zone(london_area, london_cent, n_segments = 1, n_circles = 5), title = "Doughnuts") + tmap_border,
-  qtm(zb_zone(london_area, london_cent, n_segments = 12, n_circles = 1, segment_center = TRUE), title = "Segments") + tmap_border,
-  qtm(zb_quadrat(london_area, london_cent, ncol = 4), title = "Quadrants") + tmap_border
+  qtm(zb_zone(london_area, london_cent, n_segments = 1), title = "Doughnuts") + tmap_border,
+  qtm(zb_zone(london_area, london_cent, n_segments = 12, n_circles = 1, distance = 30, segment_center = TRUE), title = "Segments") + tmap_border
 )
 ```
 
+
+Finally, another zoning system that is implemented in `zonebuilder` is:
+
+```{r}
+  qtm(zb_quadrat(london_area, london_cent, ncol = 4), title = "Quadrants") + tmap_border
+```
