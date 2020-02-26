@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An automated geographic zoning system for cities with concentric segmented annuli • zonebuilder</title>
+<title>ClockBoard: a multi-purpose zoning system for cities • zonebuilder</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="An automated geographic zoning system for cities with concentric segmented annuli">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ClockBoard: a multi-purpose zoning system for cities">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -60,7 +60,7 @@
       <a href="../articles/hackathon.html">Zonebuilder hackathon</a>
     </li>
     <li>
-      <a href="../articles/paper.html">An automated geographic zoning system for cities with concentric segmented annuli</a>
+      <a href="../articles/paper.html">ClockBoard: a multi-purpose zoning system for cities</a>
     </li>
   </ul>
 </li>
@@ -78,7 +78,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>An automated geographic zoning system for cities with concentric segmented annuli</h1>
+      <h1>ClockBoard: a multi-purpose zoning system for cities</h1>
             
       
       
@@ -88,23 +88,106 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(zonebuilder)</a></code></pre></div>
-<p>Zoning systems have long been a topic of geographic research and political controversy. From a research perspective, the way in which</p>
-<p><span class="citation">Openshaw (1977)</span></p>
-<div id="the-csa-method-of-zone-generation" class="section level1">
+<!-- # notes and brainstorm -->
+<!-- Target journals -->
+<!-- - JOSIS: http://www.josis.org/index.php/josis -->
+<!-- Title alternatives: -->
+<!-- * Standard zoning system for cities -->
+<!-- * ClockBoard: a standard zoning system for cities -->
+<!-- * ClockBoard: a multi-purpose zoning system for cities -->
+<!-- - An automated geographic zoning system for cities with concentric segmented annuli -->
+<!-- I agree with all of these, we could either define things as we go along or start with a definitions section -->
+<!-- Terminology; we need consistent terms for these things (in bold the suggestions): -->
+<!-- * Our zoning system. **ClockBoard** -->
+<!-- The name given to ways of dividing up geographical space: zoning system -->
+<!-- * The individual zones. **zones** or **areal units** -->
+<!-- * (optionally) The whole system, so not only the default. **zonebuilder** -->
+<!-- * The rings. **rings/circles/annuli** -->
+<!-- * The segments. **segments** -->
+<!-- * Bulls eye. **central zone/center/centre** -->
+<!-- * Distance (to the centre). **distance** -->
+<!-- * Clock hand. **direction/angle/cardinal direction/...** -->
+<div id="introduction" class="section level1">
 <h1 class="hasAnchor">
-<a href="#the-csa-method-of-zone-generation" class="anchor"></a>The CSA method of zone generation</h1>
+<a href="#introduction" class="anchor"></a>Introduction</h1>
+<p>Zoning systems have long been a topic of geographic research and political controversy. For even longer they have been used in a variety of applications, ranging from … to ‘tithe maps’ depicting the land ownership and use in 19<sup>th</sup> Century England <span class="citation">(Bryant and Noke 2007)</span></p>
+<p>From a research perspective, the way in which</p>
+<p><span class="citation">Openshaw (1977)</span></p>
+<div id="current-situation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#current-situation" class="anchor"></a>Current situation</h3>
+<p>Statistics, policy making and transport planning are often based on administrative regions. However, there are a couple of downsides to using administrative regions. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This make it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities.</p>
+<p>Grid tiles are popular in spatial statistics for a number of reasons. Most importantly the tiles have a constant area size, which makes comparibily possible. Moreover, the grid tiles will not change over time like administrative regions. However, one downside is that a grid requires a coordinate reference system (CRS), enforcing (approximately) equal area size. For continents or large countries, a CRS is always a compromis. Therefore, the areas of the tiles may vary, or the shape of the tiles may be sheared or warped.</p>
+<p>Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statitics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas.</p>
+</div>
+<div id="why-is-it-neededhandy" class="section level3">
+<h3 class="hasAnchor">
+<a href="#why-is-it-neededhandy" class="anchor"></a>Why is it needed/handy?</h3>
+<ul>
+<li>Locating cities. By having a ClockBoard zoning system for a city, it is immediate clear where the city centre is, and what the scale of the city is.</li>
+<li>Reference system of everyday live. The zone name contains information about the distance to the center as well as the cardinal direction. E.g “I live in C12 and work in B3.” or “The train station is in the center and our hotel is in B7”. Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.<br>
+</li>
+<li>Aggregation for descriptive statistics / comparability over cities. By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other.</li>
+<li>Modelling urban cities. The zoning system can be used to model urban mobility.</li>
+</ul>
+</div>
+<div id="arguments-discussion" class="section level3">
+<h3 class="hasAnchor">
+<a href="#arguments-discussion" class="anchor"></a>Arguments / discussion</h3>
+<p>Pros:</p>
+<ul>
+<li>Most cities have a radial plan around a central area, which is often a historic centre or a central business area. Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also <a href="https://en.wikipedia.org/wiki/City_centre" class="uri">https://en.wikipedia.org/wiki/City_centre</a> which describes the centre as the heart of the city)</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Some cities have two or more centres. Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre.</li>
+<li>In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft)</li>
+</ul>
+</div>
+</div>
+<div id="method" class="section level1">
+<h1 class="hasAnchor">
+<a href="#method" class="anchor"></a>Method</h1>
 <p>The</p>
 <div id="annuli-distances" class="section level2">
 <h2 class="hasAnchor">
 <a href="#annuli-distances" class="anchor"></a>Annuli distances</h2>
 <p>The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in previous figures. <!-- Todo: add figures --> In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable. We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system. This linear growth leads to distances between each annuli boundary increasing in line with the steps in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a>.</p>
 </div>
+<div id="number-of-segments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#number-of-segments" class="anchor"></a>Number of segments</h2>
+</div>
+<div id="city-extents" class="section level2">
+<h2 class="hasAnchor">
+<a href="#city-extents" class="anchor"></a>City extents</h2>
+</div>
+</div>
+<div id="applications" class="section level1">
+<h1 class="hasAnchor">
+<a href="#applications" class="anchor"></a>Applications</h1>
+<div id="inter-city-statistical-comparison" class="section level2">
+<h2 class="hasAnchor">
+<a href="#inter-city-statistical-comparison" class="anchor"></a>Inter-city statistical comparison</h2>
+<p>Comparing two cities can be difficult due to incomparable zoning systems. Take the example of city A is provided in a detailed zoning system composed of hundreds of small, irregular areas while city B is composed only of 9 irregular zones</p>
+<p>, each of which has a drastically different official zoning system, is challenging</p>
+</div>
+<div id="transport-planning" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transport-planning" class="anchor"></a>Transport planning</h2>
+</div>
+<div id="navigation-and-informal-use" class="section level2">
+<h2 class="hasAnchor">
+<a href="#navigation-and-informal-use" class="anchor"></a>Navigation and informal use</h2>
+</div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
+<div id="ref-bryant_worcestershire_2007">
+<p>Bryant, Victoria, and Maggi Noke. 2007. “The Worcestershire Tithe and Enclosure Map Project: Creating a Research Resource.” <em>Landscape History</em> 29 (1): 89–92.</p>
+</div>
 <div id="ref-openshaw_optimal_1977">
 <p>Openshaw, S. 1977. “Optimal Zoning Systems for Spatial Interaction Models.” <em>Environment and Planning A</em> 9 (2): 169–84. <a href="https://doi.org/10.1068/a090169" class="uri">https://doi.org/10.1068/a090169</a>.</p>
 </div>
@@ -118,9 +201,19 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#the-csa-method-of-zone-generation">The CSA method of zone generation</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#introduction">Introduction</a></li>
+      <li>
+<a href="#method">Method</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#annuli-distances">Annuli distances</a></li>
+      <li><a href="#number-of-segments">Number of segments</a></li>
+      <li><a href="#city-extents">City extents</a></li>
+      </ul>
+</li>
+      <li>
+<a href="#applications">Applications</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#inter-city-statistical-comparison">Inter-city statistical comparison</a></li>
+      <li><a href="#transport-planning">Transport planning</a></li>
+      <li><a href="#navigation-and-informal-use">Navigation and informal use</a></li>
       </ul>
 </li>
       <li><a href="#references">References</a></li>

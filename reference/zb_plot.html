@@ -98,7 +98,7 @@
       <a href="../articles/hackathon.html">Zonebuilder hackathon</a>
     </li>
     <li>
-      <a href="../articles/paper.html">An automated geographic zoning system for cities with concentric segmented annuli</a>
+      <a href="../articles/paper.html">ClockBoard: a multi-purpose zoning system for cities</a>
     </li>
   </ul>
 </li>
@@ -127,7 +127,7 @@
     <p>This function opens a static map of the zones</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zb_plot</span>(<span class='no'>z</span>)</pre>
+    <pre class="usage"><span class='fu'>zb_plot</span>(<span class='no'>z</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rings"</span>, <span class='st'>"hcl"</span>, <span class='st'>"dartboard"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,6 +135,10 @@
     <tr>
       <th>z</th>
       <td><p>An `sf` object containing zones covering the region</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>Palette type, one of <code>"hcl"</code> (a palette based on the HCL color space), <code>"rings"</code> (a palette which colors the rings using the YlOrBr color brewer palette), <code>"dartboard"</code> (a palette which resembles a dartboard)</p></td>
     </tr>
     </table>
 
