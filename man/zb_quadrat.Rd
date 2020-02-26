@@ -22,8 +22,8 @@ An sf object
 Divide a region into quadrats
 }
 \examples{
-x = zb_region
-c = sf::st_centroid(zb_region)
+x = london_area
+c = sf::st_centroid(london_area)
 plot(zb_quadrat(x, ncol = 2), col = 2:5)
 plot(c, add = TRUE, col = "white")
 plot(zb_quadrat(x, ncol = 3))

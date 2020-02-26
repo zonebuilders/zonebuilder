@@ -3,23 +3,25 @@
 library(sf)
 library(tidyverse)
 
-zb_region = spData::lnd %>% 
+london_area = spData::lnd %>% 
   st_transform(27700) %>% 
   st_union()
 
-# identical(zb_region, zb_region2)
+# identical(london_area, london_area2)
 
-usethis::use_data(zb_region)
+usethis::use_data(london_area)
 
-zb_region_cent = tmaptools::geocode_OSM("london uk", as.sf = TRUE) %>% 
-  st_transform(27700)
+london_cent = tmaptools::geocode_OSM("london uk", as.sf = TRUE) %>% 
+  st_transform(27700) %>% 
+  st_geometry()
 
-zb_region_centroid = st_centroid(zb_region)
-plot(zb_region)
-plot(zb_region_cent$geometry, add = TRUE)
-plot(zb_region_centroid, add = TRUE, col = "red")
 
-usethis::use_data(zb_region_cent)
+london_area_centroid = st_centroid(london_area)
+plot(london_area)
+plot(london_cent, add = TRUE)
+plot(london_area_centroid, add = TRUE, col = "red")
+
+usethis::use_data(london_cent)
 
 
 # Triangular number sequence ----------------------------------------------

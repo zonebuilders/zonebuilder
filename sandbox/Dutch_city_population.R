@@ -70,7 +70,7 @@ tm = tm_shape(citiesSF) +
   tm_polygons("pop", convert2density = TRUE, breaks = c(0, 2.5, 5, 10, 15, 25)*1000, title = "Population per km2") +
   tm_facets(by = "name", ncol = 5)
 
-tmap_save(tm, filename = "Dutch_city_population.pdf", width = 5, height = 8, scale = 0.75)
+tmap_save(tm, filename = "Dutch_city_population.png", width = 5, height = 8, scale = 0.75)
 
 
 

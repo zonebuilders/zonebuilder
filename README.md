@@ -34,13 +34,13 @@ Zonebuilder works with `sf` objects and works well alongside the `sf`
 package and visualisation packages that support spatial data such as
 `ggplot2`, `leaflet`, `mapdeck`, `mapview` and `tmap`, the last of which
 we’ll use in the following maps. Attaching the package provides the
-example dataset `zb_region`, the geographic boundary of a large city
+example dataset `london_area`, the geographic boundary of a large city
 (London, UK):
 
 ``` r
 library(zonebuilder)
 library(tmap)
-tmap_border = tm_shape(zb_region) + tm_borders()
+tmap_border = tm_shape(london_area) + tm_borders()
 tmap_border
 ```
 
@@ -52,7 +52,7 @@ following command, for example, breaks London into quadrats of equal
 size (and keeping only the space inside the boundary):
 
 ``` r
-x = zb_region
+x = london_area
 q = zb_quadrat(x, ncol = 4) # break into 4
 qtm(q) 
 ```
@@ -77,7 +77,7 @@ annuli (CSA):
 
 ``` r
 library(zonebuilder)
-x = zb_region
+x = london_area
 z = zb_zone(x)
 z
 #> Simple feature collection with 76 features and 3 fields

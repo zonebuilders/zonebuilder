@@ -4,7 +4,7 @@
 \alias{zb_view}
 \title{View zones}
 \usage{
-zb_view(z, alpha = 0.4, palette = c("hcl", "rings", "dartboard"))
+zb_view(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"))
 }
 \arguments{
 \item{z}{An `sf` object containing zones covering the region}
@@ -15,4 +15,8 @@ zb_view(z, alpha = 0.4, palette = c("hcl", "rings", "dartboard"))
 }
 \description{
 This function opens an interactive map of the zones
+}
+\examples{
+z = zb_zone(london_area, point = london_cent)
+zb_view(z, palette = "rings")
 }

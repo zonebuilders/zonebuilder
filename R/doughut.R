@@ -5,18 +5,20 @@
 #' @return An sf object containing concentric donuts
 #' @export
 #' @examples
-#' x = zb_region
+#' x = london_area
 #' plot(zb_doughnut(x, n_circles = 4), reset = FALSE)
-#' plot(zb_region, add = TRUE)
+#' plot(london_area, add = TRUE)
 #' z = zb_doughnut(x, distance = 0.5)
 #' plot(z, reset = FALSE)
-#' plot(zb_region, add = TRUE)
+#' plot(london_area, add = TRUE)
 #' plot(z[5, ], add = TRUE, col = "red")
-#' x_point = sf::st_centroid(zb_region)
-#' z = zb_doughnut(point = zb_region_cent, n_circles = 4, distance = 4:1)
+#' x_point = sf::st_centroid(london_area)
+#' z = zb_doughnut(point = london_cent, n_circles = 4, distance = 4:1)
 #' z
 #' plot(z)
 zb_doughnut = function(x = NULL, point = NULL, n_circles = NULL, distance = NULL, distance_growth = 1) {
+  
+  called_args = names(match.call(expand.dots = TRUE)[-1])
   
   # checks and class coercion    
   if (is.null(x) && is.null(point)) stop("Please specify either x or point")
@@ -24,13 +26,14 @@ zb_doughnut = function(x = NULL, point = NULL, n_circles = NULL, distance = NULL
     x = sf::st_geometry(x)
     point = sf::st_centroid(x)
   } else {
+    if (is.null(x) && is.null(distance)) stop("Please specify x or distance")
     point = sf::st_geometry(point)
   }
   # doughnut-specific checks
   if(is.null(distance)) {
     distance = find_distance_equal_dohnut(x = x, n_circles = n_circles, point = point)
     distance_growth = 0
-    message("Set distance to enable distance_growth")
+    if ("distance_growth" %in% called_args)  message("Set distance to enable distance_growth")
   }
   if(is.null(n_circles)) {
     if (is.null(x)) stop("Please specify either x or n (or both)")
@@ -41,9 +44,6 @@ zb_doughnut = function(x = NULL, point = NULL, n_circles = NULL, distance = NULL
     distance = get_distances(distance, distance_growth, n_circles)
   }
   create_rings(sf::st_geometry(point), n_circles, distance)
-}
-
-zb_segment = function(n_circles = 1, ...) {
 }
 
 create_rings = function(point, n_circles, distance) {

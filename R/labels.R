@@ -36,6 +36,13 @@ zb_quadrant_labels = function(n_circles, n_segments = 12, segment_center = FALSE
       paste0(ring, quad, seg)
     }
     
-    data.frame(circle_id = i, segment_id = 1:j, label = labels, stringsAsFactors = FALSE)
+    if (j==1) {
+      segment_id = 0
+    } else {
+      segment_id = 1:j
+    }
+    
+    
+    data.frame(circle_id = i, segment_id = segment_id, label = labels, stringsAsFactors = FALSE)
   }, 1:n_circles, n_segments, SIMPLIFY = FALSE))
 }

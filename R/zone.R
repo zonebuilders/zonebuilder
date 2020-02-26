@@ -24,16 +24,16 @@
 #' @importFrom graphics plot text
 #' @importFrom grDevices hcl
 #' @examples
-#' z = zb_zone(zb_region, point = zb_region_cent)
+#' z = zb_zone(london_area, point = london_cent)
 #' z
 #' plot(z)
-#' plot(zb_zone(zb_region, n_circles = 2))
-#' plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0))
-#' plot(zb_zone(zb_region,n_circles = 2, starting_angle = 0, distance_growth = 0.1))
+#' plot(zb_zone(london_area, n_circles = 2))
+#' plot(zb_zone(london_area, n_circles = 2, starting_angle = 0))
+#' plot(zb_zone(london_area,n_circles = 2, starting_angle = 0, distance_growth = 0.1))
 #' 
 #' if (require(tmap)) {
 #'   # tmap_mode("view") # for interactive maps
-#'   z = zb_zone(zb_region, point = zb_region_cent)
+#'   z = zb_zone(london_area, point = london_cent)
 #'   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
 #' }
 zb_zone = function(x = NULL,
@@ -50,13 +50,22 @@ zb_zone = function(x = NULL,
   # sorry this now appears twice #### ----
   if (is.null(x) && is.null(point)) stop("Please specify either x or point")
   if (is.null(point)) {
+    if (is.na(sf::st_crs(x))) stop("crs of x is unkown")
     x = sf::st_geometry(x)
     point = sf::st_centroid(x)
   } else {
     point = sf::st_geometry(point)
   }
 
+  if (!is.null(n_circles) && n_circles == 1 && n_segments > 1 && !segment_center) {
+    message("Please set segment_center = TRUE to divide the centre into multiple segments")
+  }
+  
+  
   orig_crs = sf::st_crs(point)
+  
+  if (is.na(orig_crs)) stop("crs of point is unknown")
+  
   if (sf::st_is_longlat(point)) {
     crs = geo_select_aeq(point)
     point = sf::st_transform(point, crs = crs)
@@ -119,8 +128,14 @@ zb_zone = function(x = NULL,
       x$circle_id = i
       x
     } else {
-      res = suppressWarnings(sf::st_intersection(x, y))
-      res$circle_id = i
+      if (i==1 && !segment_center) {
+        res = x
+        res$segment_id = 0
+        res$circle_id = i
+      } else {
+        res = suppressWarnings(sf::st_intersection(x, y))
+        res$circle_id = i
+      }
       res
     }
   }, zones_ids, split(doughnuts, 1:length(zones_ids)), segments, SIMPLIFY = FALSE))
@@ -151,7 +166,7 @@ zb_zone = function(x = NULL,
 }
 
 # Create zones of equal area (to be documented)
-# z = zb_zone(zb_region, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
+# z = zb_zone(london_area, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
 # suggestion: split out new new function, reduce n. arguments
 # plot(z, col = 1:nrow(z))
 zb_zone_equal_area = function(x = NULL,

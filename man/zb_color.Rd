@@ -4,7 +4,7 @@
 \alias{zb_color}
 \title{Generate colors for zones}
 \usage{
-zb_color(z, palette = c("hcl", "rings", "dartboard"))
+zb_color(z, palette = c("rings", "hcl", "dartboard"))
 }
 \arguments{
 \item{z}{An `sf` object containing zones covering the region}
@@ -18,7 +18,7 @@ A vector of colors
 This function generates colors for zones.
 }
 \examples{
-z = zb_zone(zb_region, point = zb_region_cent)
+z = zb_zone(london_area, point = london_cent)
 zb_color(z)
 plot(z, col = zb_color(z))
 }

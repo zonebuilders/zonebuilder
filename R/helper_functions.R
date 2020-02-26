@@ -12,8 +12,8 @@ doughnut_areas = function(n_circles, distance) {
 }
 
 # n_circles = 10
-# x = zb_region
-# point = zb_region_midpoint
+# x = london_area
+# point = london_area_midpoint
 find_distance_equal_dohnut = function(x, n_circles, point) {
   if(is.null(point)) point = sf::st_centroid(x)
   boundary_points = sf::st_cast(x, "POINT")
@@ -33,7 +33,7 @@ get_distances = function(distance, distance_growth, n_circles) {
 
 
 
-# x = zb_region
+# x = london_area
 # number_of_circles(x, 1, 1, sf::st_centroid(x))
 # number_of_circles(x, 0.1, 0.1, sf::st_centroid(x))
 number_of_circles = function(x, distance, distance_growth, point) {

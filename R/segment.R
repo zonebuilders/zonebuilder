@@ -1,5 +1,6 @@
 #' Title
 #'
+#' @param x point
 #' @param n_segments Number of segments
 #' @param starting_angle Starting angle
 #' @param distance Distance in metres
@@ -9,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' point = sf::st_centroid(zb_region)
+#' point = sf::st_centroid(london_area)
 #' n = 4
 #' segments = zb_segment(point, n)
 #' plot(segments, col = 1:n)

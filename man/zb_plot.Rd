@@ -4,7 +4,7 @@
 \alias{zb_plot}
 \title{Plot zones}
 \usage{
-zb_plot(z, palette = c("hcl", "rings", "dartboard"))
+zb_plot(z, palette = c("rings", "hcl", "dartboard"))
 }
 \arguments{
 \item{z}{An `sf` object containing zones covering the region}

@@ -49,16 +49,16 @@ be used to refer to segments in [clock position](https://en.wikipedia.org/wiki/C
 with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments.
 }
 \examples{
-z = zb_zone(zb_region, point = zb_region_cent)
+z = zb_zone(london_area, point = london_cent)
 z
 plot(z)
-plot(zb_zone(zb_region, n_circles = 2))
-plot(zb_zone(zb_region, n_circles = 2, starting_angle = 0))
-plot(zb_zone(zb_region,n_circles = 2, starting_angle = 0, distance_growth = 0.1))
+plot(zb_zone(london_area, n_circles = 2))
+plot(zb_zone(london_area, n_circles = 2, starting_angle = 0))
+plot(zb_zone(london_area,n_circles = 2, starting_angle = 0, distance_growth = 0.1))
 
 if (require(tmap)) {
   # tmap_mode("view") # for interactive maps
-  z = zb_zone(zb_region, point = zb_region_cent)
+  z = zb_zone(london_area, point = london_cent)
   tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
 }
 }

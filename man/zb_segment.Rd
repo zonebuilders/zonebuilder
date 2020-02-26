@@ -7,7 +7,7 @@
 zb_segment(x, n_segments = 4, starting_angle = -45, distance = 1e+05)
 }
 \arguments{
-\item{x}{Region of interest}
+\item{x}{point}
 
 \item{n_segments}{Number of segments}
 
@@ -22,7 +22,7 @@ An sf object with polygons representing segments dividing up geographic space
 Title
 }
 \examples{
-point = sf::st_centroid(zb_region)
+point = sf::st_centroid(london_area)
 n = 4
 segments = zb_segment(point, n)
 plot(segments, col = 1:n)
