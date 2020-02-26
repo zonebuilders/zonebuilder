@@ -15,6 +15,7 @@ Authors@R:
 Description: This package provides function to help divide
     geographic space into discrete polygons (zones).
 License: GPL-3
+BugReports: https://github.com/zonebuilders/zonebuilder/issues
 Depends: 
     R (>= 2.10)
 Imports: 
@@ -33,6 +34,7 @@ Suggests:
     leaflet
 VignetteBuilder: 
     knitr
+URL: https://github.com/zonebuilders/zonebuilder, https://zonebuilders.github.io/zonebuilder/
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
