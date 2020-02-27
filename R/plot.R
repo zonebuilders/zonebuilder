@@ -23,7 +23,7 @@ zb_color = function(z, palette = c("rings", "hcl", "dartboard")) {
     
     hcl(h = z$h, c = z$c, l = z$l)
   } else if (palette == "rings") {
-    RColorBrewer::brewer.pal(9, "YlOrBr")[z$circle_id+1]
+    RColorBrewer::brewer.pal(9, "YlOrBr")[pmin(9,z$circle_id+1)]
   } else if (palette == "dartboard") {
     
     z$blackred = ((z$segment_id %% 2) == 0)
@@ -73,18 +73,24 @@ zb_view = function(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard")) {
 #' 
 #' @param z An `sf` object containing zones covering the region
 #' @param palette Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)
+#' @param text_size Vector of two numeric values that determine the relative text sizes. The first determines the smallest text size and the second one the largest text size. The largest text size is used for the outermost circle, and the smallest for the central circle in case there are 9 or more circles. If there are less circles, the relative text size is larger (see source code for exact method)
+#' @param zone_label_thres This number determines in which zones labels are printed, namely each zone for which the relative area size is larger than `zone_label_thres`. 
 #' @export
-zb_plot = function(z, palette = c("rings", "hcl", "dartboard")) {
+zb_plot = function(z, palette = c("rings", "hcl", "dartboard"), text_size = c(0.3, 1), zone_label_thres = 0.002) {
   palette = match.arg(palette)
   z$color = zb_color(z, palette)
-  if (requireNamespace("tmap")) {
-    suppressMessages(tmap::tmap_mode("plot"))
-    tmap::tm_shape(z, point.per = "unit") + 
-      tmap::tm_polygons("color") + 
-      tmap::tm_text("label", col = "black", size = "AREA", root = 10)
-  } else {
-    plot(sf::st_geometry(z), col = z$color)
-    co = st_coordinates(st_centroid(z, of_largest_polygon = TRUE))
-    text(co[, 1], co[, 2], cex = 0.8, labels = z$label)
-  }
+  
+  areas = as.numeric(sf::st_area(z))
+  areas = areas / sum(areas)
+  
+  sel = areas > zone_label_thres
+  
+  cent = sf::st_set_crs(sf::st_set_geometry(z, "centroid"), sf::st_crs(z))
+
+  par(mar=c(.2,.2,.2,.2))
+  plot(sf::st_geometry(z), col = z$color, border = "grey40")
+  co = st_coordinates(cent[sel,])
+  mx = max(z$circle_id[sel])
+  cex = seq(text_size[1], text_size[2], length.out = 9)[pmin(9, z$circle_id[sel] + (9-mx))]
+  text(co[, 1], co[, 2], cex = cex, labels = z$label[sel])
 }

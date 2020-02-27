@@ -4,16 +4,18 @@
 \alias{zb_segment}
 \title{Title}
 \usage{
-zb_segment(x, n_segments = 4, starting_angle = -45, distance = 1e+05)
+zb_segment(x = NULL, area = NULL, n_segments = 12, distance = NA)
 }
 \arguments{
 \item{x}{point}
 
+\item{area}{(optional) Area. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one (multi) polygon}
+
 \item{n_segments}{Number of segments}
 
-\item{starting_angle}{Starting angle}
-
 \item{distance}{Distance in metres}
+
+\item{starting_angle}{Starting angle}
 }
 \value{
 An sf object with polygons representing segments dividing up geographic space
