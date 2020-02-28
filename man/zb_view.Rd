@@ -4,7 +4,7 @@
 \alias{zb_view}
 \title{View zones}
 \usage{
-zb_view(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"))
+zb_view(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"), title = NULL)
 }
 \arguments{
 \item{z}{An `sf` object containing zones covering the region}
@@ -12,11 +12,13 @@ zb_view(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"))
 \item{alpha}{Alpha transparency, number between 0 (fully transparent) and 1 (not transparent)}
 
 \item{palette}{Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)}
+
+\item{title}{title}
 }
 \description{
 This function opens an interactive map of the zones
 }
 \examples{
-z = zb_zone(london_area, point = london_cent)
+z = zb_zone(london_cent, london_area)
 zb_view(z, palette = "rings")
 }

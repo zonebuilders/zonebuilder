@@ -37,9 +37,7 @@ tm_shape(london_area) + tm_borders() + tm_shape(london_cent) + tm_dots("red")
 The main function `zb_zone` breaks this geographical scale into zones. The default settings follow the **ClockBoard** configuration:
 
 ``` r
-library(zonebuilder)
-library(tmap)
-london_zones = zb_zone(london_area, london_cent)
+london_zones = zb_zone(london_cent, london_area)
 zb_plot(london_zones)
 ```
 
@@ -57,30 +55,14 @@ The package `zonebuilder` does not only create zoning systems based on the Cload
 The function `zb_zone` makes use of `zb_doughnut` and `zb_segment`, which can also be used directly:
 
 ``` r
-tmap_border = tm_shape(london_area) + tm_borders()
-tmap_arrange(
-  qtm(zb_doughnut(london_area, london_cent, n_circles = 5), title = "Doughnuts") + tmap_border,
-  qtm(zb_segment(london_cent, n_segments = 20), title = "Segments") + tmap_border
-)
+par(mfrow=c(1,2))
+zb_plot(zb_doughnut(london_cent, london_area, n_circles = 5), title = "Doughnuts")
+zb_plot(zb_segment(london_cent, n_segments = 20), title = "Segments")
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-However, if the zones should be intersected with the administrative area, `zb_zone` can be used as follows:
-
-``` r
-tmap_arrange(
-  qtm(zb_zone(london_area, london_cent, n_segments = 1), title = "Doughnuts") + tmap_border,
-  qtm(zb_zone(london_area, london_cent, n_segments = 12, n_circles = 1, distance = 30, segment_center = TRUE), title = "Segments") + tmap_border
-)
-```
-
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
-
-Finally, another zoning system that is implemented in `zonebuilder` is:
-
-``` r
-  qtm(zb_quadrat(london_area, london_cent, ncol = 4), title = "Quadrants") + tmap_border
-```
-
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<!-- tmap_arrange( -->
+<!--   zb_view(zb_doughnut(london_cent, london_area, n_circles = 5), title = "Doughnuts"), -->
+<!--   zb_view(zb_segment(london_cent, n_segments = 20), title = "Segments") -->
+<!--  ) -->
