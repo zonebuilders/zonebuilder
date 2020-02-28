@@ -112,10 +112,8 @@
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span>(london_area) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_borders</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span>(london_cent) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_symbols.html">tm_dots</a></span>(<span class="st">"red"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
 <p>The main function <code>zb_zone</code> breaks this geographical scale into zones. The default settings follow the <strong>ClockBoard</strong> configuration:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(zonebuilder)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tmap)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">london_zones =<span class="st"> </span><span class="kw"><a href="reference/zb_zone.html">zb_zone</a></span>(london_area, london_cent)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="reference/zb_plot.html">zb_plot</a></span>(london_zones)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">london_zones =<span class="st"> </span><span class="kw"><a href="reference/zb_zone.html">zb_zone</a></span>(london_cent, london_area)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/zb_plot.html">zb_plot</a></span>(london_zones)</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <p>The idea behind this zoning system is based on the following principles:</p>
 <ul>
@@ -126,21 +124,14 @@
 </ul>
 <p>The package <code>zonebuilder</code> does not only create zoning systems based on the CloadBoard layout as illustrated below.</p>
 <p>The function <code>zb_zone</code> makes use of <code>zb_doughnut</code> and <code>zb_segment</code>, which can also be used directly:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tmap_border =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span>(london_area) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_borders</a></span>()</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tmap_arrange.html">tmap_arrange</a></span>(</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="kw"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(<span class="kw"><a href="reference/zb_doughnut.html">zb_doughnut</a></span>(london_area, london_cent, <span class="dt">n_circles =</span> <span class="dv">5</span>), <span class="dt">title =</span> <span class="st">"Doughnuts"</span>) <span class="op">+</span><span class="st"> </span>tmap_border,</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="kw"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(<span class="kw"><a href="reference/zb_segment.html">zb_segment</a></span>(london_cent, <span class="dt">n_segments =</span> <span class="dv">20</span>), <span class="dt">title =</span> <span class="st">"Segments"</span>) <span class="op">+</span><span class="st"> </span>tmap_border</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="dt">mfrow=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/zb_plot.html">zb_plot</a></span>(<span class="kw"><a href="reference/zb_doughnut.html">zb_doughnut</a></span>(london_cent, london_area, <span class="dt">n_circles =</span> <span class="dv">5</span>), <span class="dt">title =</span> <span class="st">"Doughnuts"</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="reference/zb_plot.html">zb_plot</a></span>(<span class="kw"><a href="reference/zb_segment.html">zb_segment</a></span>(london_cent, <span class="dt">n_segments =</span> <span class="dv">20</span>), <span class="dt">title =</span> <span class="st">"Segments"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
-<p>However, if the zones should be intersected with the administrative area, <code>zb_zone</code> can be used as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tmap_arrange.html">tmap_arrange</a></span>(</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(<span class="kw"><a href="reference/zb_zone.html">zb_zone</a></span>(london_area, london_cent, <span class="dt">n_segments =</span> <span class="dv">1</span>), <span class="dt">title =</span> <span class="st">"Doughnuts"</span>) <span class="op">+</span><span class="st"> </span>tmap_border,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="kw"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(<span class="kw"><a href="reference/zb_zone.html">zb_zone</a></span>(london_area, london_cent, <span class="dt">n_segments =</span> <span class="dv">12</span>, <span class="dt">n_circles =</span> <span class="dv">1</span>, <span class="dt">distance =</span> <span class="dv">30</span>, <span class="dt">segment_center =</span> <span class="ot">TRUE</span>), <span class="dt">title =</span> <span class="st">"Segments"</span>) <span class="op">+</span><span class="st"> </span>tmap_border</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
-<p>Finally, another zoning system that is implemented in <code>zonebuilder</code> is:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">  <span class="kw"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(<span class="kw"><a href="reference/zb_quadrat.html">zb_quadrat</a></span>(london_area, london_cent, <span class="dt">ncol =</span> <span class="dv">4</span>), <span class="dt">title =</span> <span class="st">"Quadrants"</span>) <span class="op">+</span><span class="st"> </span>tmap_border</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>
+<!-- tmap_arrange( -->
+<!--   zb_view(zb_doughnut(london_cent, london_area, n_circles = 5), title = "Doughnuts"), -->
+<!--   zb_view(zb_segment(london_cent, n_segments = 20), title = "Segments") -->
+<!--  ) -->
 </div>
 </div>
   </div>

@@ -138,12 +138,13 @@ into a number of segments.</p>
 
     <pre class="usage"><span class='fu'>zb_zone</span>(
   <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>area</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>n_segments</span> <span class='kw'>=</span> <span class='fl'>12</span>,
   <span class='kw'>distance</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>distance_growth</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+  <span class='kw'>labeling</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>segment_center</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>intersection</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
@@ -153,31 +154,35 @@ into a number of segments.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Region of interest</p></td>
+      <td><p>Centre point. Should be an <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> or <code><a href='https://rdrr.io/pkg/sf/man/sfc.html'>sfc</a></code> object containing one point</p></td>
     </tr>
     <tr>
-      <th>point</th>
-      <td><p>Optional midpoint of the region</p></td>
+      <th>area</th>
+      <td><p>(optional) Area. Should be an <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> or <code><a href='https://rdrr.io/pkg/sf/man/sfc.html'>sfc</a></code> object containing one (multi) polygon</p></td>
     </tr>
     <tr>
       <th>n_circles</th>
-      <td><p>Number of rings including the central circle</p></td>
+      <td><p>Number of rings including the central circle. By default 5, unless <code>area</code> is specified (then it is set automatically to fill the area).</p></td>
     </tr>
     <tr>
       <th>n_segments</th>
-      <td><p>Optional sequence of numbers</p></td>
+      <td><p>(optional) Number of segments. The number of segments. Either one number which determines the number of segments applied to all circles, or a vector with a number for each circle (which should be a multiple of 4, see also the argument <code>labeling</code>). By default, the central circle is not segmented (see the argument <code>segment_center</code>).</p></td>
     </tr>
     <tr>
       <th>distance</th>
-      <td><p>Distance  (km)</p></td>
+      <td><p>Distance The distances between the circles. For the center circle, it is the distance between the center and the circle. If only one number is specified, <code>distance_growth</code> determines the increment at which the distances grow for the outer circles.</p></td>
     </tr>
     <tr>
       <th>distance_growth</th>
-      <td><p>The rate at which the doughnut ring widths grow (km)</p></td>
+      <td><p>The rate at which the distances between the circles grow. Only applicable when <code>distance</code> is one number and <code>n_circles &gt; 1</code>. See also <code>distance</code>.</p></td>
+    </tr>
+    <tr>
+      <th>labeling</th>
+      <td><p>The labeling of the zones. Either <code>"clock"</code> which uses the clock ananolgy (i.e. hours 1 to 12) or <code>"NESW"</code> which uses the cardinal directions N, E, S, W. If the number of segments is 12, the clock labeling is used, and otherwise NESW. Note that the number of segments should be a multiple of four. If, for instance the number of segments is 8, than the segments are labeled N1, N2, E1, E2, S1, S2, W1, and W2.</p></td>
     </tr>
     <tr>
       <th>starting_angle</th>
-      <td><p>The angle of the first of the radii that create the segments (degrees)</p></td>
+      <td><p>The angle of the first of the radii that create the segments (degrees). By default, it is either 15 when <code>n_segments</code> is 12 (i.e. the ClockBoard setting) and -45 otherwise.</p></td>
     </tr>
     <tr>
       <th>segment_center</th>
@@ -185,7 +190,7 @@ into a number of segments.</p>
     </tr>
     <tr>
       <th>intersection</th>
-      <td><p>Not implemented yet</p></td>
+      <td><p>Should the zones be intersected with the area? <code>TRUE</code> by default</p></td>
     </tr>
     </table>
 
@@ -199,30 +204,13 @@ be used to refer to segments in [clock position](https://en.wikipedia.org/wiki/C
 with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>z</span> <span class='kw'>=</span> <span class='fu'>zb_zone</span>(<span class='no'>london_area</span>, <span class='kw'>point</span> <span class='kw'>=</span> <span class='no'>london_cent</span>)
-<span class='no'>z</span></div><div class='output co'>#&gt; Simple feature collection with 74 features and 3 fields
-#&gt; geometry type:  GEOMETRY
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: 503458.6 ymin: 155907.5 xmax: 561840.6 ymax: 200985.4
-#&gt; epsg (SRID):    27700
-#&gt; proj4string:    +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs
-#&gt; First 10 features:
-#&gt;    circle_id segment_id label                       geometry
-#&gt; 1          1          0     A MULTIPOLYGON (((530926.6 18...
-#&gt; 2          2          1   B01 POLYGON ((530703.1 183323.4...
-#&gt; 6          2          2   B02 POLYGON ((532048 182546.9, ...
-#&gt; 7          2          3   B03 MULTIPOLYGON (((532926.2 18...
-#&gt; 8          2          4   B04 POLYGON ((532824.4 179649.1...
-#&gt; 9          2          5   B05 MULTIPOLYGON (((532048 1783...
-#&gt; 10         2          6   B06 MULTIPOLYGON (((530703.1 17...
-#&gt; 11         2          7   B07 MULTIPOLYGON (((529150.2 17...
-#&gt; 12         2          8   B08 POLYGON ((527805.3 178304.3...
-#&gt; 13         2          9   B09 POLYGON ((527028.9 179649.1...</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>z</span>)</div><div class='img'><img src='zb_zone-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>london_area</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='img'><img src='zb_zone-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>london_area</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='zb_zone-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>london_area</span>,<span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>distance_growth</span> <span class='kw'>=</span> <span class='fl'>0.1</span>))</div><div class='img'><img src='zb_zone-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>tmap</span>)) {
-  <span class='co'># tmap_mode("view") # for interactive maps</span>
-  <span class='no'>z</span> <span class='kw'>=</span> <span class='fu'>zb_zone</span>(<span class='no'>london_area</span>, <span class='kw'>point</span> <span class='kw'>=</span> <span class='no'>london_cent</span>)
-  <span class='fu'><a href='https://rdrr.io/pkg/tmap/man/tm_shape.html'>tm_shape</a></span>(<span class='no'>z</span>) + <span class='fu'><a href='https://rdrr.io/pkg/tmap/man/tm_polygons.html'>tm_polygons</a></span>(<span class='st'>"circle_id"</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"plasma"</span>, <span class='kw'>legend.show</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) + <span class='fu'><a href='https://rdrr.io/pkg/tmap/man/tm_text.html'>tm_text</a></span>(<span class='st'>"label"</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: tmap</span></div></pre>
+    <pre class="examples"><div class='input'><span class='co'># default settings</span>
+<span class='no'>z</span> <span class='kw'>=</span> <span class='fu'>zb_zone</span>(<span class='no'>london_cent</span>, <span class='no'>london_area</span>)
+<span class='fu'><a href='zb_plot.html'>zb_plot</a></span>(<span class='no'>z</span>)</div><div class='img'><img src='zb_zone-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>tmap</span>)) {
+  <span class='fu'><a href='zb_view.html'>zb_view</a></span>(<span class='no'>z</span>)
+}</div><div class='output co'>#&gt; <span class='message'>Loading required package: tmap</span></div><div class='input'>
+<span class='co'># variations</span>
+<span class='fu'><a href='zb_plot.html'>zb_plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>london_cent</span>, <span class='no'>london_area</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='img'><img src='zb_zone-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='zb_plot.html'>zb_plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>london_cent</span>, <span class='no'>london_area</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>distance</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>distance_growth</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='zb_zone-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='zb_plot.html'>zb_plot</a></span>(<span class='fu'>zb_zone</span>(<span class='no'>london_cent</span>, <span class='no'>london_area</span>, <span class='kw'>n_circles</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>n_segments</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>4</span>,<span class='fl'>8</span>)))</div><div class='img'><img src='zb_zone-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

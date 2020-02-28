@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Title — zb_segment • zonebuilder</title>
+<title>Make segments — zb_segment • zonebuilder</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Title — zb_segment" />
-<meta property="og:description" content="Title" />
+<meta property="og:title" content="Make segments — zb_segment" />
+<meta property="og:description" content="Make segments" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,55 +123,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Title</h1>
+    <h1>Make segments</h1>
     <small class="dont-index">Source: <a href='https://github.com/zonebuilders/zonebuilder/blob/master/R/segment.R'><code>R/segment.R</code></a></small>
     <div class="hidden name"><code>zb_segment.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Title</p>
+    <p>Make segments</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zb_segment</span>(<span class='no'>x</span>, <span class='kw'>n_segments</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>starting_angle</span> <span class='kw'>=</span> -<span class='fl'>45</span>, <span class='kw'>distance</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>)</pre>
+    <pre class="usage"><span class='fu'>zb_segment</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>area</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n_segments</span> <span class='kw'>=</span> <span class='fl'>12</span>, <span class='kw'>distance</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>point</p></td>
+      <td><p>Centre point. Should be an <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> or <code><a href='https://rdrr.io/pkg/sf/man/sfc.html'>sfc</a></code> object containing one point</p></td>
+    </tr>
+    <tr>
+      <th>area</th>
+      <td><p>(optional) Area. Should be an <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> or <code><a href='https://rdrr.io/pkg/sf/man/sfc.html'>sfc</a></code> object containing one (multi) polygon</p></td>
     </tr>
     <tr>
       <th>n_segments</th>
-      <td><p>Number of segments</p></td>
-    </tr>
-    <tr>
-      <th>starting_angle</th>
-      <td><p>Starting angle</p></td>
+      <td><p>(optional) Number of segments. The number of segments. Either one number which determines the number of segments applied to all circles, or a vector with a number for each circle (which should be a multiple of 4, see also the argument <code>labeling</code>). By default, the central circle is not segmented (see the argument <code>segment_center</code>).</p></td>
     </tr>
     <tr>
       <th>distance</th>
-      <td><p>Distance in metres</p></td>
+      <td><p>Distance The distances between the circles. For the center circle, it is the distance between the center and the circle. If only one number is specified, <code>distance_growth</code> determines the increment at which the distances grow for the outer circles.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>An sf object with polygons representing segments dividing up geographic space</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>point</span> <span class='kw'>=</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>st_centroid</a></span>(<span class='no'>london_area</span>)
-<span class='no'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>
-<span class='no'>segments</span> <span class='kw'>=</span> <span class='fu'>zb_segment</span>(<span class='no'>point</span>, <span class='no'>n</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>segments</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='no'>n</span>)</div><div class='img'><img src='zb_segment-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>n</span> <span class='kw'>=</span> <span class='fl'>16</span>
-<span class='no'>segments</span> <span class='kw'>=</span> <span class='fu'>zb_segment</span>(<span class='no'>point</span>, <span class='no'>n</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>segments</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='no'>n</span>) <span class='co'># logo?</span></div><div class='img'><img src='zb_segment-2.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='zb_plot.html'>zb_plot</a></span>(<span class='fu'>zb_segment</span>(<span class='no'>london_cent</span>, <span class='no'>london_area</span>))</div><div class='img'><img src='zb_segment-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
