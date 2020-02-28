@@ -146,7 +146,8 @@ into a number of segments.</p>
   <span class='kw'>labeling</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>starting_angle</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>segment_center</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>intersection</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>intersection</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>city</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -190,7 +191,11 @@ into a number of segments.</p>
     </tr>
     <tr>
       <th>intersection</th>
-      <td><p>Should the zones be intersected with the area? <code>TRUE</code> by default</p></td>
+      <td><p>Should the zones be intersected with the area? <code>TRUE</code> by default.</p></td>
+    </tr>
+    <tr>
+      <th>city</th>
+      <td><p>(optional) Name of the city. If specified, it adds a column `city` to the returned `sf` object.</p></td>
     </tr>
     </table>
 
