@@ -14,7 +14,8 @@ zb_zone(
   labeling = NA,
   starting_angle = NA,
   segment_center = FALSE,
-  intersection = TRUE
+  intersection = TRUE,
+  city = NULL
 )
 }
 \arguments{
@@ -36,7 +37,9 @@ zb_zone(
 
 \item{segment_center}{Should the central circle be divided into segments? `FALSE` by default.}
 
-\item{intersection}{Should the zones be intersected with the area? \code{TRUE} by default}
+\item{intersection}{Should the zones be intersected with the area? \code{TRUE} by default.}
+
+\item{city}{(optional) Name of the city. If specified, it adds a column `city` to the returned `sf` object.}
 }
 \value{
 An `sf` object containing zones covering the region

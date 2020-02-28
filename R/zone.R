@@ -17,7 +17,8 @@
 #' @param labeling The labeling of the zones. Either \code{"clock"} which uses the clock ananolgy (i.e. hours 1 to 12) or \code{"NESW"} which uses the cardinal directions N, E, S, W. If the number of segments is 12, the clock labeling is used, and otherwise NESW. Note that the number of segments should be a multiple of four. If, for instance the number of segments is 8, than the segments are labeled N1, N2, E1, E2, S1, S2, W1, and W2.  
 #' @param starting_angle The angle of the first of the radii that create the segments (degrees). By default, it is either 15 when \code{n_segments} is 12 (i.e. the ClockBoard setting) and -45 otherwise.
 #' @param segment_center Should the central circle be divided into segments? `FALSE` by default.
-#' @param intersection Should the zones be intersected with the area? \code{TRUE} by default
+#' @param intersection Should the zones be intersected with the area? \code{TRUE} by default.
+#' @param city (optional) Name of the city. If specified, it adds a column `city` to the returned `sf` object.
 #'
 #' @return An `sf` object containing zones covering the region
 #' @export
@@ -45,7 +46,8 @@ zb_zone = function(x = NULL,
                    labeling = NA,
                    starting_angle = NA,
                    segment_center = FALSE,
-                   intersection = TRUE) {
+                   intersection = TRUE,
+                   city = NULL) {
   
   # checks and preprosessing x and area 
   if (is.null(x) && is.null(area)) stop("Please specify either x or area")
@@ -188,6 +190,10 @@ zb_zone = function(x = NULL,
   }
   
   z$centroid = sf::st_geometry(st_centroid_within_poly(z))
+  
+  if (!is.null(city)) {
+    z$city = city
+  }
   
   z
 }
