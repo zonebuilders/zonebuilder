@@ -1,114 +1,104 @@
 remotes::install_github("ropensci/stats19")
 library(stats19)
 library(dplyr)
+library(tmap)
+library(tmaptools)
 
-
-london_zones = zb_zone(london_cent, n_circles = 7, city = "London")
-
-crashes_all = get_stats19(2018, "accidents", output_format = "sf")
-casualties_all = get_stats19(2018, "casualties")
+years = 2010:2018
+crashes_all = get_stats19(years, "accidents", output_format = "sf")
+casualties_all = get_stats19(years, "casualties")
 crashes_joined = dplyr::inner_join(crashes_all, casualties_all)
-
-
-crashes_bicycle = crashes_joined %>% 
-  filter(casualty_type == "Cyclist") %>% 
-  mutate(x=1) %>% 
-  select(x)
-
-
-
-london_bikes = aggregate(crashes_bicycle, london_zones, FUN = sum)
-
-
-tmap_mode("view")
-
-zb_view(london_zones) +
-  tm_shape(london_bikes) + 
-#  tm_borders() + 
-  tm_bubbles("x")
-
-tm_shape(london_zones) +
-tm_polygons("circle_id", palette = "YlOrBr", alpha = .6, legend.show = FALSE) + 
-  tm_shape(london_bikes, point.per = "feature") + 
-  tm_bubbles("x", border.col = "black")
-
-tmap_mode("plot")
-
-tm_shape(london_zones) +
-  tm_polygons("circle_id", palette = "YlOrBr", alpha = .6, legend.show = FALSE) + 
-  tm_shape(london_bikes, point.per = "feature") + 
-  tm_bubbles("x", border.col = "black")
-
 
 ##########################################################
 #### Perc bike/pedestrians for UK cities
 ##########################################################
 
 crashes_joined2 = crashes_joined %>% 
-  mutate(cycl_ped=as.numeric(casualty_type %in% c("Cyclist", "Pedestrian")),
-         other=1 - cycl_ped) %>% 
-  select(cycl_ped, other)
+  mutate(hour = as.numeric(substr(time, 1, 2)) + as.numeric(substr(time, 4, 5)) / 60) %>% 
+  filter(!(day_of_week %in% c("Saturday", "Sunday")),
+         (hour >= 7 & hour <= 9) | (hour >= 16.5 & hour <= 18.5),
+         accident_severity %in% c("Fatal", "Serious")) %>% 
+  mutate(cycl=as.numeric(casualty_type == c("Cyclist")),
+         other=1 - cycl) %>% 
+  select(cycl, other) #, date, time
 
 
-london_perc_walk_bike = aggregate(crashes_joined2, london_zones, FUN = sum) %>% 
-  mutate(tot = cycl_ped + other,
-         perc_cycl_ped = cycl_ped/tot,
-         city = london_zones$city[1])
+## zones: 
 
-uk_cities = tmaptools::geocode_OSM(c("Birmingham", "Manchester", "Leeds", "Liverpool"), as.sf = TRUE) %>% 
+# Find the other cities using geocode OSM
+uk_cities = tmaptools::geocode_OSM(c("London", "Birmingham", "Manchester", "Leeds", "Liverpool", "Newcastle", "Sheffield", "Bristol"), as.sf = TRUE) %>% 
   sf::st_transform(27700)
 
+# replace London coordinates by london_cent
+uk_cities$geometry[[1]] = london_cent[[1]]
+
+# create zones of 5 circles
 uk_zones = lapply(1:nrow(uk_cities), function(i) {
   zb_zone(x = uk_cities[i,], n_circles = 5, city = uk_cities$query[i])
 })
+names(uk_zones) = uk_cities$query
 
-
-uk_perc_walk_bike = c(list(london_perc_walk_bike), lapply(uk_zones, function(z) {
+uk_perc_bike = lapply(uk_zones, function(z) {
   aggregate(crashes_joined2, z, FUN = sum) %>% 
-    mutate(tot = cycl_ped + other,
-           perc_cycl_ped = cycl_ped/tot,
-           city = z$city[1])
-}))
-
-
-uk = do.call(rbind, uk_perc_walk_bike)
+    mutate(tot = cycl + other,
+           perc_cycl = cycl/tot,
+           city = z$city[1],
+           circle_id = z$circle_id,
+           segment_id = z$segment_id)
+})
+uk = do.call(rbind, uk_perc_bike)
 
 
 tm_shape(uk) +
-  tm_polygons("perc_cycl_ped") +
-tm_facets(by = "city")
-
-tm_shape(uk %>% filter(city !="London")) +
-  tm_polygons("tot", convert2density = TRUE) +
+  tm_polygons("cycl", style = "kmeans") +
   tm_facets(by = "city")
 
+tm_shape(uk) +
+  tm_polygons("perc_cycl", style = "kmeans") +
+tm_facets(by = "city")
+
+#### Process cycling distances
+regions = pct::pct_regions$region_name
+#> [1] "london"                "greater-manchester"    "liverpool-city-region"
+#> [4] "south-yorkshire"       "north-east"            "west-midlands"
+
+uk_cities$region = c("london", "west-midlands", "greater-manchester", "west-yorkshire", "liverpool-city-region", "north-east", "south-yorkshire", "avon")
+
+rnets = lapply(uk_cities$region, function(region) {
+  pct::get_pct_rnet(region = region) %>% st_transform(27700)
+})
+
+rnets = lapply(rnets, function(rnet) {
+  rnet$segment_length = as.numeric(sf::st_length(rnet))
+  rnet$m_cycled_per_working_day = rnet$segment_length * rnet$bicycle
+  rnet
+})
+
+
+cycled_m_per_zone = mapply(FUN = function(rnet, z) {
+  aggregate(rnet["m_cycled_per_working_day"], z, FUN = sum) %>% 
+    mutate(km = m_cycled_per_working_day / 1e3,
+           city = z$city,
+           circle_id = z$circle_id,
+           segment_id = z$segment_id)
+}, rnets, uk_zones, SIMPLIFY = FALSE)
+cycle_dist = do.call(rbind, cycled_m_per_zone)
+
+
+df = uk %>% 
+  left_join(cycle_dist %>% st_drop_geometry(), by = c("city", "circle_id", "segment_id")) %>% 
+  mutate(ksi_yr = cycl / length(years),
+         bkm_yr = (km / 1e9) * (2*200),
+         ksi_bkm_yr = ksi_yr / bkm_yr,
+         ksi_bkm_yr = ifelse(bkm_yr < 1e-05, NA, ksi_bkm_yr)) # at least 10,000 km per yer
 
 
 
-##### Barcelona
+tmap_mode("plot")
+tm_shape(df) +
+  tm_polygons("ksi_bkm_yr", breaks = c(0, 1000, 2500, 5000, 7500, 12500), textNA = "Too little cycling") +
+  tm_facets(by = "city")
 
-# https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn
-b = readr::read_csv("data-raw/2018_accidents_persones_gu_bcn_.csv")
-
-barc_acc = b %>% 
-  st_as_sf(coords = c("Longitud", "Latitud"), crs = 4326) %>% 
-  mutate(x=as.numeric(Desc_Tipus_vehicle_implicat %in% c("Bicicleta", "Turisme")),
-         y=1-x) %>% 
-  select(x,y)
-
-Desc_Tipus_vehicle_implicat
-
-barc_cent = tmaptools::geocode_OSM("Barcelona", as.sf = TRUE)
-
-barc_zones = zb_zone(barc_cent, n_circles = 7)
-barc_perc_walk_bike = aggregate(barc_acc, barc_zones, FUN = sum) %>% 
-  mutate(z = x/(x+y))
-
-
-tm1 = qtm(london_perc_walk_bike, fill = "z")
-tm2 = qtm(barc_perc_walk_bike, fill = "z")
-tmap_arrange(tm1, tm2)
-
-
-
-
+tmap_mode("view")
+tm_shape(df) +
+  tm_polygons("ksi_bkm_yr", breaks = c(0, 1000, 2500, 5000, 7500, 12500), textNA = "Too little cycling", popup.vars = TRUE)
