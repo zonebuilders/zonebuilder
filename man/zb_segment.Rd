@@ -7,7 +7,7 @@
 zb_segment(x = NULL, area = NULL, n_segments = 12, distance = NA)
 }
 \arguments{
-\item{x}{Centre point. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one point}
+\item{x}{Centre point. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one point, or a name of a city (which is looked up with OSM geocoding).}
 
 \item{area}{(optional) Area. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one (multi) polygon}
 

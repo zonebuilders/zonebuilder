@@ -8,7 +8,7 @@
 #' be used to refer to segments in [clock position](https://en.wikipedia.org/wiki/Clock_position),
 #' with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments.
 #' 
-#' @param x Centre point. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one point
+#' @param x Centre point. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one point, or a name of a city (which is looked up with OSM geocoding).
 #' @param area (optional) Area. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one (multi) polygon  
 #' @param n_circles Number of rings including the central circle. By default 5, unless \code{area} is specified (then it is set automatically to fill the area).
 #' @param n_segments (optional) Number of segments. The number of segments. Either one number which determines the number of segments applied to all circles, or a vector with a number for each circle (which should be a multiple of 4, see also the argument \code{labeling}). By default, the central circle is not segmented (see the argument \code{segment_center}).
@@ -31,7 +31,10 @@
 #' zb_plot(z)
 #' if (require(tmap)) {
 #'   zb_view(z)
-#' }
+#'   
+#'   z = zb_zone("Berlin")
+#'   zb_view(z)
+#'}
 #' 
 #' # variations
 #' zb_plot(zb_zone(london_cent, london_area, n_circles = 2))
@@ -62,6 +65,18 @@ zb_zone = function(x = NULL,
   if (is.null(x)) {
     x = sf::st_centroid(area)
   } else {
+    if (!inherits(x, c("sf", "sfc"))) {
+      if (is.character(x)) {
+        if (!requireNamespace("tmaptools")) {
+          stop("Please install tmaptools first")
+        } else {
+          x = tmaptools::geocode_OSM(x, as.sf = TRUE)
+        }
+      } else {
+        stop("x should be an sf(c) object or a city name")
+      } 
+    }
+    
     x = sf::st_geometry(x)
     if (!inherits(x, "sfc_POINT")) stop("x is not a point")
     if (!(length(x) == 1)) stop("x should contain only one point")
