@@ -108,7 +108,7 @@ zb_zone = function(x = NULL,
       if (!requireNamespace("lwgeom")) {
         stop("Combining polygons failed. Please install lwgeom and try again")
       } else {
-        x = lwgeom::st_make_valid(x)
+        x = sf::st_make_valid(x)
       }
     }
     x = st_union(st_buffer(x, dist = 0.01)) #0.01 (in most crs's 1 cm) is arbitrary chosen, but works to resolve strange artefacts
@@ -158,7 +158,7 @@ zb_zone = function(x = NULL,
     if (!requireNamespace("lwgeom")) {
       warning("sf object invalid. To fix it, install lwgeom, and rerun zb_zone")
     } else {
-      z = lwgeom::st_make_valid(z)
+      z = sf::st_make_valid(z)
       z = suppressWarnings(st_cast(z, "MULTIPOLYGON")) # st_make_valid may return geometrycollections with empty points/lines
     }
   }

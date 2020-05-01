@@ -36,7 +36,7 @@ cities = lapply(unique(zbs$name), function(city) {
   x = zbs %>% filter(name == city) %>% 
     mutate(zoneid = 1L:n()) %>% 
     st_transform(28992) %>% 
-    lwgeom::st_make_valid() %>% 
+    sf::st_make_valid() %>% 
     st_cast("MULTIPOLYGON")
   
   x_brt = sf::st_intersection(brt, x) %>% 
