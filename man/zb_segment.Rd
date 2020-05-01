@@ -2,31 +2,22 @@
 % Please edit documentation in R/segment.R
 \name{zb_segment}
 \alias{zb_segment}
-\title{Title}
+\title{Make segments}
 \usage{
-zb_segment(x, n_segments = 4, starting_angle = -45, distance = 1e+05)
+zb_segment(x = NULL, area = NULL, n_segments = 12, distance = NA)
 }
 \arguments{
-\item{x}{point}
+\item{x}{Centre point. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one point, or a name of a city (which is looked up with OSM geocoding).}
 
-\item{n_segments}{Number of segments}
+\item{area}{(optional) Area. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one (multi) polygon}
 
-\item{starting_angle}{Starting angle}
+\item{n_segments}{(optional) Number of segments. The number of segments. Either one number which determines the number of segments applied to all circles, or a vector with a number for each circle (which should be a multiple of 4, see also the argument \code{labeling}). By default, the central circle is not segmented (see the argument \code{segment_center}).}
 
-\item{distance}{Distance in metres}
-}
-\value{
-An sf object with polygons representing segments dividing up geographic space
+\item{distance}{Distance The distances between the circles. For the center circle, it is the distance between the center and the circle. If only one number is specified, \code{distance_growth} determines the increment at which the distances grow for the outer circles.}
 }
 \description{
-Title
+Make segments
 }
 \examples{
-point = sf::st_centroid(london_area)
-n = 4
-segments = zb_segment(point, n)
-plot(segments, col = 1:n)
-n = 16
-segments = zb_segment(point, n)
-plot(segments, col = 1:n) # logo?
+zb_plot(zb_segment(london_cent, london_area))
 }

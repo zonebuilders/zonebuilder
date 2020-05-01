@@ -36,10 +36,9 @@ get_distances = function(distance, distance_growth, n_circles) {
 # x = london_area
 # number_of_circles(x, 1, 1, sf::st_centroid(x))
 # number_of_circles(x, 0.1, 0.1, sf::st_centroid(x))
-number_of_circles = function(x, distance, distance_growth, point) {
-  if(is.null(point)) point = sf::st_centroid(x)
-  boundary_points = suppressWarnings(sf::st_cast(x, "POINT"))
-  distances_to_points = sf::st_distance(boundary_points, point)
+number_of_circles = function(area, distance, distance_growth, x) {
+  boundary_points = suppressWarnings(sf::st_cast(area, "POINT"))
+  distances_to_points = sf::st_distance(boundary_points, x)
   max_distance = as.numeric(max(distances_to_points)) / 1000
   csdistances = cumsum(get_distances(distance, distance_growth, 100))
   

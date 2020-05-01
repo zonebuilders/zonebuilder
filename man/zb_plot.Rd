@@ -4,12 +4,24 @@
 \alias{zb_plot}
 \title{Plot zones}
 \usage{
-zb_plot(z, palette = c("rings", "hcl", "dartboard"))
+zb_plot(
+  z,
+  palette = c("rings", "hcl", "dartboard"),
+  title = NULL,
+  text_size = c(0.3, 1),
+  zone_label_thres = 0.002
+)
 }
 \arguments{
 \item{z}{An `sf` object containing zones covering the region}
 
 \item{palette}{Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)}
+
+\item{title}{title}
+
+\item{text_size}{Vector of two numeric values that determine the relative text sizes. The first determines the smallest text size and the second one the largest text size. The largest text size is used for the outermost circle, and the smallest for the central circle in case there are 9 or more circles. If there are less circles, the relative text size is larger (see source code for exact method)}
+
+\item{zone_label_thres}{This number determines in which zones labels are printed, namely each zone for which the relative area size is larger than `zone_label_thres`.}
 }
 \description{
 This function opens a static map of the zones

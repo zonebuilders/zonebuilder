@@ -6,39 +6,26 @@
 \usage{
 zb_doughnut(
   x = NULL,
-  point = NULL,
-  n_circles = NULL,
-  distance = NULL,
+  area = NULL,
+  n_circles = NA,
+  distance = 1,
   distance_growth = 1
 )
 }
 \arguments{
-\item{x}{Region of interest}
+\item{x}{Centre point. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one point, or a name of a city (which is looked up with OSM geocoding).}
 
-\item{point}{Optional midpoint of the region}
+\item{area}{(optional) Area. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one (multi) polygon}
 
-\item{n_circles}{Number of rings including the central circle}
+\item{n_circles}{Number of rings including the central circle. By default 5, unless \code{area} is specified (then it is set automatically to fill the area).}
 
-\item{distance}{Distance  (km)}
+\item{distance}{Distance The distances between the circles. For the center circle, it is the distance between the center and the circle. If only one number is specified, \code{distance_growth} determines the increment at which the distances grow for the outer circles.}
 
-\item{distance_growth}{The rate at which the doughnut ring widths grow (km)}
-}
-\value{
-An sf object containing concentric donuts
+\item{distance_growth}{The rate at which the distances between the circles grow. Only applicable when \code{distance} is one number and \code{n_circles > 1}. See also \code{distance}.}
 }
 \description{
 Make doughnuts
 }
 \examples{
-x = london_area
-plot(zb_doughnut(x, n_circles = 4), reset = FALSE)
-plot(london_area, add = TRUE)
-z = zb_doughnut(x, distance = 0.5)
-plot(z, reset = FALSE)
-plot(london_area, add = TRUE)
-plot(z[5, ], add = TRUE, col = "red")
-x_point = sf::st_centroid(london_area)
-z = zb_doughnut(point = london_cent, n_circles = 4, distance = 4:1)
-z
-plot(z)
+zb_plot(zb_doughnut(london_cent, london_area))
 }

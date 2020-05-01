@@ -128,10 +128,37 @@ This linear growth leads to distances between each annuli boundary increasing in
 
 ## Inter-city statistical comparison
 
-Comparing two cities can be difficult due to incomparable zoning systems.
-Take the example of city A is provided in a detailed zoning system composed of hundreds of small, irregular areas while city B is composed only of 9 irregular zones
+<!-- Comparing two cities can be difficult due to incomparable zoning systems. -->
+<!-- Take the example of city A is provided in a detailed zoning system composed of hundreds of small, irregular areas while city B is composed only of 9 irregular zones -->
 
-, each of which has a drastically different official zoning system, is challenging  
+
+<!-- TODO: reference to https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0050606 -->
+
+```{r, fig.width=7, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tmap)
+
+# download preprocessed data (processing script /data-raw/crashes.R)
+df = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/ksi_bkm_zone.rds")))
+uk = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/uk.rds")))
+thames = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/thames.rds")))
+
+# filter: set zones with less than 10,000 km of cycling per yer to NA
+df_filtered = df %>% 
+  mutate(ksi_bkm = ifelse((bkm_yr * 1e09) < 2e04, NA, ksi_bkm))
+
+tmap_mode("plot")
+tm_shape(uk) +
+ tm_fill(col = "white") +
+tm_shape(df_filtered, is.master = TRUE) +
+  tm_polygons("ksi_bkm", breaks = c(0, 1000, 2500, 5000, 7500, 12500), textNA = "Too little cycling", title = "Killed and seriously injured cyclists\nper billion cycled kilometers") +
+  tm_facets(by = "city", ncol=4) +
+  tm_shape(uk) +
+  tm_borders(lwd = 1, col = "black", lty = 3) +
+  tm_shape(thames) +
+  tm_lines(lwd = 1, col = "black", lty = 3) +
+  tm_layout(bg.color = "lightblue")
+```{r}
 
 ## Transport planning
 

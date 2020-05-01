@@ -6,34 +6,40 @@
 \usage{
 zb_zone(
   x = NULL,
-  point = NULL,
-  n_circles = NULL,
+  area = NULL,
+  n_circles = NA,
   n_segments = 12,
   distance = 1,
   distance_growth = 1,
-  starting_angle = 15,
+  labeling = NA,
+  starting_angle = NA,
   segment_center = FALSE,
-  intersection = TRUE
+  intersection = TRUE,
+  city = NULL
 )
 }
 \arguments{
-\item{x}{Region of interest}
+\item{x}{Centre point. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one point, or a name of a city (which is looked up with OSM geocoding).}
 
-\item{point}{Optional midpoint of the region}
+\item{area}{(optional) Area. Should be an \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object containing one (multi) polygon}
 
-\item{n_circles}{Number of rings including the central circle}
+\item{n_circles}{Number of rings including the central circle. By default 5, unless \code{area} is specified (then it is set automatically to fill the area).}
 
-\item{n_segments}{Optional sequence of numbers}
+\item{n_segments}{(optional) Number of segments. The number of segments. Either one number which determines the number of segments applied to all circles, or a vector with a number for each circle (which should be a multiple of 4, see also the argument \code{labeling}). By default, the central circle is not segmented (see the argument \code{segment_center}).}
 
-\item{distance}{Distance  (km)}
+\item{distance}{Distance The distances between the circles. For the center circle, it is the distance between the center and the circle. If only one number is specified, \code{distance_growth} determines the increment at which the distances grow for the outer circles.}
 
-\item{distance_growth}{The rate at which the doughnut ring widths grow (km)}
+\item{distance_growth}{The rate at which the distances between the circles grow. Only applicable when \code{distance} is one number and \code{n_circles > 1}. See also \code{distance}.}
 
-\item{starting_angle}{The angle of the first of the radii that create the segments (degrees)}
+\item{labeling}{The labeling of the zones. Either \code{"clock"} which uses the clock ananolgy (i.e. hours 1 to 12) or \code{"NESW"} which uses the cardinal directions N, E, S, W. If the number of segments is 12, the clock labeling is used, and otherwise NESW. Note that the number of segments should be a multiple of four. If, for instance the number of segments is 8, than the segments are labeled N1, N2, E1, E2, S1, S2, W1, and W2.}
+
+\item{starting_angle}{The angle of the first of the radii that create the segments (degrees). By default, it is either 15 when \code{n_segments} is 12 (i.e. the ClockBoard setting) and -45 otherwise.}
 
 \item{segment_center}{Should the central circle be divided into segments? `FALSE` by default.}
 
-\item{intersection}{Not implemented yet}
+\item{intersection}{Should the zones be intersected with the area? \code{TRUE} by default.}
+
+\item{city}{(optional) Name of the city. If specified, it adds a column `city` to the returned `sf` object.}
 }
 \value{
 An `sf` object containing zones covering the region
@@ -49,16 +55,15 @@ be used to refer to segments in [clock position](https://en.wikipedia.org/wiki/C
 with 12 representing North, 3 representing East, 6 Sounth and 9 Western segments.
 }
 \examples{
-z = zb_zone(london_area, point = london_cent)
-z
-plot(z)
-plot(zb_zone(london_area, n_circles = 2))
-plot(zb_zone(london_area, n_circles = 2, starting_angle = 0))
-plot(zb_zone(london_area,n_circles = 2, starting_angle = 0, distance_growth = 0.1))
-
+# default settings
+z = zb_zone(london_cent, london_area)
+zb_plot(z)
 if (require(tmap)) {
-  # tmap_mode("view") # for interactive maps
-  z = zb_zone(london_area, point = london_cent)
-  tm_shape(z) + tm_polygons("circle_id", palette = "plasma", legend.show = FALSE) + tm_text("label")
+  zb_view(z)
 }
+
+# variations
+zb_plot(zb_zone(london_cent, london_area, n_circles = 2))
+zb_plot(zb_zone(london_cent, london_area, n_circles = 4, distance = 2, distance_growth = 0))
+zb_plot(zb_zone(london_cent, london_area, n_circles = 3, n_segments = c(1,4,8)))
 }
