@@ -3,8 +3,10 @@ title: "Combining zoning systems"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Combining zoning systems}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
   
 ```{r, include = FALSE}
@@ -71,7 +73,7 @@ zbs = do.call(rbind, lapply(1:nrow(NLD_cities), function(i) {
            ifelse(ci$population < 220000, 3,
            ifelse(ci$population < 800000, 4, 5)))
   
-  zb = zb_zone(point = ci, n_circles = nrings) %>% 
+  zb = zb_zone(x = ci, n_circles = nrings) %>% 
     mutate(name = ci$name,
            labelplus = paste(ci$name, label, sep = "_"))
   
@@ -81,8 +83,9 @@ zbs = do.call(rbind, lapply(1:nrow(NLD_cities), function(i) {
 
 
 ```{r}
+tm_basemap("OpenStreetMap") +
 tm_shape(zbs) +
-  tm_polygons(col = "circle_id", id = "labelplus", style = "cat", palette = "YlOrBr") + 
+  tm_polygons(col = "circle_id", id = "labelplus", style = "cat", palette = "YlOrBr", alpha = 0.7) + 
   tm_scale_bar()
 ```
 
