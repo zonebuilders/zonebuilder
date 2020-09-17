@@ -6,19 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Combining zoning systems • zonebuilder</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Combining zoning systems">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="zonebuilder">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -67,7 +67,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/zonebuilders/zonebuilder">
+  <a href="https://github.com/zonebuilders/zonebuilder/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -85,7 +85,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Combining zoning systems</h1>
+      <h1 data-toc-skip>Combining zoning systems</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/zonebuilders/zonebuilder/blob/master/vignettes/demo_dutch_cities.Rmd"><code>vignettes/demo_dutch_cities.Rmd</code></a></small>
@@ -97,42 +97,57 @@
     
 <p>This vignettes demonstrates possibilities when zoning systems from different cities meet. It raises the question: how should different systems be combined geographically?</p>
 <p>You need the latest version of the package:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"zonebuilders/zonebuilder"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"zonebuilders/zonebuilder"</span>)
+</pre></div>
 <p>For this demo, we need the following libraries:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(zonebuilder) <span class="co"># for the zoning system</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sf)          <span class="co"># for processing spatial data</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)       <span class="co"># for processing general data</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tmap)        <span class="co"># for visualizing spatial data</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/zonebuilders/zonebuilder">zonebuilder</a></span>) <span class="co"># for the zoning system</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://r-spatial.github.io/sf">sf</a></span>)          <span class="co"># for processing spatial data</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)       <span class="co"># for processing general data</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/mtennekes/tmap">tmap</a></span>)        <span class="co"># for visualizing spatial data</span>
+</pre></div>
 <p>We will apply the zoning system to the main Dutch cities, and analyse commuting patterns between the zones. The data can be read as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">NLD_cities =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/connections.html">url</a></span>(<span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_cities.Rds"</span>))</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">NLD_wijk_od =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/connections.html">url</a></span>(<span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_wijk_od.Rds"</span>))</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">NLD_wijk_centroids =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/connections.html">url</a></span>(<span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_wijk_centroids.Rds"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">NLD_cities</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span>(<span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_cities.Rds"</span>))
+<span class="kw">NLD_wijk_od</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span>(<span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_wijk_od.Rds"</span>))
+<span class="kw">NLD_wijk_centroids</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span>(<span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/NLD_wijk_centroids.Rds"</span>))
+</pre></div>
 <p>Let’s take a look at the <code>NLD_cities</code> data:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">NLD_cities <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(population))</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw">NLD_cities</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">population</span>))
+</pre></div>
 <p>…and plot it on an interactive map:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tmap_mode.html">tmap_mode</a></span>(<span class="st">"view"</span>) <span class="co"># enable interactive mode in tmap</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(NLD_cities, <span class="dt">symbols.size =</span> <span class="st">"population"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tmap_mode.html">tmap_mode</a></span>(<span class="st">"view"</span>) <span class="co"># enable interactive mode in tmap</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/qtm.html">qtm</a></span>(<span class="kw">NLD_cities</span>, symbols.size = <span class="st">"population"</span>)
+</pre></div>
 <p>The following code chunk generated zones for the Dutch cities:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">zbs =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span>(rbind, <span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(NLD_cities), <span class="cf">function</span>(i) {</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">  ci =<span class="st"> </span>NLD_cities[i, ]</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">  <span class="co"># Amsterdam 5, Eindhoven-Rotterdam 4, Roermond-Zeeland 2, others 3 </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">  nrings =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(ci<span class="op">$</span>population <span class="op">&lt;</span><span class="st"> </span><span class="dv">60000</span>, <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">           <span class="kw"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(ci<span class="op">$</span>population <span class="op">&lt;</span><span class="st"> </span><span class="dv">220000</span>, <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">           <span class="kw"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(ci<span class="op">$</span>population <span class="op">&lt;</span><span class="st"> </span><span class="dv">800000</span>, <span class="dv">4</span>, <span class="dv">5</span>)))</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">  </a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">  zb =<span class="st"> </span><span class="kw"><a href="../reference/zb_zone.html">zb_zone</a></span>(<span class="dt">point =</span> ci, <span class="dt">n_circles =</span> nrings) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">name =</span> ci<span class="op">$</span>name,</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">           <span class="dt">labelplus =</span> <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(ci<span class="op">$</span>name, label, <span class="dt">sep =</span> <span class="st">"_"</span>))</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">  </a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">  zb</a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">}))</a></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span>(zbs) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_polygons</a></span>(<span class="dt">col =</span> <span class="st">"circle_id"</span>, <span class="dt">id =</span> <span class="st">"labelplus"</span>, <span class="dt">style =</span> <span class="st">"cat"</span>, <span class="dt">palette =</span> <span class="st">"YlOrBr"</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/tmap/man/tm_scale_bar.html">tm_scale_bar</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">zbs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span>(<span class="kw">rbind</span>, <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">NLD_cities</span>), <span class="fu">function</span>(<span class="kw">i</span>) {
+  <span class="kw">ci</span> <span class="op">=</span> <span class="kw">NLD_cities</span>[<span class="kw">i</span>, ]
+  
+  <span class="co"># Amsterdam 5, Eindhoven-Rotterdam 4, Roermond-Zeeland 2, others 3 </span>
+  <span class="kw">nrings</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="kw">ci</span><span class="op">$</span><span class="kw">population</span> <span class="op">&lt;</span> <span class="fl">60000</span>, <span class="fl">2</span>,
+           <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="kw">ci</span><span class="op">$</span><span class="kw">population</span> <span class="op">&lt;</span> <span class="fl">220000</span>, <span class="fl">3</span>,
+           <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="kw">ci</span><span class="op">$</span><span class="kw">population</span> <span class="op">&lt;</span> <span class="fl">800000</span>, <span class="fl">4</span>, <span class="fl">5</span>)))
+  
+  <span class="kw">zb</span> <span class="op">=</span> <span class="fu"><a href="../reference/zb_zone.html">zb_zone</a></span>(x = <span class="kw">ci</span>, n_circles = <span class="kw">nrings</span>) <span class="op">%&gt;%</span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(name = <span class="kw">ci</span><span class="op">$</span><span class="kw">name</span>,
+           labelplus = <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw">ci</span><span class="op">$</span><span class="kw">name</span>, <span class="kw">label</span>, sep = <span class="st">"_"</span>))
+  
+  <span class="kw">zb</span>
+}))
+</pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_tiles.html">tm_basemap</a></span>(<span class="st">"OpenStreetMap"</span>) <span class="op">+</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span>(<span class="kw">zbs</span>) <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_polygons</a></span>(col = <span class="st">"circle_id"</span>, id = <span class="st">"labelplus"</span>, style = <span class="st">"cat"</span>, palette = <span class="st">"YlOrBr"</span>, alpha = <span class="fl">0.7</span>) <span class="op">+</span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_scale_bar.html">tm_scale_bar</a></span>()
+</pre></div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
       </div>
 
@@ -145,7 +160,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
