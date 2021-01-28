@@ -3,6 +3,7 @@
 ^README\.Rmd$
 ^LICENSE\.md$
 ^data-raw$
+^paper$
 ^sandbox$
 ^_pkgdown\.yml$
 ^docs$

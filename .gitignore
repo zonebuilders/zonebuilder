@@ -3,5 +3,6 @@
 .RData
 .Ruserdata
 inst/doc
+paper/figures
 docs/
 *.Rds
