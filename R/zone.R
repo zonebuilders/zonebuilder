@@ -88,7 +88,6 @@ zb_zone = function(x = NULL,
   
   if (!is.null(area) && !sf::st_contains(area, x, sparse = FALSE)[1]) stop("x is not located in area")
   
-  
   # other checks / preprosessing
   if (is.na(n_circles)) {
     if (!is.null(area)) {
@@ -192,6 +191,7 @@ zb_zone = function(x = NULL,
   }
   
   df = merge(doughnut_segments, labels_df, by = c("circle_id", "segment_id"))
+  df = df[c("label", "circle_id", "segment_id")]
   
   order_id = order(df$circle_id * 100 + df$segment_id)
   z = sf::st_transform(df[order_id, ], crs = orig_crs)
