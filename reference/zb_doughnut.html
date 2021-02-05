@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/zonebuilders/zonebuilder/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,24 +135,24 @@
     <p>Make doughnuts</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zb_doughnut</span>(
-  x = <span class='kw'>NULL</span>,
-  area = <span class='kw'>NULL</span>,
-  n_circles = <span class='fl'>NA</span>,
-  distance = <span class='fl'>1</span>,
-  distance_growth = <span class='fl'>1</span>
-)</pre>
+    <pre class="usage"><span class='fu'>zb_doughnut</span><span class='op'>(</span>
+  x <span class='op'>=</span> <span class='cn'>NULL</span>,
+  area <span class='op'>=</span> <span class='cn'>NULL</span>,
+  n_circles <span class='op'>=</span> <span class='cn'>NA</span>,
+  distance <span class='op'>=</span> <span class='fl'>1</span>,
+  distance_growth <span class='op'>=</span> <span class='fl'>1</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Centre point. Should be an <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> or <code><a href='https://rdrr.io/pkg/sf/man/sfc.html'>sfc</a></code> object containing one point, or a name of a city (which is looked up with OSM geocoding).</p></td>
+      <td><p>Centre point. Should be an <code><a href='https://r-spatial.github.io/sf/reference/sf.html'>sf</a></code> or <code><a href='https://r-spatial.github.io/sf/reference/sfc.html'>sfc</a></code> object containing one point, or a name of a city (which is looked up with OSM geocoding).</p></td>
     </tr>
     <tr>
       <th>area</th>
-      <td><p>(optional) Area. Should be an <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> or <code><a href='https://rdrr.io/pkg/sf/man/sfc.html'>sfc</a></code> object containing one (multi) polygon</p></td>
+      <td><p>(optional) Area. Should be an <code><a href='https://r-spatial.github.io/sf/reference/sf.html'>sf</a></code> or <code><a href='https://r-spatial.github.io/sf/reference/sfc.html'>sfc</a></code> object containing one (multi) polygon</p></td>
     </tr>
     <tr>
       <th>n_circles</th>
@@ -170,7 +170,7 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='zb_plot.html'>zb_plot</a></span>(<span class='fu'>zb_doughnut</span>(<span class='kw'>london_cent</span>, <span class='kw'>london_area</span>))
+    <pre class="examples"><div class='input'><span class='fu'><a href='zb_plot.html'>zb_plot</a></span><span class='op'>(</span><span class='fu'>zb_doughnut</span><span class='op'>(</span><span class='va'>london_cent</span>, <span class='va'>london_area</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='img'><img src='zb_doughnut-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
