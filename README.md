@@ -48,65 +48,6 @@ The default settings follow the **ClockBoard** configuration:
 
 ``` r
 london_zones = zb_zone(london_cent, london_area)
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
 zb_plot(london_zones)
 ```
 
@@ -140,71 +81,8 @@ which can also be used directly:
 ``` r
 par(mfrow=c(1,3))
 zb_plot(zb_doughnut(london_cent, london_area, n_circles = 5), title = "Doughnuts")
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
 zb_plot(zb_segment(london_cent, n_segments = 20), title = "Segments")
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
 zb_plot(zb_zone(london_cent, n_circles = 4, n_segments = 4), title = "4 segments, 4 circles")
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
-
-#> Warning: st_crs<- : replacing crs does not reproject data; use st_transform for
-#> that
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
