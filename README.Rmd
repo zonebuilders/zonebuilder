@@ -19,8 +19,7 @@ knitr::opts_chunk$set(
 # zonebuilder
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/zonebuilders/zonebuilder.svg?branch=master)](https://travis-ci.org/zonebuilders/zonebuilder)
-[![Codecov test coverage](https://codecov.io/gh/zonebuilders/zonebuilder/branch/master/graph/badge.svg)](https://codecov.io/gh/zonebuilders/zonebuilder?branch=master)
+<!-- [![Codecov test coverage](https://codecov.io/gh/zonebuilders/zonebuilder/branch/master/graph/badge.svg)](https://codecov.io/gh/zonebuilders/zonebuilder?branch=master) -->
 [![R-CMD-check](https://github.com/zonebuilders/zonebuilder/workflows/R-CMD-check/badge.svg)](https://github.com/zonebuilders/zonebuilder/actions)
 <!-- badges: end -->
 
@@ -38,13 +37,13 @@ install.packages("zonebuilder")
 Install it from [GitHub](https://github.com/) with:
 
 ```{r install-gh, eval=FALSE}
-# install.packages("devtools")
-devtools::install_github("robinlovelace/zonebuilder")
+# install.packages("remotes")
+remotes::install_github("zonebuilders/zonebuilder")
 ```
 
 ## Using zonebuilder
 
-Zonebuilder works with `sf` objects and works well alongside the `sf` package and visualisation packages that support spatial data such as `ggplot2`, `leaflet`, `mapdeck`, `mapview` and `tmap`, the last of which we'll use in the following maps.
+Zonebuilder builds on the `sf` package and works well with mapping packages such as `ggplot2`, `leaflet`, `mapdeck`, `mapview` and `tmap`, the last of which we'll use in the following maps.
 Attaching the package provides the example datasets `london_area` and `london_cent`, the geographic boundary and the centre of London:
 
 ```{r}
@@ -53,15 +52,12 @@ library(tmap)
 tm_shape(london_area) + tm_borders() + tm_shape(london_cent) + tm_dots("red")
 ```
 
-
 The main function `zb_zone` breaks this geographical scale into zones. The default settings follow the **ClockBoard** configuration:
-
 
 ```{r}
 london_zones = zb_zone(london_cent, london_area)
 zb_plot(london_zones)
 ```
-
 
 The idea behind this zoning system is based on the following principles:
 
