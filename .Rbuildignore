@@ -10,3 +10,5 @@
 ^pkgdown$
 ^\.travis\.yml$
 ^tic\.R$
+^codecov\.yml$
+^\.github$

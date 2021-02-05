@@ -31,7 +31,8 @@ Suggests:
     pct,
     dplyr,
     lwgeom,
-    leaflet
+    leaflet,
+    covr
 VignetteBuilder: 
     knitr
 URL: https://github.com/zonebuilders/zonebuilder, https://zonebuilders.github.io/zonebuilder/
