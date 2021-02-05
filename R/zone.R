@@ -86,7 +86,8 @@ zb_zone = function(x = NULL,
     }
   }
   
-  if (!is.null(area) && !sf::st_contains(area, x, sparse = FALSE)[1]) stop("x is not located in area")
+  if (!is.null(area) && !sf::st_contains(area, x, sparse = FALSE)[1])
+    stop("x is not located in area")
   
   # other checks / preprosessing
   if (is.na(n_circles)) {
@@ -152,7 +153,11 @@ zb_zone = function(x = NULL,
         x = sf::st_make_valid(x)
       }
     }
-    area = st_union(st_buffer(area, dist = 0.01)) #0.01 (in most crs's 1 cm) is arbitrary chosen, but works to resolve strange artefacts
+    # temp fix for https://github.com/zonebuilders/zonebuilder/issues/24
+    suppressWarnings({
+      area = st_union(st_buffer(area, dist = 0.01)) #0.01 (in most crs's 1 cm)
+      # arbitrary chosen, but works to resolve strange artefacts
+    })
     
     zones_ids = which(sapply(sf::st_intersects(doughnuts, area), length) > 0)
     doughnuts = suppressWarnings(sf::st_intersection(doughnuts, area))
