@@ -1,11 +1,21 @@
-load_all()
+
+devtools::load_all()
 
 data(london_area)
-data(london_area_cent)
+data(london_cent)
 
-london_zones = zb_zone(london_area, point = london_area_cent)
+sf::st_crs(zonebuilder::london_area)
 
+crs1 = sf::st_crs(zonebuilder::london_area)
+sf::st_crs(london_area) = 4326
+crs2 = sf::st_crs(london_area)
 
+identical(crs1, crs2)
+waldo::compare(crs1, crs2)
+usethis::use_data(london_area, overwrite = TRUE)
+
+sf::st_crs(london_cent) = 4326
+usethis::use_data(london_cent, overwrite = TRUE)
 
 ##### London PM10
 
