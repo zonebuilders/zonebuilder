@@ -27,5 +27,5 @@ zb_doughnut(
 Make doughnuts
 }
 \examples{
-zb_plot(zb_doughnut(london_cent, london_area))
+zb_plot(zb_doughnut(london_c(), london_a()))
 }

@@ -3,17 +3,25 @@
 \docType{data}
 \name{london_area}
 \alias{london_area}
+\alias{london_a}
 \alias{london_cent}
+\alias{london_c}
 \title{Region representing London in projected coordinate system}
+\usage{
+london_a()
+
+london_c()
+}
 \description{
-`london_area` and `london_cent` represent the city boundaries and centre point of London, respectively.
+`london_a()` and `london_c()` return the city boundaries and centre
+  point of London, respectively.
 }
 \note{
-`london_area` is a projected version of the `lnd` object in the `spDataLarge` package.
+`london_a()`  returns a projected version of `lnd` in `spDataLarge`.
 See the `data-raw` folder in the package's repo to reproduce these datasets
 }
 \examples{
-plot(london_area, reset = FALSE)
-plot(london_cent, add = TRUE)
+plot(london_a(), reset = FALSE)
+plot(london_c(), add = TRUE)
 }
 \keyword{datasets}

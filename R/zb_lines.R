@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' point = sf::st_centroid(london_area)
+#' point = sf::st_centroid(london_a())
 #' n = 4
 #' l = zb_lines(point, n)
 #' plot(l)

@@ -19,6 +19,6 @@ zb_view(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"), title = NULL)
 This function opens an interactive map of the zones
 }
 \examples{
-z = zb_zone(london_cent, london_area)
+z = zb_zone(london_c(), london_a())
 zb_view(z, palette = "rings")
 }

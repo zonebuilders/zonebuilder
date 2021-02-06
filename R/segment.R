@@ -4,7 +4,7 @@
 #'
 #' @export
 #' @examples
-#' zb_plot(zb_segment(london_cent, london_area))
+#' zb_plot(zb_segment(london_c(), london_a()))
 zb_segment = function(x = NULL,
                       area = NULL,
                       n_segments = 12,

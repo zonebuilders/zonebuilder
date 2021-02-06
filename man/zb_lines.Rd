@@ -22,7 +22,7 @@ Objects of class `sfc` containing linestring geometries
 Create lines radiating at equal angles from a point
 }
 \examples{
-point = sf::st_centroid(london_area)
+point = sf::st_centroid(london_a())
 n = 4
 l = zb_lines(point, n)
 plot(l)

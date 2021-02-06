@@ -27,7 +27,7 @@
 #' @importFrom grDevices hcl
 #' @examples
 #' # default settings
-#' z = zb_zone(london_cent, london_area)
+#' z = zb_zone(london_c(), london_a())
 #' zb_plot(z)
 #' if (require(tmap)) {
 #'   zb_view(z)
@@ -37,9 +37,9 @@
 #'}
 #' 
 #' # variations
-#' zb_plot(zb_zone(london_cent, london_area, n_circles = 2))
-#' zb_plot(zb_zone(london_cent, london_area, n_circles = 4, distance = 2, distance_growth = 0))
-#' zb_plot(zb_zone(london_cent, london_area, n_circles = 3, n_segments = c(1,4,8)))
+#' zb_plot(zb_zone(london_c(), london_a(), n_circles = 2))
+#' zb_plot(zb_zone(london_c(), london_a(), n_circles = 4, distance = 2, distance_growth = 0))
+#' zb_plot(zb_zone(london_c(), london_a(), n_circles = 3, n_segments = c(1,4,8)))
 zb_zone = function(x = NULL,
                    area = NULL,
                    n_circles = NA,
@@ -230,7 +230,7 @@ st_centroid_within_poly <- function (poly) {
 }
 
 # Create zones of equal area (to be documented)
-# z = zb_zone(london_area, n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
+# z = zb_zone(london_a(), n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
 # suggestion: split out new new function, reduce n. arguments
 # plot(z, col = 1:nrow(z))
 zb_zone_equal_area = function(x = NULL,

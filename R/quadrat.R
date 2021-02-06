@@ -9,8 +9,8 @@
 #' @export
 #'
 #' @examples
-#' x = london_area
-#' c = sf::st_centroid(london_area)
+#' x = london_a()
+#' c = sf::st_centroid(london_a())
 #' plot(zb_quadrat(x, ncol = 2), col = 2:5)
 #' plot(c, add = TRUE, col = "white")
 #' plot(zb_quadrat(x, ncol = 3))

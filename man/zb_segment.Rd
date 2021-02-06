@@ -19,5 +19,5 @@ zb_segment(x = NULL, area = NULL, n_segments = 12, distance = NA)
 Make segments
 }
 \examples{
-zb_plot(zb_segment(london_cent, london_area))
+zb_plot(zb_segment(london_c(), london_a()))
 }

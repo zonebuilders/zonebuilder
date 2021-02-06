@@ -18,7 +18,7 @@ A vector of colors
 This function generates colors for zones.
 }
 \examples{
-z = zb_zone(london_cent, london_area)
+z = zb_zone(london_c(), london_a())
 zb_color(z)
 plot(z[, "circle_id"], col = zb_color(z))
 }

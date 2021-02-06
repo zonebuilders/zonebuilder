@@ -9,7 +9,7 @@
 #' @importFrom RColorBrewer brewer.pal 
 #'
 #' @examples
-#' z = zb_zone(london_cent, london_area)
+#' z = zb_zone(london_c(), london_a())
 #' zb_color(z)
 #' plot(z[, "circle_id"], col = zb_color(z))
 zb_color = function(z, palette = c("rings", "hcl", "dartboard")) {
@@ -47,7 +47,7 @@ zb_color = function(z, palette = c("rings", "hcl", "dartboard")) {
 #' @param title title
 #' @export
 #' @examples
-#' z = zb_zone(london_cent, london_area)
+#' z = zb_zone(london_c(), london_a())
 #' zb_view(z, palette = "rings")
 zb_view = function(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"), title  = NULL) {
   palette = match.arg(palette)

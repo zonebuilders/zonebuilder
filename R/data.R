@@ -1,18 +1,27 @@
 #' Region representing London in projected coordinate system
 #' 
-#' `london_area` and `london_cent` represent the city boundaries and centre point of London, respectively.
+#' `london_a()` and `london_c()` return the city boundaries and centre
+#'   point of London, respectively.
 #'
-#' @note `london_area` is a projected version of the `lnd` object in the `spDataLarge` package.
+#' @note `london_a()`  returns a projected version of `lnd` in `spDataLarge`.
 #' See the `data-raw` folder in the package's repo to reproduce these datasets
 #'
 #' @docType data
 #' @keywords datasets
 #' @name london_area
-#' @aliases london_cent
+#' @aliases london_cent london_c london_a
+#' @export
 #' @examples 
-#' plot(london_area, reset = FALSE)
-#' plot(london_cent, add = TRUE)
-NULL
+#' plot(london_a(), reset = FALSE)
+#' plot(london_c(), add = TRUE)
+london_a = function() {
+  sf::st_set_crs(zonebuilder::london_area, 27700)
+}
+#' @rdname london_area
+#' @export
+london_c = function() {
+  sf::st_set_crs(zonebuilder::london_cent, 27700)
+}
 
 #' The first 100 triangular numbers
 #' 
