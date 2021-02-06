@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Region representing London in projected coordinate system — london_area" />
-<meta property="og:description" content="`london_area` and `london_cent` represent the city boundaries and centre point of London, respectively." />
+<meta property="og:description" content="`london_a()` and `london_c()` return the city boundaries and centre
+  point of London, respectively." />
 
 
 
@@ -132,19 +133,23 @@
     </div>
 
     <div class="ref-description">
-    <p>`london_area` and `london_cent` represent the city boundaries and centre point of London, respectively.</p>
+    <p>`london_a()` and `london_c()` return the city boundaries and centre
+  point of London, respectively.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>london_a</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>london_c</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>`london_area` is a projected version of the `lnd` object in the `spDataLarge` package.
+    <p>`london_a()`  returns a projected version of `lnd` in `spDataLarge`.
 See the `data-raw` folder in the package's repo to reproduce these datasets</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>london_area</span>, reset <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>london_cent</span>, add <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>london_a</span><span class='op'>(</span><span class='op'>)</span>, reset <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>london_c</span><span class='op'>(</span><span class='op'>)</span>, add <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='london_area-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
