@@ -15,25 +15,19 @@ zb_doughnut = function(x = NULL,
 }
 
 create_rings = function(point, n_circles, distance) {
-  
-  csdistance = cumsum(distance) * 1000
-  circles = lapply(csdistance, function(d) {
-    # temp fix for https://github.com/zonebuilders/zonebuilder/issues/24
-    # should this be reported as a bug in sf?
-    suppressWarnings({doughnut_i = sf::st_buffer(point, d)})
+  csdistance = cumsum(distance)
+  circles = lapply(csdistance * 1000, function(d) {
+    doughnut_i = sf::st_buffer(point, d)
   })
   
   doughnuts_non_center = mapply(function(x, y) sf::st_sf(geometry = sf::st_difference(x, y)),
                                  circles[-1], 
                                  circles[-n_circles], 
                                  SIMPLIFY = FALSE)
-  # temp fix for https://github.com/zonebuilders/zonebuilder/issues/24
-  suppressWarnings({
-    doughnuts = do.call(
-      rbind, 
-      c(list(sf::st_sf(geometry = circles[[1]])), doughnuts_non_center)
-    )
-  })
   
+  doughnuts = do.call(rbind, 
+                       c(list(sf::st_sf(geometry = circles[[1]])), 
+                         doughnuts_non_center))
+
   doughnuts  
 }
