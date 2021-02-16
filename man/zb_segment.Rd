@@ -15,6 +15,9 @@ zb_segment(x = NULL, area = NULL, n_segments = 12, distance = NA)
 
 \item{distance}{Distance The distances between the circles. For the center circle, it is the distance between the center and the circle. If only one number is specified, \code{distance_growth} determines the increment at which the distances grow for the outer circles.}
 }
+\value{
+An `sf` data frame
+}
 \description{
 Make segments
 }

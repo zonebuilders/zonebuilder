@@ -23,6 +23,9 @@ zb_doughnut(
 
 \item{distance_growth}{The rate at which the distances between the circles grow. Only applicable when \code{distance} is one number and \code{n_circles > 1}. See also \code{distance}.}
 }
+\value{
+An `sf` data frame
+}
 \description{
 Make doughnuts
 }

@@ -1,7 +1,8 @@
 #' Make doughnuts
 #' 
 #' @inheritParams zb_zone
-#'
+#' 
+#' @return An `sf` data frame
 #' @export
 #' @examples
 #' zb_plot(zb_doughnut(london_c(), london_a()))

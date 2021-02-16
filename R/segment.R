@@ -1,6 +1,8 @@
 #' Make segments
 #' 
 #' @inheritParams zb_zone
+#' 
+#' @return An `sf` data frame
 #'
 #' @export
 #' @examples

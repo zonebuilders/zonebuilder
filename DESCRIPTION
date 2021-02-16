@@ -1,6 +1,5 @@
 Package: zonebuilder
-Title: Tools to Create Geographic Zones and Explore Zoning
-    Systems
+Title: Create and Explore Geographic Zoning Systems
 Version: 0.0.1
 Authors@R: 
     c(person(given = "Robin",
@@ -26,7 +25,6 @@ Description: Functions, documentation and example data to help divide
     distance to the centre and angular distance from North, creating a simple
     geographic zoning and labelling system useful for visualising geographic
     phenomena with a clearly demarcated central location such as cities.
-    12, creating a zoning system that can be used to 
 License: GPL-3
 BugReports: https://github.com/zonebuilders/zonebuilder/issues
 Depends: 

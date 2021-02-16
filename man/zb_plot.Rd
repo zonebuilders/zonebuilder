@@ -23,6 +23,9 @@ zb_plot(
 
 \item{zone_label_thres}{This number determines in which zones labels are printed, namely each zone for which the relative area size is larger than `zone_label_thres`.}
 }
+\value{
+A static plot created using R's base `graphics` package
+}
 \description{
 This function opens a static map of the zones
 }

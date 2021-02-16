@@ -44,7 +44,8 @@ zb_color = function(z, palette = c("rings", "hcl", "dartboard")) {
 #' @param z An `sf` object containing zones covering the region
 #' @param alpha Alpha transparency, number between 0 (fully transparent) and 1 (not transparent)
 #' @param palette Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)
-#' @param title title
+#' @param title The title of the plot
+#' @return An interactive map created with `tmap`
 #' @export
 #' @examples
 #' z = zb_zone(london_c(), london_a())
@@ -82,11 +83,14 @@ zb_view = function(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"), tit
 #' 
 #' @param z An `sf` object containing zones covering the region
 #' @param palette Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)
-#' @param title title
+#' @param title Plot title
 #' @param text_size Vector of two numeric values that determine the relative text sizes. The first determines the smallest text size and the second one the largest text size. The largest text size is used for the outermost circle, and the smallest for the central circle in case there are 9 or more circles. If there are less circles, the relative text size is larger (see source code for exact method)
 #' @param zone_label_thres This number determines in which zones labels are printed, namely each zone for which the relative area size is larger than `zone_label_thres`. 
 #' @importFrom graphics par mtext
+#' @return A static plot created using R's base `graphics` package
 #' @export
+#' @examples 
+#' zb_plot(zb_zone(london_c()))
 zb_plot = function(z, palette = c("rings", "hcl", "dartboard"), title = NULL, text_size = c(0.3, 1), zone_label_thres = 0.002) {
   palette = match.arg(palette)
   z$color = zb_color(z, palette)
@@ -97,7 +101,9 @@ zb_plot = function(z, palette = c("rings", "hcl", "dartboard"), title = NULL, te
   sel = areas > zone_label_thres
   
   cent = sf::st_set_crs(sf::st_set_geometry(z, "centroid"), sf::st_crs(z))
-
+  
+  oldpar = par(no.readonly = TRUE) # code line i
+  on.exit(par(oldpar)) # code line i + 1
   p = graphics::par(mar=c(.2,.2,.2,.2))
   plot(sf::st_geometry(z), col = z$color, border = "grey40")
   co = st_coordinates(cent[sel,])
