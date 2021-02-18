@@ -17,7 +17,7 @@ zb_plot(
 
 \item{palette}{Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)}
 
-\item{title}{title}
+\item{title}{Plot title}
 
 \item{text_size}{Vector of two numeric values that determine the relative text sizes. The first determines the smallest text size and the second one the largest text size. The largest text size is used for the outermost circle, and the smallest for the central circle in case there are 9 or more circles. If there are less circles, the relative text size is larger (see source code for exact method)}
 
@@ -28,4 +28,7 @@ A static plot created using R's base `graphics` package
 }
 \description{
 This function opens a static map of the zones
+}
+\examples{
+zb_plot(zb_zone(london_c()))
 }

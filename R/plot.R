@@ -48,8 +48,10 @@ zb_color = function(z, palette = c("rings", "hcl", "dartboard")) {
 #' @return An interactive map created with `tmap`
 #' @export
 #' @examples
+#' \donttest{
 #' z = zb_zone(london_c(), london_a())
 #' zb_view(z, palette = "rings")
+#' }
 zb_view = function(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"), title  = NULL) {
   palette = match.arg(palette)
   if (requireNamespace("tmap")) {
