@@ -80,6 +80,16 @@ zb_plot(zb_segment(london_c(), n_segments = 20), title = "Segments")
 zb_plot(zb_zone(london_c(), n_circles = 4, n_segments = 4), title = "4 segments, 4 circles")
 ```
 
+## Contribute
+
+Contributions are welcome!
+
+It may be worth checking-in in a [discussion post](https://github.com/zonebuilders/zonebuilder/discussions/28) before opening an issue.
+
+## Citation
+
+Watch this space.
+
 
 <!-- tmap_arrange( -->
 <!--   zb_view(zb_doughnut(london_c(), london_a(), n_circles = 5), title = "Doughnuts"), -->

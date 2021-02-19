@@ -104,6 +104,18 @@ zb_plot(zb_zone(london_c(), n_circles = 4, n_segments = 4), title = "4 segments,
 
 <img src="man/figures/README-unnamed-chunk-5-3.png" width="100%" />
 
+## Contribute
+
+Contributions are welcome!
+
+It may be worth checking-in in a [discussion
+post](https://github.com/zonebuilders/zonebuilder/discussions/28) before
+opening an issue.
+
+## Citation
+
+Watch this space.
+
 <!-- tmap_arrange( -->
 <!--   zb_view(zb_doughnut(london_c(), london_a(), n_circles = 5), title = "Doughnuts"), -->
 <!--   zb_view(zb_segment(london_c(), n_segments = 20), title = "Segments") -->
