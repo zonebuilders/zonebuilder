@@ -54,7 +54,7 @@ The main function `zb_zone` breaks this geographical scale into zones.
 The default settings follow the **ClockBoard** configuration:
 
 ``` r
-london_zones = zb_zone(london_c(), london_a())
+london_zones <- zb_zone(london_c(), london_a())
 zb_plot(london_zones)
 ```
 
@@ -86,7 +86,8 @@ The function `zb_zone` makes use of `zb_doughnut` and `zb_segment`,
 which can also be used directly:
 
 ``` r
-par(mfrow=c(1,3))
+par(mfrow = c(1, 3))
+par(mfrow = c(2, 3))
 zb_plot(zb_doughnut(london_c(), london_a(), n_circles = 5), title = "Doughnuts")
 ```
 
