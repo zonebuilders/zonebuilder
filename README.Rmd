@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- [![Codecov test coverage](https://codecov.io/gh/zonebuilders/zonebuilder/branch/master/graph/badge.svg)](https://codecov.io/gh/zonebuilders/zonebuilder?branch=master) -->
 [![R-CMD-check](https://github.com/zonebuilders/zonebuilder/workflows/R-CMD-check/badge.svg)](https://github.com/zonebuilders/zonebuilder/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/zonebuilder)](https://CRAN.R-project.org/package=zonebuilder)
 <!-- badges: end -->
 
 The goal of zonebuilder is to break up large geographic regions such as cities into manageable zones.
@@ -28,9 +29,9 @@ Zoning systems are important in many fields, including demographics, economy, he
 
 ## Installation
 
-<!-- You can install the released version of zonebuilder from [CRAN](https://CRAN.R-project.org) with: -->
+You can install the released version of zonebuilder from [CRAN](https://CRAN.R-project.org) with:
 
-```{r, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE}
 install.packages("zonebuilder")
 ```
 
@@ -55,7 +56,7 @@ tm_shape(london_a()) + tm_borders() + tm_shape(london_c()) + tm_dots("red")
 The main function `zb_zone` breaks this geographical scale into zones. The default settings follow the **ClockBoard** configuration:
 
 ```{r}
-london_zones = zb_zone(london_c(), london_a())
+london_zones <- zb_zone(london_c(), london_a())
 zb_plot(london_zones)
 ```
 
@@ -73,11 +74,21 @@ The package `zonebuilder` does not only create zoning systems based on the Cload
 The function `zb_zone` makes use of `zb_doughnut` and `zb_segment`, which can also be used directly:
 
 ```{r fig.height=3}
-par(mfrow=c(1,3))
+par(mfrow = c(1, 3))
 zb_plot(zb_doughnut(london_c(), london_a(), n_circles = 5), title = "Doughnuts")
 zb_plot(zb_segment(london_c(), n_segments = 20), title = "Segments")
 zb_plot(zb_zone(london_c(), n_circles = 4, n_segments = 4), title = "4 segments, 4 circles")
 ```
+
+## Contribute
+
+Contributions are welcome!
+
+It may be worth checking-in in a [discussion post](https://github.com/zonebuilders/zonebuilder/discussions/28) before opening an issue.
+
+## Citation
+
+Watch this space.
 
 
 <!-- tmap_arrange( -->

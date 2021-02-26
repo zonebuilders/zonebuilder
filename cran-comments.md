@@ -1,3 +1,5 @@
+I have used \donttest{} to stop examples that took too long from causing issues on CRAN submission.
+
 Following feedback I have added documentation on the type of objects that different functions return.
 
 The function on.exit() was used to ensure no graphical parameters were changed by calling plot functions.
