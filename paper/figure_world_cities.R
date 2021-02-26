@@ -1,17 +1,67 @@
 library(tmap)
 library(dplyr)
+library(terra)
+library(stars)
+library(maptiles)
 
 data(metro)
 
 ttm()
 qtm(metro, symbols.size = "pop2020")
 
-x = c("Tokio", "Moscow", "London", "Amsterdam", "Sydney", "Cairo", "Nairobi", "Rio de Janeiro", "Buenos Aires", "Bogota", "Boston", "New York City", "Mexico City", "Istanbul", "Beijing", "Paris", "Rome", "Berlin")
+x = c(
+"Moscow",
+"Istanbul",
+"London",
+"Paris",
+"Rome",
+"Berlin",
+"Madrid",
+"Amsterdam",
+
+"Toronto",
+"Boston",
+"New York",
+"Chicago",
+"Los Angeles",
+
+"Mexico City",
+"Rio de Janeiro",
+"Buenos Aires",
+"Bogota",
+
+"Cairo",
+"Nairobi",
+"Johannesburg",
+
+"Tokyo", 
+"Beijing",
+"Hong Kong",
+"Bangkok",
+"Singapore",
+"Dubai",
+"Delhi",
+"Kuala Lumpur",
+"Taipei",
+"Seoul",
+
+"Sydney")
+
+metrosel = metro[match(x, metro$name), ]
+
+for (iso in metrosel$iso_a3) {
+  f = paste0("https://data.worldpop.org/GIS/Population/Global_2000_2020/2020/", toupper(iso), "/", tolower(iso), "_ppp_2020.tif")
+  g = paste0("~/local/data/worldpop/", basename(f))
+  if (!file.exists(g)) curl::curl_download(url = f, destfile = g)
+}
+
+#https://data.worldpop.org/GIS/Population/Global_2000_2020/2020/RUS/rus_ppp_2020.tif
+
+
 
 geo = tmaptools::geocode_OSM(x, as.sf = TRUE)
 # update cities
 geo$point[geo$query == "London"] = st_transform(london_c(), crs = 4326)
-
 
 
 
@@ -21,17 +71,23 @@ zns = lapply(seq_len(nrow(geo)), function(i) {
 })
 names(zns) = x
 
-
 ## download static basemaps
 bms_wc = lapply(zns, function(z) {
-  tm = tmaptools::read_osm(z, zoom = 9, type = 'stamen-watercolor', ext = 1.05)
+  maptiles::get_tiles(z, "CartoDB.VoyagerNoLabels", zoom = 9)
+#  tm = tmaptools::read_osm(z, zoom = 9, type = 'stamen-watercolor', ext = 1.05)
 })
+
+
+
+
 names(bms_wc) = x
 
+tm_shape(bms_wc[[3]]) +
+  tm_rgb()
 
 
-qtm_border = function(shp, width = 2, col = "black") {
-  tm_shape(shp) + 
+qtm_border = function(shp, width = 2, col = "black", master = FALSE) {
+  tm_shape(shp, is.master = master) + 
     tm_borders(lwd = (width * 2) + 1, col = "white") +
   tm_shape(shp) + 
     tm_borders(lwd = width, col = col) 
@@ -46,17 +102,24 @@ mex = read_sf("sandbox/Muni_2012gw.shp")
 mex = mex[mex$CVE_ENT == "09", ]
 mex = st_union(mex)
 
+m = terra::rast("sandbox/mex_ppp_2020.tif")
+mc = crop(m, ext(as(zns$`Mexico City`, "SpatVector")))
+
+tm_shape(mc) +
+  tm_raster(style ="kmeans") + 
+  qtm_border(mex, col = "purple", width = 3) +
+  qtm_border(zns$`Mexico City` %>% filter(circle_id < 10), master = TRUE)
+
+
 
 qtm(zns[[1]]) + qtm(mex, fill = NA)
 
 tmap_mode("plot")
 
 
-qtm(bms_wc[[13]]) + 
-  tm_shape(zns[[13]]) + 
-    #tm_polygons("circle_id", palette = "magma", alpha = 0.3, legend.show = FALSE) + 
-    tm_borders(lwd = 2, col = "blue") +
-  tm_shape(mex) + tm_borders(lwd = 2, col = "black")
+tm_shape(bms_wc$`Mexico City`) + tm_rgb() +
+  qtm_border(mex, col = "purple", width = 3) +
+  qtm_border(zns$`Mexico City` %>% filter(circle_id < 10), master = TRUE)
 
 
 # Moscow
@@ -87,9 +150,19 @@ qtm(bms_wc$Amsterdam) +
 
 # London
 
-qtm(bms_wc$London) + 
+tm_shape(bms_wc$London) + tm_rgb() +
   qtm_border(london_a(), col = "purple", width = 3) +
-  qtm_border(zns$London %>% filter(circle_id < 9))
+  qtm_border(zns$London %>% filter(circle_id < 9), master = TRUE)
+
+
+
+a = terra::rast("sandbox/gbr_ppp_2020.tif")
+ac = crop(a, ext(as(zns$London, "SpatVector")))
+
+tm_shape(ac) +
+  tm_raster(style ="kmeans") + 
+qtm_border(london_a(), col = "purple", width = 3) +
+  qtm_border(zns$London %>% filter(circle_id < 9), master = TRUE)
 
 
 ### New on CRAN Tweet on 2020-02-19
