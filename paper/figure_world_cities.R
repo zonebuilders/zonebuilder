@@ -216,8 +216,9 @@ alldata = as.vector(unlist(lapply(popdata_norm, function(p) {
   p[]
 })))
 
-kmeans(alldata, centers = 10)
-
+kdata = kmeans(alldata, centers = 7)
+kdata$centers
+tdata = round(table(kdata$cluster)/length(alldata)*100, 2)
 
 pquan = t(sapply(popdata_norm, function(p) {
   as.vector(quantile(na.omit(p[])))
@@ -225,8 +226,8 @@ pquan = t(sapply(popdata_norm, function(p) {
 colSums(pquan) / 30
 
 
-brks = c(0, 1000, 2500, 5000, 8000, Inf)
-pal = c("#FFFFFF", pals::brewer.blues(4))
+brks = c(0, 1000, 2500, 5000, 8000, 15000, 30000, Inf)
+pal = c("#FFFFFF", pals::brewer.blues(12)[seq(2,12,by=2)])
 acol = pals::alphabet(26)[26]
 
 
