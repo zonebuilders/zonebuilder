@@ -3,6 +3,7 @@ library(dplyr)
 library(terra)
 library(stars)
 library(maptiles)
+devtools::load_all()
 localdir = "~/local/data/worldpop/"
 
 
@@ -138,7 +139,7 @@ popdata = lapply(1:nrow(df), function(i) {
   }
   a1
 })
-#df$has_pop_data = !sapply(popdata, is.null)
+df$has_pop_data = !sapply(popdata, is.null)
 
 
 #################
@@ -155,7 +156,7 @@ mex = st_union(mex)
 admin$`Mexico City` = mex
 
 # London
-admin$London = london_a()
+admin$London = zonebuilder::london_a()
 
 # Amsterdam
 data("NLD_muni")
@@ -198,7 +199,7 @@ df$circles = c(5, 6, 5, 7, 9,
                9, 6, 9, 8, 6,
                9, 8, 9, 9, 9)
 
-df$circles = 9
+df$circles = 7
 
 
 # Normalize popdata to people/km2
@@ -238,6 +239,7 @@ qtm_border = function(shp, width = 2, col = "black", master = FALSE) {
     tm_borders(lwd = width, col = col) 
 }
 
+nms = sort(df$name)
 
 tml = lapply(match(nms, df$name), function(i) {
   if (df$has_pop_data[i]) {
@@ -257,9 +259,9 @@ tml = lapply(match(nms, df$name), function(i) {
 })
 
 tma1 = tmap_arrange(tml[1:15], ncol = 3)
-tmap_save(tma1, paste0(plotdir, "cities1_15.png"), width = 1800, height = 3000) 
+tmap_save(tma1, paste0(plotdir, "cities7c_1_15.png"), width = 1800, height = 3000) 
 
 tma2 = tmap_arrange(tml[16:30], ncol = 3)
-tmap_save(tma2, paste0(plotdir, "cities16_30.png"), width = 1800, height = 3000) 
+tmap_save(tma2, paste0(plotdir, "cities7c_16_30.png"), width = 1800, height = 3000) 
 
 
