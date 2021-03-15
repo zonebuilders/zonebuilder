@@ -23,6 +23,12 @@ x = c(
 "Madrid",
 "Amsterdam",
 
+"Cairo",
+"Nairobi",
+"Johannesburg",
+"Lagos",
+"Kinshasa",
+
 "Toronto",
 "Boston",
 "New York",
@@ -33,11 +39,10 @@ x = c(
 "Rio de Janeiro",
 "Buenos Aires",
 "Bogota",
+"Sao Paulo",
 
-"Cairo",
-"Nairobi",
-"Johannesburg",
 
+"Tehran",
 "Tokyo", 
 "Beijing",
 "Hong Kong",
@@ -45,8 +50,10 @@ x = c(
 "Singapore",
 "Dubai",
 "Delhi",
+"Mumbai",
 "Kuala Lumpur",
 "Seoul",
+"Shenzhen",
 
 "Sydney")
 
@@ -60,6 +67,8 @@ df = df[order(df$country_area), c("name", "name_long", "iso_a3", "country_area")
 ## Download WorldPop data
 #################
 
+
+# some have other urls: https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/maxar_v1/NGA/nga_ppp_2020_UNadj_constrained.tif
 
 df = df %>% 
   mutate(f = paste0("https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/BSGM/", iso_a3, "/", tolower(iso_a3), "_ppp_2020_UNadj_constrained.tif"))
@@ -93,9 +102,15 @@ geo$id = 1:nrow(geo)
 
 qtm(geo, dots.col = "blue", text = "id", text.ymod = 1) + qtm(df, dots.col = "red")
 
-blue_better = c(1, 3, 5, 6, 7, 8, 9, 10, 11, 12, 14,15, 16:30)
+blue_better = c("Moscow", "London", "Rome", "Berlin", "Madrid", "Amsterdam", 
+                "Toronto", "Boston", "New York", "Chicago", "Mexico City", "Rio de Janeiro", 
+                "Buenos Aires", "Bogota", "Cairo", "Nairobi", "Johannesburg", 
+                "Tokyo", "Beijing", "Hong Kong", "Bangkok", "Singapore", "Dubai", 
+                "Delhi", "Kuala Lumpur", "Seoul", "Sydney", "Sao Paulo", "Tehran", "Mumbai", "Shenzhen", "Lagos", "Kinshasa")
 
-df$geometry[blue_better] = geo$point[blue_better]
+ids = match(blue_better, df$name)
+
+df$geometry[ids] = geo$point[ids]
 
 #################
 ## Zones
@@ -113,10 +128,10 @@ names(zns) = x
 #################
 
 ## download static basemaps
-basemaps = lapply(zns, function(z) {
-  maptiles::get_tiles(z, "CartoDB.VoyagerNoLabels", zoom = 9)
-#  tm = tmaptools::read_osm(z, zoom = 9, type = 'stamen-watercolor', ext = 1.05)
-})
+# basemaps = lapply(zns, function(z) {
+#   maptiles::get_tiles(z, "CartoDB.VoyagerNoLabels", zoom = 9)
+# #  tm = tmaptools::read_osm(z, zoom = 9, type = 'stamen-watercolor', ext = 1.05)
+# })
 
 #################
 ## Load worldpop data
@@ -192,13 +207,6 @@ rm(mex, ams, bk, bl, pr)
 
 plotdir = "sandbox/plots/"
 
-df$circles = c(5, 6, 5, 7, 9, 
-               8, 5, 9, 8, 9, 
-               6, 9, 7, 5, 8,
-               7, 6, 5, 9, 9,
-               9, 6, 9, 8, 6,
-               9, 8, 9, 9, 9)
-
 df$circles = 7
 
 
@@ -212,19 +220,21 @@ popdata_norm = lapply(popdata, function(p) {
   p
 }) 
 
+if (FALSE) {
+  alldata = as.vector(unlist(lapply(popdata_norm, function(p) {
+    p[]
+  })))
+  
+  kdata = kmeans(alldata, centers = 7)
+  kdata$centers
+  tdata = round(table(kdata$cluster)/length(alldata)*100, 2)
+  
+  pquan = t(sapply(popdata_norm, function(p) {
+    as.vector(quantile(na.omit(p[])))
+  }))
+  colSums(pquan) / 30
+}
 
-alldata = as.vector(unlist(lapply(popdata_norm, function(p) {
-  p[]
-})))
-
-kdata = kmeans(alldata, centers = 7)
-kdata$centers
-tdata = round(table(kdata$cluster)/length(alldata)*100, 2)
-
-pquan = t(sapply(popdata_norm, function(p) {
-  as.vector(quantile(na.omit(p[])))
-}))
-colSums(pquan) / 30
 
 
 brks = c(0, 1000, 2500, 5000, 8000, 15000, 30000, Inf)
@@ -245,11 +255,10 @@ tml = lapply(match(nms, df$name), function(i) {
   if (df$has_pop_data[i]) {
     tm = tm_shape(popdata_norm[[i]]) + 
       tm_raster(breaks = brks, title = "pop/km2", palette = pal, legend.show = FALSE)
-      #tm_raster(style = "kmeans", title = "pop/100m sq")
-    
-    if (!is.null(admin[[i]])) {
-      tm = tm + qtm_border(admin[[i]], col = acol, width = 3)
-    }
+
+    # if (!is.null(admin[[i]])) {
+    #   tm = tm + qtm_border(admin[[i]], col = acol, width = 3)
+    # }
     
     tm = tm + qtm_border(zns[[i]] %>% filter(circle_id <= df$circles[i]), master = TRUE) + tm_layout(title = df$name[i], frame = FALSE, outer.margins = 0, scale = 0.5, legend.position = c("right", "bottom"))
   } else {
