@@ -63,6 +63,12 @@ df$country_area[is.na(df$country_area)] = 0
 
 df = df[order(df$country_area), c("name", "name_long", "iso_a3", "country_area")]
 
+
+df$continent = World$continent[match(df$iso_a3, World$iso_a3)]
+df$continent[df$name == "Hong Kong"] = "Asia"
+df$continent[df$name == "Singapore"] = "Asia"
+
+
 #################
 ## Download WorldPop data
 #################
@@ -205,7 +211,7 @@ rm(mex, ams, bk, bl, pr)
 ## Plots
 #################
 
-plotdir = "sandbox/plots/"
+plotdir = "paper/figures/"
 
 df$circles = 7
 
@@ -249,6 +255,10 @@ qtm_border = function(shp, width = 2, col = "black", master = FALSE) {
     tm_borders(lwd = width, col = col) 
 }
 
+
+continents = pals::brewer.pastel1(8)[c(5,6,2,3,1,NA,8)]
+names(continents) = setdiff(levels(df$continent), "Antarctica")
+
 nms = sort(df$name)
 
 tml = lapply(match(nms, df$name), function(i) {
@@ -260,17 +270,21 @@ tml = lapply(match(nms, df$name), function(i) {
     #   tm = tm + qtm_border(admin[[i]], col = acol, width = 3)
     # }
     
-    tm = tm + qtm_border(zns[[i]] %>% filter(circle_id <= df$circles[i]), master = TRUE) + tm_layout(title = df$name[i], frame = FALSE, outer.margins = 0, scale = 0.5, legend.position = c("right", "bottom"))
+    tm = tm + qtm_border(zns[[i]] %>% filter(circle_id <= df$circles[i]), master = TRUE) + tm_layout(frame = FALSE, outer.margins = 0, scale = 0.5, legend.position = c("right", "bottom"), panel.show = TRUE, panel.label.bg.color = continents[as.character(df$continent[i])], panel.labels = df$name[i], panel.label.size = 1.4)
   } else {
     tm = NULL
   }
   return(tm)
 })
 
-tma1 = tmap_arrange(tml[1:15], ncol = 3)
-tmap_save(tma1, paste0(plotdir, "cities7c_1_15.png"), width = 1800, height = 3000) 
+tma1 = tmap_arrange(tml[1:12], ncol = 3, outer.margins = c(0, 0.02, 0, 0.02))
+tmap_save(tma1, paste0(plotdir, "cities_page1.png"), width = 1800, height = 2600) 
 
-tma2 = tmap_arrange(tml[16:30], ncol = 3)
-tmap_save(tma2, paste0(plotdir, "cities7c_16_30.png"), width = 1800, height = 3000) 
+tma1 = tmap_arrange(tml[13:24], ncol = 3, outer.margins = c(0, 0.02, 0, 0.02))
+tmap_save(tma1, paste0(plotdir, "cities_page2.png"), width = 1800, height = 2600) 
+
+tma1 = tmap_arrange(tml[25:36], ncol = 3, outer.margins = c(0, 0.02, 0, 0.02))
+tmap_save(tma1, paste0(plotdir, "cities_page3.png"), width = 1800, height = 2600) 
+
 
 
