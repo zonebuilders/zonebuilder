@@ -288,3 +288,32 @@ tmap_save(tma1, paste0(plotdir, "cities_page3.png"), width = 1800, height = 2600
 
 
 
+
+if (FALSE) {
+  ### London and Paris
+  i = which(df$name == "London")
+  i = which(df$name == "Paris")
+  
+  tm = tm_shape(popdata_norm[[i]]) + 
+    tm_raster(breaks = brks, title = "pop/km2", palette = pal, legend.show = FALSE)
+  
+  if (!is.null(admin[[i]])) {
+    tm = tm + qtm_border(admin[[i]], col = acol, width = 3)
+  }
+  
+  ttm()
+  tm = tm + qtm_border(zns[[i]] %>% filter(circle_id <= df$circles[i]), master = TRUE) + tm_layout(frame = FALSE, outer.margins = 0, scale = 0.5, legend.position = c("right", "bottom"), panel.show = TRUE, panel.label.bg.color = continents[as.character(df$continent[i])], panel.labels = df$name[i], panel.label.size = 1.4)
+  tm
+  
+}
+# 
+# library(stars)
+# s = st_as_stars(popdata[[6]])
+# s = st_transform(s, crs = st_crs(london_c()))
+# 
+# f = st_cast(st_geometry(st_transform(zns$London, crs = st_crs(london_c()))), "POLYGON")
+# a = stars:::aggregate.stars(s, f, FUN = mean, na.rm = TRUE)
+# 
+# qtm(s) + qtm(zns[[6]], fill = NA)
+# 
+
