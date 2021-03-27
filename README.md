@@ -87,7 +87,6 @@ which can also be used directly:
 
 ``` r
 par(mfrow = c(1, 3))
-par(mfrow = c(2, 3))
 zb_plot(zb_doughnut(london_c(), london_a(), n_circles = 5), title = "Doughnuts")
 ```
 
@@ -104,6 +103,16 @@ zb_plot(zb_zone(london_c(), n_circles = 4, n_segments = 4), title = "4 segments,
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-3.png" width="100%" />
+
+The package also contains a function to create zones based on a simple
+rectangular grid system:
+
+``` r
+z = zb_quadrat(london_a(), ncol = 10)
+plot(z)
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ## Contribute
 
