@@ -34,8 +34,8 @@ The gerrymandering problem has since been the topic of countless academic papers
 %"$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" \cite{chou_taming_2006}.
 The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" \cite{chou_taming_2006}.
 
-%This, in fact, is a concise definition of the broader "zoning problem" of which gerrymandering is one consequence (which in itself is a manifestation of the modifiable area unit problem), that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs).
-%This, in fact, is a concise definition of the broader "zoning problem" of which gerrymandering is one consequence (which in itself is a manifestation of the modifiable area unit problem), that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs).
+<!-- %This, in fact, is a concise definition of the broader "zoning problem" of which gerrymandering is one consequence (which in itself is a manifestation of the modifiable area unit problem), that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs). -->
+<!-- %This, in fact, is a concise definition of the broader "zoning problem" of which gerrymandering is one consequence (which in itself is a manifestation of the modifiable area unit problem), that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs). -->
 In fact, this problem is concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs).
 Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimise some pre-determined criteria) the problem is still hard:
 "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" \cite{openshaw_optimal_1977}.
@@ -100,17 +100,17 @@ Finally, in Section 4, we discuss limitations of the approach and possible direc
 
 \section{The ClockBoard zoning system}
 
-% This section explains what the ClockBoard is
+<!-- % This section explains what the ClockBoard is -->
 
 The ClockBoard zoning system tackles the various issues outlined above based on the following desirable criteria for zoning systems from an urban analysis:
 
-- Intuitive naming system for the individual zones within
-- Easy to visualise without too many (500+) or too few (less than 10) individual zones
-- Zone sizes decrease with distance from the city centre, highlighting the relative importance and population density towards the centre of many settlements
-- Can represent a wide range of cities and urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong
+<!-- - Intuitive naming system for the individual zones within -->
+<!-- - Easy to visualise without too many (500+) or too few (less than 10) individual zones -->
+<!-- - Zone sizes decrease with distance from the city centre, highlighting the relative importance and population density towards the centre of many settlements -->
+<!-- - Can represent a wide range of cities and urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong -->
 
-- It's a specific implementation of a general concept
-- 
+<!-- - It's a specific implementation of a general concept -->
+<!-- -  -->
 
 \subsection{Annuli distances}
 
@@ -155,16 +155,16 @@ What it looks like with 4 segments.
 \subsection{Exploring city scale data}
 univariate description
 
-- Population density in London
-- Social (e.g. religion) and demographic distributions
+<!-- - Population density in London -->
+<!-- - Social (e.g. religion) and demographic distributions -->
 
 \subsection{Inter-city statistical comparison}
 
-\begin{figure}[tbh]
-\centering
-\includegraphics[width=\textwidth]{cycling_accidents.pdf}
-\caption{Cycling accidents compared between eight cities.}\label{fig:cyclAccidents}
-\end{figure}
+<!-- \begin{figure}[tbh] -->
+<!-- \centering -->
+<!-- \includegraphics[width=\textwidth]{cycling_accidents.pdf} -->
+<!-- \caption{Cycling accidents compared between eight cities.}\label{fig:cyclAccidents} -->
+<!-- \end{figure} -->
 
 \subsection{Mobility analysis}
 
