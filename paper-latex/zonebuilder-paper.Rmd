@@ -1,0 +1,16 @@
+---
+title: "Habits"
+output:
+  pdf_document:
+    template: josis_template.tex
+---
+
+test
+
+
+```{r, eval=FALSE, echo=FALSE}
+# https://bookdown.org/yihui/rmarkdown/pdf-document.html#custom-templates-1
+tinytex::install_tinytex()
+tinytex::pdflatex("~/paper-latex/josis_template.tex")
+```
+
