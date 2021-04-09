@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClockBoard: a multi-purpose zoning system for cities • zonebuilder</title>
+<title>ClockBoard: a zoning system for urban analysis • zonebuilder</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="ClockBoard: a multi-purpose zoning system for cities">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ClockBoard: a zoning system for urban analysis">
 <meta property="og:description" content="zonebuilder">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -60,7 +60,7 @@
       <a href="../articles/hackathon.html">Zonebuilder hackathon</a>
     </li>
     <li>
-      <a href="../articles/paper.html">ClockBoard: a multi-purpose zoning system for cities</a>
+      <a href="../articles/paper.html">ClockBoard: a zoning system for urban analysis</a>
     </li>
   </ul>
 </li>
@@ -85,7 +85,7 @@
       </header><script src="paper_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>ClockBoard: a multi-purpose zoning system for cities</h1>
+      <h1 data-toc-skip>ClockBoard: a zoning system for urban analysis</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/zonebuilders/zonebuilder/blob/master/vignettes/paper.Rmd"><code>vignettes/paper.Rmd</code></a></small>
@@ -95,75 +95,46 @@
 
     
     
-<!-- # notes and brainstorm -->
-<!-- Target journals -->
-<!-- - JOSIS: http://www.josis.org/index.php/josis -->
-<!-- Title alternatives: -->
-<!-- * Standard zoning system for cities -->
-<!-- * ClockBoard: a standard zoning system for cities -->
-<!-- * ClockBoard: a multi-purpose zoning system for cities -->
-<!-- - An automated geographic zoning system for cities with concentric segmented annuli -->
-<!-- I agree with all of these, we could either define things as we go along or start with a definitions section -->
-<!-- Terminology; we need consistent terms for these things (in bold the suggestions): -->
-<!-- * Our zoning system. **ClockBoard** -->
-<!-- The name given to ways of dividing up geographical space: zoning system -->
-<!-- * The individual zones. **zones** or **areal units** -->
-<!-- * (optionally) The whole system, so not only the default. **zonebuilder** -->
-<!-- * The rings. **rings/circles/annuli** -->
-<!-- * The segments. **segments** -->
-<!-- * Bulls eye. **central zone/center/centre** -->
-<!-- * Distance (to the centre). **distance** -->
-<!-- * Clock hand. **direction/angle/cardinal direction/...** -->
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>Zoning systems have long been a topic of geographic research and political controversy. For even longer they have been used in a variety of applications, ranging from … to ‘tithe maps’ depicting the land ownership and use in 19<sup>th</sup> Century England <span class="citation">(Bryant and Noke 2007)</span></p>
-<p>From a research perspective, the way in which</p>
-<p><span class="citation">Openshaw (1977)</span></p>
-<div id="current-situation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#current-situation" class="anchor"></a>Current situation</h3>
-<p>Statistics, policy making and transport planning are often based on administrative regions. However, there are a couple of downsides to using administrative regions. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This make it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities.</p>
-<p>Grid tiles are popular in spatial statistics for a number of reasons. Most importantly the tiles have a constant area size, which makes comparibily possible. Moreover, the grid tiles will not change over time like administrative regions. However, one downside is that a grid requires a coordinate reference system (CRS), enforcing (approximately) equal area size. For continents or large countries, a CRS is always a compromis. Therefore, the areas of the tiles may vary, or the shape of the tiles may be sheared or warped.</p>
-<p>Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statitics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas.</p>
-</div>
-<div id="why-is-it-neededhandy" class="section level3">
-<h3 class="hasAnchor">
-<a href="#why-is-it-neededhandy" class="anchor"></a>Why is it needed/handy?</h3>
+<p>Zoning systems have long been used for practical purposes. They have been integral to land ownership, rents and urban policies for centuries, forming the basis of a range of social and economic practices. Historical examples highlighting the importance of zone layouts include ‘tithe maps’ determining land ownership and taxes in 18th Century England <span class="citation">(Bryant and Noke 2007)</span> and legally defined urban land use zones to tame chaotic urban growth expansion in the exploding US cities in the early 1900s <span class="citation">(Baker 1925)</span>.</p>
+<p>In the 19th Century, zoning systems became known for political reasons, with ‘gerrymandering’ entering public discourse and academic research following Elbridge Gerry’s apparent attempt to gain political advantage by creating an electoral district in an odd shape that was said to resemble a salamander (hence the term’s name) in 1812 <span class="citation">(Orr 1969)</span>. The gerrymandering problem has since been the topic of countless academic papers.</p>
+<p>The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "<span class="math inline">\(n\)</span> units are grouped into <span class="math inline">\(k\)</span> zones such that some cost function is optimized, subject to constraints on the topology of the zones" <span class="citation">(Chou and Li 2006)</span>. In fact, this problem is concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs). Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimise some pre-determined criteria) the problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" <span class="citation">(Openshaw 1977)</span>.</p>
+<p>The problem that we tackle in this paper is different, however: it is the division of geographic space into zones <strong>starting from a blank slate</strong>, without reference to pre-existing areal units. The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in ‘pre-packaged’ small areas and because creating zones from nothing is a harder problem. We disagree with the statement that "existence of individual or non-spatially aggregated data is rare in geography" <span class="citation">(Openshaw 1977)</span>, pointing to car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as ‘point pattern processes’. And with advances in computer hardware and software, the ‘starting from scratch’ approach to zoning system is more feasible.</p>
+<p>A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualisation purposes, with a variety of applications. Functional zone classification is common in the field of remote sensing and associated sub-fields involved in analysing and classifying raster datasets <span class="citation">(Ciglic et al. 2019)</span> <span class="citation">(Hesselbarth et al. 2019)</span>. While such pixel-based approaches can yield complex and flexible results (depending on the geographic resolution of the input data), they are still constrained by the building blocks of the pixels, which can be seen as a particular type of areal unit, a uniformly sized and shaped BSU.</p>
+<p>In this paper we are interested in the division of <em>continuous space</em> into completely new areal systems. This has been done using contour lines to represent lines of equal height, and the concept’s generalisation to lines of equal journey time from locations (isochrones) <span class="citation">(Long 2018)</span>, population density (isopleths) <span class="citation">(Lin, Hanink, and Cromley 2017)</span> and model parameters which continuous geographical space <span class="citation">(Páez 2006)</span>. The boundaries created by these various ‘iso’ maps are ‘procedurally generated’ areal units of the type that this paper focuses, but their variability and often irregular shapes make them impractical for many types of urban analysis.</p>
+<p>Procedural generation, which involves the generation of data through a repeated and sometimes randomised computational process has long been used to represent physical phenomena <span class="citation">(Onrust et al. 2017)</span>. The approach has been used to generate spatial entities including roads <span class="citation">(Galin et al. 2010)</span>, indoor layouts of buildings <span class="citation">(Anderson et al. 2018)</span> and urban layouts <span class="citation">(Mustafa et al. 2020)</span>. Algorithms have also been developed to place linear features on a map, as illustrated by an algorithm that optimizes the placement of overlapping linear features for cartographic visualisation <span class="citation">(Teulade-Denantes, Maudet, and Duchêne 2015)</span>. However, no previous research has demonstrated the creation of zoning systems specifically for the purposes of urban analysis.</p>
+<p>New visualisation techniques are needed to represent new (or newly quantifiable) concepts and emerging datasets (such as OpenStreetMap) in urban analysis analysis . The visualisation of direction has been driven by new navigational requirements and datasets, with circular compasses and displays common in land and sea navigational systems since the mid 1900s <span class="citation">(Honick 1967)</span>. Circular visualisation techniques, in the form of rose diagrams, were used in a more recent study to indicate the most common road directions relative to North <span class="citation">(Boeing 2021)</span>. The resulting visualisations are attractive and easy to interpret, but are not geographical, in the sense that they cannot meaningfully be overlaid on mapped data. The approach we present in this paper is more closely analogous to ‘grid sample’ approaches used in ecological and population research <span class="citation">(Hirzel and Guisan 2002)</span> . Historically, environmental researchers have used rectangular (and usually square) grids to divide up space and decide sampling strategies. Limitations associated with this simplistic strategy have been documented since at least the 1960s, with a prominent paper on geographic sampling strategies outlining advantages and disadvantages of simple random, systematic and stratified sampling techniques in 1967 <span class="citation">(Holmes 1967)</span>. Starting with data at the level of raster grid cells and BSUs, a related approach is to sample from within available ‘pixels’ to generate a representative sample <span class="citation">(Thomson et al. 2017)</span>.</p>
+<p>Unlike BSU based zoning systems, grid sampling strategies require no prior zones. Unlike ‘procedurally generated’ areas, grid-based strategies generate areal units of consistent sizes and shapes. However, grid-based strategies are limited in their applicability to urban research because they seldom generate geographically contiguous results and do not account for the strong tendency of human settlements to have a (more-or-less clearly demarcated) central location with higher levels of activity.</p>
+<p>Pre-existing zoning systems are often based on administrative regions. Although those zoning systems are usually in line with the hierarchical organization structure of governmental organizations, and therefore may work well for policy making, there are a couple of downsides to using such zoning systems. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This make it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities.</p>
+<p>Grid tiles are popular in spatial statistics for a number of reasons. Most importantly the tiles have a constant area size, which makes comparably possible. Moreover, the grid tiles will not change over time like administrative regions. However, one downside is that a grid requires a coordinate reference system (CRS), enforcing (approximately) equal area size. For continents or large countries, a CRS is always a compromise. Therefore, the areas of the tiles may vary, or the shape of the tiles may be sheared or warped.</p>
+<p>Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statistics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas.</p>
+<p>The approach presented in this paper aims to minimise input data requirements, generate consistent zones comparable between widely varying urban systems, and provide geographically contiguous areal units. The motivations for generating a new zoning system and use cases envisioned include:</p>
 <ul>
-<li>Locating cities. By having a ClockBoard zoning system for a city, it is immediate clear where the city centre is, and what the scale of the city is.</li>
-<li>Reference system of everyday live. The zone name contains information about the distance to the center as well as the cardinal direction. E.g “I live in C12 and work in B3.” or “The train station is in the center and our hotel is in B7”. Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.<br>
-</li>
-<li>Aggregation for descriptive statistics / comparability over cities. By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other.</li>
-<li>Modelling urban cities. The zoning system can be used to model urban mobility.</li>
+<li><p>Locating cities. Automated zoning systems based on a clear centrepoint can support map interpretation by making it immediately clear where the city centre is, and what the scale of the city is.</p></li>
+<li><p>Reference system of everyday live. The zone name contains information about the distance to the center as well as the cardinal direction. E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7". Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.</p></li>
+<li><p>Aggregation for descriptive statistics / comparability over cities. By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other.</p></li>
+<li><p>Modelling urban cities. The zoning system can be used to model urban mobility.</p></li>
 </ul>
+<p>The paper is structured as follows. The next section outlines the approach, which requires only 2 inputs: the coordinates of the central place in the urban system under investigation, and the minimum radius from that central point that the zoning system should extend. Section 3 describes a number of potential applications, ranging from rudimentary navigation and location identification to mobility analysis. Finally, in Section 4, we discuss limitations of the approach and possible directions of research and development to generate additional zoning systems for urban analysis.</p>
 </div>
-<div id="arguments-discussion" class="section level3">
-<h3 class="hasAnchor">
-<a href="#arguments-discussion" class="anchor"></a>Arguments / discussion</h3>
-<p>Pros:</p>
-<ul>
-<li>Most cities have a radial plan around a central area, which is often a historic centre or a central business area. Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also <a href="https://en.wikipedia.org/wiki/City_centre" class="uri">https://en.wikipedia.org/wiki/City_centre</a> which describes the centre as the heart of the city)</li>
-</ul>
-<p>Cons:</p>
-<ul>
-<li>Some cities have two or more centres. Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre.</li>
-<li>In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft)</li>
-</ul>
-</div>
-</div>
-<div id="method" class="section level1">
+<div id="the-clockboard-zoning-system" class="section level1">
 <h1 class="hasAnchor">
-<a href="#method" class="anchor"></a>Method</h1>
-<p>The</p>
+<a href="#the-clockboard-zoning-system" class="anchor"></a>The ClockBoard zoning system</h1>
+<p>The ClockBoard zoning system tackles the various issues outlined above based on the following desirable criteria for zoning systems from an urban analysis:</p>
+<p>- Intuitive naming system for the individual zones within - Easy to visualise without too many (500+) or too few (less than 10) individual zones - Zone sizes decrease with distance from the city centre, highlighting the relative importance and population density towards the centre of many settlements - Can represent a wide range of cities and urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong</p>
+<p>- It’s a specific implementation of a general concept -</p>
 <div id="annuli-distances" class="section level2">
 <h2 class="hasAnchor">
 <a href="#annuli-distances" class="anchor"></a>Annuli distances</h2>
-<p>The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in previous figures. <!-- Todo: add figures --> In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable. We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system. This linear growth leads to distances between each annuli boundary increasing in line with the steps in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a>.</p>
+<p>The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in previous figures. In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable. We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system. This linear growth leads to distances between each annuli boundary increasing in line with the steps in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a> <span class="citation">(Ross and Knott 2019)</span>, as outlined in Table @ref(tab:t1).</p>
+
 </div>
 <div id="number-of-segments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#number-of-segments" class="anchor"></a>Number of segments</h2>
+<p>What it looks like with 4 segments.</p>
 </div>
 <div id="city-extents" class="section level2">
 <h2 class="hasAnchor">
@@ -173,20 +144,108 @@
 <div id="applications" class="section level1">
 <h1 class="hasAnchor">
 <a href="#applications" class="anchor"></a>Applications</h1>
+<div id="navigation-and-location" class="section level2">
+<h2 class="hasAnchor">
+<a href="#navigation-and-location" class="anchor"></a>Navigation and location</h2>
+</div>
+<div id="exploring-city-scale-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#exploring-city-scale-data" class="anchor"></a>Exploring city scale data</h2>
+<p>univariate description</p>
+<p>- Population density in London - Social (e.g. religion) and demographic distributions</p>
+</div>
 <div id="inter-city-statistical-comparison" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inter-city-statistical-comparison" class="anchor"></a>Inter-city statistical comparison</h2>
-<!-- Comparing two cities can be difficult due to incomparable zoning systems. -->
-<!-- Take the example of city A is provided in a detailed zoning system composed of hundreds of small, irregular areas while city B is composed only of 9 irregular zones -->
-<!-- TODO: reference to https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0050606 -->
-<p><img src="paper_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<p><img src="paper_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<!-- ![Cycling accidents compared between eight -->
+<!-- cities.](cycling_accidents.pdf){#fig:cyclAccidents width="\\textwidth"} -->
+</div>
+<div id="mobility-analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#mobility-analysis" class="anchor"></a>Mobility analysis</h2>
+</div>
+</div>
+<div id="discussion-and-conclusions" class="section level1">
+<h1 class="hasAnchor">
+<a href="#discussion-and-conclusions" class="anchor"></a>Discussion and conclusions</h1>
+<p>Pros:</p>
+<ul>
+<li>Most cities have a radial plan around a central area, which is often a historic centre or a central business area. Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also <a href="https://en.wikipedia.org/wiki/City_centre" class="uri">https://en.wikipedia.org/wiki/City_centre</a> which describes the centre as the heart of the city)</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li><p>Some cities have two or more centres. Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre.</p></li>
+<li><p>In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft)</p></li>
+</ul>
+<!-- World cities todo: create appendix--><!-- ============ --><!-- ![ClockBoard for 36 cities, with population density shown in blue, and --><!-- continent shown in the header color.](cities_page1.png){#fig:cities1 --><!-- width="\\textwidth"} --><!-- ![(continued)](cities_page2.png){#fig:cities2 width="\\textwidth"} --><!-- ![(continued)](cities_page3.png){#fig:cities3 width="\\textwidth"} --><!-- # Old paper --><!-- # Introduction --><!-- ### Current situation --><!-- Statistics, policy making and transport planning are often based on administrative regions. However, there are a couple of downsides to using administrative regions. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This make it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities. --><!-- Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statitics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas. --><!-- ### Why is it needed/handy? --><!-- * Locating cities. By having a ClockBoard zoning system for a city, it is immediate clear where the city centre is, and what the scale of the city is.  --><!-- * Reference system of everyday live. The zone name contains information about the distance to the center as well as the cardinal direction. E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7". Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.    --><!-- * Aggregation for descriptive statistics / comparability over cities. By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other. --><!-- * Modelling urban cities. The zoning system can be used to model urban mobility. --><!-- ### Arguments / discussion --><!-- Pros: --><!-- * Most cities have a radial plan around a central area, which is often a historic centre or a central business area. --><!-- Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also https://en.wikipedia.org/wiki/City_centre which describes the centre as the heart of the city) --><!-- Cons: --><!-- * Some cities have two or more centres. Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre. --><!-- * In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft)  --><!-- Comparing two cities can be difficult due to incomparable zoning systems. --><!-- Take the example of city A is provided in a detailed zoning system composed of hundreds of small, irregular areas while city B is composed only of 9 irregular zones --><!-- TODO: reference to https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0050606 -->
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
+<div id="ref-anderson_augmented_2018">
+<p>Anderson, Carl, Carlo Bailey, Andrew Heumann, and Daniel Davis. 2018. “Augmented Space Planning: Using Procedural Generation to Automate Desk Layouts.” <em>International Journal of Architectural Computing</em> 16 (2): 164–77. <a href="https://doi.org/10.1177/1478077118778586">https://doi.org/10.1177/1478077118778586</a>.</p>
+</div>
+<div id="ref-baker_zoning_1925">
+<p>Baker, Newman F. 1925. “Zoning Legislation.” <em>Cornell Law Review</em> 11: 164.</p>
+</div>
+<div id="ref-boeing_spatial_2021">
+<p>Boeing, Geoff. 2021. “Spatial Information and the Legibility of Urban Form: Big Data in Urban Morphology.” <em>International Journal of Information Management</em> 56 (February): 102013. <a href="https://doi.org/10/ggcg9v">https://doi.org/10/ggcg9v</a>.</p>
+</div>
 <div id="ref-bryant_worcestershire_2007">
 <p>Bryant, Victoria, and Maggi Noke. 2007. “The Worcestershire Tithe and Enclosure Map Project: Creating a Research Resource.” <em>Landscape History</em> 29 (1): 89–92. <a href="https://doi.org/10.1080/01433768.2007.10594591">https://doi.org/10.1080/01433768.2007.10594591</a>.</p>
+</div>
+<div id="ref-chou_taming_2006">
+<p>Chou, Chung-I, and S. P. Li. 2006. “Taming the GerrymanderStatistical Physics Approach to Political Districting Problem.” <em>Physica A: Statistical Mechanics and Its Applications</em> 369 (2): 799–808. <a href="https://doi.org/10/fghzws">https://doi.org/10/fghzws</a>.</p>
+</div>
+<div id="ref-ciglic_evaluating_2019">
+<p>Ciglic, Rok, Erik Strumbelj, Rok Cesnovar, Mauro Hrvatin, and Drago Perko. 2019. “Evaluating Existing Manually Constructed Natural Landscape Classification with a Machine Learning-Based Approach.” <em>Journal of Spatial Information Science</em> 2019 (18): 31–56.</p>
+</div>
+<div id="ref-galin_procedural_2010">
+<p>Galin, E., A. Peytavie, N. Maréchal, and E. Guérin. 2010. “Procedural Generation of Roads.” <em>Computer Graphics Forum</em> 29 (2): 429–38. <a href="https://doi.org/10.1111/j.1467-8659.2009.01612.x">https://doi.org/10.1111/j.1467-8659.2009.01612.x</a>.</p>
+</div>
+<div id="ref-hesselbarth_landscapemetrics_2019">
+<p>Hesselbarth, Maximilian HK, Marco Sciaini, Kimberly A. With, Kerstin Wiegand, and Jakub Nowosad. 2019. “Landscapemetrics: An Open-Source R Tool to Calculate Landscape Metrics.” <em>Ecography</em> 42 (10): 1648–57. <a href="https://doi.org/10.1111/ecog.04617">https://doi.org/10.1111/ecog.04617</a>.</p>
+</div>
+<div id="ref-hirzel_which_2002">
+<p>Hirzel, Alexandre, and Antoine Guisan. 2002. “Which Is the Optimal Sampling Strategy for Habitat Suitability Modelling.” <em>Ecological Modelling</em> 157 (2): 331–41. <a href="https://doi.org/10.1016/S0304-3800(02)00203-X">https://doi.org/10.1016/S0304-3800(02)00203-X</a>.</p>
+</div>
+<div id="ref-holmes_problems_1967">
+<p>Holmes, John. 1967. “Problems in Location Sampling.” <em>Annals of the Association of American Geographers</em> 57 (4): 757–80. <a href="https://doi.org/10.1111/j.1467-8306.1967.tb00635.x">https://doi.org/10.1111/j.1467-8306.1967.tb00635.x</a>.</p>
+</div>
+<div id="ref-honick_pictorial_1967">
+<p>Honick, K. R. 1967. “Pictorial Navigation Displays.” <em>The Cartographic Journal</em> 4 (2): 72–81. <a href="https://doi.org/10/gh326k">https://doi.org/10/gh326k</a>.</p>
+</div>
+<div id="ref-lin_cartographic_2017">
+<p>Lin, Jie, Dean M. Hanink, and Robert G. Cromley. 2017. “A Cartographic Modeling Approach to Isopleth Mapping.” <em>International Journal of Geographical Information Science</em> 31 (5): 849–66. <a href="https://doi.org/10.1080/13658816.2016.1207776">https://doi.org/10.1080/13658816.2016.1207776</a>.</p>
+</div>
+<div id="ref-long_modeling_2018">
+<p>Long, Jed A. 2018. “Modeling Movement Probabilities Within Heterogeneous Spatial Fields.” <em>Journal of Spatial Information Science</em> 2018 (16): 85–116.</p>
+</div>
+<div id="ref-mustafa_procedural_2020">
+<p>Mustafa, Ahmed, Xiao Wei Zhang, Daniel G Aliaga, Martin Bruwier, Gen Nishida, Benjamin Dewals, Sébastian Erpicum, Pierre Archambeau, Michel Pirotton, and Jacques Teller. 2020. “Procedural Generation of Flood-Sensitive Urban Layouts.” <em>Environment and Planning B: Urban Analytics and City Science</em> 47 (5): 889–911. <a href="https://doi.org/10.1177/2399808318812458">https://doi.org/10.1177/2399808318812458</a>.</p>
+</div>
+<div id="ref-onrust_ecologically_2017">
+<p>Onrust, Benny, Rafael Bidarra, Robert Rooseboom, and Johan van de Koppel. 2017. “Ecologically Sound Procedural Generation of Natural Environments.” <em>International Journal of Computer Games Technology</em> 2017 (May): e7057141. <a href="https://doi.org/10.1155/2017/7057141">https://doi.org/10.1155/2017/7057141</a>.</p>
 </div>
 <div id="ref-openshaw_optimal_1977">
 <p>Openshaw, S. 1977. “Optimal Zoning Systems for Spatial Interaction Models.” <em>Environment and Planning A</em> 9 (2): 169–84. <a href="https://doi.org/10.1068/a090169">https://doi.org/10.1068/a090169</a>.</p>
 </div>
+<div id="ref-orr_persistence_1969">
+<p>Orr, Douglas M. Jr. 1969. “The Persistence of the Gerrymander in North Carolina Congressional Redistricting.” <em>Southeastern Geographer</em> 9 (2): 39–54. <a href="https://doi.org/10/gh326j">https://doi.org/10/gh326j</a>.</p>
+</div>
+<div id="ref-paez_exploring_2006">
+<p>Páez, Antonio. 2006. “Exploring Contextual Variations in Land Use and Transport Analysis Using a Probit Model with Geographical Weights.” <em>Journal of Transport Geography</em> 14 (3): 167–76. <a href="https://doi.org/10.1016/j.jtrangeo.2005.11.002">https://doi.org/10.1016/j.jtrangeo.2005.11.002</a>.</p>
+</div>
+<div id="ref-ross_dicuil_2019">
+<p>Ross, Helen Elizabeth, and Betty Irene Knott. 2019. “Dicuil (9th Century) on Triangular and Square Numbers.” <em>British Journal for the History of Mathematics</em> 34 (2): 79–94. <a href="https://doi.org/10/gh326m">https://doi.org/10/gh326m</a>.</p>
+</div>
+<div id="ref-teulade-denantes_routes_2015">
+<p>Teulade-Denantes, Jules, Adrien Maudet, and Cécile Duchêne. 2015. “Routes Visualization: Automated Placement of Multiple Route Symbols Along a Physical Network Infrastructure.” <em>Journal of Spatial Information Science</em> 2015 (11): 53–79. <a href="https://doi.org/10.5311/JOSIS.2015.11.230">https://doi.org/10.5311/JOSIS.2015.11.230</a>.</p>
+</div>
+<div id="ref-thomson_gridsample_2017">
+<p>Thomson, Dana R., Forrest R. Stevens, Nick W. Ruktanonchai, Andrew J. Tatem, and Marcia C. Castro. 2017. “GridSample: An R Package to Generate Household Survey Primary Sampling Units (PSUs) from Gridded Population Data.” <em>International Journal of Health Geographics</em> 16 (1): 25. <a href="https://doi.org/10.1186/s12942-017-0098-4">https://doi.org/10.1186/s12942-017-0098-4</a>.</p>
 </div>
 </div>
 </div>
