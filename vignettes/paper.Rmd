@@ -8,7 +8,9 @@ vignette: >
   %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-
+pkgdown:
+  as_is: true
+  set_null_theme: false
 # For paper
 # Comment the above and uncomment below for LaTeX version
 # output:
