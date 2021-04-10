@@ -172,12 +172,15 @@ Zoning systems for urban analysis should:
 After a process of iteration in which we considered many zoning options (some of which are illustrated in Figure \@ref(fig:options)) we settled on a system that we have called 'ClockBoard' (for reasons that will become apparent) and which has the following characteristics.
 The zoning system is based on **concentric rings** --- formally called 'concentric annuli' --- which emphasise central locations and have been used to explore the relationships between the characteristics of 'focal trees' and surrounding trees in ecological research [@wills_persistence_2016], as shown in Figure \@ref(fig:options) (a).
 
-```{r options, fig.cap="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system."}
+```{r options, fig.cap="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system.", out.width="32%", fig.show='hold'}
 # z1 = zb_zone(x = london_c(), n_segments = 1)
 # m1 = qtm(z1, title = "(A) Concentric Annuli")
-zb_plot(zb_zone(london_c(), n_segments = 1), title = "(A) Concentric Annuli")
+z1 = zb_zone(london_c(), n_segments = 1, distance_growth = 0)
+z1_areas = sf::st_area(z1)
+z1_areas_relative = as.numeric(z1_areas / z1_areas[1])
+zb_plot(z1, title = "(A) Concentric Annuli")
 zb_plot(zb_segment(london_c(), n_segments = 8), title = "(B) Segments")
-zb_plot(zb_zone_equal_area(london_c(), n_circles = 5, n_segments = 8), title = "(A) Concentric Annuli")
+qtm(zb_zone(london_c(), n_segments = z1_areas_relative, labeling = "clock", distance_growth = 0), title = "(C) Equal area zones", fill = NULL)
 ```
 
 

@@ -231,23 +231,21 @@ st_centroid_within_poly <- function (poly) {
   return(centroid)
 }
 
-#' Create zones of equal area (to be documented)
-#' @export
+# Create zones of equal area (to be documented)
 # z = zb_zone(london_a(), n_circles = 8, distance_growth = 0, equal_area = TRUE) # bug with missing pies
 # suggestion: split out new new function, reduce n. arguments
 # plot(z, col = 1:nrow(z))
 zb_zone_equal_area = function(x = NULL,
                    point = NULL,
-                   n_circles = 5,
+                   n_circles = NULL,
                    # n_segments = c(1, (1:(n_circles - 1)) * 4), # NA
-                   n_segments = 4,
+                   n_segments = NA,
                    distance = 1,
                    distance_growth = 1,
                    intersection = TRUE) {
   # Functions to calculate distances
-  browser()
-  n_segments = zonebuilder:::number_of_segments(n_circles = n_circles, distance = distance)
-  zb_zone(x, point, n_circles, n_segments = n_segments, distance, intersection = intersection)
+  n_segments = number_of_segments(n_circles = n_circles, distance = distance)
+  zb_zone(x, point, n_circles, n_segments, distance, intersection = intersection)
   
 }
   
