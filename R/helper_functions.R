@@ -31,8 +31,6 @@ get_distances = function(distance, distance_growth, n_circles) {
   distance + (0:(n_circles-1)) * distance_growth
 }
 
-
-
 # x = london_area
 # number_of_circles(x, 1, 1, sf::st_centroid(x))
 # number_of_circles(x, 0.1, 0.1, sf::st_centroid(x))
@@ -48,7 +46,9 @@ number_of_circles = function(area, distance, distance_growth, x) {
   # / cos(pi / 180 * 45) # add multiplier to account for hypotenuse issue
 }
 
-distances = function(distance, distance_growth)
+# distances = function(distance, distance_growth) {
+#   
+# }
 
 number_of_segments = function(n_circles = 10, distance = rep(1, n_circles)) {
   areas = doughnut_areas(n_circles = n_circles, distance = distance)

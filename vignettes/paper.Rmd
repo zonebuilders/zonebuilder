@@ -57,8 +57,12 @@ editor_options:
 knitr::opts_chunk$set(
   echo = FALSE,
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message = FALSE
 )
+library(zonebuilder)
+library(tmap)
+library(dplyr)
 ```
 
 ```{r, eval=FALSE}
@@ -73,10 +77,6 @@ RefManageR::WriteBib(refs, "vignettes/references.bib")
 rmarkdown::render(input = "vignettes/paper.Rmd", output_file = "../zonebuilder-paper.pdf")
 browseURL("zonebuilder-paper.pdf")
 piggyback::pb_upload("zonebuilder-paper.pdf")
-```
-
-```{r setup}
-library(zonebuilder)
 ```
 
 # Introduction
@@ -173,8 +173,11 @@ After a process of iteration in which we considered many zoning options (some of
 The zoning system is based on **concentric rings** --- formally called 'concentric annuli' --- which emphasise central locations and have been used to explore the relationships between the characteristics of 'focal trees' and surrounding trees in ecological research [@wills_persistence_2016], as shown in Figure \@ref(fig:options) (a).
 
 ```{r options, fig.cap="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system."}
-m1 = 1
-m1
+# z1 = zb_zone(x = london_c(), n_segments = 1)
+# m1 = qtm(z1, title = "(A) Concentric Annuli")
+zb_plot(zb_zone(london_c(), n_segments = 1), title = "(A) Concentric Annuli")
+zb_plot(zb_segment(london_c(), n_segments = 8), title = "(B) Segments")
+zb_plot(zb_zone_equal_area(london_c(), n_circles = 5, n_segments = 8), title = "(A) Concentric Annuli")
 ```
 
 
@@ -219,9 +222,6 @@ univariate description
 ## Inter-city statistical comparison
 
 ```{r, fig.width=7, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tmap)
-
 # download preprocessed data (processing script /data-raw/crashes.R)
 df = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/ksi_bkm_zone.rds")))
 uk = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/uk.rds")))
