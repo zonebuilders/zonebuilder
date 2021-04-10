@@ -96,7 +96,7 @@ We disagree with the statement that "existence of individual or non-spatially ag
 And with advances in computer hardware and software, the 'starting from scratch' approach to zoning system is more feasible.
 
 A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualisation purposes, with a variety of applications.
-Functional zone classification is common in the field of remote sensing and associated sub-fields involved in analysing and classifying raster datasets [@ciglic_evaluating_2019] [@hesselbarth_landscapemetrics_2019].
+Functional zone classification is common in the field of remote sensing and associated sub-fields involved in analysing and classifying raster datasets [@ciglic_evaluating_2019; @hesselbarth_landscapemetrics_2019].
 While such pixel-based approaches can yield complex and flexible results (depending on the geographic resolution of the input data), they are still constrained by the building blocks of the pixels, which can be seen as a particular type of areal unit, a uniformly sized and shaped BSU.
 
 In this paper we are interested in the division of *continuous space* into completely new areal systems.
