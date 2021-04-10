@@ -42,10 +42,13 @@ vignette: >
 #   development of new zoning systems based on the experience.
 # runningtitle: "The ClockBoard Zoning System"
 
-# Visual editor options
+# Explore visual editor options: sentence based line breaks...
+# changing annoying arbitrary character based linebreaks:
 editor_options:
   markdown:
     wrap: sentence
+# That automagically reformatted the Rmd doc!
+# Result: it works!
 ---
 
 ```{r, include = FALSE}
