@@ -3,7 +3,7 @@ title: "ClockBoard: a zoning system for urban analysis"
 bibliography: references.bib
 
 # For R package vignette
-output: rmarkdown::html_vignette
+output: bookdown::html_vignette2
 vignette: >
   %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
   %\VignetteEngine{knitr::rmarkdown}
@@ -153,8 +153,9 @@ Finally, in Section 4, we discuss limitations of the approach and possible direc
 
 # The ClockBoard zoning system
 
-The ClockBoard zoning system tackles the issues outlined above based on the following criteria.
-From an urban analysis perspective, zoning systems should:
+The aim of the ClockBoard zoning system outlined in this paper is to tackle the issues outlined above, with an approach that is free, open, reproducible and easy to extend.
+Specifically, we developed the system to considering urban analysis research and visualisation requirements, leading to the following high-level criteria.
+Zoning systems for urban analysis should:
 
 -   contain intuitively named zones, enabling public communication of research, e.g. with reference common perceptions of space in terms of distance from the city centre and direction relative to North
 
@@ -164,7 +165,16 @@ From an urban analysis perspective, zoning systems should:
 
 -   be 'scale agnostic', capable of representing a range of urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong
 
--   be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs.
+-   be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs
+
+After a process of iteration in which we considered many zoning options (some of which are illustrated in Figure \@ref(fig:options)) we settled on a system that we have called 'ClockBoard' (for reasons that will become apparent) and which has the following characteristics.
+The zoning system is based on **concentric rings** --- formally called 'concentric annuli' --- which emphasise central locations and have been used to explore the relationships between the characteristics of 'focal trees' and surrounding trees in ecological research [@wills_persistence_2016], as shown in Figure \@ref(fig:options) (a).
+
+```{r options, fig.cap="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system."}
+m1 = 1
+m1
+```
+
 
 ## Annuli distances
 
@@ -185,7 +195,7 @@ txt = "Number of rings,Diameter across (km),Area (sq km)
 8,8,72,4071.50
 9,9,90,6361.73"
 t1 = read.csv(text = txt, check.names = FALSE)
-knitr::kable(t1, format = "latex", booktabs = TRUE, caption = "Key attributes of first 9 rings used in the ClockBoard zoning system.")
+knitr::kable(t1, booktabs = TRUE, caption = "Key attributes of first 9 rings used in the ClockBoard zoning system.")
 ```
 
 ## Number of segments

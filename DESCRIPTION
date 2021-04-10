@@ -43,7 +43,8 @@ Suggests:
     dplyr,
     lwgeom,
     leaflet,
-    covr
+    covr,
+    bookdown
 VignetteBuilder: 
     knitr
 URL: https://github.com/zonebuilders/zonebuilder, https://zonebuilders.github.io/zonebuilder/
