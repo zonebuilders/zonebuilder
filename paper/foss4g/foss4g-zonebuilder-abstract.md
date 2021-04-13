@@ -33,7 +33,7 @@ The motivations for generating a new zoning system and use cases envisioned incl
 -   Locating cities.
     Automated zoning systems based on a clear centrepoint can support map interpretation by making it immediately clear where the city centre is, and what the scale of the city is.
 
--   Reference system of everyday live.
+-   Reference system of everyday life.
     The zone name contains information about the distance to the center as well as the cardinal direction.
     E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7".
     Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.
