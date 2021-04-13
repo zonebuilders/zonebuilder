@@ -9,18 +9,8 @@ Many methods *rely* on good zoning systems, including origin-destination analysi
 Open access administrative boundaries are increasingly available through national databases and OpenStreetMap but are often inappropriate to geographic research, analysis and map making needs, being often: based on arbitrary factors; inconsistent between different cities/regions; and of highly variable sizes and shapes.
 
 This talk outlines a solution to these problems: tools that can auto-generate zones based on minimal input data.
-We demonstrate a particular implementation of the approach and show how users can use the tools to generate custom zoning systems suited to diverse needs: the ClockBoard zoning system, which consists of 12 segments divided by concentric rings of increasing distance is highlighted as an example.
+We demonstrate a particular implementation of the approach and show how users can use the tools to generate custom zoning systems suited to diverse needs: the ClockBoard zoning system, which consists of 12 segments divided by concentric rings of increasing distance, is highlighted as an example.
 We also demonstrate and propose alternative zoning systems.
-
-Key to the success of tools are accessibility, flexibility and extensibility.
-We propose cross-platform and language agnostic implementations to enable a diverse range of people to generate bespoke zoning systems for their needs and demonstrate working tools that take a step in this direction which at the time of writing includes:
-
--   a core library written in Rust with small and fast binaries available for all major operating systems
--   an R package (published on the Comprehensive R Archive Network, CRAN) that also enables visualisation of zoning systems
-
-We plan to create a Python Package, a QGIS plugin and web user interface based on the core library and welcome suggestions and contributions via our GitHub organization: <https://github.com/zonebuilders>.
-Based on the experience of developing these tools, we will discuss next steps towards accessible and flexible zone building tools and language/platform agnostic tools for geospatial work in general.
-We conclude that the approach, based on low-level and easy-to-distribute tools that can be used in multiple free and open source frameworks, could be applied to other domains and help join diverse communities (e.g. based on R, Python or QGIS) through use of shared low-level, cross-platform and future-proof implementations.
 
 # Description
 
@@ -42,6 +32,19 @@ The motivations for generating a new zoning system and use cases envisioned incl
 -   Modelling urban cities.
     The zoning system can be used to model urban mobility.
 
+# Implementation
+
+Key to the success of tools are accessibility, flexibility and extensibility.
+We propose cross-platform and language agnostic implementations to enable a diverse range of people to generate bespoke zoning systems for their needs and demonstrate working tools that take a step in this direction which at the time of writing includes:
+
+-   a core library written in Rust with small and fast binaries available for all major operating systems
+-   an R package (published on the Comprehensive R Archive Network, CRAN) that also enables visualisation of zoning systems
+
+We plan to create a Python Package, a QGIS plugin and web user interface based on the core library and welcome suggestions and contributions via our GitHub organization: <https://github.com/zonebuilders>.
+Based on the experience of developing these tools, we will discuss next steps towards accessible and flexible zone building tools and language/platform agnostic tools for geospatial work in general.
+We conclude that the approach, based on low-level and easy-to-distribute tools that can be used in multiple free and open source frameworks, could be applied to other domains and help join diverse communities (e.g. based on R, Python or QGIS) through use of shared low-level, cross-platform and future-proof implementations.
+
+
 The source code underlying the approach can be found at <https://github.com/zonebuilders>
 
 # Notes
@@ -58,7 +61,7 @@ Dustin Carlino (3)
 
 (1) University of Leeds
 
-(2) Centraal Bureau voor de Statistiek
+(2) Statistics Netherlands
 
 (3) Lead developer of A/B Street
 
