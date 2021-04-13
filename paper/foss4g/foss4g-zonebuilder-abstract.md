@@ -5,15 +5,11 @@
 Zones are key building blocks used for analysis and creating models (mental and statistical) of urban and environmental systems.
 Used in a range of fields from biodiversity assessment to transport planning, spatially contiguous areal units break-up continuous space into discrete chunks.
 Many methods *rely* on good zoning systems, including origin-destination analysis, geographically weighted regression, and choropleth visualisation.
-Zones with appropriate sizes, shapes and coverage are vital for the success of such methods, yet they are not easy to access (in places where administrative zones are openly available) or create (in cases where official zones are unavailable or where a custom zoning system is needed).
 
-Open access administrative boundaries representing locally specific zoning systems are increasingly available through national databases and OpenStreetMap.
-However, official zoning systems are often inappropriate to geographic research, analysis and map making needs, being often: based on arbitrary factors; inconsistent between different cities/regions; and of highly variable sizes and shapes.
+Open access administrative boundaries are increasingly available through national databases and OpenStreetMap but are often inappropriate to geographic research, analysis and map making needs, being often: based on arbitrary factors; inconsistent between different cities/regions; and of highly variable sizes and shapes.
 
-This talk outlines a scalable solution to these problems: tools that can auto-generate zones based on minimal input data.
-We demonstrate a particular implementation of the approach and show how users can use the tools to generate custom zoning systems suited to diverse needs.
-The ClockBoard zoning system, which consists of 12 segments divided by concentric rings of increasing distance is highlighted as an example.
-ClockBoard provides consistent visual frame of reference for cities that is reminiscent of a clock and a dartboard.
+This talk outlines a solution to these problems: tools that can auto-generate zones based on minimal input data.
+We demonstrate a particular implementation of the approach and show how users can use the tools to generate custom zoning systems suited to diverse needs: the ClockBoard zoning system, which consists of 12 segments divided by concentric rings of increasing distance is highlighted as an example.
 We also demonstrate and propose alternative zoning systems.
 
 Key to the success of tools are accessibility, flexibility and extensibility.
@@ -29,6 +25,7 @@ We conclude that the approach, based on low-level and easy-to-distribute tools t
 # Description
 
 The zonebuilder approach aims to minimise input data requirements, generate consistent zones comparable between widely varying urban systems, and provide geographically contiguous areal units.
+Zones with appropriate sizes, shapes and coverage are vital for the success of such methods, yet they are not easy to access (in places where administrative zones are openly available) or create (in cases where official zones are unavailable or where a custom zoning system is needed).
 The motivations for generating a new zoning system and use cases envisioned include:
 
 -   Locating cities.
@@ -49,4 +46,19 @@ The source code underlying the approach can be found at <https://github.com/zone
 
 # Notes
 
-This paper was submitted at a time when the R spatial community is seeking to engage more proactively in the wider FOSS4G movement: <https://github.com/r-spatial/discuss/blob/master/osgeo-email.md>
+This paper was submitted at a time when the R spatial community is seeking to engage more proactively in the wider FOSS4G movement and aims to take a small step in that direction. See <https://github.com/r-spatial/discuss/blob/master/osgeo-email.md> for details.
+
+# Authors
+
+Robin Lovelace (1)
+
+Martijn Tennekes (2)
+
+Dustin Carlino (3)
+
+(1) University of Leeds
+
+(2) Centraal Bureau voor de Statistiek
+
+(3) Lead developer of A/B Street
+
