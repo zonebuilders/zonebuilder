@@ -1,7 +1,7 @@
 
 <!-- Brief: https://callforpapers.2021.foss4g.org/foss4g-2021-academic/ -->
 
-## Zonebuilders: cross-platform and language-agnostic tools for generating zoning systems for urban analysis and modelling
+## Zonebuilders: cross-platform and language-agnostic tools for generating zoning systems for urban analysis
 
 Zones are key building blocks of analysis and models (mental and
 statistical) of urban and ecological systems. Used in a range of fields
