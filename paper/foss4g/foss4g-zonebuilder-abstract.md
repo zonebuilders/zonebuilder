@@ -19,10 +19,10 @@ We also demonstrate and propose alternative zoning systems.
 Key to the success of tools are accessibility, flexibility and extensibility.
 We propose cross-platform and language agnostic implementations to enable a diverse range of people to generate bespoke zoning systems for their needs and demonstrate working tools that take a step in this direction which at the time of writing includes:
 
-- a core library written in Rust with small and fast binaries available for all major operating systems
-- an R package (published on the Comprehensive R Archive Network, CRAN) that also enables visualisation of zoning systems
+-   a core library written in Rust with small and fast binaries available for all major operating systems
+-   an R package (published on the Comprehensive R Archive Network, CRAN) that also enables visualisation of zoning systems
 
-We plan to create a Python Package, a QGIS plugin and web user interface based on the core library and welcome suggestions and contributions via our GitHub organization: https://github.com/zonebuilders.
+We plan to create a Python Package, a QGIS plugin and web user interface based on the core library and welcome suggestions and contributions via our GitHub organization: <https://github.com/zonebuilders>.
 Based on the experience of developing these tools, we will discuss next steps towards accessible and flexible zone building tools and language/platform agnostic tools for geospatial work in general.
 We conclude that the approach, based on low-level and easy-to-distribute tools that can be used in multiple free and open source frameworks, could be applied to other domains and help join diverse communities (e.g. based on R, Python or QGIS) through use of shared low-level, cross-platform and future-proof implementations.
 
@@ -44,9 +44,9 @@ The motivations for generating a new zoning system and use cases envisioned incl
 
 -   Modelling urban cities.
     The zoning system can be used to model urban mobility.
-    
-The source code underlying the approach can be found at https://github.com/zonebuilders
+
+The source code underlying the approach can be found at <https://github.com/zonebuilders>
 
 # Notes
 
-This paper was submitted at a time when the R spatial community is seeking to engage more proactively in the wider FOSS4G movement: https://github.com/r-spatial/discuss/blob/master/osgeo-email.md 
+This paper was submitted at a time when the R spatial community is seeking to engage more proactively in the wider FOSS4G movement: <https://github.com/r-spatial/discuss/blob/master/osgeo-email.md>
