@@ -2,47 +2,49 @@
 title: "ClockBoard: a zoning system for urban analysis"
 bibliography: references.bib
 
-# For R package vignette
-output: bookdown::html_vignette2
-vignette: >
-  %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
-pkgdown:
-  as_is: true
-  set_null_theme: false
-# For paper
-# Comment the above and uncomment below for LaTeX version
-# output:
-#   bookdown::pdf_book:
-#     base_format: rticles::josis_article
-# author1: Robin Lovelace
-# affil1: University of Leeds
-# author2: Martijn Tennekes
-# affil2: Department, Institution, Country TBC
-# keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
-# abstract: |
-#   Zones are the building blocks of urban analysis. Fields ranging from
-#   demographics to transport planning routinely use zones --- spatially
-#   contiguous areal units that break-up continuous space into discrete
-#   chunks --- as the foundation for diverse analysis techniques. Key
-#   methods such as origin-destination analysis and choropleth mapping
-#   rely on zones with appropriate sizes, shapes and coverage. However,
-#   existing zoning systems are sub-optimal in many urban analysis
-#   contexts, for three main reasons: 1) administrative zoning systems are
-#   often based on somewhat arbitrary factors; 2) evidence-based zoning
-#   systems are often highly variable in size and shape, reducing their
-#   utility for inter-city comparison; and 3) the resolution of existing
-#   zoning systems is often too low for certain urban analysis, especially
-#   in low income nations. To tackle these three key issues we developed a
-#   flexible, open and scalable solution: the ClockBoard zoning system.
-#   ClockBoard consists of 12 segments divided by concentric rings of
-#   increasing distance, creating a consistent visual frame of reference
-#   for cities that is reminiscent of a clock and a dartboard. This paper
-#   outlines the design, potential uses and merits of the ClockBoard
-#   zoning system and discusses future avenues for research and
-#   development of new zoning systems based on the experience.
-# runningtitle: "The ClockBoard Zoning System"
+# # For R package vignette
+# output: bookdown::html_vignette2
+# vignette: >
+#   %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
+#   %\VignetteEngine{knitr::rmarkdown}
+#   %\VignetteEncoding{UTF-8}
+# pkgdown:
+#   as_is: true
+#   set_null_theme: false
+#
+# For paper: Comment the above and uncomment below for LaTeX version
+output:
+  # rmarkdown::html_document_base:
+  # rmarkdown::pdf_document:
+  bookdown::pdf_book:
+    base_format: rticles::josis_article
+author1: Robin Lovelace
+affil1: University of Leeds
+author2: Martijn Tennekes
+affil2: Department, Institution, Country TBC
+keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
+abstract: |
+  Zones are the building blocks of urban analysis. Fields ranging from
+  demographics to transport planning routinely use zones --- spatially
+  contiguous areal units that break-up continuous space into discrete
+  chunks --- as the foundation for diverse analysis techniques. Key
+  methods such as origin-destination analysis and choropleth mapping
+  rely on zones with appropriate sizes, shapes and coverage. However,
+  existing zoning systems are sub-optimal in many urban analysis
+  contexts, for three main reasons: 1) administrative zoning systems are
+  often based on somewhat arbitrary factors; 2) evidence-based zoning
+  systems are often highly variable in size and shape, reducing their
+  utility for inter-city comparison; and 3) the resolution of existing
+  zoning systems is often too low for certain urban analysis, especially
+  in low income nations. To tackle these three key issues we developed a
+  flexible, open and scalable solution: the ClockBoard zoning system.
+  ClockBoard consists of 12 segments divided by concentric rings of
+  increasing distance, creating a consistent visual frame of reference
+  for cities that is reminiscent of a clock and a dartboard. This paper
+  outlines the design, potential uses and merits of the ClockBoard
+  zoning system and discusses future avenues for research and
+  development of new zoning systems based on the experience.
+runningtitle: "The ClockBoard Zoning System"
 
 # Explore visual editor options: sentence based line breaks...
 # changing annoying arbitrary character based linebreaks:
@@ -66,6 +68,8 @@ library(dplyr)
 ```
 
 ```{r, eval=FALSE}
+# To uses josis template:
+remotes::install_github("robinlovelace/rticles", ref = "josis")
 refs = RefManageR::ReadZotero(group = "418217", .params = list(collection = "8S8LR8TK", limit = 100))
 RefManageR::WriteBib(refs, "vignettes/references.bib")
 # Set-up notes for pdf version
