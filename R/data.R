@@ -16,12 +16,12 @@
 #' plot(london_a(), reset = FALSE)
 #' plot(london_c(), add = TRUE)
 london_a = function() {
-  sf::st_set_crs(zonebuilder::london_area_lonlat, 27700)
+  sf::st_set_crs(zonebuilder::london_area_lonlat, 4326)
 }
 #' @rdname london_area
 #' @export
 london_c = function() {
-  sf::st_set_crs(zonebuilder::london_cent_lonlat, 27700)
+  sf::st_set_crs(zonebuilder::london_cent_lonlat, 4326)
 }
 
 #' The first 100 triangular numbers
