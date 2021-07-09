@@ -18,3 +18,4 @@
 ^zonebuilder-paper\.tex$
 ^zonebuilder-paper_files$
 ^vignettes/josis*$
+^\.ccache$
