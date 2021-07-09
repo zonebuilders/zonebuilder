@@ -94,6 +94,29 @@
     </div>
 
     
+        <div class="abstract">
+      <p class="abstract">Abstract</p>
+      <p>Zones are the building blocks of urban analysis. Fields ranging from
+      demographics to transport planning routinely use zones — spatially
+      contiguous areal units that break-up continuous space into discrete
+      chunks — as the foundation for diverse analysis techniques. Key
+      methods such as origin-destination analysis and choropleth mapping
+      rely on zones with appropriate sizes, shapes and coverage. However,
+      existing zoning systems are sub-optimal in many urban analysis
+      contexts, for three main reasons: 1) administrative zoning systems are
+      often based on somewhat arbitrary factors; 2) evidence-based zoning
+      systems are often highly variable in size and shape, reducing their
+      utility for inter-city comparison; and 3) the resolution of existing
+      zoning systems is often too low for certain urban analysis, especially
+      in low income nations. To tackle these three key issues we developed a
+      flexible, open and scalable solution: the ClockBoard zoning system.
+      ClockBoard consists of 12 segments divided by concentric rings of
+      increasing distance, creating a consistent visual frame of reference
+      for cities that is reminiscent of a clock and a dartboard. This paper
+      outlines the design, potential uses and merits of the ClockBoard
+      zoning system and discusses future avenues for research and
+      development of new zoning systems based on the experience.</p>
+    </div>
     
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
@@ -175,6 +198,7 @@ From that point, we experimented with a range of ways of dividing the concentric
 It became apparent that zoning systems based on the two organising principles (and modifiable parameters) of concentric annuli and segments held promise, but selecting appropriate settings for each was key to the development of a zoning system that would meet the criteria outlined above.
 <!-- commented out the next sentence as it's kind of obvious -->
 <!-- The key parameters of annuli distances and number of segments are discussed below. --></p>
+<pre><code>#&gt; Spherical geometry (s2) switched off</code></pre>
 <div class="figure">
 <span id="fig:options"></span>
 <img src="paper_files/figure-html/options-1.png" alt="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach." width="32%"><img src="paper_files/figure-html/options-2.png" alt="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach." width="32%"><img src="paper_files/figure-html/options-3.png" alt="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach." width="32%"><p class="caption">
