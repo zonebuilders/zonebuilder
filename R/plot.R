@@ -61,7 +61,7 @@ zb_view = function(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"), tit
     cent = sf::st_set_crs(sf::st_set_geometry(z, "centroid"), sf::st_crs(z))
     check_and_fix = tmap::tmap_options()$check.and.fix
     if(!check_and_fix) {
-      message("Updating tmap settings with: tmap::tmap_options(check.and.fix = TRUE)")
+      message("Updating tmap settings with:\ntmap::tmap_options(check.and.fix = TRUE)")
       tmap::tmap_options(check.and.fix = TRUE)
     }
     
