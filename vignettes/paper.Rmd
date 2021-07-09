@@ -183,6 +183,7 @@ It became apparent that zoning systems based on the two organising principles (a
 ```{r options, fig.cap="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach.", out.width="32%", fig.show='hold'}
 # z1 = zb_zone(x = london_c(), n_segments = 1)
 # m1 = qtm(z1, title = "(A) Concentric Annuli")
+sf::sf_use_s2(use_s2 = FALSE)
 z1 = zb_zone(london_c(), n_segments = 1, distance_growth = 0)
 z1_areas = sf::st_area(z1)
 z1_areas_relative = as.numeric(z1_areas / z1_areas[1])
