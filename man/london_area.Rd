@@ -6,6 +6,8 @@
 \alias{london_a}
 \alias{london_cent}
 \alias{london_c}
+\alias{london_cent_lonlat}
+\alias{london_area_lonlat}
 \title{Region representing London in projected coordinate system}
 \usage{
 london_a()
@@ -19,6 +21,7 @@ london_c()
 \note{
 `london_a()`  returns a projected version of `lnd` in `spDataLarge`.
 See the `data-raw` folder in the package's repo to reproduce these datasets
+The `lonlat` versions of the data have coordinates in units of degrees.
 }
 \examples{
 plot(london_a(), reset = FALSE)
