@@ -1,15 +1,8 @@
-I have used \donttest{} to stop examples that took too long from causing issues on CRAN submission.
-
-Following feedback I have added documentation on the type of objects that different functions return.
-
-The function on.exit() was used to ensure no graphical parameters were changed by calling plot functions.
-
-We are grateful for the feedback.
+Resubmitting after fixes to enable the package to work with sf 1.0-1 and beyond.
 
 ## Test environments
-
-* local R installation, R 4.0.3
-* Ubuntu and Mac via GitHub Actions, R 4.0.3
+* local R installation, R 4.1.0
+* ubuntu 16.04 (on travis-ci), R 4.1.0
 * win-builder (devel)
 
 ## R CMD check results
