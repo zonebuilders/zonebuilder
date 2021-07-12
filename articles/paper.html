@@ -194,82 +194,20 @@ Zoning systems for urban analysis should:</p>
 <li><p>be ‘scale agnostic’, capable of representing a range of urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong</p></li>
 <li><p>be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs</p></li>
 </ul>
-<p>After a process of iteration in which we considered many zoning options (some of which are illustrated in Figure <a href="#fig:options">1</a>) we settled on a system that we have called ‘ClockBoard’ (for reasons that will become apparent) and which has the following characteristics.
-The zoning system is based on <strong>concentric rings</strong> — formally called ‘concentric annuli’ — which emphasise central locations and have been used to explore the relationships between the characteristics of ‘focal trees’ and surrounding trees in ecological research <span class="citation">(Wills et al. 2016)</span>, as shown in Figure <a href="#fig:options">1</a> (a).
-The zoning system is based on <strong>segments</strong> defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure <a href="#fig:options">1</a> (b).
-From that point, we experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus (see Figure <a href="#fig:options">1</a> c).
+<p>After a process of iteration in which we considered many zoning options (some of which are illustrated in Figure <a href="#fig:options"><strong>??</strong></a>) we settled on a system that we have called ‘ClockBoard’ (for reasons that will become apparent) and which has the following characteristics.
+The zoning system is based on <strong>concentric rings</strong> — formally called ‘concentric annuli’ — which emphasise central locations and have been used to explore the relationships between the characteristics of ‘focal trees’ and surrounding trees in ecological research <span class="citation">(Wills et al. 2016)</span>, as shown in Figure <a href="#fig:options"><strong>??</strong></a> (a).
+The zoning system is based on <strong>segments</strong> defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure <a href="#fig:options"><strong>??</strong></a> (b).
+From that point, we experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus (see Figure <a href="#fig:options"><strong>??</strong></a> c).
 It became apparent that zoning systems based on the two organising principles (and modifiable parameters) of concentric annuli and segments held promise, but selecting appropriate settings for each was key to the development of a zoning system that would meet the criteria outlined above.
 <!-- commented out the next sentence as it's kind of obvious -->
 <!-- The key parameters of annuli distances and number of segments are discussed below. --></p>
-<div class="figure">
-<span id="fig:options"></span>
-<img src="paper_files/figure-html/options-1.png" alt="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach." width="32%"><img src="paper_files/figure-html/options-2.png" alt="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach." width="32%"><img src="paper_files/figure-html/options-3.png" alt="Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach." width="32%"><p class="caption">
-Figure 1: Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach.
-</p>
-</div>
 <div id="annuli-distances" class="section level2">
 <h2 class="hasAnchor">
 <a href="#annuli-distances" class="anchor"></a>Annuli distances</h2>
 <p>The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in previous figures.
 In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable.
 We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system.
-This linear growth leads to distances between each annuli boundary increasing in line with the steps in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a> <span class="citation">(Ross and Knott 2019)</span>, as outlined in Table <a href="#tab:t1">1</a>.</p>
-<table class="table">
-<caption>
-<span id="tab:t1">Table 1: </span>Key attributes of first 9 rings used in the ClockBoard zoning system.</caption>
-<thead><tr class="header">
-<th align="right">Number of rings</th>
-<th align="right">Diameter across (km)</th>
-<th align="right">Area (sq km)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">3.14</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">6</td>
-<td align="right">28.27</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">12</td>
-<td align="right">113.10</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">20</td>
-<td align="right">314.16</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">30</td>
-<td align="right">706.86</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">42</td>
-<td align="right">1385.44</td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="right">56</td>
-<td align="right">2463.01</td>
-</tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="right">72</td>
-<td align="right">4071.50</td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="right">90</td>
-<td align="right">6361.73</td>
-</tr>
-</tbody>
-</table>
+This linear growth leads to distances between each annuli boundary increasing in line with the steps in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a> <span class="citation">(Ross and Knott 2019)</span>, as outlined in Table <a href="#tab:t1"><strong>??</strong></a>.</p>
 </div>
 <div id="number-of-segments" class="section level2">
 <h2 class="hasAnchor">
@@ -299,7 +237,6 @@ the 12 segments of a clock face are well understood.</p>
 <div id="inter-city-statistical-comparison" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inter-city-statistical-comparison" class="anchor"></a>Inter-city statistical comparison</h2>
-<p><img src="paper_files/figure-html/unnamed-chunk-3-1.png"><!-- --></p>
 <!-- ![Cycling accidents compared between eight -->
 <!-- cities.](cycling_accidents.pdf){#fig:cyclAccidents width="\\textwidth"} -->
 </div>
