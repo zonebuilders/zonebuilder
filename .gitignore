@@ -7,9 +7,3 @@ paper/figures
 docs/
 *.Rds
 *.zip
-zonebuilder-paper*
-vignettes/paper.tex
-vignettes/paper.md
-vignettes/josis*
-vignettes/cities*
-*.log
