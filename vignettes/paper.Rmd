@@ -84,16 +84,21 @@ piggyback::pb_upload("zonebuilder-paper.pdf")
 
 # Introduction
 
-Zoning systems have long been used for practical purposes.
-They have been integral to land ownership, rents and urban policies for centuries, forming the basis of a range of social and economic practices.
-Historical examples highlighting the importance of zone layouts include 'tithe maps' determining land ownership and taxes in 18th Century England [@bryant_worcestershire_2007] and legally defined urban land use zones to tame chaotic urban growth expansion in the exploding US cities in the early 1900s [@baker_zoning_1925].
+Zoning systems have long been used for a variety of administrative and practical purposes.
+Zones demarcating parcels of land have been integral to land ownership, rents and urban policies for centuries, forming the basis of a range of social and economic practices.
+Historical examples highlighting the importance of zone layouts include 'tithe maps' determining land ownership and taxes in 18th Century England [@bryant_worcestershire_2007] and the division of cities into discrete areas including legally defined "business, industrial, and residential zones" to tame chaotic urban growth in the exploding US cities in the early 1900s [@baker_zoning_1925].
 
-In the 19th Century, zoning systems became known for political reasons, with 'gerrymandering' entering public discourse and academic research following Elbridge Gerry's apparent attempt to gain political advantage by creating an electoral district in an odd shape that was said to resemble a salamander (hence the term's name) in 1812 [@orr_persistence_1969].
-The gerrymandering problem has since been the topic of countless academic papers.
+In the 19th Century, zoning systems became known for political reasons, with 'gerrymandering' entering public discourse and academic research following Elbridge Gerry's apparent attempt to gain political advantage by creating an electoral district in an odd shape that was said to resemble a salamander (hence the term's name combining 'Gerry' and 'salamander') in 1812 [@orr_persistence_1969].
+Gerrymandering has since been the topic of countless academic papers that is the beyond the scope of the present paper.
 
-The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006]. In fact, this problem is concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs). Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimise some pre-determined criteria) the problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
+Research research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
+The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
+Much research has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualised to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
+In fact, this problem is concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi_2021] .
+Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimise some pre-determined criteria) the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
 
-The problem that we tackle in this paper is different, however: it is the division of geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
+The problem that we tackle in this paper is different, however.
+It is 'zoning from scratch': the division of geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
 The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in 'pre-packaged' small areas and because creating zones from nothing is a harder problem.
 We disagree with the statement that "existence of individual or non-spatially aggregated data is rare in geography" [@openshaw_optimal_1977], pointing to car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as 'point pattern processes'.
 And with advances in computer hardware and software, the 'starting from scratch' approach to zoning system is more feasible.
