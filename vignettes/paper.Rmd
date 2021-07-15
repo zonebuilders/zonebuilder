@@ -28,12 +28,13 @@ abstract: |
   methods such as origin-destination analysis and choropleth mapping
   rely on zones with appropriate sizes, shapes and coverage. However,
   existing zoning systems are sub-optimal in many urban analysis
-  contexts, for three main reasons: 1) administrative zoning systems are
+  contexts, for three main reasons: 1) available administrative zoning systems are
   often based on somewhat arbitrary factors; 2) evidence-based zoning
   systems are often highly variable in size and shape, reducing their
-  utility for inter-city comparison; and 3) the resolution of existing
-  zoning systems is often too low for certain urban analysis, especially
-  in low income nations. To tackle these three key issues we developed a
+  utility for inter-city comparison; and 3) official zoning systems are non-existent,
+  not publicly available, or are too course, hindering urban analysis
+  in many places, especially in low income nations.
+  To tackle these three key issues we developed a
   flexible, open and scalable solution: the ClockBoard zoning system.
   ClockBoard consists of 12 segments divided by concentric rings of
   increasing distance, creating a consistent visual frame of reference
