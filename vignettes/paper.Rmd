@@ -80,6 +80,9 @@ RefManageR::WriteBib(refs, "vignettes/references.bib")
 rmarkdown::render(input = "vignettes/paper.Rmd", output_file = "../zonebuilder-paper.pdf")
 browseURL("zonebuilder-paper.pdf")
 piggyback::pb_upload("zonebuilder-paper.pdf")
+
+library(rbbt)
+bbt_write_bib("vignettes/references.bib", bbt_detect_citations("vignettes/paper.Rmd"), overwrite = TRUE)
 ```
 
 # Introduction
@@ -94,7 +97,7 @@ Gerrymandering has since been the topic of countless academic papers that is the
 Research research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
 The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
 Much research has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualised to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
-In fact, this problem is concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi_2021] .
+In fact, this problem is concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021] .
 Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimise some pre-determined criteria) the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
 
 The problem that we tackle in this paper is different, however.
