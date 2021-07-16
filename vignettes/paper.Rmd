@@ -167,21 +167,17 @@ Finally, in Section 4, we discuss limitations of the approach and possible direc
 
 # The ClockBoard zoning system
 
-The aim of the ClockBoard zoning system outlined in this paper is to tackle the issues outlined above, with an approach that is free, open, reproducible and easy to extend.
-Specifically, we developed the system to considering urban analysis research and visualisation requirements, leading to the following high-level criteria.
+The aim of the ClockBoard zoning system is to tackle the issues outlined above, with an approach that is free, open, reproducible and easy to extend.
+We developed the system to considering urban analysis research and visualisation requirements and based on the the following zone system design criteria.
 Zoning systems for urban analysis should:
 
 -   contain intuitively named zones, enabling public communication of research, e.g. with reference common perceptions of space in terms of distance from the city centre and direction relative to North
-
 -   be easy to visualise without too many (100+) or too few (less than 10) zones
-
 -   include zones of consistent and useful sizes, for example with zone areas increasing with distance from the urban centres to reflect relatively high densities in central locations
-
 -   be 'scale agnostic', capable of representing a range of urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong
-
 -   be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs
 
-After a process of iteration in which we considered many zoning options (some of which are illustrated in Figure \@ref(fig:options)) we settled on a system that we have called 'ClockBoard' (for reasons that will become apparent) and which has the following characteristics.
+After a process of iteration in which we considered many zoning options (some of which are illustrated in Figure \@ref(fig:options)) we settled on the 'ClockBoard' zoning system, which has the following characteristics.
 The zoning system is based on **concentric rings** --- formally called 'concentric annuli' --- which emphasise central locations and have been used to explore the relationships between the characteristics of 'focal trees' and surrounding trees in ecological research [@wills_persistence_2016], as shown in Figure \@ref(fig:options) (a).
 The zoning system is based on **segments** defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure \@ref(fig:options) (b).
 From that point, we experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus (see Figure \@ref(fig:options) c).
@@ -201,7 +197,6 @@ zb_plot(z1, title = "(A) Concentric Annuli")
 zb_plot(zb_segment(london_c(), n_segments = 12), title = "(B) Clock segments")
 qtm(zb_zone(london_c(), n_segments = z1_areas_relative, labeling = "clock", distance_growth = 0), title = "(C) Equal area zones", fill = NULL)
 ```
-
 
 ## Annuli distances
 
