@@ -1,25 +1,24 @@
 ---
 title: "ClockBoard: a zoning system for urban analysis"
 bibliography: references.bib
-
-# # # For R package vignette
-# output: bookdown::html_vignette2
-# vignette: >
-#   %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
-#   %\VignetteEngine{knitr::rmarkdown}
-#   %\VignetteEncoding{UTF-8}
-# pkgdown:
-#   as_is: true
-#   set_null_theme: false
-# For paper: Comment the above and uncomment below for LaTeX version
-output:
-  bookdown::pdf_book:
-    base_format: rticles::josis_article
-author1: Robin Lovelace
-affil1: University of Leeds
-author2: Martijn Tennekes
-affil2: Department, Institution, Country TBC
-keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
+# # For R package vignette
+output: bookdown::html_vignette2
+vignette: >
+  %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+pkgdown:
+  as_is: true
+  set_null_theme: false
+# # For paper: Comment the above and uncomment below for LaTeX version
+# output:
+#   bookdown::pdf_book:
+#     base_format: rticles::josis_article
+# author1: Robin Lovelace
+# affil1: University of Leeds
+# author2: Martijn Tennekes
+# affil2: Department, Institution, Country TBC
+# keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 abstract: |
   Zones are the building blocks of urban analysis. Fields ranging from
   demographics to transport planning routinely use zones --- spatially
