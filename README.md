@@ -5,10 +5,8 @@
 
 <!-- badges: start -->
 <!-- [![Codecov test coverage](https://codecov.io/gh/zonebuilders/zonebuilder/branch/master/graph/badge.svg)](https://codecov.io/gh/zonebuilders/zonebuilder?branch=master) -->
-
-[![R-CMD-check](https://github.com/zonebuilders/zonebuilder/workflows/R-CMD-check/badge.svg)](https://github.com/zonebuilders/zonebuilder/actions)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/zonebuilder)](https://CRAN.R-project.org/package=zonebuilder)
+<!-- [![R-CMD-check](https://github.com/zonebuilders/zonebuilder/workflows/R-CMD-check/badge.svg)](https://github.com/zonebuilders/zonebuilder/actions) -->
+<!-- [![CRAN status](https://www.r-pkg.org/badges/version/zonebuilder)](https://CRAN.R-project.org/package=zonebuilder) -->
 <!-- badges: end -->
 
 The goal of zonebuilder is to break up large geographic regions such as
