@@ -7,3 +7,7 @@ paper/figures
 docs/
 *.Rds
 *.zip
+vignettes/josis*
+*.log
+*.pdf
+*.tex
