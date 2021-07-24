@@ -17,11 +17,11 @@ output:
     base_format: rticles::josis_article
 author:
    - name: Robin Lovelace
-     affiliation: University of Leeds
+     affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
    - name: Martijn Tennekes
      affiliation: Center for Big Data Statistics, Centraal Bureau voor de Statistiek, The Netherlands
    - name: Dustin Carlino
-     affiliation: Independent Software Engineer, Lead Developer of A/B Street
+     affiliation: Independent Software Engineer, Lead Developer of A/B Street, USA
 keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 abstract: |
   Zones are the building blocks of urban analysis. Fields ranging from
@@ -58,6 +58,7 @@ editor_options:
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  fig.align = "center",
   eval = TRUE, # set to false for CRAN submission
   echo = FALSE,
   collapse = TRUE,
@@ -83,7 +84,7 @@ RefManageR::WriteBib(refs, "vignettes/references.bib")
 rmarkdown::render(input = "vignettes/paper.Rmd", output_file = "../zonebuilder-paper.pdf")
 browseURL("zonebuilder-paper.pdf")
 piggyback::pb_upload("zonebuilder-paper.pdf")
-
+remotes::install_github("paleolimbot/rbbt")
 library(rbbt)
 bbt_write_bib("vignettes/references.bib", bbt_detect_citations("vignettes/paper.Rmd"), overwrite = TRUE)
 ```
@@ -169,25 +170,29 @@ Finally, in Section 4, we discuss limitations of the approach and possible direc
 
 # The ClockBoard zoning system
 
-The aim of the ClockBoard zoning system outlined in this paper is to tackle the issues outlined above, with an approach that is free, open, reproducible and easy to extend.
-Specifically, we developed the system to considering urban analysis research and visualisation requirements, leading to the following high-level criteria.
+The aim of the ClockBoard zoning system is to tackle the issues associated with available zoning systems and to provide a standard template for analysis of the geographic distribution of urban phenomena between cities internationally.
+As outlined above, there is a need for open access zoning systems that are readily available and consistent.
+The requirements of urban analysts, geographers, transport modellers and other working with geographic data across cities are diverse, however, motivating our approach which is free, open, reproducible and easy to extend: modifications to the ClockBoard system and completely new zoning systems could build the approach.
+We developed the system to considering urban analysis research and visualisation requirements and based on the the following zone system design criteria.
 Zoning systems for urban analysis should:
 
 -   contain intuitively named zones, enabling public communication of research, e.g. with reference common perceptions of space in terms of distance from the city centre and direction relative to North
-
 -   be easy to visualise without too many (100+) or too few (less than 10) zones
-
 -   include zones of consistent and useful sizes, for example with zone areas increasing with distance from the urban centres to reflect relatively high densities in central locations
-
 -   be 'scale agnostic', capable of representing a range of urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong
-
 -   be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs
 
-After a process of iteration in which we considered many zoning options (some of which are illustrated in Figure \@ref(fig:options)) we settled on a system that we have called 'ClockBoard' (for reasons that will become apparent) and which has the following characteristics.
-The zoning system is based on **concentric rings** --- formally called 'concentric annuli' --- which emphasise central locations and have been used to explore the relationships between the characteristics of 'focal trees' and surrounding trees in ecological research [@wills_persistence_2016], as shown in Figure \@ref(fig:options) (a).
-The zoning system is based on **segments** defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure \@ref(fig:options) (b).
+Considering the above criteria, we explored many zoning options, some of which are illustrated in Figure \@ref(fig:options).
+After a period of informal testing and feedback from people who work with zones, we focussed on the 'ClockBoard' zoning system presented in this paper.
+The zoning system is based on:
+
+- **Concentric rings** --- formally called 'concentric annuli' --- which emphasise central locations and have been used to explore the relationships between the characteristics of 'focal trees' and surrounding trees in ecological research [@wills_persistence_2016], as shown in Figure \@ref(fig:options) (a).
+
+- **Segments**, defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure \@ref(fig:options) (b).
+
+
 From that point, we experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus (see Figure \@ref(fig:options) c).
-It became apparent that zoning systems based on the two organising principles (and modifiable parameters) of concentric annuli and segments held promise, but selecting appropriate settings for each was key to the development of a zoning system that would meet the criteria outlined above.
+It became apparent that zoning systems based on the two organising principles (and modifiable parameters) of concentric annuli and segments held promise, but selecting appropriate settings for each was key to the development of the ClockBoad zoning system, as outlined below.
 <!-- commented out the next sentence as it's kind of obvious -->
 <!-- The key parameters of annuli distances and number of segments are discussed below. -->
 
@@ -204,7 +209,6 @@ zb_plot(zb_segment(london_c(), n_segments = 12), title = "(B) Clock segments")
 qtm(zb_zone(london_c(), n_segments = z1_areas_relative, labeling = "clock", distance_growth = 0), title = "(C) Equal area zones", fill = NULL)
 ```
 
-
 ## Annuli distances
 
 The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in previous figures.
@@ -216,15 +220,15 @@ This linear growth leads to distances between each annuli boundary increasing in
 txt = "Number of rings,Diameter across (km),Area (sq km)
 1,1,2,3.14
 2,2,6,28.27
-3,3,12,113.10
-4,4,20,314.16
-5,5,30,706.86
-6,6,42,1385.44
-7,7,56,2463.01
-8,8,72,4071.50
 9,9,90,6361.73"
 t1 = read.csv(text = txt, check.names = FALSE)
-knitr::kable(t1, booktabs = TRUE, caption = "Key attributes of first 9 rings used in the ClockBoard zoning system.")
+# calculate t1 on the fly
+t2 = tibble::tibble("N. annuli" = 1:9)
+t2$`N. zones` = t2$`N. annuli` * 12 - 11
+t2$`Radius (km)` = zonebuilder::zb_100_triangular_numbers[1:9]
+t2$`Area (sqkm)` = pi * t2$`Radius (km)`^2
+t2$`Average zone size (km)` = t2$`Area (sqkm)` / t2$`N. zones`
+knitr::kable(t2, booktabs = TRUE, caption = "Key attributes of first 9 rings used in the ClockBoard zoning system.", digits = 0)
 ```
 
 ## Number of segments
@@ -232,6 +236,15 @@ knitr::kable(t1, booktabs = TRUE, caption = "Key attributes of first 9 rings use
 What it looks like with 4 segments.
 The ClockBoard zoning system has 12 segments, representing a compromise between specificity of zone identification and ease of comprehension (imagine a system with 256 segments and saying "I'm in zone E173"!) and understanding:
 the 12 segments of a clock face are well understood.
+
+The result of applying 12 segments and n concentric rings with external diameter increasing as triangular numbers, with n being sufficient to cover the city extent with, is the Clockboard zoning system, illustrated in Figure \@ref(fig:london).
+
+
+```{r london, fig.cap="The clockboard zoning system, applied to Greater London, UK.", out.width="60%"}
+london_zones <- zb_zone(london_c(), london_a())
+zb_plot(london_zones, palette = "hcl")
+```
+
 
 
 ## City extents
@@ -248,16 +261,17 @@ univariate description
 
 ## Inter-city statistical comparison
 
-```{r, fig.width=7, message=FALSE, warning=FALSE}
+```{r, fig.width=7, message=FALSE, warning=FALSE, eval=FALSE}
 # download preprocessed data (processing script /data-raw/crashes.R)
 df = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/ksi_bkm_zone.rds")))
 uk = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/uk.rds")))
 thames = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/thames.rds")))
-
+# df = readRDS("ksi_bkm_zone.rds")
+# uk = readRDS("uk.rds")
+# thames = readRDS("thames.rds")
 # filter: set zones with less than 10,000 km of cycling per yer to NA
 df_filtered = df %>% 
   mutate(ksi_bkm = ifelse((bkm_yr * 1e09) < 2e04, NA, ksi_bkm))
-
 tmap_mode("plot")
 tm_shape(uk) +
  tm_fill(col = "white") +
