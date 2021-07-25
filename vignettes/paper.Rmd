@@ -3,25 +3,25 @@ title: "ClockBoard: a zoning system for urban analysis"
 bibliography: references.bib
 
 # # For R package vignette
-output: bookdown::html_vignette2
-vignette: >
-  %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
-pkgdown:
-  as_is: true
-  set_null_theme: false
-# # For paper: Comment the above and uncomment below for LaTeX version
-# output:
-#   bookdown::pdf_book:
-#     base_format: rticles::josis_article
-# author:
-#    - name: Robin Lovelace
-#      affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
-#    - name: Martijn Tennekes
-#      affiliation: Center for Big Data Statistics, Centraal Bureau voor de Statistiek, The Netherlands
-#    - name: Dustin Carlino
-#      affiliation: Independent Software Engineer, Lead Developer of A/B Street, USA
+# output: bookdown::html_vignette2
+# vignette: >
+#   %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
+#   %\VignetteEngine{knitr::rmarkdown}
+#   %\VignetteEncoding{UTF-8}
+# pkgdown:
+#   as_is: true
+#   set_null_theme: false
+# For paper: Comment the above and uncomment below for LaTeX version
+output:
+  bookdown::pdf_book:
+    base_format: rticles::josis_article
+author:
+   - name: Robin Lovelace
+     affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
+   - name: Martijn Tennekes
+     affiliation: Center for Big Data Statistics, Centraal Bureau voor de Statistiek, The Netherlands
+   - name: Dustin Carlino
+     affiliation: Independent Software Engineer, Lead Developer of A/B Street, USA
 keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 abstract: |
   Zones are the building blocks of urban analysis. Fields ranging from
@@ -204,14 +204,17 @@ It became apparent that zoning systems based on the two organising principles (a
 z1 = zb_zone(london_c(), n_segments = 1, distance_growth = 0)
 z1_areas = sf::st_area(z1)
 z1_areas_relative = as.numeric(z1_areas / z1_areas[1])
-zb_plot(z1, title = "(A) Concentric Annuli")
-zb_plot(zb_segment(london_c(), n_segments = 12), title = "(B) Clock segments")
-qtm(zb_zone(london_c(), n_segments = z1_areas_relative, labeling = "clock", distance_growth = 0), title = "(C) Equal area zones", fill = NULL)
+qtm(z1, title = "(A) Concentric Annuli", fill = NULL) +
+  tm_layout(frame = FALSE)
+qtm(zb_segment(london_c(), n_segments = 12), title = "(B) Clock segments", fill = NULL) +
+  tm_layout(frame = FALSE)
+qtm(zb_zone(london_c(), n_segments = z1_areas_relative, labeling = "clock", distance_growth = 0), title = "(C) Equal area zones", fill = NULL) +
+  tm_layout(frame = FALSE)
 ```
 
 ## Annuli distances
 
-The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in previous figures.
+The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in Figure \@ref(fig:options).
 In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable.
 We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system.
 This linear growth leads to distances between each annuli boundary increasing in line with the steps in the [triangular number sequence](https://en.wikipedia.org/wiki/Triangular_number) [@ross_dicuil_2019], as outlined in Table \@ref(tab:t1).
