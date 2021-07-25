@@ -203,13 +203,15 @@ Zoning systems for urban analysis should:</p>
 <li>be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs</li>
 </ul>
 <p>Considering the above criteria, we explored many zoning options, some of which are illustrated in Figure <a href="#fig:options">1</a>.
-After a period of informal testing and feedback from people who work with zones, we focussed on the ‘ClockBoard’ zoning system presented in this paper.
-The zoning system is based on:</p>
+Two key concepts that make up the zoning system described in this paper are concentric annuli and segments defined by radii.</p>
 <ul>
-<li><p><strong>Concentric rings</strong> — formally called ‘concentric annuli’ — which emphasise central locations and have been used to explore the relationships between the characteristics of ‘focal trees’ and surrounding trees in ecological research <span class="citation">(Wills et al. 2016)</span>, as shown in Figure <a href="#fig:options">1</a> (a).</p></li>
-<li><p><strong>Segments</strong>, defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure <a href="#fig:options">1</a> (b).</p></li>
+<li><p><strong>Concentric rings</strong> — formally called ‘concentric annuli’ — which emphasise central locations and have been used to explore the relationships between the characteristics of ‘focal trees’ and surrounding trees in ecological research <span class="citation">(Wills et al. 2016)</span>, as shown in Figure <a href="#fig:options">1</a> (A).</p></li>
+<li><p><strong>Segments</strong>, defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure <a href="#fig:options">1</a> (B).</p></li>
 </ul>
-<p>From that point, we experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus (see Figure <a href="#fig:options">1</a> c).
+<p>Combining these two concepts creates a general approach to zone creation that can be described as ‘segmented concentric annuli’, one specific implementation of which is shown in Figure <a href="#fig:options">1</a> (C).
+After a period of informal testing and feedback, we developed and refined the ‘ClockBoard’ zoning system presented in this paper, which is a specific implementation of the segmented concentric annuli approach to zone creation.</p>
+<p>The parameters that define the ClockBoard zoning system were developed in an iterative process.
+We experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus.
 It became apparent that zoning systems based on the two organising principles (and modifiable parameters) of concentric annuli and segments held promise, but selecting appropriate settings for each was key to the development of the ClockBoad zoning system, as outlined below.
 <!-- commented out the next sentence as it's kind of obvious -->
 <!-- The key parameters of annuli distances and number of segments are discussed below. --></p>
@@ -219,18 +221,35 @@ It became apparent that zoning systems based on the two organising principles (a
 Figure 1: Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach.
 </p>
 </div>
-<div id="annuli-distances" class="section level2">
+<div id="annuli-radii" class="section level2">
 <h2 class="hasAnchor">
-<a href="#annuli-distances" class="anchor"></a>Annuli distances</h2>
-<p>The radius of each annuli in the zoning system can be incremented by a fixed amount, as shown in Figure <a href="#fig:options">1</a>.
-In cases where high geographic resolution is important near the centre of the study region, such as when designing transport systems into the central zone of a city planning, increasing distances between each radius may be desirable.
-We experimented with various ways of incrementing the annuli width and suggest linear increases in width as a sensible default for a simple zoning system.
-This linear growth leads to distances between each annuli boundary increasing in line with the steps in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a> <span class="citation">(Ross and Knott 2019)</span>, as outlined in Table <a href="#tab:t1">1</a>.</p>
+<a href="#annuli-radii" class="anchor"></a>Annuli radii</h2>
+<p>Each annuli is defined by its inner and outer circle.
+Given that the radius of the inner circle must the same as the radius of the preceding annuli to ensure geographically contiguity (no gaps) — except in the special case of the first and central annuli which has no inner circle (or an inner circle with a radius of zero) — the annuli sizes can be wholly defined by the sequence of numbers defining their out circle radii.</p>
+<p>This sequence of numbers can increase by a fixed amount — e.g. with the outer border of each annuli being 1 km from the centre than the preceding annulus, as shown in Figure <a href="#fig:options">1</a> (C) — or by varying amounts.
+In many cases it is useful for zones to be smaller near the centre of the study region surrounding cities.
+This truism is often reflected in traffic analysis zones (TAZ) used for transport modelling, which tend to be smaller near central areas where more detail is most important for policy-relevant outputs <span class="citation">(<span class="citeproc-not-found" data-reference-id="chandra_2021_multiobjective"><strong>???</strong></span>)</span>.
+After experimenting with various ways of incrementing the annuli width,
+<!-- including in proportion to the square of the annuli index, -->
+and considering the importance of easy to remember distances from central points from the perspective of readability, interpretation and simplicity of the system, we settled on linear increases in width as a sensible default for the ClockBoard zoning system.
+This linear growth leads to distances between the outer circles of each annuli and the central point following in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a> <span class="citation">(Ross and Knott 2019)</span>.
+This means that all points in the first annuli (labelled A) are up to 1 km way from the city centre; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas <span class="citation">(<span class="citeproc-not-found" data-reference-id="vinothkumar_2007_spatiotemporal"><strong>???</strong></span>)</span>.
+The furthest points from the central point of the next 8 subsequent annuli in the system (annuli B to I) are 3, 6, 10, 15, 21, 28, 36 and 45 km respectively, meaning that even a large city such as London requires only 8 annuli to cover it entirely (Figure <a href="#fig:london">2</a>).
+This and other other attributes of the first set of 9 zones in the ClockBoard zoning system in Table <a href="#tab:t1">1</a>.</p>
 <table class="table">
 <caption>
 <span id="tab:t1">Table 1: </span>Key attributes of first 9 rings used in the ClockBoard zoning system.</caption>
+<colgroup>
+<col width="11%">
+<col width="22%">
+<col width="10%">
+<col width="14%">
+<col width="14%">
+<col width="27%">
+</colgroup>
 <thead><tr class="header">
 <th align="right">N. annuli</th>
+<th align="left">Outer annuli label</th>
 <th align="right">N. zones</th>
 <th align="right">Radius (km)</th>
 <th align="right">Area (sqkm)</th>
@@ -239,6 +258,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
+<td align="left">A</td>
 <td align="right">1</td>
 <td align="right">1</td>
 <td align="right">3</td>
@@ -246,6 +266,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="even">
 <td align="right">2</td>
+<td align="left">B</td>
 <td align="right">13</td>
 <td align="right">3</td>
 <td align="right">28</td>
@@ -253,6 +274,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="odd">
 <td align="right">3</td>
+<td align="left">C</td>
 <td align="right">25</td>
 <td align="right">6</td>
 <td align="right">113</td>
@@ -260,6 +282,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="even">
 <td align="right">4</td>
+<td align="left">D</td>
 <td align="right">37</td>
 <td align="right">10</td>
 <td align="right">314</td>
@@ -267,6 +290,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="odd">
 <td align="right">5</td>
+<td align="left">E</td>
 <td align="right">49</td>
 <td align="right">15</td>
 <td align="right">707</td>
@@ -274,6 +298,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="even">
 <td align="right">6</td>
+<td align="left">F</td>
 <td align="right">61</td>
 <td align="right">21</td>
 <td align="right">1385</td>
@@ -281,6 +306,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="odd">
 <td align="right">7</td>
+<td align="left">G</td>
 <td align="right">73</td>
 <td align="right">28</td>
 <td align="right">2463</td>
@@ -288,6 +314,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="even">
 <td align="right">8</td>
+<td align="left">H</td>
 <td align="right">85</td>
 <td align="right">36</td>
 <td align="right">4072</td>
@@ -295,6 +322,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 </tr>
 <tr class="odd">
 <td align="right">9</td>
+<td align="left">I</td>
 <td align="right">97</td>
 <td align="right">45</td>
 <td align="right">6362</td>
@@ -306,8 +334,7 @@ This linear growth leads to distances between each annuli boundary increasing in
 <div id="number-of-segments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#number-of-segments" class="anchor"></a>Number of segments</h2>
-<p>What it looks like with 4 segments.
-The ClockBoard zoning system has 12 segments, representing a compromise between specificity of zone identification and ease of comprehension (imagine a system with 256 segments and saying “I’m in zone E173”!) and understanding:
+<p>The ClockBoard zoning system has 12 segments, representing a compromise between specificity of zone identification and ease of comprehension (imagine a system with 256 segments and saying “I’m in zone E173”!) and understanding:
 the 12 segments of a clock face are well understood.</p>
 <p>The result of applying 12 segments and n concentric rings with external diameter increasing as triangular numbers, with n being sufficient to cover the city extent with, is the Clockboard zoning system, illustrated in Figure <a href="#fig:london">2</a>.</p>
 <div class="figure" style="text-align: center">
@@ -379,7 +406,7 @@ Also, small cities may be located within the metropolitan area of a larger city 
 <p>Bryant, Victoria, and Maggi Noke. 2007. “The Worcestershire Tithe and Enclosure Map Project: Creating a Research Resource.” <em>Landscape History</em> 29 (1): 89–92. <a href="https://doi.org/10/gkb5qs">https://doi.org/10/gkb5qs</a>.</p>
 </div>
 <div id="ref-chandra_multi-objective_2021">
-<p>Chandra, Aitichya, M. N. Sharath, Agnivesh Pani, and Prasanta K. Sahu. 2021. “A Multi-Objective Genetic Algorithm Approach to Design Optimal Zoning Systems for Freight Transportation Planning.” <em>Journal of Transport Geography</em> 92 (April): 103037. <a href="https://doi.org/10.1016/j.jtrangeo.2021.103037">https://doi.org/10.1016/j.jtrangeo.2021.103037</a>.</p>
+<p>Chandra, Aitichya, M. N. Sharath, Agnivesh Pani, and Prasanta K. Sahu. 2021. “A Multi-Objective Genetic Algorithm Approach to Design Optimal Zoning Systems for Freight Transportation Planning.” <em>Journal of Transport Geography</em> 92 (April): 103037. <a href="https://doi.org/10/gk7stb">https://doi.org/10/gk7stb</a>.</p>
 </div>
 <div id="ref-chou_taming_2006">
 <p>Chou, Chung-I, and S. P. Li. 2006. “Taming the Gerrymander—Statistical Physics Approach to Political Districting Problem.” <em>Physica A: Statistical Mechanics and Its Applications</em> 369 (2): 799–808. <a href="https://doi.org/10/fghzws">https://doi.org/10/fghzws</a>.</p>
@@ -403,7 +430,7 @@ Also, small cities may be located within the metropolitan area of a larger city 
 <p>Honick, K. R. 1967. “Pictorial Navigation Displays.” <em>The Cartographic Journal</em> 4 (2): 72–81. <a href="https://doi.org/10/gh326k">https://doi.org/10/gh326k</a>.</p>
 </div>
 <div id="ref-jelinski_modifiable_1996">
-<p>Jelinski, Dennis E., and Jianguo Wu. 1996. “The Modifiable Areal Unit Problem and Implications for Landscape Ecology.” <em>Landscape Ecology</em> 11 (3): 129–40. <a href="https://doi.org/10.1007/BF02447512">https://doi.org/10.1007/BF02447512</a>.</p>
+<p>Jelinski, Dennis E., and Jianguo Wu. 1996. “The Modifiable Areal Unit Problem and Implications for Landscape Ecology.” <em>Landscape Ecology</em> 11 (3): 129–40. <a href="https://doi.org/10/c6gjwq">https://doi.org/10/c6gjwq</a>.</p>
 </div>
 <div id="ref-lin_cartographic_2017">
 <p>Lin, Jie, Dean M. Hanink, and Robert G. Cromley. 2017. “A Cartographic Modeling Approach to Isopleth Mapping.” <em>International Journal of Geographical Information Science</em> 31 (5): 849–66. <a href="https://doi.org/10/gjhh7d">https://doi.org/10/gjhh7d</a>.</p>
