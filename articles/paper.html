@@ -361,9 +361,22 @@ Figure 2: The clockboard zoning system, applied to Greater London, UK.
 </p>
 </div>
 </div>
-<div id="city-extents" class="section level2">
+<div id="using-the-clockboard-zoning-system" class="section level2">
 <h2 class="hasAnchor">
-<a href="#city-extents" class="anchor"></a>City extents</h2>
+<a href="#using-the-clockboard-zoning-system" class="anchor"></a>Using the ClockBoard zoning system</h2>
+<p>To enable easy access to the zoning system, we have implemented described above in free and open source software.
+The concepts were initially implemented in the statistical programming language R, which is available from the Comprehensive R Archive Network (<a href="https://cran.r-project.org/package=zonebuilder">CRAN</a>) and can be installed from the R command line as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"zonebuilder"</span><span class="op">)</span></code></pre></div>
+<p>To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
+See <a href="https://github.com/zonebuilders/zonebuilder-rust">github.com/zonebuilders/zonebuilder-rust</a> for details.</p>
+<p>To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at <a href="https://zonebuilders.github.io/zonebuilder-rust/">zonebuilders.github.io/zonebuilder-rust/</a> (see Figure <a href="#fig:interactive">3</a>).</p>
+<div class="figure" style="text-align: center">
+<span id="fig:interactive"></span>
+<img src="126983234-1c047a1e-0165-4ffd-a5cb-03a361b71d72.png" alt="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser." width="809"><p class="caption">
+Figure 3: Screenshot from simple web application enabling people to create ClockBoard zones from a web browser.
+</p>
+</div>
 </div>
 </div>
 <div id="applications" class="section level1">
