@@ -290,7 +290,8 @@ u = "https://user-images.githubusercontent.com/1825120/126983234-1c047a1e-0165-4
 # for pdf version:
 # f = basename(u)
 # download.file(u, f)
-knitr::include_graphics(f)
+# knitr::include_graphics(f)
+knitr::include_graphics(u)
 ```
 
 
