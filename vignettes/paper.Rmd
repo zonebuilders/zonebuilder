@@ -287,8 +287,9 @@ To enable creation of ClockBoard zones for non-programmers and to encourage peop
 ```{r interactive, fig.cap="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser." }
 # See https://github.com/zonebuilders/zonebuilder-rust/issues/42#issuecomment-886627851
 u = "https://user-images.githubusercontent.com/1825120/126983234-1c047a1e-0165-4ffd-a5cb-03a361b71d72.png"
-f = basename(u)
-download.file(u, f)
+# for pdf version:
+# f = basename(u)
+# download.file(u, f)
 knitr::include_graphics(f)
 ```
 
