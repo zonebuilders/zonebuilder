@@ -235,12 +235,12 @@ Figure 1: Illustration of ideas explored in the lead-up to the development of th
 Given that the radius of the inner circle must the same as the radius of the preceding annuli to ensure geographically contiguity (no gaps) — except in the special case of the first and central annuli which has no inner circle (or an inner circle with a radius of zero) — the annuli sizes can be wholly defined by the sequence of numbers defining their out circle radii.</p>
 <p>This sequence of numbers can increase by a fixed amount — e.g. with the outer border of each annuli being 1 km from the centre than the preceding annulus, as shown in Figure <a href="#fig:options">1</a> (C) — or by varying amounts.
 In many cases it is useful for zones to be smaller near the centre of the study region surrounding cities.
-This truism is often reflected in traffic analysis zones (TAZ) used for transport modelling, which tend to be smaller near central areas where more detail is most important for policy-relevant outputs <span class="citation">(<span class="citeproc-not-found" data-reference-id="chandra_2021_multi-objective"><strong>???</strong></span>)</span>.
+This truism is often reflected in traffic analysis zones (TAZ) used for transport modelling, which tend to be smaller near central areas where more detail is most important for policy-relevant outputs <span class="citation">(Chandra et al. 2021)</span>.
 After experimenting with various ways of incrementing the annuli width,
 <!-- including in proportion to the square of the annuli index, -->
 and considering the importance of easy to remember distances from central points from the perspective of readability, interpretation and simplicity of the system, we settled on linear increases in width as a sensible default for the ClockBoard zoning system.
 This linear growth leads to distances between the outer circles of each annuli and the central point following in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a> <span class="citation">(Ross and Knott 2019)</span>.
-This means that all points in the first annuli (labelled A) are up to 1 km way from the city centre; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas <span class="citation">(<span class="citeproc-not-found" data-reference-id="vinothkumar_2007_spatio-temporal"><strong>???</strong></span>)</span>.
+This means that all points in the first annuli (labelled A) are up to 1 km way from the city centre; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas <span class="citation">(Vinoth Kumar, Pathan, and Bhanderi 2007)</span>.
 The furthest points from the central point of the next 8 subsequent annuli in the system (annuli B to I) are 3, 6, 10, 15, 21, 28, 36 and 45 km respectively, meaning that even a large city such as London requires only 8 annuli to cover it entirely (Figure <a href="#fig:london">2</a>).
 This and other other attributes of the first set of 9 zones in the ClockBoard zoning system in Table <a href="#tab:t1">1</a>.</p>
 <table class="table">
@@ -342,7 +342,7 @@ This and other other attributes of the first set of 9 zones in the ClockBoard zo
 <h2 class="hasAnchor">
 <a href="#number-of-segments" class="anchor"></a>Number of segments</h2>
 <p>As its name suggests, the ClockBoard zoning system has 12 segments, representing a compromise between specificity of zone identification and ease of comprehension.
-On one hand, too few segments result in large and/or unusually shaped zones, as illustrated in a segmented concentric annuli zoning system with four segments per annuli developed by <span class="citation">(<span class="citeproc-not-found" data-reference-id="vinothkumar_2007_spatio-temporal"><strong>???</strong></span>)</span> to model urban expansion.
+On one hand, too few segments result in large and/or unusually shaped zones, as illustrated in a segmented concentric annuli zoning system with four segments per annuli developed by <span class="citation">Vinoth Kumar, Pathan, and Bhanderi (2007)</span> to model urban expansion.
 On the other hand, too many segments would result in small zones and make the zone codes harder to understand: imagine a system with 256 segments and saying “I’m in zone E173”!</p>
 <p>Another advantage of using 12 segments is that the angular distance between segments are well understood.
 The ‘clock position’ system describes bearings with reference to the face of a clock, relative to the direction of travel or, as is the case with the ClockBoard zoning system, relative to true North.
@@ -481,6 +481,9 @@ Also, small cities may be located within the metropolitan area of a larger city 
 </div>
 <div id="ref-thomson_gridsample_2017">
 <p>Thomson, Dana R., Forrest R. Stevens, Nick W. Ruktanonchai, Andrew J. Tatem, and Marcia C. Castro. 2017. “GridSample: An R Package to Generate Household Survey Primary Sampling Units (PSUs) from Gridded Population Data.” <em>International Journal of Health Geographics</em> 16 (1): 25. <a href="https://doi.org/10/gbqg4w">https://doi.org/10/gbqg4w</a>.</p>
+</div>
+<div id="ref-vinoth_kumar_spatio-temporal_2007">
+<p>Vinoth Kumar, J. Antony, S. K. Pathan, and R. J. Bhanderi. 2007. “Spatio-Temporal Analysis for Monitoring Urban Growth – a Case Study of Indore City.” <em>Journal of the Indian Society of Remote Sensing</em> 35 (1): 11–20. <a href="https://doi.org/10.1007/BF02991829">https://doi.org/10.1007/BF02991829</a>.</p>
 </div>
 <div id="ref-wills_persistence_2016">
 <p>Wills, Christopher, Kyle E. Harms, Thorsten Wiegand, Ruwan Punchi-Manage, Gregory S. Gilbert, David Erickson, W. John Kress, Stephen P. Hubbell, C. V. Savitri Gunatilleke, and I. A. U. Nimal Gunatilleke. 2016. “Persistence of Neighborhood Demographic Influences over Long Phylogenetic Distances May Help Drive Post-Speciation Adaptation in Tropical Forests.” <em>PLOS ONE</em> 11 (6): e0156913. <a href="https://doi.org/10/f9htqm">https://doi.org/10/f9htqm</a>.</p>
