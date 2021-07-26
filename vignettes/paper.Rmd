@@ -36,7 +36,7 @@ abstract: |
   often based on somewhat arbitrary factors; 2) evidence-based zoning
   systems are often highly variable in size and shape, reducing their
   utility for inter-city comparison; and 3) official zoning systems are non-existent,
-  not publicly available, or are too course, hindering urban analysis
+  not publicly available, or are too coarse, hindering urban analysis
   in many places, especially in low income nations.
   To tackle these three key issues we developed a
   flexible, open and scalable solution: the ClockBoard zoning system.
@@ -154,7 +154,7 @@ The motivations for generating a new zoning system and use cases envisioned incl
 -   Locating cities.
     Automated zoning systems based on a clear centrepoint can support map interpretation by making it immediately clear where the city centre is, and what the scale of the city is.
 
--   Reference system of everyday live.
+-   Reference system for everyday life.
     The zone name contains information about the distance to the center as well as the cardinal direction.
     E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7".
     Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.
@@ -174,7 +174,8 @@ Finally, in Section 4, we discuss limitations of the approach and possible direc
 
 The aim of the ClockBoard zoning system is to tackle the issues associated with available zoning systems and to provide a standard template for analysis of the geographic distribution of urban phenomena between cities internationally.
 As outlined above, there is a need for open access zoning systems that are readily available and consistent.
-The requirements of urban analysts, geographers, transport modellers and other working with geographic data across cities are diverse, however, motivating our approach which is free, open, reproducible and easy to extend: modifications to the ClockBoard system and completely new zoning systems could build the approach.
+The requirements of urban analysts, geographers, transport modellers and others working with geographic data across cities are diverse. However, motivating our approach which is free, open, reproducible and easy to extend: modifications to the ClockBoard system and completely new zoning systems could build the approach.
+<!-- Previous sentence doesn't make sense... since there are diverse requirements, ClockBoard is flexible enough to be extended to handle all of them? Is that the argument? -->
 We developed the system to considering urban analysis research and visualisation requirements and based on the the following zone system design criteria.
 Zoning systems for urban analysis should:
 
@@ -282,7 +283,7 @@ install.packages("zonebuilder")
 To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
 See [github.com/zonebuilders/zonebuilder-rust](https://github.com/zonebuilders/zonebuilder-rust) for details.
 
-To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at [zonebuilders.github.io/zonebuilder-rust/](https://zonebuilders.github.io/zonebuilder-rust/) (see Figure \@ref(fig:interactive)).
+To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at [zonebuilders.github.io/zonebuilder-rust/](https://zonebuilders.github.io/zonebuilder-rust/) (see Figure \@ref(fig:interactive)). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source [leafletjs.com](https://leafletjs.com) mapping library as an interface.
 
 ```{r interactive, fig.cap="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser." }
 # See https://github.com/zonebuilders/zonebuilder-rust/issues/42#issuecomment-886627851
@@ -350,6 +351,8 @@ Cons:
 
 -   In urban areas with nearby cities, it may not always be clear where one cities ends and another begins.
     Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft)
+
+<!-- Compare ClockBoard to a particular city's existing zones, argue that it could replace the TAZs and other domain-specific systems? -->
 
 <!-- World cities todo: create appendix-->
 
