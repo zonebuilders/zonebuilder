@@ -249,10 +249,19 @@ knitr::kable(t2, booktabs = TRUE, caption = "Key attributes of first 9 rings use
 
 ## Number of segments
 
-The ClockBoard zoning system has 12 segments, representing a compromise between specificity of zone identification and ease of comprehension (imagine a system with 256 segments and saying "I'm in zone E173"!) and understanding:
-the 12 segments of a clock face are well understood.
+As its name suggests, the ClockBoard zoning system has 12 segments, representing a compromise between specificity of zone identification and ease of comprehension.
+On one hand, too few segments result in large and/or unusually shaped zones, as illustrated in a segmented concentric annuli zoning system with four segments per annuli developed by @vinothkumar_2007_spatio-temporal to model urban expansion.
+On the other hand, too many segments would result in small zones and make the zone codes harder to understand: imagine a system with 256 segments and saying "I'm in zone E173"!
 
-The result of applying 12 segments and n concentric rings with external diameter increasing as triangular numbers, with n being sufficient to cover the city extent with, is the Clockboard zoning system, illustrated in Figure \@ref(fig:london).
+Another advantage of using 12 segments is that the angular distance between segments are well understood.
+The 'clock position' system describes bearings with reference to the face of a clock, relative to the direction of travel or, as is the case with the ClockBoard zoning system, relative to true North.
+Under this system, well established in navigation, "12 O'clock" means true North and 3, 6 and 9 O'clock mean East, South and West respectively [@hart_use_1991].
+Following this convention, the ClockBoard zoning system aligns segment 12 with true North, enabling users to approximate their location in a city with reference to clock position .
+
+## ClockBoard zones for segmenting urban areas
+
+The result of applying 12 segments and n concentric rings with external diameter increasing as triangular numbers, with n being sufficient to cover the city extent with, is the Clockboard zoning system.
+As outlined in the Introduction, the primary motivation for developing the system was urban analysis and the description, visualisation and exploratory analysis of large cities with well-defined central areas such as London, as illustrated in Figure \@ref(fig:london).
 
 
 ```{r london, fig.cap="The clockboard zoning system, applied to Greater London, UK.", out.width="60%"}
