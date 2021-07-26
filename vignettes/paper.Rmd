@@ -270,9 +270,28 @@ london_zones <- zb_zone(london_c(), london_a())
 zb_plot(london_zones, palette = "hcl")
 ```
 
+## Using the ClockBoard zoning system
 
+To enable easy access to the zoning system, we have implemented described above in free and open source software.
+The concepts were initially implemented in the statistical programming language R, which is available from the Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/package=zonebuilder)) and can be installed from the R command line as follows:
 
-## City extents
+```r
+install.packages("zonebuilder")
+```
+
+To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
+See [github.com/zonebuilders/zonebuilder-rust](https://github.com/zonebuilders/zonebuilder-rust) for details.
+
+To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at [zonebuilders.github.io/zonebuilder-rust/](https://zonebuilders.github.io/zonebuilder-rust/) (see Figure \@ref(fig:interactive)).
+
+```{r interactive, fig.cap="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser." }
+# See https://github.com/zonebuilders/zonebuilder-rust/issues/42#issuecomment-886627851
+u = "https://user-images.githubusercontent.com/1825120/126983234-1c047a1e-0165-4ffd-a5cb-03a361b71d72.png"
+f = basename(u)
+download.file(u, f)
+knitr::include_graphics(f)
+```
+
 
 # Applications
 
