@@ -198,14 +198,12 @@ Finally, in Section 4, we discuss limitations of the approach and possible direc
 <h1 class="hasAnchor">
 <a href="#the-clockboard-zoning-system" class="anchor"></a>The ClockBoard zoning system</h1>
 <p>The aim of the ClockBoard zoning system is to tackle the issues associated with available zoning systems and to provide a standard template for analysis of the geographic distribution of urban phenomena between cities internationally.
-As outlined above, there is a need for open access zoning systems that are readily available and consistent.
-The requirements of urban analysts, geographers, transport modellers and others working with geographic data across cities are diverse. However, motivating our approach which is free, open, reproducible and easy to extend: modifications to the ClockBoard system and completely new zoning systems could build the approach.
-<!-- Previous sentence doesn't make sense... since there are diverse requirements, ClockBoard is flexible enough to be extended to handle all of them? Is that the argument? -->
-We developed the system to considering urban analysis research and visualisation requirements and based on the the following zone system design criteria.
-Zoning systems for urban analysis should:</p>
+As outlined above, there is a need for open access zoning systems that are readily available and consistent.</p>
+<p>The requirements of urban analysts, geographers, transport modellers and others working with geographic data across cities are diverse. This motivated our approach to design a flexible open source system. Considering urban analysis research and visualisation requirements, we specified a set of criteria which state that zoning systems for urban analysis should:</p>
 <ul>
 <li>contain intuitively named zones, enabling public communication of research, e.g. with reference common perceptions of space in terms of distance from the city centre and direction relative to North</li>
-<li>be easy to visualise without too many (100+) or too few (less than 10) zones</li>
+<li>have a well-balanced number of zones since too many or too few zones may cause issues with analysis and visualisation
+be easy to visualise without too many or too few zones</li>
 <li>include zones of consistent and useful sizes, for example with zone areas increasing with distance from the urban centres to reflect relatively high densities in central locations</li>
 <li>be ‘scale agnostic’, capable of representing a range of urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong</li>
 <li>be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs</li>
@@ -236,8 +234,8 @@ Figure 1: Illustration of ideas explored in the lead-up to the development of th
 Given that the radius of the inner circle must the same as the radius of the preceding annuli to ensure geographically contiguity (no gaps) — except in the special case of the first and central annuli which has no inner circle (or an inner circle with a radius of zero) — the annuli sizes can be wholly defined by the sequence of numbers defining their out circle radii.</p>
 <p>This sequence of numbers can increase by a fixed amount — e.g. with the outer border of each annuli being 1 km from the centre than the preceding annulus, as shown in Figure <a href="#fig:options">1</a> (C) — or by varying amounts.
 In many cases it is useful for zones to be smaller near the centre of the study region surrounding cities.
-This truism is often reflected in traffic analysis zones (TAZ) used for transport modelling, which tend to be smaller near central areas where more detail is most important for policy-relevant outputs <span class="citation">(Chandra et al. 2021)</span>.
-After experimenting with various ways of incrementing the annuli width,
+This truism is often reflected in traffic analysis zones (TAZ) used for transport modelling, which tend to be smaller near central areas where more detail is most important for policy-relevant outputs <span class="citation">(Chandra et al. 2021)</span>.</p>
+<p>After experimenting with various ways of incrementing the annuli width,
 <!-- including in proportion to the square of the annuli index, -->
 and considering the importance of easy to remember distances from central points from the perspective of readability, interpretation and simplicity of the system, we settled on linear increases in width as a sensible default for the ClockBoard zoning system.
 This linear growth leads to distances between the outer circles of each annuli and the central point following in the <a href="https://en.wikipedia.org/wiki/Triangular_number">triangular number sequence</a> <span class="citation">(Ross and Knott 2019)</span>.
