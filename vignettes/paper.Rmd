@@ -346,8 +346,11 @@ u = "https://user-images.githubusercontent.com/1825120/126983234-1c047a1e-0165-4
 knitr::include_graphics(u)
 ```
 
-
 # Applications
+
+The zoning system presented in this paper is a specific implementation concentric segmented annuli, that was designed to support description, exploration and visualisation of monocentric cities.
+The zoning system presented, and modifications of the system, could be useful in a range of other areas.
+The examples below are designed to provide an insight into how the zoning system could be used.
 
 ## Navigation and location
 
