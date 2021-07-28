@@ -314,6 +314,8 @@ ClockBoard_tokyo = zb_zone("Tokyo", n_circles = 5)
 #   tm_borders() +
 #   tm_text("label") +
 #   tm_scale_bar()
+# from system command line:
+# pngquant -f --ext .png --quality 60-85 vignettes/tokyo.png 
 knitr::include_graphics("tokyo.png")
 ```
 
