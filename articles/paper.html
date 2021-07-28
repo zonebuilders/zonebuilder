@@ -387,7 +387,12 @@ This can be changed; replacing <code>5</code> with <code>9</code>, for example, 
 Furthermore, passing an object representing the geographic extent of Tokyo as a polygon to the <code>area</code> argument of the <code><a href="../reference/zb_zone.html">zb_zone()</a></code> function would result in a zoning system that is intersected by Tokyo’s boundary.
 <!-- Todo: do this, need a .geojson or similar file representing Tokyo's extent. --></p>
 <p>To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
-See <a href="https://github.com/zonebuilders/zonebuilder-rust">github.com/zonebuilders/zonebuilder-rust</a> for details.</p>
+See <a href="https://github.com/zonebuilders/zonebuilder-rust">github.com/zonebuilders/zonebuilder-rust</a> for details.
+<!-- After the Rust crate has been installed, the same zoning system for Tokyo illustrated above can be created with the following command: --></p>
+<!-- ```bash -->
+<!-- # todo: update -->
+<!-- cargo run > zones.geojson -->
+<!-- ``` -->
 <p>To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at <a href="https://zonebuilders.github.io/zonebuilder-rust/">zonebuilders.github.io/zonebuilder-rust/</a> (see Figure <a href="#fig:interactive">4</a>). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source <a href="https://leafletjs.com">leafletjs.com</a> mapping library as an interface.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:interactive"></span>
