@@ -363,18 +363,38 @@ Figure 2: The clockboard zoning system, applied to Greater London, UK.
 <div id="using-the-clockboard-zoning-system" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-the-clockboard-zoning-system" class="anchor"></a>Using the ClockBoard zoning system</h2>
-<p>To enable easy access to the zoning system, we have implemented described above in free and open source software.
-The concepts were initially implemented in the statistical programming language R, which is available from the Comprehensive R Archive Network (<a href="https://cran.r-project.org/package=zonebuilder">CRAN</a>) and can be installed from the R command line as follows:</p>
+<p>To enable easy access to the zoning system, we have implemented described above in free and open source software.</p>
+<div id="the-zonebuilder-r-package" class="section level3">
+<h3 class="hasAnchor">
+<a href="#the-zonebuilder-r-package" class="anchor"></a>The zonebuilder R package</h3>
+<p>The concepts were initially implemented in the statistical programming language R, which is available from the Comprehensive R Archive Network (<a href="https://cran.r-project.org/package=zonebuilder">CRAN</a>) and can be installed from the R command line as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"zonebuilder"</span><span class="op">)</span></code></pre></div>
+<p>After the package has been installed, its functions can be attached (made available) to the user’s workspace as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/zonebuilders/zonebuilder">zonebuilder</a></span><span class="op">)</span></code></pre></div>
+<p>A simple zoning system for Tokyo can be created as follows, resulting in the map shown in Figure <a href="#fig:tokyo">3</a>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ClockBoard_tokyo</span> <span class="op">=</span> <span class="fu"><a href="../reference/zb_zone.html">zb_zone</a></span><span class="op">(</span><span class="st">"Tokyo"</span>, n_circles <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:tokyo"></span>
+<img src="tokyo.png" alt="ClockBoard zoning system applied to Tokyo." width="40%"><p class="caption">
+Figure 3: ClockBoard zoning system applied to Tokyo.
+</p>
+</div>
+<p>Note that the <code>n_circles</code> argument was set to 5, resulting in a zoning system 15 km in radius (see Table <a href="#tab:t1">1</a>).
+This can be changed; replacing <code>5</code> with <code>9</code>, for example, would results in a zoning system with an outer circle radius of 45 km.
+Furthermore, passing an object representing the geographic extent of Tokyo as a polygon to the <code>area</code> argument of the <code><a href="../reference/zb_zone.html">zb_zone()</a></code> function would result in a zoning system that is intersected by Tokyo’s boundary.
+<!-- Todo: do this, need a .geojson or similar file representing Tokyo's extent. --></p>
 <p>To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
 See <a href="https://github.com/zonebuilders/zonebuilder-rust">github.com/zonebuilders/zonebuilder-rust</a> for details.</p>
-<p>To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at <a href="https://zonebuilders.github.io/zonebuilder-rust/">zonebuilders.github.io/zonebuilder-rust/</a> (see Figure <a href="#fig:interactive">3</a>). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source <a href="https://leafletjs.com">leafletjs.com</a> mapping library as an interface.</p>
+<p>To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at <a href="https://zonebuilders.github.io/zonebuilder-rust/">zonebuilders.github.io/zonebuilder-rust/</a> (see Figure <a href="#fig:interactive">4</a>). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source <a href="https://leafletjs.com">leafletjs.com</a> mapping library as an interface.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:interactive"></span>
 <img src="https://user-images.githubusercontent.com/1825120/126983234-1c047a1e-0165-4ffd-a5cb-03a361b71d72.png" alt="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser."><p class="caption">
-Figure 3: Screenshot from simple web application enabling people to create ClockBoard zones from a web browser.
+Figure 4: Screenshot from simple web application enabling people to create ClockBoard zones from a web browser.
 </p>
+</div>
 </div>
 </div>
 </div>
