@@ -274,11 +274,44 @@ zb_plot(london_zones, palette = "hcl")
 ## Using the ClockBoard zoning system
 
 To enable easy access to the zoning system, we have implemented described above in free and open source software.
+
+### The zonebuilder R package
+
 The concepts were initially implemented in the statistical programming language R, which is available from the Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/package=zonebuilder)) and can be installed from the R command line as follows:
 
 ```r
 install.packages("zonebuilder")
 ```
+
+After the package has been installed, its functions can be attached (made available) to the user's workspace as follows:
+
+```{r, echo=TRUE}
+library(zonebuilder)
+```
+
+
+A simple zoning system can be created as follows:
+
+```{r, echo=FALSE, eval=FALSE}
+tokyo = tmaptools::geocode_OSM("tokyo", as.sf = TRUE)
+dput(tokyo$point)
+tokyo_coordinates = data.frame(x = 139.759, y = 35.682)
+tokyo = sf::st_as_sf(tokyo_coordinates, coords = c("x", "y"), crs = 4326)
+tokyo_area = osmdata::getbb ('tokyo', format_out = 'sf_polygon')
+mapview::mapview(tokyo_area$multipolygon)
+```
+
+
+```{r tokyo, fig.cap="ClockBoard zoning system applied to Tokyo.", echo=TRUE}
+ClockBoard_tokyo = zb_zone("Tokyo", n_circles = 5)
+library(tmap) # load mapping package
+tmap_mode("view") # interactive visualisation mode
+tm_shape(ClockBoard_tokyo) +
+  tm_borders() +
+  tm_text("label") +
+  tm_scale_bar()
+```
+
 
 To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
 See [github.com/zonebuilders/zonebuilder-rust](https://github.com/zonebuilders/zonebuilder-rust) for details.
