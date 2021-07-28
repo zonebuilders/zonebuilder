@@ -290,7 +290,7 @@ library(zonebuilder)
 ```
 
 
-A simple zoning system can be created as follows:
+A simple zoning system for Tokyo can be created as follows, resulting in the map shown in Figure \@ref(fig:tokyo):
 
 ```{r, echo=FALSE, eval=FALSE}
 tokyo = tmaptools::geocode_OSM("tokyo", as.sf = TRUE)
@@ -301,16 +301,26 @@ tokyo_area = osmdata::getbb ('tokyo', format_out = 'sf_polygon')
 mapview::mapview(tokyo_area$multipolygon)
 ```
 
-
-```{r tokyo, fig.cap="ClockBoard zoning system applied to Tokyo.", echo=TRUE}
+```{r, echo=TRUE}
 ClockBoard_tokyo = zb_zone("Tokyo", n_circles = 5)
-library(tmap) # load mapping package
-tmap_mode("view") # interactive visualisation mode
-tm_shape(ClockBoard_tokyo) +
-  tm_borders() +
-  tm_text("label") +
-  tm_scale_bar()
 ```
+
+
+
+```{r tokyo, fig.cap="ClockBoard zoning system applied to Tokyo.", out.width="40%"}
+# library(tmap) # load mapping package
+# tmap_mode("view") # interactive visualisation mode
+# tm_shape(ClockBoard_tokyo) +
+#   tm_borders() +
+#   tm_text("label") +
+#   tm_scale_bar()
+knitr::include_graphics("tokyo.png")
+```
+
+Note that the `n_circles` argument was set to 5, resulting in a zoning system 15 km in radius (see Table \@ref(tab:t1)).
+This can be changed; replacing `5` with `9`, for example, would results in a zoning system with an outer circle radius of 45 km.
+Furthermore, passing an object representing the geographic extent of Tokyo as a polygon to the `area` argument of the `zb_zone()` function would result in a zoning system that is intersected by Tokyo's boundary.
+<!-- Todo: do this, need a .geojson or similar file representing Tokyo's extent. -->
 
 
 To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
