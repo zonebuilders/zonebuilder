@@ -327,12 +327,12 @@ Furthermore, passing an object representing the geographic extent of Tokyo as a 
 
 To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
 See [github.com/zonebuilders/zonebuilder-rust](https://github.com/zonebuilders/zonebuilder-rust) for details.
-After the Rust crate has been installed, the same zoning system for Tokyo illustrated above can be created with the following command:
+<!-- After the Rust crate has been installed, the same zoning system for Tokyo illustrated above can be created with the following command: -->
 
-```bash
-# todo: update
-cargo run > zones.geojson
-```
+<!-- ```bash -->
+<!-- # todo: update -->
+<!-- cargo run > zones.geojson -->
+<!-- ``` -->
 
 To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at [zonebuilders.github.io/zonebuilder-rust/](https://zonebuilders.github.io/zonebuilder-rust/) (see Figure \@ref(fig:interactive)). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source [leafletjs.com](https://leafletjs.com) mapping library as an interface.
 
