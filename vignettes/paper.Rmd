@@ -359,9 +359,11 @@ As demonstrated by location services such as 'what3words' and open source implem
 While not the primary purpose of the ClockBoard zoning system, it can be used to communicate locations in a city.
 
 We have tested this use case by using the zoning system to agree on meeting points to collaborate on the project.
-An illustration of how the zoning system was used is shown in Figure \@ref(fig:location), which shows how the ClockBoard zoning system could be used to communicate key locations in a city to orientate people new to a city and before providing more specific locations.
+An illustration of how the zoning system was used is shown in Figure \@ref(fig:location), which shows how the ClockBoard zoning system could be used to communicate key locations in a city, from the train station (zone A) to a park (zone C01) and on to the city of Bradford (zone E09) to orientate people new to the city and to describe geographically where things are located using a small amount of information (3 characters).
+Without needing to process much data or look at the map, a person who is new to to the city would know that the park is relatively close to the rail station (between 3 and 6 km from the city centre) while Bradford in zone E09 is between 15 and 21 km from the city centre.
+Of course the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed locations are provided, e.g. through a postcode, an address, or coordinates.
 
-```{r}
+```{r, out.width="75%", fig.cap="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city's famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09."}
 ClockBoard_leeds = zb_zone(x = "leeds")
 ClockBoard_leeds$label_locations = ""
 i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
