@@ -354,6 +354,27 @@ The examples below are designed to provide an insight into how the zoning system
 
 ## Navigation and location
 
+The most basic application of the zoning system could be to provide approximate locations and navigation guidance to people in cities.
+As demonstrated by location services such as 'what3words' and open source implementations such as 'whatfreewords' and '[goehashphrase](https://www.qalocate.com/solutions/geohashphrase/)', there is demand for easy-to-remember words/phrases to specify locations in situations where there is no address and where providing longitude/latitude coordinates may not be appropriate or possible [@raposo_virtual_2019].
+While not the primary purpose of the ClockBoard zoning system, it can be used to communicate locations in a city.
+
+We have tested this use case by using the zoning system to agree on meeting points to collaborate on the project.
+An illustration of how the zoning system was used is shown in Figure \@ref(fig:location), which shows how the ClockBoard zoning system could be used to communicate key locations in a city to orientate people new to a city and before providing more specific locations.
+
+```{r}
+ClockBoard_leeds = zb_zone(x = "leeds")
+ClockBoard_leeds$label_locations = ""
+i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
+ClockBoard_leeds$label_locations[i] = ClockBoard_leeds$label[i]
+tmap_mode("view")
+tm_shape(ClockBoard_leeds) +
+  tm_borders() +
+  tm_basemap(server = leaflet::providers$Esri.WorldTopoMap) +
+  tm_text("label_locations") +
+  tm_scale_bar()
+```
+
+
 ## Exploring city scale data
 
 univariate description
