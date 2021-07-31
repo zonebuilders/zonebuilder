@@ -364,16 +364,26 @@ Without needing to process much data or look at the map, a person who is new to 
 Of course the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed locations are provided, e.g. through a postcode, an address, or coordinates.
 
 ```{r, out.width="75%", fig.cap="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city's famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09."}
-ClockBoard_leeds = zb_zone(x = "leeds")
-ClockBoard_leeds$label_locations = ""
-i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
-ClockBoard_leeds$label_locations[i] = ClockBoard_leeds$label[i]
-tmap_mode("view")
-tm_shape(ClockBoard_leeds) +
-  tm_borders() +
-  tm_basemap(server = leaflet::providers$Esri.WorldTopoMap) +
-  tm_text("label_locations") +
-  tm_scale_bar()
+# ClockBoard_leeds = zb_zone(x = "leeds")
+# ClockBoard_leeds$label_locations = ""
+# i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
+# ClockBoard_leeds$label_locations[i] = ClockBoard_leeds$label[i]
+# tmap_mode("view")
+# tm_shape(ClockBoard_leeds) +
+#   tm_borders() +
+#   tm_basemap(server = leaflet::providers$Esri.WorldTopoMap) +
+#   tm_text("label_locations", size = 2) +
+#   tm_scale_bar()
+# download.file(
+#   "https://user-images.githubusercontent.com/1825120/127722684-e4f0f58a-44b2-48b9-8bdd-cd09bae4e250.png",
+#   "navigation-small.png"
+# )
+# download.file(
+#   "https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png",
+#   "navigation.png"
+# )
+# knitr::include_graphics("navigation-small.png")
+knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
 ```
 
 
