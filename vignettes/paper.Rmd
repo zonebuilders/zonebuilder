@@ -87,8 +87,8 @@ browseURL("zonebuilder-paper.pdf")
 piggyback::pb_upload("zonebuilder-paper.pdf")
 piggyback::pb_download_url("zonebuilder-paper.pdf")
 remotes::install_github("paleolimbot/rbbt")
-library(rbbt)
-bbt_write_bib("vignettes/references.bib", bbt_detect_citations("vignettes/paper.Rmd"), overwrite = TRUE)
+# library(rbbt)
+# rbbt::bbt_update_bib(path_rmd = "vignettes/paper.Rmd")
 ```
 
 # Introduction
@@ -399,7 +399,7 @@ The ClockBoard zoning system can enable effective comparison between cities by p
 While official boundaries can vary greatly in size and shape, based on sometimes arbitrary factors such as historic boundaries, ClockBoard zones are always the same size, shape and orientation.
 Using the system can provide a basis of evidence-based discussion of a wide range of phenomena.
 The example shown in Figure \@ref(fig:intercity) demonstrates this with reference to a policy-relevant example: the number of people killed and seriously injured while cycling in major UK cities.
-Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled [@mindell_2012_exposurebased], we show data on the number of people killed and seriously injured while cycling per billion kilometres based on estimates from the Propensity to Cycle Tool [@lovelace_2017_propensity].
+Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled [@mindell_exposure-based_2012], we show data on the number of people killed and seriously injured while cycling per billion kilometres based on estimates from the Propensity to Cycle Tool [@lovelace_propensity_2017].
 
 
 ```{r intercity, fig.width=7, message=FALSE, warning=FALSE}
