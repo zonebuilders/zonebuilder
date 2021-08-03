@@ -11,3 +11,4 @@ vignettes/josis*
 *.log
 *.pdf
 *.tex
+*.rds

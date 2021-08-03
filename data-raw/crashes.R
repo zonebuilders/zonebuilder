@@ -61,7 +61,8 @@ uk_cities$region = c("london", "west-midlands", "greater-manchester", "west-york
 rnets = lapply(uk_cities$region, function(region) {
   pct::get_pct_rnet(region = region) %>% st_transform(27700) %>% 
     mutate(segment_length_km = as.numeric(sf::st_length(.) / 1e3),
-           km_cycled_per_working_day = segment_length_km * bicycle)
+           km_cycled_per_working_day = segment_length_km * bicycle) %>% 
+    sf::st_centroid()
 })
 
 
@@ -101,6 +102,7 @@ saveRDS(df, file = "data-raw/ksi_bkm_zone.rds")
 #### Aux data (needed for plot)
 ################################################################################
 
+remotes::install_github("ropensci/rnaturalearthhires")
 uk = rnaturalearth::ne_countries(scale = 10, country = "United Kingdom", returnclass = "sf")
 thames = rnaturalearth::ne_download(scale = 10, type = "rivers_lake_centerlines", returnclass = "sf", category = "physical") %>% 
   filter(name == "Thames")

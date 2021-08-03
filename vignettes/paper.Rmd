@@ -389,11 +389,11 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/12772
 
 ## Exploring city scale data
 
-univariate description
+- Population density in London - Social (e.g. religion) and demographic distributions
 
-\- Population density in London - Social (e.g. religion) and demographic distributions
 
-## Inter-city statistical comparison
+
+## Inter-city comparison of geographically variable phenomena
 
 The ClockBoard zoning system can enable effective comparison between cities by providing a consistent frame of reference.
 While official boundaries can vary greatly in size and shape, based on sometimes arbitrary factors such as historic boundaries, ClockBoard zones are always the same size, shape and orientation.
