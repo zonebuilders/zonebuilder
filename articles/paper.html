@@ -416,11 +416,11 @@ The examples below are designed to provide an insight into how the zoning system
 As demonstrated by location services such as ‘what3words’ and open source implementations such as ‘whatfreewords’ and ‘<a href="https://www.qalocate.com/solutions/geohashphrase/">goehashphrase</a>’, there is demand for easy-to-remember words/phrases to specify locations in situations where there is no address and where providing longitude/latitude coordinates may not be appropriate or possible <span class="citation">(Raposo, C. Robinson, and Brown 2019)</span>.
 While not the primary purpose of the ClockBoard zoning system, it can be used to communicate locations in a city.</p>
 <p>We have tested this use case by using the zoning system to agree on meeting points to collaborate on the project.
-An illustration of how the zoning system was used is shown in Figure <a href="#fig:location"><strong>??</strong></a>, which shows how the ClockBoard zoning system could be used to communicate key locations in a city, from the train station (zone A) to a park (zone C01) and on to the city of Bradford (zone E09) to orientate people new to the city and to describe geographically where things are located using a small amount of information (3 characters).
+An illustration of how the zoning system was used is shown in Figure <a href="#fig:location">5</a>, which shows how the ClockBoard zoning system could be used to communicate key locations in a city, from the train station (zone A) to a park (zone C01) and on to the city of Bradford (zone E09) to orientate people new to the city and to describe geographically where things are located using a small amount of information (3 characters).
 Without needing to process much data or look at the map, a person who is new to to the city would know that the park is relatively close to the rail station (between 3 and 6 km from the city centre) while Bradford in zone E09 is between 15 and 21 km from the city centre.
 Of course the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed locations are provided, e.g. through a postcode, an address, or coordinates.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unnamed-chunk-6"></span>
+<span id="fig:location"></span>
 <img src="https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png" alt="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city's famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09." width="75%"><p class="caption">
 Figure 5: Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city’s famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09.
 </p>
@@ -438,10 +438,15 @@ Figure 5: Illustration of how the ClockBoard system could be used to describe th
 <p>The ClockBoard zoning system can enable effective comparison between cities by providing a consistent frame of reference.
 While official boundaries can vary greatly in size and shape, based on sometimes arbitrary factors such as historic boundaries, ClockBoard zones are always the same size, shape and orientation.
 Using the system can provide a basis of evidence-based discussion of a wide range of phenomena.
-The example shown in Figure <a href="#fig:intercity"><strong>??</strong></a> demonstrates this with reference to a policy-relevant example: the number of people killed and seriously injured while cycling in major UK cities.
+The example shown in Figure <a href="#fig:intercity">6</a> demonstrates this with reference to a policy-relevant example: the number of people killed and seriously injured while cycling in major UK cities.
 Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled <span class="citation">(Mindell, Leslie, and Wardlaw 2012)</span>, we show data on the number of people killed and seriously injured while cycling per billion kilometres based on estimates from the Propensity to Cycle Tool <span class="citation">(Lovelace et al. 2017)</span>.</p>
-<p><img src="paper_files/figure-html/intercity-1.png" style="display: block; margin: auto;"></p>
-<p>The results illustrated in Figure <a href="#fig:intercity"><strong>??</strong></a> show that while London has a high absolute crash rate, it is relatively safe per km cycled.
+<div class="figure" style="text-align: center">
+<span id="fig:intercity"></span>
+<img src="paper_files/figure-html/intercity-1.png" alt="Use of the ClockBoard zoning system to support inter-city comparison of a policy relevant phenomenon. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results."><p class="caption">
+Figure 6: Use of the ClockBoard zoning system to support inter-city comparison of a policy relevant phenomenon. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.
+</p>
+</div>
+<p>The results illustrated in Figure <a href="#fig:intercity">6</a> show that while London has a high absolute crash rate, it is relatively safe per km cycled.
 The ClockBoard zoning system also allows for aggregation at a consistent spatial resolution, enabling the identification of potential crash hotspots in specific parts of Birmingham (zones D12 and E06) and Sheffield (zone D11).</p>
 <!-- ![Cycling accidents compared between eight -->
 <!-- cities.](cycling_accidents.pdf){#fig:cyclAccidents width="\\textwidth"} -->
