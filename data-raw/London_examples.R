@@ -1,21 +1,21 @@
-
-devtools::load_all()
-
-data(london_area)
-data(london_cent)
-
-sf::st_crs(zonebuilder::london_area)
-
-crs1 = sf::st_crs(zonebuilder::london_area)
-sf::st_crs(london_area) = 4326
-crs2 = sf::st_crs(london_area)
-
-identical(crs1, crs2)
-waldo::compare(crs1, crs2)
-usethis::use_data(london_area, overwrite = TRUE)
-
-sf::st_crs(london_cent) = 4326
-usethis::use_data(london_cent, overwrite = TRUE)
+# 
+# devtools::load_all()
+# 
+# data(london_area)
+# data(london_cent)
+# 
+# sf::st_crs(zonebuilder::london_area)
+# 
+# crs1 = sf::st_crs(zonebuilder::london_area)
+# sf::st_crs(london_area) = 4326
+# crs2 = sf::st_crs(london_area)
+# 
+# identical(crs1, crs2)
+# waldo::compare(crs1, crs2)
+# usethis::use_data(london_area, overwrite = TRUE)
+# 
+# sf::st_crs(london_cent) = 4326
+# usethis::use_data(london_cent, overwrite = TRUE)
 
 ##### London PM10
 
@@ -61,6 +61,8 @@ london = st_interpolate_aw(x, london_zones, extensive = FALSE)
 
 
 qtm(london, fill = "total_pm10")
+london_boroughs = st_interpolate_aw(x, sf::st_transform(spData::lnd, crs = sf::st_crs(x)), extensive = FALSE)
+qtm(london_boroughs, fill = "total_pm10")
 
 
 #### London OSM data (e.g. bus stops)

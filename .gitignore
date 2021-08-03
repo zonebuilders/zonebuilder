@@ -12,3 +12,4 @@ vignettes/josis*
 *.pdf
 *.tex
 *.rds
+data-raw/2*

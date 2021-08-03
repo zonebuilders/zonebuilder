@@ -389,8 +389,13 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/12772
 
 ## Exploring city scale data
 
-- Population density in London - Social (e.g. religion) and demographic distributions
+The ClockBoard zoning system is well suited to exploratory analysis of city-scale spatial data.
 
+
+```{r cityscale}
+tm1 = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/tm1.Rds"))
+tm1
+```
 
 
 ## Inter-city comparison of geographically variable phenomena
