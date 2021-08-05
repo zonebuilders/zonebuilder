@@ -394,7 +394,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/12772
 The ClockBoard zoning system is well suited to exploratory analysis of city-scale spatial data.
 
 
-```{r cityscale, fig.height=2, out.width="100%"}
+```{r cityscale, fig.height=2, out.width="100%", fig.cap="Illustration of the ClockBoard zoning system used to visualise a geographically dependendent phenomena: air quality, measured in mass of PM10 particles per cubic meter (μg/m^3) from the London Atmospheric Emissions Inventory (LAEI). The facets show the data in spatial grid available from the LAEI (facet A) and aggregated to London boroughs (B), to ClockBoard zones covering all the input data (C) and ClockBoard zones clipped by the administrative boundary of Greater London (D)."}
 # file.edit("data-raw/london-figures.R")
 tm1 = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/tm1.Rds"))
 tm1
