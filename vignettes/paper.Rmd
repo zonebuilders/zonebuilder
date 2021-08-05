@@ -64,7 +64,9 @@ knitr::opts_chunk$set(
   echo = FALSE,
   collapse = TRUE,
   comment = "#>",
-  message = FALSE
+  message = FALSE,
+  warning = FALSE,
+  cache = TRUE
 )
 library(zonebuilder)
 library(tmap)
@@ -392,7 +394,8 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/12772
 The ClockBoard zoning system is well suited to exploratory analysis of city-scale spatial data.
 
 
-```{r cityscale}
+```{r cityscale, fig.height=2, out.width="100%"}
+# file.edit("data-raw/london-figures.R")
 tm1 = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/tm1.Rds"))
 tm1
 ```

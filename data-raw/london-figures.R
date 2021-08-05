@@ -12,6 +12,8 @@ unzip(tmpfile, exdir = tmpdir)
 library(sf)
 library(stars)
 library(dplyr)
+library(tmap)
+library(zonebuilder)
 
 x1 = st_read("data-raw/2. GIS/SHP/Industrial and Comercial/IC_PM10.shp")
 x2 = st_read("data-raw/2. GIS/SHP/Domestic and Miscellaneous/DM_PM10.shp")
@@ -36,20 +38,36 @@ x = x1 %>%
   select(total_pm10)
 
 london_zones_zb = zb_zone(london_c(), n_circles = 8)
+london_zones = zb_zone(london_c(), n_circles = 8, area = london_a())
 london = st_interpolate_aw(x, london_zones, extensive = FALSE)
 london_zb = st_interpolate_aw(x, london_zones_zb, extensive = FALSE)
 
-
 london_boroughs = st_interpolate_aw(x, sf::st_transform(spData::lnd, crs = sf::st_crs(x)), extensive = FALSE)
 brks_pm10 = c(0, 1, 2, 4, 8, 16)
-m0 = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders()
-m1 = tm_shape(london) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", title = "Average PM10") + tm_borders()
-m2 = tm_shape(london_zb) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders()
-m3 = tm_shape(london_boroughs) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders()
-tm1 = tmap_arrange(m0, m3, m2, m1)
+m0 = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + 
+  tm_layout(title = "A", frame = FALSE)
+m0l = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", title = "Average PM10") + tm_borders() + tm_layout(legend.only = TRUE)
+m1 = tm_shape(london_boroughs) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders() + 
+  tm_layout(title = "B", frame = FALSE)
+m2 = tm_shape(london_zb) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders() + 
+  tm_layout(title = "C", frame = FALSE)
+m3 = tm_shape(london) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders() + 
+  tm_layout(title = "D", frame = FALSE)
+tm1 = tmap_arrange(m0l, m0, m1, m2, m3, nrow = 1)
+tm1
+
 saveRDS(tm1, "tm1.Rds")
 piggyback::pb_upload("tm1.Rds")
 piggyback::pb_download_url("tm1.Rds")
+
+# Todo: create a grid to show how the concept works for different datasets, e.g. road casualties
+lnd_border = sf::st_union(zonebuilder::london_a())
+n0 = tm_shape(lnd_border) + tm_borders() + tm_graticules() + tm_layout(title = "Raw data/grid")
+# generate borough names
+london_boroughs
+n1 = tm_shape(london_boroughs) + tm_borders() + tm_layout(title = "Raw data/grid")
+n0 = tm_shape(lnd_border) + tm_borders() + tm_graticules() + tm_layout(title = "Raw data/grid")
+n0 = tm_shape(lnd_border) + tm_borders() + tm_graticules() + tm_layout(title = "Raw data/grid")
 
 #### London OSM data (e.g. bus stops)
 
