@@ -392,7 +392,13 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/12772
 ## Exploring city scale data
 
 The ClockBoard zoning system is well suited to exploratory analysis of city-scale spatial data.
+An example that demonstrates how the system can simplify the presentation of spatially variable data is shown in Figure \@ref(fig:cityscale), which presents open access data on air quality from the London Atmospheric Emissions Inventory.
+The presentation of the same data at four different levels of geographic resolution highlights the impacts that zoning system choice can have on data analysis, with each having advantages and disadvantages.
+The most geographically detailed zoning system in which the data is available is the rectangular grid shown in the far left facet (A).
+This presentation of the data is ideal for many purposes, demonstrating the variability in air quality over relatively small areas (1 km grid cells) across London.
 
+In cases when geographic aggregation is required, e.g. to present the data in small graphics that will be printed at low resolution (e.g. newspaper visualisations and infographics), two common approaches are to use an existing administrative zoning system (with well known London Borough boundaries used to aggregate the data presented in facet B in Figure \@ref(fig:cityscale)) and to use a simplified geographical representation or geographically arranged facets [@dorling_area_2011].
+Both approaches have advantages, specifically enabling map readers familiar with the zones presented to orient themselves and interpret the map; and to highlight the relative importance of small but densely populated areas.
 
 ```{r cityscale, fig.height=2, out.width="100%", fig.cap="Illustration of the ClockBoard zoning system used to visualise a geographically dependendent phenomena: air quality, measured in mass of PM10 particles per cubic meter (μg/m^3) from the London Atmospheric Emissions Inventory (LAEI). The facets show the data in spatial grid available from the LAEI (facet A) and aggregated to London boroughs (B), to ClockBoard zones covering all the input data (C) and ClockBoard zones clipped by the administrative boundary of Greater London (D)."}
 # file.edit("data-raw/london-figures.R")
