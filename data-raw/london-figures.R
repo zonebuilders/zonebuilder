@@ -46,7 +46,7 @@ london_boroughs = st_interpolate_aw(x, sf::st_transform(spData::lnd, crs = sf::s
 brks_pm10 = c(0, 1, 2, 4, 8, 16)
 m0 = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + 
   tm_layout(title = "A", frame = FALSE)
-m0l = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", title = "Average PM10") + tm_borders() + tm_layout(legend.only = TRUE)
+m0l = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", title = "Average PM10\nμg/m^3") + tm_borders() + tm_layout(legend.only = TRUE)
 m1 = tm_shape(london_boroughs) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders() + 
   tm_layout(title = "B", frame = FALSE)
 m2 = tm_shape(london_zb) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders() + 
@@ -55,6 +55,11 @@ m3 = tm_shape(london) + tm_fill("total_pm10", breaks = brks_pm10, palette = "vir
   tm_layout(title = "D", frame = FALSE)
 tm1 = tmap_arrange(m0l, m0, m1, m2, m3, nrow = 1)
 tm1
+tmap_save(tm1, filename = "cityscale.png", width = 7, height = 2)
+magick::image_read("cityscale.png")
+piggyback::pb_upload("cityscale.png")
+piggyback::pb_download_url("cityscale.png")
+# [1] "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cityscale.png"
 
 saveRDS(tm1, "tm1.Rds")
 piggyback::pb_upload("tm1.Rds")
