@@ -345,7 +345,7 @@ ClockBoard_tokyo = zb_zone("Tokyo", n_circles = 5)
 
 
 
-```{r tokyo, fig.cap="ClockBoard zoning system applied to Tokyo.", out.width="40%"}
+```{r tokyo, fig.cap="ClockBoard zoning system applied to Tokyo.", out.width="50%"}
 # library(tmap) # load mapping package
 # tmap_mode("view") # interactive visualisation mode
 # tm_shape(ClockBoard_tokyo) +
@@ -377,7 +377,7 @@ See [github.com/zonebuilders/zonebuilder-rust](https://github.com/zonebuilders/z
 
 To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at [zonebuilders.github.io/zonebuilder-rust/](https://zonebuilders.github.io/zonebuilder-rust/) (see Figure \@ref(fig:interactive)). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source [leafletjs.com](https://leafletjs.com) mapping library as an interface.
 
-```{r interactive, fig.cap="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser. The example shows Erbil, Northern Iraq, which was found to have a road layout resembling the ClockBoard zoning system, highlighting the importance of interactive use of the zoning system to fit cities and other urban systems before downloading the resulting data. See the interactive version at zonebuilders.github.io/zonebuilder-rust/." }
+```{r interactive, fig.cap="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser. The example shows Erbil, Northern Iraq, which was found to have a road layout resembling the ClockBoard zoning system, highlighting the importance of interactive use of the zoning system to fit cities and other urban systems before downloading the resulting data. See the interactive version at zonebuilders.github.io/zonebuilder-rust/.", out.width="75%"}
 # See https://github.com/zonebuilders/zonebuilder-rust/issues/42#issuecomment-886627851
 
 u = "https://user-images.githubusercontent.com/1825120/128508694-5b5485ca-6f1b-4c21-bdb6-9269a7981dd5.png"
@@ -409,25 +409,25 @@ Without needing to process much data or look at the map, a person who is new to 
 Of course the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed locations are provided, e.g. through a postcode, an address, or coordinates.
 
 ```{r location, out.width="75%", fig.cap="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city's famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09."}
-ClockBoard_leeds = zb_zone(x = "leeds")
-ClockBoard_leeds$label_locations = ""
-i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
-ClockBoard_leeds$label_locations[i] = ClockBoard_leeds$label[i]
-tmap_mode("view")
-tm_shape(ClockBoard_leeds) +
-  tm_borders() +
-  tm_basemap(server = leaflet::providers$Esri.WorldTopoMap) +
-  tm_text("label_locations", size = 2) +
-  tm_scale_bar()
+# ClockBoard_leeds = zb_zone(x = "leeds")
+# ClockBoard_leeds$label_locations = ""
+# i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
+# ClockBoard_leeds$label_locations[i] = ClockBoard_leeds$label[i]
+# tmap_mode("view")
+# tm_shape(ClockBoard_leeds) +
+#   tm_borders() +
+#   tm_basemap(server = leaflet::providers$Esri.WorldTopoMap) +
+#   tm_text("label_locations", size = 2) +
+#   tm_scale_bar()
 # download.file(
 #   "https://user-images.githubusercontent.com/1825120/127722684-e4f0f58a-44b2-48b9-8bdd-cd09bae4e250.png",
 #   "navigation-small.png"
 # )
-# download.file(
-#   "https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png",
-#   "navigation.png"
-# )
-# knitr::include_graphics("navigation-small.png")
+download.file(
+  "https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png",
+  "navigation.png"
+)
+knitr::include_graphics("navigation.png")
 # knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
 ```
 
@@ -485,7 +485,7 @@ The example shown in Figure \@ref(fig:intercity) demonstrates this with referenc
 Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled [@mindell_exposure-based_2012], we show data on the number of people killed and seriously injured while cycling per billion kilometres based on estimates from the Propensity to Cycle Tool [@lovelace_propensity_2017].
 
 
-```{r intercity, fig.width=7, message=FALSE, warning=FALSE, fig.cap="Use of the ClockBoard zoning system to support inter-city comparison of a policy relevant phenomenon. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results."}
+```{r intercity, fig.width=7, message=FALSE, warning=FALSE, fig.cap="Use of the ClockBoard zoning system to support inter-city comparison of a policy relevant phenomenon. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.", out.width="75%"}
 # download preprocessed data (processing script /data-raw/crashes.R)
 df = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/ksi_bkm_zone.rds")))
 uk = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/uk.rds")))
