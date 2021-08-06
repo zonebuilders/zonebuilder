@@ -75,5 +75,5 @@ n1 = tm_shape(london_boroughs) + tm_borders() + tm_layout(title = "Raw data/grid
 n0 = tm_shape(lnd_border) + tm_borders() + tm_graticules() + tm_layout(title = "Raw data/grid")
 n0 = tm_shape(lnd_border) + tm_borders() + tm_graticules() + tm_layout(title = "Raw data/grid")
 
-#### London OSM data (e.g. bus stops)
+#### London OSM data (e.g. bus stops) - todo...
 

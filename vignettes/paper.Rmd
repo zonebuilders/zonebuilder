@@ -398,7 +398,17 @@ The most geographically detailed zoning system in which the data is available is
 This presentation of the data is ideal for many purposes, demonstrating the variability in air quality over relatively small areas (1 km grid cells) across London.
 
 In cases when geographic aggregation is required, e.g. to present the data in small graphics that will be printed at low resolution (e.g. newspaper visualisations and infographics), two common approaches are to use an existing administrative zoning system (with well known London Borough boundaries used to aggregate the data presented in facet B in Figure \@ref(fig:cityscale)) and to use a simplified geographical representation or geographically arranged facets [@dorling_area_2011].
-Both approaches have advantages, specifically enabling map readers familiar with the zones presented to orient themselves and interpret the map; and to highlight the relative importance of small but densely populated areas.
+Both approaches have advantages, with existing and well-known zoning systems enabling map readers familiar with city to orient themselves and interpret the map.
+In this context and with reference to Figure \@ref(fig:cityscale), the ClockBoard zoning system has the following advantages as a basis for choropleth maps:
+
+- Simple and consistent zone shapes for easy map reading
+- The circular shape of zone boundaries make the results easy to place, requiring a 1:1 aspect ratio (except when the zones are clipped, as in map D)
+- The shape of the zones draws attention to citywide spatial patterns, with map C highlighting the clear tendency for air quality to improve with distance from the city centre and the comparatively poor air quality in segments 3 and 9
+
+The final advantage is particularly notable when comparing the ClockBoard zoning system with large official zone (borough) boundaries in London.
+Because of the large and irregular zone shapes in map B, the strength of the relationship between distance from central London and air quality is not as clear as when using ClockBoard zones as the frame of reference in maps C and D in Figure \@ref(fig:cityscale).
+This benefit is especially noticeable towards the outskirts of London, where large outer boroughs such as Bromley (far southeast London) fail to communicate the fact that PM10 levels drop below 1 μg/m^3 in outer London.
+
 
 ```{r cityscale, fig.height=2, out.width="100%", fig.cap="Illustration of the ClockBoard zoning system used to visualise a geographically dependendent phenomena: air quality, measured in mass of PM10 particles per cubic meter (μg/m^3) from the London Atmospheric Emissions Inventory (LAEI). The facets show the data in spatial grid available from the LAEI (facet A) and aggregated to London boroughs (B), to ClockBoard zones covering all the input data (C) and ClockBoard zones clipped by the administrative boundary of Greater London (D)."}
 # file.edit("data-raw/london-figures.R") # to reproduce the figure
@@ -414,6 +424,13 @@ u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/c
 knitr::include_graphics(u)
 ```
 
+The example of air quality presented in Figure \@ref(fig:cityscale) highlights that the ClockBoard zoning system is well suited for the analysis and visualisation of phenomena in which a central place (London city centre in this case) plays a major role, directly or indirectly.
+(Not all cities have a 'monocentric' structure, something we discuss in Section \@ref(discussion).)
+The prevalence of particulate matter in the air relates to the level of industrial, transport and other activities in the surrounding area, which clearly increases with proximity to central London.
+The same can be said of many other phenomena which become more, less, or more and then less, common with distance from central places.
+The tragic phenomena of road traffic casualties --- which relate to travel volumes, speeds and transport infrastructure design --- also relates (albeit in different ways in different cities) to proximity to central places, something we explore in the next subsection to highlight another use of the ClockBoard zoning system: comparison between cities.
+
+<!-- Todo if time allows: add an example of road traffic casualties for London mirroring the cityscale figure above. -->
 
 ## Inter-city comparison of geographically variable phenomena
 
