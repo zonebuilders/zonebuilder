@@ -124,6 +124,7 @@ rmarkdown::render(input = "vignettes/paper.Rmd", output_file = "../zonebuilder-p
 browseURL("zonebuilder-paper.pdf")
 piggyback::pb_upload("zonebuilder-paper.pdf")
 piggyback::pb_download_url("zonebuilder-paper.pdf")
+# [1] "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/zonebuilder-paper.pdf"
 remotes::install_github("paleolimbot/rbbt")
 # library(rbbt)
 # rbbt::bbt_update_bib(path_rmd = "vignettes/paper.Rmd")
