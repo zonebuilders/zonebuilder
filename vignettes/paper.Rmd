@@ -3,12 +3,13 @@ title: "ClockBoard: a zoning system for urban analysis"
 bibliography: references.bib
 
 # # For paper: uncomment below for LaTeX version
-# output:
-#   bookdown::pdf_book:
-#     base_format: rticles::josis_article
-# For R package vignette
 output:
-  bookdown::html_vignette2:
+  bookdown::pdf_book:
+    base_format: rticles::josis_article
+    latex_engine: xelatex
+# For R package vignette
+# output:
+#   bookdown::html_vignette2:
 author:
    - name: Robin Lovelace
      affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
@@ -338,14 +339,18 @@ See [github.com/zonebuilders/zonebuilder-rust](https://github.com/zonebuilders/z
 
 To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at [zonebuilders.github.io/zonebuilder-rust/](https://zonebuilders.github.io/zonebuilder-rust/) (see Figure \@ref(fig:interactive)). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source [leafletjs.com](https://leafletjs.com) mapping library as an interface.
 
-```{r interactive, fig.cap="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser." }
+```{r interactive, fig.cap="Screenshot from simple web application enabling people to create ClockBoard zones from a web browser. The example shows Erbil, Northern Iraq, which was found to have a road layout resembling the ClockBoard zoning system, highlighting the importance of interactive use of the zoning system to fit cities and other urban systems before downloading the resulting data. See the interactive version at zonebuilders.github.io/zonebuilder-rust/." }
 # See https://github.com/zonebuilders/zonebuilder-rust/issues/42#issuecomment-886627851
-u = "https://user-images.githubusercontent.com/1825120/126983234-1c047a1e-0165-4ffd-a5cb-03a361b71d72.png"
+
+u = "https://user-images.githubusercontent.com/1825120/128508694-5b5485ca-6f1b-4c21-bdb6-9269a7981dd5.png"
+
+# # for html version: 
+# knitr::include_graphics(u)
+
 # for pdf version:
-# f = basename(u)
-# download.file(u, f)
-# knitr::include_graphics(f)
-knitr::include_graphics(u)
+f = basename(u)
+download.file(u, f)
+knitr::include_graphics(f)
 ```
 
 # Applications
@@ -366,16 +371,16 @@ Without needing to process much data or look at the map, a person who is new to 
 Of course the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed locations are provided, e.g. through a postcode, an address, or coordinates.
 
 ```{r location, out.width="75%", fig.cap="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city's famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09."}
-# ClockBoard_leeds = zb_zone(x = "leeds")
-# ClockBoard_leeds$label_locations = ""
-# i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
-# ClockBoard_leeds$label_locations[i] = ClockBoard_leeds$label[i]
-# tmap_mode("view")
-# tm_shape(ClockBoard_leeds) +
-#   tm_borders() +
-#   tm_basemap(server = leaflet::providers$Esri.WorldTopoMap) +
-#   tm_text("label_locations", size = 2) +
-#   tm_scale_bar()
+ClockBoard_leeds = zb_zone(x = "leeds")
+ClockBoard_leeds$label_locations = ""
+i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
+ClockBoard_leeds$label_locations[i] = ClockBoard_leeds$label[i]
+tmap_mode("view")
+tm_shape(ClockBoard_leeds) +
+  tm_borders() +
+  tm_basemap(server = leaflet::providers$Esri.WorldTopoMap) +
+  tm_text("label_locations", size = 2) +
+  tm_scale_bar()
 # download.file(
 #   "https://user-images.githubusercontent.com/1825120/127722684-e4f0f58a-44b2-48b9-8bdd-cd09bae4e250.png",
 #   "navigation-small.png"
@@ -385,7 +390,7 @@ Of course the locations are not geographically specific; the zones would be used
 #   "navigation.png"
 # )
 # knitr::include_graphics("navigation-small.png")
-knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
+# knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
 ```
 
 
@@ -414,14 +419,15 @@ This benefit is especially noticeable towards the outskirts of London, where lar
 # file.edit("data-raw/london-figures.R") # to reproduce the figure
 
 # For PDF version with vector graphics:
-# tm1 = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/tm1.Rds"))
-# tm1
+tmap_mode("plot")
+tm1 = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/tm1.Rds"))
+tm1
 
-u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cityscale.png"
-# f = basename(u)
-# if(!file.exists(f)) download.file(url = u, destfile = f)
-# knitr::include_graphics(f) # for local high-res version, not working
-knitr::include_graphics(u)
+# u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cityscale.png"
+# # f = basename(u)
+# # if(!file.exists(f)) download.file(url = u, destfile = f)
+# # knitr::include_graphics(f) # for local high-res version, not working
+# knitr::include_graphics(u)
 ```
 
 The example of air quality presented in Figure \@ref(fig:cityscale) highlights that the ClockBoard zoning system is well suited for the analysis and visualisation of phenomena in which a central place (London city centre in this case) plays a major role, directly or indirectly.
@@ -474,7 +480,15 @@ While Singapore and Sydney have similar total official populations (of 5.8 and 5
 <!-- Do we want to say anything else about this here? -->
 
 ```{r popdens, fig.cap="ClockBoard for 30 world cites. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders (where they could be found).", out.width="100%"}
-knitr::include_graphics("https://user-images.githubusercontent.com/2444081/109546760-e510d480-7aca-11eb-83cc-c92c582cefeb.png")
+u = "https://user-images.githubusercontent.com/2444081/109546760-e510d480-7aca-11eb-83cc-c92c582cefeb.png"
+
+# # For HTML version:
+# knitr::include_graphics(u)
+
+# For LaTeX version
+f = basename(u)
+if(!file.exists(f)) download.file(u, f)
+knitr::include_graphics(u)
 ```
 
 
