@@ -8,6 +8,7 @@ output:
     base_format: rticles::josis_article
 keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 bibliography: references.bib
+csl: josis.csl
 author:
    - name: Robin Lovelace
      affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
@@ -114,6 +115,9 @@ library(dplyr)
 remotes::install_github("robinlovelace/rticles", ref = "josis")
 refs = RefManageR::ReadZotero(group = "418217", .params = list(collection = "8S8LR8TK", limit = 100))
 RefManageR::WriteBib(refs, "vignettes/references.bib")
+u = "www.zotero.org/styles/open-geospatial-data-software-and-standards"
+download.file(u, "vignettes/josis.csl")
+
 # Set-up notes for pdf version
 # convert .tex to .md
 # system("pandoc -s -r latex paper.tex -o paper.md")
