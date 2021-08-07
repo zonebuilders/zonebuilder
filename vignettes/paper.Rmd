@@ -215,10 +215,13 @@ Finally, in Section 4, we discuss limitations of the approach and possible direc
 
 # The ClockBoard zoning system
 
-The aim of the ClockBoard zoning system is to tackle the issues associated with available zoning systems and to provide a standard template for analysis of the geographic distribution of urban phenomena between cities internationally.
-As outlined above, there is a need for open access zoning systems that are readily available and consistent.
-
-The requirements of urban analysts, geographers, transport modellers and others working with geographic data across cities are diverse. This motivated our approach to design a flexible open source system. Considering urban analysis research and visualisation requirements, we specified a set of criteria which state that zoning systems for urban analysis should:
+The aim of the ClockBoard zoning system is to tackle the issues associated with available zoning systems and to provide a standard template for research and communication purposes.
+<!-- and comparison of the geographic distribution of urban phenomena between cities internationally. -->
+<!-- As outlined above, there is a need for open access zoning systems that are readily available and consistent. -->
+The requirements of urban analysts, geographers, transport modellers and others working with geographic data across cities are diverse, but all rely on zoning systems as a foundation for modelling and visualisation.
+To enable flexibility, and to encourage other zoning systems building on it, the ClockBoard zoning system described in this paper is presented as a specific implementation of a more general concept (segmented concentric annuli) and implemented in open source software which can be extended in a range of ways (see Discussion).
+Considering urban analysis, modelling and wider research, visualisation and communication requirements of zoning systems, we developed the following criteria for successful zoning systems.
+Zoning systems for urban analysis should:
 
 -   contain intuitively named zones, enabling public communication of research, e.g. with reference common perceptions of space in terms of distance from the city centre and direction relative to North
 -   have a well-balanced number of zones since too many or too few zones may cause issues with analysis and visualisation
@@ -234,8 +237,8 @@ Two key concepts that make up the zoning system described in this paper are conc
 
 - **Segments**, defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure \@ref(fig:options) (B).
 
-Combining these two concepts creates a general approach to zone creation that can be described as 'segmented concentric annuli', one specific implementation of which is shown in Figure \@ref(fig:options) (C).
-After a period of informal testing and feedback, we developed and refined the 'ClockBoard' zoning system presented in this paper, which is a specific implementation of the segmented concentric annuli approach to zone creation.
+Combining these two concepts creates a general approach to zone creation that can be described as 'segmented concentric annuli', an implementation of which that we considered early in the process of designing the ClockBoard system with roughly equally sized zones (not the ClockBoard system) is shown in Figure \@ref(fig:options) (C).
+After a period of informal testing and feedback that lasted approximately six months, we developed and refined the 'ClockBoard' zoning system presented in this paper, which is a specific implementation of the segmented concentric annuli approach to zone creation.
 
 The parameters that define the ClockBoard zoning system were developed in an iterative process.
 We experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus.
@@ -350,7 +353,7 @@ ClockBoard_tokyo = zb_zone("Tokyo", n_circles = 5)
 
 
 
-```{r tokyo, fig.cap="ClockBoard zoning system applied to Tokyo.", out.width="50%"}
+```{r tokyo, fig.cap="ClockBoard zoning system applied to Tokyo, the result of running the reproducible code used to demonstrate the zonebuilder R package.", out.width="75%"}
 # library(tmap) # load mapping package
 # tmap_mode("view") # interactive visualisation mode
 # tm_shape(ClockBoard_tokyo) +
@@ -490,7 +493,7 @@ The example shown in Figure \@ref(fig:intercity) demonstrates this with referenc
 Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled [@mindell_exposure-based_2012], we show data on the number of people killed and seriously injured while cycling per billion kilometres based on estimates from the Propensity to Cycle Tool [@lovelace_propensity_2017].
 
 
-```{r intercity, fig.width=7, message=FALSE, warning=FALSE, fig.cap="Use of the ClockBoard zoning system to support inter-city comparison of a policy relevant phenomenon. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.", out.width="75%"}
+```{r intercity, fig.width=7, message=FALSE, warning=FALSE, fig.cap="Use of the ClockBoard zoning system to support inter-city comparison of policy-relevant data, on road traffic casualties. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.", out.width="100%"}
 # download preprocessed data (processing script /data-raw/crashes.R)
 df = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/ksi_bkm_zone.rds")))
 uk = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/uk.rds")))
@@ -522,7 +525,7 @@ The example highlights the utility of ClockBoard for communicating not only inte
 While Singapore and Sydney have similar total official populations (of 5.8 and 5.3 million people, respectively), based on the number of people with their respective administrative boundaries, the size and shape of each city is very different, highlighted by the fact that in Singapore there are few people beyond ring F (located 15 to 20 km from the centre), while in Sydney (and many other cities) there are substantial numbers of people living in ring I (located 36 to 45 km from the centre).
 <!-- Do we want to say anything else about this here? -->
 
-```{r popdens, fig.cap="ClockBoard for 30 world cites. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders (where they could be found).", out.width="60%"}
+```{r popdens, fig.cap="ClockBoard for 30 world cites. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders (where they could be found).", out.width="70%"}
 u = "https://user-images.githubusercontent.com/2444081/109546760-e510d480-7aca-11eb-83cc-c92c582cefeb.png"
 
 # # For HTML version:
@@ -541,7 +544,11 @@ knitr::include_graphics(f)
 
 # Discussion and conclusion
 
-The ClockBoard zoning system presented in this paper overcomes some of the issues associated with commonly available administrative zoning systems in many parts of the world, from the perspective of urban analysis of monocentric cities.
+The ClockBoard zoning system presented in this paper was designed to overcome some well-known and long-standing issues associated with commonly available administrative zoning systems, which are still often used as the default unit of analysis for urban analysis in many parts of the world.
+
+
+
+ from the perspective of urban analysis of monocentric cities.
 The three example applications demonstrate potential use cases for informal communication about and navigation within cities; exploratory data analysis and visualisation of geographic data within a single city; and visual and quantitative comparison of geographic phenomena between cities.
 Of these, we expect that the last application of ClockBoard, and similar zoning systems, will be of most use to urban analysts and others working with city-scaled datasets.
 
