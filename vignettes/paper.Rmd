@@ -543,7 +543,13 @@ knitr::include_graphics(f)
 
 The ClockBoard zoning system presented in this paper overcomes some of the issues associated with commonly available administrative zoning systems in many parts of the world, from the perspective of urban analysis of monocentric cities.
 The three example applications demonstrate potential use cases for informal communication about and navigation within cities; exploratory data analysis and visualisation of geographic data within a single city; and visual and quantitative comparison of geographic phenomena between cities.
-Of these, we expect that the last application of ClockBoard, and similar zoning systems, will be of most use to urban analysts and others working with city-scaled datasets; having a shared geographic frame of reference as the basis for comparing not only magnitudes and counts of phenomena withing consistently sized zones, but also the geographic extent of phenomena --- without the sometimes unhelpful influence of administrative city boundaries --- could enable more objective and easier to interpret inter-city comparison projects.
+Of these, we expect that the last application of ClockBoard, and similar zoning systems, will be of most use to urban analysts and others working with city-scaled datasets.
+
+The ClockBoard zoning system provides a shared geographic frame of reference for any city --- or indeed any geographic system with a clear central point --- worldwide, is easy to communicate (with zone labels such as A, B01 and C12), and clearly demarcates the location of phenomena in terms of angle and distance from the centre.
+The even growth of rings also enable understanding of the scale of cities and urban phenomena within them, regardless of the size of often arbitrary and historic official boundaries; the first nine rings in the zoning systems (labelled A, B, ... I) grow at constant rate, with radii of 1, 3, 6, 10, 15, 21, 28, 36 and 45 km.
+These ring diameters are not only useful to know and relatively easy to remember (with the phrase "in zone D8" instantly communicating the fact that the phenomena is happening between 6 and 10 km from the centre), but also capture the common utility of higher resolution data close to urban centres where population density and complexity is higher.
+The consistency of zone sizes and shapes, and the uniform sizes of all ClockBoards that share the same number of rings, could enable more objective and easier to interpret inter-city comparison projects.
+
 
 Pros:
 
