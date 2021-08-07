@@ -550,31 +550,49 @@ knitr::include_graphics(f)
 
 # Discussion and conclusion
 
-The ClockBoard zoning system presented in this paper was designed to overcome some well-known and long-standing issues associated with commonly available administrative zoning systems, which are still often used as the default unit of analysis for urban analysis in many parts of the world.
+The ClockBoard zoning system presented in this paper was designed to overcome some well-known and long-standing issues associated with commonly available administrative zoning systems [@openshaw_optimal_1977; @jelinski_modifiable_1996].
+Despite over 100 years of use in some places, and their design not responding to growth in changes in cities in many others, administrative zoning systems are still often used as the default unit of analysis for urban analysis in many parts of the world.
+Instead of tackling the problem by developing new ways to aggregate basic statistical units (BSUs, the basic building blocks of hierarchical administrative zoning systems) the approach taken in this paper is to start from a blank slate and design zoning systems from scratch, with the aim of creating zones that would be intuitively labelled, of consistent size and shape for creating readable and easy-to-interpret maps, and focussed on the central point on monocentric cities.
 
+Based on these criteria the ClockBoard zoning systems was developed, which consists of regularly spaced rings forming 'dohnuts' (technically annuli) emanating from the city centre and labelled A, B, C etc. At the centre of the ClockBoard zoning system lies zone A, a circle measuring 1 km in radius.
+Beyond zone A, each circular annuli is devided 12 evenly spaced segments labelled 1 to 12, with segment 12 representing land due North of the zone A.
+The ClockBoard zoning system is a specific implementation of an approach to zone creation that we label concentric segmented annuli; adjusting the sequence of outer ring diameters and number of segments could result in a wide range of alternative zoning systems, each of which would have advantages and disadvantages, just as the ClockBoard zoning system does.
 
-
- from the perspective of urban analysis of monocentric cities.
-The three example applications demonstrate potential use cases for informal communication about and navigation within cities; exploratory data analysis and visualisation of geographic data within a single city; and visual and quantitative comparison of geographic phenomena between cities.
-Of these, we expect that the last application of ClockBoard, and similar zoning systems, will be of most use to urban analysts and others working with city-scaled datasets.
-
-The ClockBoard zoning system provides a shared geographic frame of reference for any city --- or indeed any geographic system with a clear central point --- worldwide, is easy to communicate (with zone labels such as A, B01 and C12), and clearly demarcates the location of phenomena in terms of angle and distance from the centre.
+Any such circular zoning system can provide a consistent geographic frame of reference for monocentric cities, or indeed any geographic system with a clear central point.
+The zones in the ClockBoard zoning system were designed to be sufficiently large so that each could be seen when printed in a low resolution map representing a large city.
+The relatively large zones (which get bigger further from the city centre as density of urban phenomena tends to decrease) also enables labels that are easy to communicate.
+Zone labels contain only three characters (with the exception of zone A) and and clearly demarcate the location of phenomena in terms of angle and distance from the centre, with zone C09 located between 3 and 6 km to the West of the city centre.
 The even growth of rings also enable understanding of the scale of cities and urban phenomena within them, regardless of the size of often arbitrary and historic official boundaries; the first nine rings in the zoning systems (labelled A, B, ... I) grow at constant rate, with radii of 1, 3, 6, 10, 15, 21, 28, 36 and 45 km.
-These ring diameters are not only useful to know and relatively easy to remember (with the phrase "in zone D8" instantly communicating the fact that the phenomena is happening between 6 and 10 km from the centre), but also capture the common utility of higher resolution data close to urban centres where population density and complexity is higher.
+<!-- These ring diameters are not only useful to know and relatively easy to remember (with the phrase "in zone D8" instantly communicating the fact that the phenomena is happening between 6 and 10 km from the centre), but also capture the common utility of higher resolution data close to urban centres where population density and complexity is higher. -->
 The consistency of zone sizes and shapes, and the uniform sizes of all ClockBoards that share the same number of rings, could enable more objective and easier to interpret inter-city comparison projects.
 
+The ClockBoard zoning system is not without limitations, however: it represents a series of compromises in which the tendency was towards simplicity and ease of understanding.
+Perhaps the biggest limitation of the system is its implicit assumption that cities are monocentric entities in which urban activity declines gradually with distance from the city centre.
+While this assumption broadly holds for phenomena such as air pollution in London, as illustrated in Figure \@ref(fig:cityscale), it needs to be relaxed in many other cases [@alidadi_beyond_2018].
+The ClockBoard zoning system can thus be seen as a zoning system best suited for the analysis of monocentric cities, rather than polycentric conurbations.
+This raises the question: how to design zoning systems for polycentric regions, or large regions that contain multiple monocentric settlements [@chandra_multi-objective_2021]?
+We explored the possibility of 'joining' ClockBoard systems that met, with the 'dominant' ClockBoard associated with the larger city, but the results were not promising and we suspect that a new approach altogether, perhaps building on experience from Computational Fluid Dynamics, where grid generation procedures need to take into account multiltiple factors [@hernandez-perez_grid_2011].
 
-Pros:
+While the utility of the zoning system is likely to limited in many settings by these limitations, we believe that there are settings in which ClockBoard could provide substantial benefits, as demonstrated in three example applications.
+These demonstrated potential use cases for informal communication about and navigation within cities; exploratory data analysis and visualisation of geographic data within a single city; and visual and quantitative comparison of geographic phenomena between cities.
+Of these, we expect that the last application of ClockBoard, and similar zoning systems, will be of most use to urban analysts and others working with city-scaled datasets.
+A broader point is that too much academic research focusses only on a single city, without going to the effort of generalising the findings to multiple cities [@alidadi_beyond_2018; @chandra_multi-objective_2021].
 
--   Most cities have a radial plan around a central area, which is often a historic centre or a central business area. Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also <https://en.wikipedia.org/wiki/City_centre> which describes the centre as the heart of the city)
+We hope that the concept of the ClockBoard zoning system presented in this paper, and the ease with which open access data representing 'ClockBoards' for different cities, will encourage more quantitative urban analytical research comparing different cities.
+Moreover, we hope that the implementation of the concept in open source software encourages other zoning systems with different attributes to be developed, to meet different criteria than those that motivated the design of the ClockBoard system.
+The ongoing experience of developing and testing the system suggests that there is a need for such 'artificial' and consistent systems and we believe that a range of approaches, ranging from procedural generation to custom zoning systems co-created by citizens to meet specific need, will help develop the diversity of zoning systems that will be needed to meet some of the urban analysis and communication needs of the 21^st^ Century.
 
-Cons:
+<!-- Pros: -->
 
--   Some cities have two or more centres.
-    Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre.
+<!-- -   Most cities have a radial plan around a central area, which is often a historic centre or a central business area. Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also <https://en.wikipedia.org/wiki/City_centre> which describes the centre as the heart of the city) -->
 
--   In urban areas with nearby cities, it may not always be clear where one cities ends and another begins.
-    Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft)
+<!-- Cons: -->
+
+<!-- -   Some cities have two or more centres. -->
+<!--     Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre. -->
+
+<!-- -   In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. -->
+<!--     Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft) -->
 
 <!-- Compare ClockBoard to a particular city's existing zones, argue that it could replace the TAZs and other domain-specific systems? -->
 

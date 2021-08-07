@@ -13,3 +13,4 @@ vignettes/josis*
 *.tex
 *.rds
 data-raw/2*
+*cache*
