@@ -75,5 +75,47 @@ n1 = tm_shape(london_boroughs) + tm_borders() + tm_layout(title = "Raw data/grid
 n0 = tm_shape(lnd_border) + tm_borders() + tm_graticules() + tm_layout(title = "Raw data/grid")
 n0 = tm_shape(lnd_border) + tm_borders() + tm_graticules() + tm_layout(title = "Raw data/grid")
 
+# Bike crashes data:
+file.edit("data-raw/crashes.R")
+
+library(stats19)
+
+## downloadsSTATS19 data
+years = 2010:2018
+crashes_all = get_stats19(years, "accidents", output_format = "sf")
+casualties_all = get_stats19(years, "casualties")
+crashes_joined = dplyr::inner_join(crashes_all, casualties_all)
+
+## sf object of killed and seriously injured (ksi) cyclists
+ksi_cycl = crashes_joined %>% 
+  mutate(hour = as.numeric(substr(time, 1, 2)) + as.numeric(substr(time, 4, 5)) / 60) %>% 
+  filter(casualty_type == "Cyclist",
+         !(day_of_week %in% c("Saturday", "Sunday")),
+         (hour >= 7 & hour <= 9) | (hour >= 16.5 & hour <= 18.5),
+         accident_severity %in% c("Fatal", "Serious")) %>%
+  mutate(count=1) %>% # dummy variable needed for aggregate
+  select(count)
+
+nrow(ksi_cycl)
+ksi_cycl_wgs = sf::st_transform(ksi_cycl, 4326)
+
+ksi_boroughs = aggregate(ksi_cycl, london_boroughs, FUN = sum)
+ksi_zb = aggregate(ksi_cycl, london_zb, FUN = sum)
+ksi_zb_lnd = aggregate(ksi_cycl, london, FUN = sum)
+
+m0 = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + 
+  tm_layout(title = "A", frame = FALSE)
+m0l = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", title = "Average PM10\nμg/m^3") + tm_borders(col = "white", lwd = 0.2) + tm_layout(legend.only = TRUE)
+
+m1 = tm_shape(london_boroughs) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders(col = "white", lwd = 0.2) +  
+  tm_layout(title = "B", frame = FALSE)
+m2 = tm_shape(london_zb) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders(col = "white", lwd = 0.2) +  
+  tm_layout(title = "C", frame = FALSE)
+m3 = tm_shape(london) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders(col = "white", lwd = 0.2) +  
+  tm_layout(title = "D", frame = FALSE)
+tm1 = tmap_arrange(m0l, m0, m1, m2, m3, nrow = 1)
+tm1
+
+
 #### London OSM data (e.g. bus stops) - todo...
 
