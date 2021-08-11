@@ -46,7 +46,7 @@ london_boroughs = st_interpolate_aw(x, sf::st_transform(spData::lnd, crs = sf::s
 brks_pm10 = c(0, 1, 2, 4, 8, 16)
 m0 = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + 
   tm_layout(title = "A", frame = FALSE)
-m0l = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", title = "Average PM10\nμg/m^3") + tm_borders(col = "white", lwd = 0.2) + tm_layout(legend.only = TRUE)
+m0l = tm_shape(x) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", title = expression("PM10 (μg/" * m^3 * ")")) + tm_borders(col = "white", lwd = 0.2) + tm_layout(legend.only = TRUE)
 
 m1 = tm_shape(london_boroughs) + tm_fill("total_pm10", breaks = brks_pm10, palette = "viridis", legend.show = FALSE) + tm_borders(col = "white", lwd = 0.2) +  
   tm_layout(title = "B", frame = FALSE)
