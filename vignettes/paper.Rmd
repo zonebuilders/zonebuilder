@@ -382,6 +382,7 @@ While not the primary purpose of the ClockBoard zoning system, it can be used to
 We have tested this use case by using the zoning system to agree on meeting points to collaborate on the project.
 An illustration of how the zoning system was used is shown in Figure \@ref(fig:location), which shows how the ClockBoard zoning system could be used to communicate key locations in a city, from the train station (zone A) to a park (zone C01) and on to the city of Bradford (zone E09) to orientate people new to the city and to describe geographically where things are located using a small amount of information (3 characters).
 Without needing to process much data or look at the map, a person who is new to to the city would know that the park is relatively close to the rail station (between 3 and 6 km from the city centre) while Bradford in zone E09 is between 15 and 21 km from the city centre.
+Note that although Bradford is a city on its own and can therefore have its own zoning system, in this example it is placed in the context of the metropolitan area of Leeds.
 Of course the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed locations are provided, e.g. through a postcode, an address, or coordinates.
 
 ```{r location, out.width="85%", fig.cap="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city's famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09."}
@@ -417,7 +418,7 @@ The most geographically detailed zoning system in which the data is available is
 This presentation of the data is ideal for many purposes, demonstrating the variability in air quality over relatively small areas (1 km grid cells) across London.
 
 In cases when geographic aggregation is required, e.g. to present the data in small graphics that will be printed at low resolution (e.g. newspaper visualisations and infographics), two common approaches are to use an existing administrative zoning system (with well known London Borough boundaries used to aggregate the data presented in facet B in Figure \@ref(fig:cityscale)) and to use a simplified geographical representation or geographically arranged facets [@dorling_area_2011].
-Both approaches have advantages, with existing and well-known zoning systems enabling map readers familiar with city to orient themselves and interpret the map.
+Both approaches have advantages, with existing and well-known zoning systems enabling map readers familiar with the city to orient themselves and interpret the map.
 In this context and with reference to Figure \@ref(fig:cityscale), the ClockBoard zoning system has the following advantages as a basis for choropleth maps:
 
 - Simple and consistent zone shapes for easy map reading
@@ -534,6 +535,8 @@ While this assumption broadly holds for phenomena such as air pollution in Londo
 The ClockBoard zoning system can thus be seen as a zoning system best suited for the analysis of monocentric cities, rather than polycentric conurbations.
 This raises the question: how to design zoning systems for polycentric regions, or large regions that contain multiple monocentric settlements [@chandra_multi-objective_2021]?
 We explored the possibility of 'joining' ClockBoard systems that met, with the 'dominant' ClockBoard associated with the larger city, but the results were not promising and we suspect that a new approach altogether, perhaps building on experience from Computational Fluid Dynamics, where grid generation procedures need to take into account multiltiple factors [@hernandez-perez_grid_2011].
+
+A question for further research is how to fit one or several ClockBoards to a dense urban area consisting of several cities, of which none is dominating. For instance, the four major cities in the Netherlands (Amsterdam, Rotterdam, The Hague and Utrecht) are small and located about 40 kilometers from each other, with even smaller cities and towns in between. In this example, there is no dominant "gravitational force" to construct one ClockBoard around. Probably, the ClockBoard is less useful is there situations. However, ClockBoards could be constructed for each of these four cities, but should ideally be fit on each city alone including neighbouring towns.
 
 While the utility of the zoning system is likely to limited in many settings by these limitations, we believe that there are settings in which ClockBoard could provide substantial benefits, as demonstrated in three example applications.
 These demonstrated potential use cases for informal communication about and navigation within cities; exploratory data analysis and visualisation of geographic data within a single city; and visual and quantitative comparison of geographic phenomena between cities.

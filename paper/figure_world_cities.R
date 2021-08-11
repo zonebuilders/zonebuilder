@@ -152,7 +152,7 @@ popdata = lapply(1:nrow(df), function(i) {
     e = ext(as(zns[[i]], "SpatVector"))
     a1 = crop(a1, e)
     
-    a1 = expand(a1, e)
+    a1 = extend(a1, e)
     a1[][is.na(a1[]) | is.nan(a1[])] = 0
     
   } else {
@@ -219,7 +219,7 @@ df$circles = 7
 # Normalize popdata to people/km2
 popdata_norm = lapply(popdata, function(p) {
   #km2 = as.numeric(st_area(tmaptools::bb_poly(st_bbox(p)))) / 1e6
-  km2 = sum(area(p, sum = FALSE)[]) / 1e6
+  km2 = sum(cellSize(p)[]) / 1e6
   km2_cell = km2 / ncell(p)
   p[] = p[] / km2_cell
   p[][is.na(p[])] = 0
@@ -277,43 +277,46 @@ tml = lapply(match(nms, df$name), function(i) {
   return(tm)
 })
 
-tma1 = tmap_arrange(tml[1:12], ncol = 3, outer.margins = c(0, 0.02, 0, 0.02))
-tmap_save(tma1, paste0(plotdir, "cities_page1.png"), width = 1800, height = 2600) 
-
-tma1 = tmap_arrange(tml[13:24], ncol = 3, outer.margins = c(0, 0.02, 0, 0.02))
-tmap_save(tma1, paste0(plotdir, "cities_page2.png"), width = 1800, height = 2600) 
-
-tma1 = tmap_arrange(tml[25:36], ncol = 3, outer.margins = c(0, 0.02, 0, 0.02))
-tmap_save(tma1, paste0(plotdir, "cities_page3.png"), width = 1800, height = 2600) 
+with_borders = which(!sapply(admin, is.null))
 
 
-
-
-if (FALSE) {
-  ### London and Paris
-  i = which(df$name == "London")
-  i = which(df$name == "Paris")
-  
-  tm = tm_shape(popdata_norm[[i]]) + 
-    tm_raster(breaks = brks, title = "pop/km2", palette = pal, legend.show = FALSE)
-  
-  if (!is.null(admin[[i]])) {
-    tm = tm + qtm_border(admin[[i]], col = acol, width = 3)
+tml1 = lapply(match(names(with_borders), df$name), function(i) {
+  if (df$has_pop_data[i]) {
+    tm = tm_shape(popdata_norm[[i]]) + 
+      tm_raster(breaks = brks, title = "pop/km2", palette = pal, legend.show = FALSE)
+    
+    if (!is.null(admin[[i]])) {
+      tm = tm + qtm_border(admin[[i]], col = acol, width = 3)
+    }
+    
+    tm = tm + qtm_border(zns[[i]] %>% filter(circle_id <= df$circles[i]), master = TRUE) + tm_layout(frame = FALSE, outer.margins = 0, scale = 0.6, legend.position = c("right", "bottom"), panel.show = TRUE, panel.label.bg.color = continents[as.character(df$continent[i])], panel.labels = df$name[i], panel.label.size = 1.4)
+  } else {
+    tm = NULL
   }
-  
-  ttm()
-  tm = tm + qtm_border(zns[[i]] %>% filter(circle_id <= df$circles[i]), master = TRUE) + tm_layout(frame = FALSE, outer.margins = 0, scale = 0.5, legend.position = c("right", "bottom"), panel.show = TRUE, panel.label.bg.color = continents[as.character(df$continent[i])], panel.labels = df$name[i], panel.label.size = 1.4)
-  tm
-  
-}
-# 
-# library(stars)
-# s = st_as_stars(popdata[[6]])
-# s = st_transform(s, crs = st_crs(london_c()))
-# 
-# f = st_cast(st_geometry(st_transform(zns$London, crs = st_crs(london_c()))), "POLYGON")
-# a = stars:::aggregate.stars(s, f, FUN = mean, na.rm = TRUE)
-# 
-# qtm(s) + qtm(zns[[6]], fill = NA)
-# 
+  return(tm)
+})
+
+
+tml2 = lapply(match(nms, df$name), function(i) {
+  if (df$has_pop_data[i]) {
+    tm = tm_shape(popdata_norm[[i]]) + 
+      tm_raster(breaks = brks, title = "pop/km2", palette = pal, legend.show = FALSE)
+    
+    # if (!is.null(admin[[i]])) {
+    #   tm = tm + qtm_border(admin[[i]], col = acol, width = 3)
+    # }
+    
+    tm = tm + qtm_border(zns[[i]] %>% filter(circle_id <= df$circles[i]), master = TRUE) + tm_layout(frame = FALSE, outer.margins = 0, scale = 0.5, legend.position = c("right", "bottom"), panel.show = TRUE, panel.label.bg.color = continents[as.character(df$continent[i])], panel.labels = df$name[i], panel.label.size = 1.4)
+  } else {
+    tm = NULL
+  }
+  return(tm)
+})
+
+
+tma1 = tmap_arrange(tml1, ncol = 3, outer.margins = c(0, 0.02, 0, 0.02))
+tmap_save(tma1, paste0(plotdir, "cities_p1.png"), width = 1800, height = 1400) 
+
+tma2 = tmap_arrange(tml2, ncol = 6, outer.margins = c(0, 0.02, 0, 0.02))
+tmap_save(tma2, paste0(plotdir, "cities_p2.png"), width = 1800, height = 2200) 
 
