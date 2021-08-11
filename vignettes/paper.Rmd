@@ -24,22 +24,21 @@ abstract: |
   methods such as origin-destination analysis and choropleth mapping
   rely on zones with appropriate sizes, shapes and coverage. However,
   existing zoning systems are sub-optimal in many urban analysis
-  contexts, for three main reasons: 1) available administrative zoning systems are
-  often based on somewhat arbitrary factors; 2) evidence-based zoning
-  systems are often highly variable in size and shape, reducing their
+  contexts, for three main reasons: 1) administrative zoning systems are
+  often based on somewhat arbitrary factors; 2) zoning systems that are
+  evidence-based (e.g. based on equal population size) are
+  often highly variable in size and shape, reducing their
   utility for inter-city comparison; and 3) official zoning systems in many places
-  are either non-existent, not publicly available, or are too coarse.
-  To tackle these we set out to develop a
-  flexible, open and scalable solution.
+  simply do not exist or are unavailable.
+  We set out to develop a flexible, open and scalable solutions to these problems.
   The result is the ClockBoard zoning system, which
-  consists of 12 segments divided by concentric rings of
-  increasing radius.
+  consists of 12 segments emanating from a central place and divided by concentric rings
+  with radii that increase in line with the triangular number sequence (1, 3, 6 km etc).
   'ClockBoards' thus create a consistent visual frame of reference
-  for cities that is reminiscent of a clock and a dartboard. This paper
-  outlines the design and potential uses of the ClockBoard
+  for monocentric cities that is reminiscent of clocks and dartboard.
+  This paper outlines the design and potential uses of the ClockBoard
   zoning system in the historical context, and
-  and discusses future avenues for research and
-  development of new zoning systems.
+  and discusses future avenues for research into the design and assessment of zoning systems.
 # # For R package vignette
 # # output:
 # #   bookdown::html_vignette2:
