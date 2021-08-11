@@ -30,15 +30,15 @@ abstract: |
   often highly variable in size and shape, reducing their
   utility for inter-city comparison; and 3) official zoning systems in many places
   simply do not exist or are unavailable.
-  We set out to develop a flexible, open and scalable solutions to these problems.
+  We set out to develop a fexible, open and scalable solution to these problems.
   The result is the ClockBoard zoning system, which
   consists of 12 segments emanating from a central place and divided by concentric rings
   with radii that increase in line with the triangular number sequence (1, 3, 6 km etc).
   'ClockBoards' thus create a consistent visual frame of reference
-  for monocentric cities that is reminiscent of clocks and dartboard.
+  for monocentric cities that is reminiscent of clocks and a dartboard.
   This paper outlines the design and potential uses of the ClockBoard
   zoning system in the historical context, and
-  and discusses future avenues for research into the design and assessment of zoning systems.
+  discusses future avenues for research into the design and assessment of zoning systems.
 # # For R package vignette
 # # output:
 # #   bookdown::html_vignette2:
@@ -110,17 +110,17 @@ Historical examples highlighting the importance of zone layouts include 'tithe m
 In the 19th Century, zoning systems became known for political reasons, with 'gerrymandering' entering public discourse and academic research following Elbridge Gerry's apparent attempt to gain political advantage by creating an electoral district in an odd shape that was said to resemble a salamander (hence the term's name combining 'Gerry' and 'salamander') in 1812 [@orr_persistence_1969].
 Gerrymandering has since been the topic of countless academic papers that is the beyond the scope of the present paper.
 
-Research research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
+Research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
 The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
-Much research has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualised to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
-In fact, this problem is concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021] .
+Prior work has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualised to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
+In fact, this problem is a concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021] .
 Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimise some pre-determined criteria) the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
 
 The problem that we tackle in this paper is different, however.
 It is 'zoning from scratch': the division of geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
 The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in 'pre-packaged' small areas and because creating zones from nothing is a harder problem.
 We disagree with the statement that "existence of individual or non-spatially aggregated data is rare in geography" [@openshaw_optimal_1977], pointing to car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as 'point pattern processes'.
-And with advances in computer hardware and software, the 'starting from scratch' approach to zoning system is more feasible.
+And with advances in computer hardware and software, the 'starting from scratch' approach to zoning systems is more feasible.
 
 A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualisation purposes, with a variety of applications.
 Functional zone classification is common in the field of remote sensing and associated sub-fields involved in analysing and classifying raster datasets [@ciglic_evaluating_2019; @hesselbarth_landscapemetrics_2019].
@@ -133,7 +133,7 @@ The boundaries created by these various 'iso' maps are 'procedurally generated' 
 Procedural generation, which involves the generation of data through a repeated and sometimes randomised computational process has long been used to represent physical phenomena [@onrust_ecologically_2017]. The approach has been used to generate spatial entities including roads [@galin_procedural_2010], indoor layouts of buildings [@anderson_augmented_2018] and urban layouts [@mustafa_procedural_2020]. Algorithms have also been developed to place linear features on a map, as illustrated by an algorithm that optimizes the placement of overlapping linear features for cartographic visualisation [@teulade-denantes_routes_2015].
 However, no previous research has demonstrated the creation of zoning systems specifically for the purposes of urban analysis.
 
-New visualisation techniques are needed to represent new (or newly quantifiable) concepts and emerging datasets (such as OpenStreetMap) in urban analysis analysis .
+New visualisation techniques are needed to represent new (or newly quantifiable) concepts and emerging datasets (such as OpenStreetMap) in urban analysis.
 The visualisation of direction has been driven by new navigational requirements and datasets, with circular compasses and displays common in land and sea navigational systems since the mid 1900s [@honick_pictorial_1967]. Circular visualisation techniques, in the form of rose diagrams, were used in a more recent study to indicate the most common road directions relative to North [@boeing_spatial_2021]. The resulting visualisations are attractive and easy to interpret, but are not geographical, in the sense that they cannot meaningfully be overlaid on mapped data. The approach we present in this paper is more closely analogous to 'grid sample' approaches used in ecological and population research [@hirzel_which_2002] . Historically, environmental researchers have used rectangular (and usually square) grids to divide up space and decide sampling strategies. Limitations associated with this simplistic strategy have been documented since at least the 1960s, with a prominent paper on geographic sampling strategies outlining advantages and disadvantages of simple random, systematic and stratified sampling techniques in 1967 [@holmes_problems_1967]. Starting with data at the level of raster grid cells and BSUs, a related approach is to sample from within available 'pixels' to generate a representative sample [@thomson_gridsample_2017].
 
 Unlike BSU based zoning systems, grid sampling strategies require no prior zones.
@@ -143,9 +143,9 @@ However, grid-based strategies are limited in their applicability to urban resea
 Pre-existing zoning systems are often based on administrative regions.
 Although those zoning systems are usually in line with the hierarchical organization structure of governmental organizations, and therefore may work well for policy making, there are a couple of downsides to using such zoning systems.
 First of all, since a city and its politics change over time, the administrative regions often change accordingly.
-This make it harder to do time series analysis.
+This makes it harder to do time series analysis.
 Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward.
-Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities.
+Moreover, comparing administrative regions across cities is even more challenging: the average surface area of a administrative zones varies from city to city.
 
 Grid tiles are popular in spatial statistics for a number of reasons.
 Most importantly the tiles have a constant area size, which makes comparably possible.
@@ -167,7 +167,7 @@ The motivations for generating a new zoning system and use cases envisioned incl
 -   Reference system for everyday life.
     The zone name contains information about the distance to the center as well as the cardinal direction.
     E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7".
-    Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.
+    Moreover, the zones indicate whether walking and cycling is a feasible option regarding the distance.
 
 -   Aggregation for descriptive statistics / comparability over cities.
     By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other.
@@ -242,7 +242,7 @@ After experimenting with various ways of incrementing the annuli width,
 <!-- including in proportion to the square of the annuli index, -->
 and considering the importance of easy to remember distances from central points from the perspective of readability, interpretation and simplicity of the system, we settled on linear increases in width as a sensible default for the ClockBoard zoning system.
 This linear growth leads to distances between the outer circles of each annuli and the central point following in the [triangular number sequence](https://en.wikipedia.org/wiki/Triangular_number) [@ross_dicuil_2019].
-This means that all points in the first annuli (labelled A) are up to 1 km way from the city centre; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas [@vinoth_kumar_spatio-temporal_2007].
+This means that all points in the first annuli (labelled A) are up to 1 km away from the city centre; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas [@vinoth_kumar_spatio-temporal_2007].
 The furthest points from the central point of the next 8 subsequent annuli in the system (annuli B to I) are 3, 6, 10, 15, 21, 28, 36 and 45 km respectively, meaning that even a large city such as London requires only 8 annuli to cover it entirely (Figure \@ref(fig:london)).
 This and other other attributes of the first set of 9 zones in the ClockBoard zoning system in Table \@ref(tab:t1).
 
@@ -286,7 +286,8 @@ zb_plot(london_zones, palette = "hcl")
 
 ## Using the ClockBoard zoning system
 
-To enable easy access to the zoning system, we have implemented described above in free and open source software.
+To enable easy access to the ClockBoard zoning system, we implemented techniques needed to create them in free and open source software.
+The tools described below allow people to create ClockBoards in a reproducible way from command line environments and even from a web browser, to minimise barriers to entry.
 
 ### The zonebuilder R package
 
@@ -347,6 +348,19 @@ Furthermore, passing an object representing the geographic extent of Tokyo as a 
 
 To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
 See [github.com/zonebuilders/zonebuilder-rust](https://github.com/zonebuilders/zonebuilder-rust) for details.
+The crate is available on the main Rust package repository crates.io and can be installed on any computer that already has the Rust toolchain installed from the system command line as follows:
+
+```bash
+cargo install zonebuilder
+```
+
+After installing the `zonebuilder` crate and assuming that `cargo` is executable the following commands will print instructions on how to use the command line interface and generate zones for Leeds, UK, respectively:
+
+```bash
+zonebuilder -h                            # see usage instructions
+zonebuilder > zones.geojson # create zones.geojson zone object
+```
+
 <!-- After the Rust crate has been installed, the same zoning system for Tokyo illustrated above can be created with the following command: -->
 
 <!-- ```bash -->
@@ -614,15 +628,13 @@ The ongoing experience of developing and testing the system suggests that there 
 
 <!-- ### Current situation -->
 
-<!-- Statistics, policy making and transport planning are often based on administrative regions. However, there are a couple of downsides to using administrative regions. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This make it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities. -->
+<!-- Statistics, policy making and transport planning are often based on administrative regions. However, there are a couple of downsides to using administrative regions. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This makes it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities. -->
 
 <!-- Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statitics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas. -->
 
 <!-- ### Why is it needed/handy? -->
 
 <!-- * Locating cities. By having a ClockBoard zoning system for a city, it is immediate clear where the city centre is, and what the scale of the city is.  -->
-
-<!-- * Reference system of everyday live. The zone name contains information about the distance to the center as well as the cardinal direction. E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7". Moreover, the zones indicate whether walking and cycling is a feasibly option regarding the distance.    -->
 
 <!-- * Aggregation for descriptive statistics / comparability over cities. By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other. -->
 
