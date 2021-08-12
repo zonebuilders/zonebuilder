@@ -94,6 +94,7 @@ rmarkdown::render(input = "vignettes/paper.Rmd", output_file = "zonebuilder-pape
 file.rename("vignettes/zonebuilder-paper.pdf", "zonebuilder-paper.pdf")
 browseURL("zonebuilder-paper.pdf")
 piggyback::pb_upload("zonebuilder-paper.pdf")
+piggyback::pb_upload("vignettes/zonebuilder-paper.tex")
 piggyback::pb_download_url("zonebuilder-paper.pdf")
 # [1] "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/zonebuilder-paper.pdf"
 remotes::install_github("paleolimbot/rbbt")
@@ -589,7 +590,7 @@ how to design zoning systems for polycentric regions, or large regions that cont
 We explored the possibility of 'joining' ClockBoard systems that met, with the 'dominant' ClockBoard associated with the larger city, but the results were not promising and we suspect that a new approach altogether, perhaps building on experience from Computational Fluid Dynamics, where grid generation procedures need to take into account multiltiple factors [@hernandez-perez_grid_2011].
 
 An alternative and approach to developing zoning systems for complex and polycentric settlements not implemented in this paper is to build them on exisiting Discrete Global Grid Systems (DGGS) such as the S2 and H3 global zoning systems developed by Google and Uber respectively [@bondaruk_assessing_2020], and the [QTM Generator](https://github.com/paulojraposo/QTM) developed by Paulo Raposo [@raposo_virtual_2019].
-This would have advantages for flexibility, with DGGSs able to generate grids with zone sizes that are more evidence-based, for example by responding to geographic data such as population density.
+This would have advantages for flexibility, with DGGSs able to generate grids with zone sizes that are more evidence-based, for example by respondingM to geographic data such as population density.
 DGGS based zoning systems would also enable greater determinism, with each of S2's ~7 quintillion ($6 * 4^{30}$ or $\approx6.9*10^{18}$) and H3's ~700 trillion ($\approx5.7 * 10^{14}$) base zones having a unique reference code that is machine readable (ClockBoards are arguably deterministic with 'zone B12, Leeds, UK' referring to an unambiguous area, although ClockBoards depend on an unambiguous definition of 'city centre' which may not be available or requires a single unique source of city centre points).
 Theses beneficial features would be gained at the expense of simplicity: DGGSs are complex and have hard-to-remember cell IDs such as [e66ef376f790adf8a5af7fca9e6e422c03c9143f](https://developers.google.com/maps/documentation/gaming/concepts_playable_locations) (S2) and [8a283082a677fff](https://h3geo.org/docs/quickstart) (H3); they also have high computational requirements [@bondaruk_assessing_2020], compared with the comparatively simple ClockBoard system.
 
