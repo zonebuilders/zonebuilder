@@ -1,15 +1,13 @@
 ---
 title: "ClockBoard: a zoning system for urban analysis"
 runningtitle: "The ClockBoard Zoning System"
-# output: rticles::josis_article
-# to use bookdown cross references
+# # For paper: uncomment below for LaTeX version
 # output:
 #   bookdown::pdf_book:
 #     base_format: rticles::josis_article
-#     keep_tex: true
-keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
-bibliography: references.bib
-# csl: josis.csl
+# For R package vignette
+output:
+  bookdown::html_vignette2:
 author:
    - name: Robin Lovelace
      affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
@@ -17,6 +15,16 @@ author:
      affiliation: Center for Big Data Statistics, Centraal Bureau voor de Statistiek, The Netherlands
    - name: Dustin Carlino
      affiliation: Independent Software Engineer, Lead Developer of A/B Street, USA
+vignette: >
+  %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+pkgdown:
+  as_is: true
+  set_null_theme: false
+keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
+bibliography: references.bib
+# csl: josis.csl
 abstract: |
   Zones are the building blocks of urban analysis. Fields ranging from
   demographics to transport planning routinely use zones --- spatially
@@ -40,16 +48,6 @@ abstract: |
   This paper outlines the design and potential uses of the ClockBoard
   zoning system in the historical context, and
   discusses future avenues for research into the design and assessment of zoning systems.
-# For R package vignette
-output:
-  bookdown::html_vignette2:
-vignette: >
-  %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
-pkgdown:
-  as_is: true
-  set_null_theme: false
 # # Reformatted the Rmd doc
 # editor_options:
 #   markdown:
