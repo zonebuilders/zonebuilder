@@ -249,7 +249,7 @@ The furthest points from the central point of the next 8 subsequent annuli in th
 This and other other attributes of the first set of 9 zones in the ClockBoard zoning system in Table \@ref(tab:t1).
 
 ```{r t1}
-t2 = tibble::tibble("N. annuli" = 1:9)
+t2 = data.frame("N. annuli" = 1:9, check.names = FALSE)
 t2$`Outer annuli label` = LETTERS[1:9]
 t2$`N. zones` = t2$`N. annuli` * 12 - 11
 t2$`Radius (km)` = zonebuilder::zb_100_triangular_numbers[1:9]

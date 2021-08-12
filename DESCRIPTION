@@ -28,7 +28,7 @@ Description: Functions, documentation and example data to help divide
 License: GPL-3
 BugReports: https://github.com/zonebuilders/zonebuilder/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)
 Imports: 
     sf,
     RColorBrewer,
