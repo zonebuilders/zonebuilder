@@ -451,15 +451,15 @@ This benefit is especially noticeable towards the outskirts of London, where lar
 # file.edit("data-raw/london-figures.R") # to reproduce the figure
 
 # For PDF version with vector graphics:
-tmap_mode("plot")
-tm1 = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/tm1.Rds"))
-tm1
+# tmap_mode("plot")
+# tm1 = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/tm1.Rds"))
+# tm1
 
-# u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cityscale.png"
-# # f = basename(u)
-# # if(!file.exists(f)) download.file(url = u, destfile = f)
-# # knitr::include_graphics(f) # for local high-res version, not working
-# knitr::include_graphics(u)
+u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cityscale.png"
+# f = basename(u)
+# if(!file.exists(f)) download.file(url = u, destfile = f)
+# knitr::include_graphics(f) # for local high-res version, not working
+knitr::include_graphics(u)
 ```
 
 The example of air quality presented in Figure \@ref(fig:cityscale) highlights that the ClockBoard zoning system is well suited for the analysis and visualisation of phenomena in which a central place (London city centre in this case) plays a major role, directly or indirectly.
