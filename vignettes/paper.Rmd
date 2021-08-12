@@ -9,7 +9,7 @@ runningtitle: "The ClockBoard Zoning System"
 #     keep_tex: true
 keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 bibliography: references.bib
-csl: josis.csl
+# csl: josis.csl
 author:
    - name: Robin Lovelace
      affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
