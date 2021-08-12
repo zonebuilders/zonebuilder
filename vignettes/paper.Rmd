@@ -3,10 +3,10 @@ title: "ClockBoard: a zoning system for urban analysis"
 runningtitle: "The ClockBoard Zoning System"
 # output: rticles::josis_article
 # to use bookdown cross references
-output:
-  bookdown::pdf_book:
-    base_format: rticles::josis_article
-    keep_tex: true
+# output:
+#   bookdown::pdf_book:
+#     base_format: rticles::josis_article
+#     keep_tex: true
 keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 bibliography: references.bib
 csl: josis.csl
@@ -40,16 +40,16 @@ abstract: |
   This paper outlines the design and potential uses of the ClockBoard
   zoning system in the historical context, and
   discusses future avenues for research into the design and assessment of zoning systems.
-# # For R package vignette
-# # output:
-# #   bookdown::html_vignette2:
-# # vignette: >
-# #   %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
-# #   %\VignetteEngine{knitr::rmarkdown}
-# #   %\VignetteEncoding{UTF-8}
-# # pkgdown:
-# #   as_is: true
-# #   set_null_theme: false
+# For R package vignette
+output:
+  bookdown::html_vignette2:
+vignette: >
+  %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+pkgdown:
+  as_is: true
+  set_null_theme: false
 # # Reformatted the Rmd doc
 # editor_options:
 #   markdown:
@@ -249,12 +249,6 @@ The furthest points from the central point of the next 8 subsequent annuli in th
 This and other other attributes of the first set of 9 zones in the ClockBoard zoning system in Table \@ref(tab:t1).
 
 ```{r t1}
-# txt = "Number of rings,Diameter across (km),Area (sq km)
-# 1,1,2,3.14
-# 2,2,6,28.27
-# 9,9,90,6361.73"
-# t1 = read.csv(text = txt, check.names = FALSE)
-# # calculate t1 on the fly
 t2 = tibble::tibble("N. annuli" = 1:9)
 t2$`Outer annuli label` = LETTERS[1:9]
 t2$`N. zones` = t2$`N. annuli` * 12 - 11
@@ -337,8 +331,10 @@ zb_view(ClockBoard_tokyo, alpha = 0.8)
 #   tm_scale_bar()
 # from system command line:
 # pngquant -f --ext .png --quality 60-85 vignettes/tokyo.png 
+knitr::include_graphics("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png")
+# LaTeX version:
 # download.file("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png", "tokyo.png")
-knitr::include_graphics("tokyo.png")
+# knitr::include_graphics("tokyo.png")
 ```
 
 Note that the `n_circles` argument was set to 5, resulting in a zoning system 15 km in radius (see Table \@ref(tab:t1)).
@@ -379,13 +375,13 @@ To enable creation of ClockBoard zones for non-programmers and to encourage peop
 
 u = "https://user-images.githubusercontent.com/1825120/128508694-5b5485ca-6f1b-4c21-bdb6-9269a7981dd5.png"
 
-# # for html version: 
-# knitr::include_graphics(u)
+# for html version:
+knitr::include_graphics(u)
 
-# for pdf version:
-f = basename(u)
-download.file(u, f)
-knitr::include_graphics(f)
+# # for pdf version:
+# f = basename(u)
+# download.file(u, f)
+# knitr::include_graphics(f)
 ```
 
 # Applications
@@ -421,12 +417,12 @@ Of course the locations are not geographically specific; the zones would be used
 #   "https://user-images.githubusercontent.com/1825120/127722684-e4f0f58a-44b2-48b9-8bdd-cd09bae4e250.png",
 #   "navigation-small.png"
 # )
-download.file(
-  "https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png",
-  "navigation.png"
-)
-knitr::include_graphics("navigation.png")
-# knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
+# download.file(
+#   "https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png",
+#   "navigation.png"
+# )
+# knitr::include_graphics("navigation.png")
+knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
 ```
 
 
@@ -525,13 +521,13 @@ While these cities have similar total official populations (of 5.8 and 5.3 milli
 ```{r popdens, fig.cap="ClockBoard for 36 cities. The blue raster grid cells represent open access population estimates from the WorldPop project.", out.width="100%"}
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p2.png"
 
-# # For HTML version:
-# knitr::include_graphics(u)
+# For HTML version:
+knitr::include_graphics(u)
 
-# For LaTeX version
-f = basename(u)
-if(!file.exists(f)) download.file(u, f)
-knitr::include_graphics(f)
+# # For LaTeX version
+# f = basename(u)
+# if(!file.exists(f)) download.file(u, f)
+# knitr::include_graphics(f)
 ```
 
 The administrative borders of six cities shown in Figure \@ref(fig:popdens) are depicted as red lines in Figure \@ref(fig:popdens2), highlighting the importance of sometimes arbitrary city boundaries.
@@ -546,13 +542,13 @@ The example highlights the utility of ClockBoard for communicating not only inte
 ```{r popdens2, fig.cap="ClockBoard for 6 cities with boundaries shown in red. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders.", out.width="70%"}
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p1.png"
 
-# # For HTML version:
-# knitr::include_graphics(u)
+# For HTML version:
+knitr::include_graphics(u)
 
-# For LaTeX version
-f = basename(u)
-if(!file.exists(f)) download.file(u, f)
-knitr::include_graphics(f)
+# # For LaTeX version
+# f = basename(u)
+# if(!file.exists(f)) download.file(u, f)
+# knitr::include_graphics(f)
 ```
 
 
@@ -604,71 +600,5 @@ A broader point is that too much academic research focusses only on a single cit
 We hope that the concept of the ClockBoard zoning system presented in this paper, and the ease with which open access data representing 'ClockBoards' for different cities can be created, will encourage more quantitative urban analytical research comparing different cities, building on recent work in the field [@boeing_spatial_2021].
 Moreover, we hope that the implementation of the concept in open source software encourages other zoning systems with different attributes to be developed, to meet different criteria than those that motivated the design of the ClockBoard system.
 The ongoing experience of developing and testing the system suggests that there is a need for such 'artificial' and consistent systems and we believe that a range of approaches, ranging from procedural generation to custom zoning systems co-created by citizens to meet specific need, will help develop the diversity of zoning systems that will be needed to meet some of the urban analysis and communication needs of the 21^st^ Century.
-
-<!-- Pros: -->
-
-<!-- -   Most cities have a radial plan around a central area, which is often a historic centre or a central business area. Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also <https://en.wikipedia.org/wiki/City_centre> which describes the centre as the heart of the city) -->
-
-<!-- Cons: -->
-
-<!-- -   Some cities have two or more centres. -->
-<!--     Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre. -->
-
-<!-- -   In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. -->
-<!--     Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft) -->
-
-<!-- Compare ClockBoard to a particular city's existing zones, argue that it could replace the TAZs and other domain-specific systems? -->
-
-<!-- World cities todo: create appendix-->
-
-<!-- ============ -->
-
-<!-- ![ClockBoard for 36 cities, with population density shown in blue, and -->
-
-<!-- continent shown in the header color.](cities_page1.png){#fig:cities1 -->
-
-<!-- width="\\textwidth"} -->
-
-<!-- ![(continued)](cities_page2.png){#fig:cities2 width="\\textwidth"} -->
-
-<!-- ![(continued)](cities_page3.png){#fig:cities3 width="\\textwidth"} -->
-
-<!-- # Old paper -->
-
-<!-- # Introduction -->
-
-<!-- ### Current situation -->
-
-<!-- Statistics, policy making and transport planning are often based on administrative regions. However, there are a couple of downsides to using administrative regions. First of all, since a city and its politics change over time, the administrative regions often change accordingly. This makes it harder to do time series analysis. Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward. Moreover, comparing administrative regions across cities is even more challenging since average scale of an administrative region may vary a lot across cities. -->
-
-<!-- Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre. As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statitics in other parts of the city. That is the reason why administrative regions are often smaller in dense areas. -->
-
-<!-- ### Why is it needed/handy? -->
-
-<!-- * Locating cities. By having a ClockBoard zoning system for a city, it is immediate clear where the city centre is, and what the scale of the city is.  -->
-
-<!-- * Aggregation for descriptive statistics / comparability over cities. By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other. -->
-
-<!-- * Modelling urban cities. The zoning system can be used to model urban mobility. -->
-
-<!-- ### Arguments / discussion -->
-
-<!-- Pros: -->
-
-<!-- * Most cities have a radial plan around a central area, which is often a historic centre or a central business area. -->
-
-<!-- Typically, this centre is not only the geographic centre, but also the busiest area in terms of daytime population. Often the main nodes in the urban transport network are also located in or near the city centre. Note that many cities already consist of concentric rings, separated by a ring road. (See also https://en.wikipedia.org/wiki/City_centre which describes the centre as the heart of the city) -->
-
-<!-- Cons: -->
-
-<!-- * Some cities have two or more centres. Many cities have a central business discrict or financial discrict which not always coinsides with the historic city centre. -->
-
-<!-- * In urban areas with nearby cities, it may not always be clear where one cities ends and another begins. Also, small cities may be located within the metropolitan area of a larger city (e.g. the Dutch cities The Hague/Delft)  -->
-
-<!-- Comparing two cities can be difficult due to incomparable zoning systems. -->
-
-<!-- Take the example of city A is provided in a detailed zoning system composed of hundreds of small, irregular areas while city B is composed only of 9 irregular zones -->
-
-<!-- TODO: reference to https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0050606 -->
 
 # References
