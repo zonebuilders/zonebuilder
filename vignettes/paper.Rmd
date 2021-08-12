@@ -5,15 +5,18 @@ runningtitle: "The ClockBoard Zoning System"
 # to use bookdown cross references
 output:
   bookdown::pdf_book:
-    # base_format: rticles::josis
+    base_format: rticles::josis_article
     keep_tex: true
 keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 bibliography: references.bib
 csl: josis.csl
 author:
-   - Robin Lovelace, Institute for Transport Studies University of Leeds, UK
-   - Martijn Tennekes, Centraal Bureau voor de Statistiek, The Netherlands
-   - Dustin Carlino, Independent Software Engineer, Lead Developer of A/B Street, USA
+   - name: Robin Lovelace
+     affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
+   - name: Martijn Tennekes
+     affiliation: Center for Big Data Statistics, Centraal Bureau voor de Statistiek, The Netherlands
+   - name: Dustin Carlino
+     affiliation: Independent Software Engineer, Lead Developer of A/B Street, USA
 abstract: |
   Zones are the building blocks of urban analysis. Fields ranging from
   demographics to transport planning routinely use zones --- spatially
