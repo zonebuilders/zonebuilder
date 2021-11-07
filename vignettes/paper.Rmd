@@ -2,12 +2,12 @@
 title: "ClockBoard: a zoning system for urban analysis"
 runningtitle: "The ClockBoard Zoning System"
 # # For paper: uncomment below for LaTeX version
-# output:
-#   bookdown::pdf_book:
-#     base_format: rticles::josis_article
-# For R package vignette
 output:
-  bookdown::html_vignette2:
+  bookdown::pdf_book:
+    base_format: rticles::josis_article
+    keep_tex: true
+# For R package vignette
+# output: bookdown::html_vignette2
 author:
    - name: Robin Lovelace
      affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
@@ -24,7 +24,7 @@ pkgdown:
   set_null_theme: false
 keywords: "zoning, areal data, zoning systems, modifiable area unit problem"
 bibliography: references.bib
-# csl: josis.csl
+csl: josis.csl
 abstract: |
   Zones are the building blocks of urban analysis. Fields ranging from
   demographics to transport planning routinely use zones --- spatially
@@ -94,11 +94,24 @@ file.rename("vignettes/zonebuilder-paper.pdf", "zonebuilder-paper.pdf")
 browseURL("zonebuilder-paper.pdf")
 piggyback::pb_upload("zonebuilder-paper.pdf")
 piggyback::pb_upload("vignettes/zonebuilder-paper.tex")
+piggyback::pb_download("vignettes/zonebuilder-paper.tex")
 piggyback::pb_download_url("zonebuilder-paper.pdf")
 # [1] "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/zonebuilder-paper.pdf"
+
 remotes::install_github("paleolimbot/rbbt")
 # library(rbbt)
 # rbbt::bbt_update_bib(path_rmd = "vignettes/paper.Rmd")
+
+# Create diff file
+wd_old = setwd("vignettes")
+piggyback::pb_download("vignettes.zonebuilder-paper.tex")
+system("latexdiff -h")
+rmarkdown::render("paper.Rmd")
+system("latexdiff vignettes.zonebuilder-paper.tex paper.tex > diff.tex")
+tinytex::pdflatex("diff.tex")
+browseURL("diff.pdf")
+piggyback::pb_upload("diff.pdf")
+piggyback::pb_download_url("diff.pdf")
 ```
 
 # Introduction
@@ -329,10 +342,10 @@ zb_view(ClockBoard_tokyo, alpha = 0.8)
 #   tm_scale_bar()
 # from system command line:
 # pngquant -f --ext .png --quality 60-85 vignettes/tokyo.png 
-knitr::include_graphics("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png")
+# knitr::include_graphics("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png")
 # LaTeX version:
-# download.file("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png", "tokyo.png")
-# knitr::include_graphics("tokyo.png")
+download.file("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png", "tokyo.png")
+knitr::include_graphics("tokyo.png")
 ```
 
 Note that the `n_circles` argument was set to 5, resulting in a zoning system 15 km in radius (see Table \@ref(tab:t1)).
@@ -373,13 +386,13 @@ To enable creation of ClockBoard zones for non-programmers and to encourage peop
 
 u = "https://user-images.githubusercontent.com/1825120/128508694-5b5485ca-6f1b-4c21-bdb6-9269a7981dd5.png"
 
-# for html version:
-knitr::include_graphics(u)
+# # for html version:
+# knitr::include_graphics(u)
 
-# # for pdf version:
-# f = basename(u)
-# download.file(u, f)
-# knitr::include_graphics(f)
+# for pdf version:
+f = basename(u)
+download.file(u, f)
+knitr::include_graphics(f)
 ```
 
 # Applications
@@ -415,12 +428,12 @@ Of course the locations are not geographically specific; the zones would be used
 #   "https://user-images.githubusercontent.com/1825120/127722684-e4f0f58a-44b2-48b9-8bdd-cd09bae4e250.png",
 #   "navigation-small.png"
 # )
-# download.file(
-#   "https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png",
-#   "navigation.png"
-# )
-# knitr::include_graphics("navigation.png")
-knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
+download.file(
+  "https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png",
+  "navigation.png"
+)
+knitr::include_graphics("navigation.png")
+# knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
 ```
 
 
@@ -454,10 +467,10 @@ This benefit is especially noticeable towards the outskirts of London, where lar
 # tm1
 
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cityscale.png"
-# f = basename(u)
-# if(!file.exists(f)) download.file(url = u, destfile = f)
-# knitr::include_graphics(f) # for local high-res version, not working
-knitr::include_graphics(u)
+f = basename(u)
+if(!file.exists(f)) download.file(url = u, destfile = f)
+knitr::include_graphics(f) # for local high-res version, not working
+# knitr::include_graphics(u)
 ```
 
 The example of air quality presented in Figure \@ref(fig:cityscale) highlights that the ClockBoard zoning system is well suited for the analysis and visualisation of phenomena in which a central place (London city centre in this case) plays a major role, directly or indirectly.
@@ -540,13 +553,13 @@ While these cities have similar total official populations (of 5.8 and 5.3 milli
 ```{r popdens, fig.cap="ClockBoard for 36 cities. The blue raster grid cells represent open access population estimates from the WorldPop project.", out.width="100%"}
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p2.png"
 
-# For HTML version:
-knitr::include_graphics(u)
+# # For HTML version:
+# knitr::include_graphics(u)
 
-# # For LaTeX version
-# f = basename(u)
-# if(!file.exists(f)) download.file(u, f)
-# knitr::include_graphics(f)
+# For LaTeX version
+f = basename(u)
+if(!file.exists(f)) download.file(u, f)
+knitr::include_graphics(f)
 ```
 
 The administrative borders of six cities shown in Figure \@ref(fig:popdens) are depicted as red lines in Figure \@ref(fig:popdens2), highlighting the importance of sometimes arbitrary city boundaries.
@@ -561,13 +574,13 @@ The example highlights the utility of ClockBoard for communicating not only inte
 ```{r popdens2, fig.cap="ClockBoard for 6 cities with boundaries shown in red. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders.", out.width="70%"}
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p1.png"
 
-# For HTML version:
-knitr::include_graphics(u)
+# # For HTML version:
+# knitr::include_graphics(u)
 
-# # For LaTeX version
-# f = basename(u)
-# if(!file.exists(f)) download.file(u, f)
-# knitr::include_graphics(f)
+# For LaTeX version
+f = basename(u)
+if(!file.exists(f)) download.file(u, f)
+knitr::include_graphics(f)
 ```
 
 
