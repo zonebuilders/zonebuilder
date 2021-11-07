@@ -12,8 +12,9 @@ devtools::load_all()
 ################################################################################
 
 ## downloadsSTATS19 data
-years = 2010:2018
-crashes_all = get_stats19(years, "accidents", output_format = "sf")
+years = 2010:2020
+# crashes_all = get_stats19(years, "accidents", output_format = "sf") # old way
+crashes_all = purrr::map_dfr(years, get_stats19, type = "accid")
 casualties_all = get_stats19(years, "casualties")
 crashes_joined = dplyr::inner_join(crashes_all, casualties_all)
 

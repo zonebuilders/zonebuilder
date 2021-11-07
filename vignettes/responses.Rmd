@@ -10,11 +10,15 @@ rmarkdown::render(input = "vignettes/responses.Rmd", output_file = "responses.md
 
 # Reviewer B:
 
-1. The authors present a good case for a new zoning system, based on annuli and radii, forming a web-type structure called ClockBoard. This zoning system is said to be a new approach that would add to more popular grid-based and even-more-popular administrative zone system. The authors put forth an R package that allows users to create this system, and give two examples of air quality, and traffic casualties using the ClockBoard system.
+The authors present a good case for a new zoning system, based on annuli and radii, forming a web-type structure called ClockBoard. This zoning system is said to be a new approach that would add to more popular grid-based and even-more-popular administrative zone system. The authors put forth an R package that allows users to create this system, and give two examples of air quality, and traffic casualties using the ClockBoard system.
 
-1. This paper is relevant to JOSIS because it takes on a fundamental GIScience representation issue, and is driven by technology. It is pertinent to the journal and I think readers would enjoy it.
+This paper is relevant to JOSIS because it takes on a fundamental GIScience representation issue, and is driven by technology. It is pertinent to the journal and I think readers would enjoy it.
 
 1. Because this paper is a bit theoretical, there is not much empirical evaluation. Regarding evaluation, there is no user study done, but perhaps there does not need to be at this juncture. The example of the clock board viz in Figure 6 is very helpful and illustrative of what this method could do for geographers. For figure 7, could the authors add what the traffic deaths look like with the more traditional administrative boundaries? This would help as well.
+
+    This is an important point: we are not claiming that the ClockBoard system is an ideal solution but that it has certain advantages for some applications and is *better* than using administrative zones for inter-settlement comparisons.
+    Visualisation of the data shown in Figure 7 using administrative zones could make this point more clearly and we thank the reviewer for this idea.
+    We have updated Figure 7 to include 'before' and 'after' representations of road traffic casualty data using administrative zones and ClockBoard zones.
 
 1. The limitations section left me a bit wanting---there are significant limitations that should be pointed out more clearly. First, curved administrative boundaries do not work well with our ‘straight line’ bounding boxes—the ridge shape is a bit hard and is divorced from natural features we are used to seeing (albeit not with grids). Secondly, and relatedly, many administrative units that we use tend to follow waterways or roads, making them quite handy dividers. This method does not allow for this. Also, we get quite a bit of knowledge about the city form (like poly-centricity and the expanse of the urban downtown) from these administrative units---that is lost with this method. A strange artifact, as well, are cities that are halved by a water body, like Chicago. They only get a half a clock, whereas another inland city gets a whole clock. These limitations need to be stated more clearly.
 
