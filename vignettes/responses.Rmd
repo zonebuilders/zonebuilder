@@ -114,6 +114,12 @@ Another way to think about the city, for residents of a city, who might
 have a different mental map that is ego-centric, may be composed on
 landmarks around the city familiar to them.
 
+    We agree that we were at times too vague and sweeping in our statements about the utility of the zoning system presented.
+    We have made the discussion of applications more specific and clear, including with reference to an updated Figure 7, which now demonstrates specifically the advantages of the zoning system presented over UK administrative boundaries. 
+    For example, we have replaced the following wide ranging sentence with a more specific and clear sentence in the discussion of Figure 7:
+    - Before: *Using the system can provide a basis of evidence-based discussion of a wide range of phenomena.*
+    - After: *Using the system can provide a basis of evidence-based discussion of geographically aggregated results representing urban phenomena.*
+
 1. A minor point regarding comparison across different cities: I don't
 think the last paragraph on p.13 was clear in terms of what it is trying
 to show. It is not clear to me why the inclusion of the metropolitan

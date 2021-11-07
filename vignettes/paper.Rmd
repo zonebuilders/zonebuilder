@@ -471,11 +471,10 @@ The tragic phenomena of road traffic casualties --- which relate to travel volum
 ## Inter-city comparison of geographically variable phenomena
 
 The ClockBoard zoning system can enable effective comparison between cities by providing a consistent frame of reference.
-While official boundaries can vary greatly in size and shape, based on sometimes arbitrary factors such as historic boundaries, ClockBoard zones are always the same size, shape and orientation.
-Using the system can provide a basis of evidence-based discussion of a wide range of phenomena.
-The example shown in Figure \@ref(fig:intercity) demonstrates this with reference to a policy-relevant example: the number of people killed and seriously injured while cycling in major UK cities.
+While official boundaries can vary greatly in size and shape, based on sometimes arbitrary factors such as historic boundaries (as shown in Figure \@ref(fig:intercity), top), ClockBoard zones are always the same size, shape and orientation (as shown in Figure \@ref(fig:intercity), bottom).
+Using the system can provide a basis of evidence-based discussion of geographically aggregated results representing urban phenomena.
+The example demonstrates this with reference to a policy-relevant example: the number of people killed and seriously injured while cycling in major UK cities.
 Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled [@mindell_exposure-based_2012], we show data on the number of people killed and seriously injured while cycling per billion kilometres based on estimates from the Propensity to Cycle Tool [@lovelace_propensity_2017].
-
 
 ```{r intercity, fig.width=7, message=FALSE, warning=FALSE, fig.cap="Comparison of administrative zones (top) and zones in the ClockBoard zoning system (bottom) to support inter-city comparison of policy-relevant data, on road traffic casualties. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.", out.width="85%", fig.show='hold'}
 # download preprocessed data (processing script /data-raw/crashes.R)
@@ -520,7 +519,10 @@ tm_shape(df_filtered, is.master = TRUE) +
 
 ```
 
-The results illustrated in Figure \@ref(fig:intercity) show that while London has a high absolute crash rate, it is relatively safe per km cycled.
+The results presented in Figure \@ref(fig:intercity) (top) using administrative zones demonstrate the issues with using commonly available zones provided by statistical authorities: areal units vary dramatically in terms of size and shape; and the definition of each city's boundary distorts the results, with Manchester represented by a long and thin region that does not fit well within facetted maps.
+The results aggregated at the level of ClockBoard zones, illustrated in Figure \@ref(fig:intercity) (bottom), show overcome these issues.
+Because of its high population density and size, London has many small administrative zones that made it hard to understand the levels and spatial distributions of cycling safety in the city.
+The results for London presented at the level of ClockBoard zones show a clearer picture that can be compared with other cities: while London has a high absolute crash rate, it is relatively safe per km cycled.
 The ClockBoard zoning system also allows for aggregation at a consistent spatial resolution, enabling the identification of potential crash hotspots in specific parts of Birmingham (zones D12 and E06) and Sheffield (zone D11).
 
 Another example of using ClockBoards to compare cities (and phenomena that take place in them) is shown in Figure \@ref(fig:popdens), which shows population density in 36 major cities using the ClockBoard zoning system not as unit for aggregation but as a reference grid.
