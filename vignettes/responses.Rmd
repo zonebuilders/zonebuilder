@@ -7,6 +7,12 @@ output: github_document
 rmarkdown::render(input = "vignettes/responses.Rmd", output_file = "responses.md")
 ```
 
+Dear Editor,
+
+Many thanks for the invitation to resubmit and to the reviewers for detailed and constructive comments.
+We are confident that we have responded to every comment from the reviewers and that the paper is greatly improved as a result, particularly with regard to the discussion of the limitations of the system and how it could realistically be used in practice.
+
+The comments below are presented in order and numbered to ease any further discussion, with the review comments and then our response below.
 
 # Reviewer B:
 
@@ -21,6 +27,8 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
     We have updated Figure 7 to include 'before' and 'after' representations of road traffic casualty data using administrative zones and ClockBoard zones.
 
 1. The limitations section left me a bit wanting---there are significant limitations that should be pointed out more clearly. First, curved administrative boundaries do not work well with our ‘straight line’ bounding boxes—the ridge shape is a bit hard and is divorced from natural features we are used to seeing (albeit not with grids). Secondly, and relatedly, many administrative units that we use tend to follow waterways or roads, making them quite handy dividers. This method does not allow for this. Also, we get quite a bit of knowledge about the city form (like poly-centricity and the expanse of the urban downtown) from these administrative units---that is lost with this method. A strange artifact, as well, are cities that are halved by a water body, like Chicago. They only get a half a clock, whereas another inland city gets a whole clock. These limitations need to be stated more clearly.
+
+    We agree that these more immediate issues were not addressed sufficiently in the paper. We have updated the limitation section with a more comprehensive and firmer discussion of the limitations of the approach which should help the reader understand the circumnstances when the proposed zoning system is, and is not, likely to be appropriate. The limitations were too focussed on the assumption that the user needed a zoning system to compare two or more cities based on the preceding section but of course this is not the case and previously unspoken assumptions about what the reader may intend to do, and how that may impact the suitability of different zoning systems, are now stated explicitly.
 
 1. I am not quite certain that the ‘meeting up’ portion of this paper serves as sufficient data for justifying this system, but perhaps others understood and were more convinced by it. It seems as though if you have city knowledge already it seems much easier to point out a landmark.
 
