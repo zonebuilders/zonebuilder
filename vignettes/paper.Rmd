@@ -404,7 +404,12 @@ The examples below are designed to provide an insight into how the zoning system
 
 ## Navigation and location
 
-A potential application of the zoning system is to indicate approximate approximate locations with reference to a known central point or area.
+A potential application of the zoning system is to indicate approximate locations with reference to a known central point or area, e.g. to describe a segment of a city.
+ClockBoard zones offer a level of intermediate-to-low accuracy in between the simple use of quadrants to identify parts of a city verbally on one hand, and more sophisticated ways of communicating location to the nearest few metres on the other.
+Dividing cities into quadrants and referring to them with names such as 'north', 'northeast', etc. is common in everyday speech and academic writing.
+A paper on the impact of open spaces on house prices stated that traffic noise was expected to have a negative impact on house prices in "south-east, north-east, and north Portland", with reference to an accompanying map, for example [@bolitzer_impact_2000].
+
+
 Location services such as 'what3words' and open source implementations such as 'whatfreewords' and '[goehashphrase](https://www.qalocate.com/solutions/geohashphrase/)' demonstrate the concept converting coordinates into easy-to-remember words/phrases.
 These systems most likely to be useful  to locate places, of use when addresses are ambiguous or sharing longitude/latitude coordinates may not be appropriate or possible [@raposo_virtual_2019].
 
