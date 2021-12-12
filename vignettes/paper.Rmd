@@ -112,6 +112,7 @@ tinytex::pdflatex("diff.tex")
 browseURL("diff.pdf")
 piggyback::pb_upload("diff.pdf")
 piggyback::pb_download_url("diff.pdf")
+setwd(wd_old)
 ```
 
 # Introduction
@@ -403,9 +404,12 @@ The examples below are designed to provide an insight into how the zoning system
 
 ## Navigation and location
 
-The most basic application of the zoning system could be to provide approximate locations and navigation guidance to people in cities.
-As demonstrated by location services such as 'what3words' and open source implementations such as 'whatfreewords' and '[goehashphrase](https://www.qalocate.com/solutions/geohashphrase/)', there is demand for easy-to-remember words/phrases to specify locations in situations where there is no address and where providing longitude/latitude coordinates may not be appropriate or possible [@raposo_virtual_2019].
-While not the primary purpose of the ClockBoard zoning system, it can be used to communicate locations in a city.
+A potential application of the zoning system is to indicate approximate approximate locations with reference to a known central point or area.
+Location services such as 'what3words' and open source implementations such as 'whatfreewords' and '[goehashphrase](https://www.qalocate.com/solutions/geohashphrase/)' demonstrate the concept converting coordinates into easy-to-remember words/phrases.
+These systems most likely to be useful  to locate places, of use when addresses are ambiguous or sharing longitude/latitude coordinates may not be appropriate or possible [@raposo_virtual_2019].
+
+While the ClockBoard zoning system was not designed for this purpose, it can be used to communicate approximate locations in a city.
+While 
 
 We have tested this use case by using the zoning system to agree on meeting points to collaborate on the project.
 An illustration of how the zoning system was used is shown in Figure \@ref(fig:location), which shows how the ClockBoard zoning system could be used to communicate key locations in a city, from the train station (zone A) to a park (zone C01) and on to the city of Bradford (zone E09) to orientate people new to the city and to describe geographically where things are located using a small amount of information (3 characters).
