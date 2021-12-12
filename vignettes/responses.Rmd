@@ -22,41 +22,69 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
 
 1. Because this paper is a bit theoretical, there is not much empirical evaluation. Regarding evaluation, there is no user study done, but perhaps there does not need to be at this juncture. The example of the clock board viz in Figure 6 is very helpful and illustrative of what this method could do for geographers. For figure 7, could the authors add what the traffic deaths look like with the more traditional administrative boundaries? This would help as well.
 
-    This is an important point: we are not claiming that the ClockBoard system is an ideal solution but that it has certain advantages for some applications and is *better* than using administrative zones for inter-settlement comparisons.
+    **Response:** This is an important point: we are not claiming that the ClockBoard system is an ideal solution but that it has certain advantages for some applications and is *better* than using administrative zones for inter-settlement comparisons.
     Visualisation of the data shown in Figure 7 using administrative zones could make this point more clearly and we thank the reviewer for this idea.
     We have updated Figure 7 to include 'before' and 'after' representations of road traffic casualty data using administrative zones and ClockBoard zones.
 
 1. The limitations section left me a bit wanting---there are significant limitations that should be pointed out more clearly. First, curved administrative boundaries do not work well with our ‘straight line’ bounding boxes—the ridge shape is a bit hard and is divorced from natural features we are used to seeing (albeit not with grids). Secondly, and relatedly, many administrative units that we use tend to follow waterways or roads, making them quite handy dividers. This method does not allow for this. Also, we get quite a bit of knowledge about the city form (like poly-centricity and the expanse of the urban downtown) from these administrative units---that is lost with this method. A strange artifact, as well, are cities that are halved by a water body, like Chicago. They only get a half a clock, whereas another inland city gets a whole clock. These limitations need to be stated more clearly.
 
-    We agree that these more immediate issues were not addressed sufficiently in the paper. We have updated the limitation section with a more comprehensive and firmer discussion of the limitations of the approach which should help the reader understand the circumnstances when the proposed zoning system is, and is not, likely to be appropriate. The limitations were too focussed on the assumption that the user needed a zoning system to compare two or more cities based on the preceding section but of course this is not the case and previously unspoken assumptions about what the reader may intend to do, and how that may impact the suitability of different zoning systems, are now stated explicitly.
+    **Response:** We agree that these more immediate issues were not addressed sufficiently in the paper. We have updated the limitation section with a more comprehensive and firmer discussion of the limitations of the approach which should help the reader understand the circumnstances when the proposed zoning system is, and is not, likely to be appropriate. The limitations were too focussed on the assumption that the user needed a zoning system to compare two or more cities based on the preceding section but of course this is not the case and previously unspoken assumptions about what the reader may intend to do, and how that may impact the suitability of different zoning systems, are now stated explicitly.
 
 1. I am not quite certain that the ‘meeting up’ portion of this paper serves as sufficient data for justifying this system, but perhaps others understood and were more convinced by it. It seems as though if you have city knowledge already it seems much easier to point out a landmark.
 
+    **Response:** 
+
 1. Regarding significance, this paper is mid-level but I do find the paper to be very creative and original. the motivation for this work is well-founded and sufficient literature has been presented. I would suggest that authors include literature on bottom-up regionalization (that is, creating zones based on modularity partitioning of origin-destination networks) and ‘what-3-words’—pardon if I missed this. I would like to hear from more actual administrators who may use these new zones on what their opinion may be. It may help to interview a few.
+
+    **Response:** 
 
 1. I suspect that the method will be useful, but in fewer cases than originally purported. One of the strongest features seems to be the earmarking system with the B3, F12, etc. which, as stated, is helpful to let the user know automatically how far from the city they are and what direction. This is a nice contribution. In addition, the arbitrary starting point of a grid is solved a bit by this method. Comparing across cities seems like a great use for this method.
 
+    **Response:** 
+
 1. The presentation is generally good and clear to follow. Again, the limitations section should be more forthright, as this new method does have some significant drawbacks. I have a few recommendations:
+
+    **Response:** 
 
 1. P 2: “…to represent lines of equal height, and…population density.” I found it odd to bring up contour lines when the authors are specifically talking about continuous space. I realize that these lines demarcate continuous space, but they are rarely used to actually do this. Please remove. At the same time, it is very undervalued that you cannot do table joins with the clockboard method, as you could when aggregating to existing units. (More for the limitations.)
 
+    **Response:** 
+
 1. P 3: OSM is also odd to bring up as ‘emerging datasets’---it doesn’t have any thematic data, which I think is a big selling point of your method. At least the case studies on pollution and traffic suggest so. Please substitute it.
+
+    **Response:** 
 
 1. P 3: Can you elaborate on reference [21], it sounds important.
 
+    **Response:** 
+
 1. P 3: Paragraph starting with “Pre-existing zoning systems” does not seem to belong here. It seems to need to come earlier.
+
+    **Response:** 
 
 1. P 4: “Modelling urban cities…” bullet point is quite vague and I’m not sure what it adds.
 
+    **Response:** 
+
 1. P 6: “The trueism is often reflected….” Census zones are way more popular than TAZes, I found this odd to mention TAZes instead.
+
+    **Response:** 
 
 1. Table 1: Please make it clearer that N. zones is cumulative.
 
+    **Response:** 
+
 1.  —one part of ‘o clock may need to be lowercased.
+
+    **Response:** 
 
 1. -P 8: does “Tokyo” call anything when it’s used as a variable in ClockBoard_Tokyo? Please clarify.
 
+    **Response:** 
+
 1. -Fig 8: Could you please provide a scale bar?
+
+    **Response:** 
 
 
     # Reviewer C:
@@ -87,6 +115,8 @@ why the areal unit is problematic and it would be helpful for the reader
 to be explicit about stating this. The same holds true for authors'
 mention of "continuous space" and why it is particularly important.
 
+    **Response:** 
+
     **Evaluation:** Does the paper present an objective (experimental or
 theoretical) evaluation of its results? If not, how are the results
 evaluated, and is the evaluation convincing?
@@ -101,12 +131,16 @@ It's still not clear to me what is the primary motive for creating these
 zones are, as none of them seem to address the MAUP problem of
 regionalizing space.
 
+    **Response:** 
+
 1. While I think this may be beyond the scope of this paper, I think a true
 evaluation of the success of this framework would be something along the
 lines of a user survey in addition to explaining the technical rationale
 behind these spatial configurations. I see the main use case of the
 ClockBoard aligned with subjects like UX/UI design or a Lynchian study
 of how people make mental maps and navigate the city [^1].
+
+    **Response:** 
 
 1. One aspect of the design of the framework that was unclear to me is the
 monocentric orientation of the city, with each region created based on
@@ -121,6 +155,8 @@ gentrifying areas is the primary way policy-makers think about the city.
 Another way to think about the city, for residents of a city, who might
 have a different mental map that is ego-centric, may be composed on
 landmarks around the city familiar to them.
+
+    **Response:** 
 
     We agree that we were at times too vague and sweeping in our statements about the utility of the zoning system presented.
     We have made the discussion of applications more specific and clear, including with reference to an updated Figure 7, which now demonstrates specifically the advantages of the zoning system presented over UK administrative boundaries. 
@@ -137,6 +173,8 @@ broader metropolitan region is beyond its jurisdiction, which is not
 necessarily a limitation of administrative boundaries but the nature of
 governance systems.
 
+    **Response:** 
+
     **Significance:** How important is the work reported? Does the
 submission address a challenging theoretical or practical issue? Does
 the work integrate ideas from, or have interesting implications across
@@ -151,6 +189,8 @@ problem but a governance or civic administration issue. Moreover, it is
 unclear why the authors choose to highlight the "blank slate" quality of
 this approach.
 
+    **Response:** 
+
 1. Fundamentally, the overall objective, target audience, and use cases are
 perhaps not what the authors suggest. The authors suggest a somewhat
 broad notion of "analysis" and "visualization", but it seems to me that
@@ -160,6 +200,8 @@ familiar with the city. It is difficult for me to image analysts working
 with these zones for inter-city comparison as the sample size is small.
 Thus, there is a discordance between the stated objective and what this
 framework produces.
+
+    **Response:** 
 
     **Originality:** Does the submission address a new issue, present a new
 approach to an issue, or put forward a novel combination of existing
@@ -171,6 +213,8 @@ the paper with edits to its framing. The paper mentions similar research
 and frameworks that are relevant. I think the authors should take care
 to limit the use cases and promises of this framework, for reasons
 previously mentioned.
+
+    **Response:** 
 
     **Style and presentation:** Is the submission clearly written and
 logically structured? Does the submission provide adequate motivation
@@ -185,12 +229,16 @@ the framework, the "continuous space" issue, all of which seem somewhat
 tangentially related to the core questions at hand. Also, as I mentioned
 above, the objective of this paper is unclear.
 
+    **Response:** 
+
 1. Another major source of confusion is the use of the term 'zones' or
 'zoning'., In the urban context, it generally refers to a system of
 municipal land use regulation, which is then borne out in the
 specification of regions, and not necessarily the concept of
 discretizing space that addresses the MAUP problem suggested here, as I
 understand this paper.
+
+    **Response:** 
 
 1. Other minor stylistic notes:
 
@@ -205,10 +253,14 @@ themes of the journal? Is the content interesting to the journal
 readership? Is the submission written in a form readable for a
 multi-disciplinary audience?
 
+    **Response:** 
+
 1. With some reframing and reworking of the structure, I think this paper
 is appropriate for JOSIS and the content would be interesting to the
 journal's readership. It presents applications that may be of interest
 to a general audience.
+
+    **Response:** 
 
 [^1]: Kevin Lynch, *The Image of the City*, vol. 11 (Cambridge, MA: MIT
     press, 1960).
