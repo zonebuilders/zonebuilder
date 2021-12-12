@@ -418,7 +418,7 @@ This shows how it could be used to communicate key locations, including a train 
 In a hypothetical use case, the example could be used to communicate the fact that the park is relatively close to the rail station (between 3 and 6 km from the city center) while Bradford in zone E09 is between 10 and 15 km from central Leeds.
 Of course, the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed descriptions of locations such as directions from key landmarks or coordinates are used.
 
-```{r location, out.width="85%", fig.cap="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, someone is describing key places to visit in and around Leeds to someone who arrives at the train station in zone A, visits the city's famous Roundhay Park in zone C01, before travelling for an evening meal in Bradford, in zone E09."}
+```{r location, out.width="85%", fig.cap="Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, the system is used to locate places in and around Leeds: the train station in the central zone A, Roundhay Park wich is located around 5 km North of the center in zone C01, and central Bradford which is located around 14 km due East of the center in zone E09."}
 # ClockBoard_leeds = zb_zone(x = "leeds")
 # ClockBoard_leeds$label_locations = ""
 # i = grepl(pattern = "A|C01|E09", x = ClockBoard_leeds$label)
