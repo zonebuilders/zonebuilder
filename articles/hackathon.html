@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">zonebuilder</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.9001</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -70,7 +66,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/zonebuilders/zonebuilder/">
+  <a href="https://github.com/zonebuilders/zonebuilder/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -91,30 +87,30 @@
       <h1 data-toc-skip>Zonebuilder hackathon</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/zonebuilders/zonebuilder/blob/master/vignettes/hackathon.Rmd"><code>vignettes/hackathon.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/zonebuilders/zonebuilder/blob/HEAD/vignettes/hackathon.Rmd" class="external-link"><code>vignettes/hackathon.Rmd</code></a></small>
       <div class="hidden name"><code>hackathon.Rmd</code></div>
 
     </div>
 
     
     
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p><strong>zonebuilder</strong> is a package for exploring zoning systems. This document contains ideas on challenges that can be tackled using zoning systems, example code to get started and suggestions of how to get involved.</p>
 </div>
-<div id="setup" class="section level2">
-<h2 class="hasAnchor">
-<a href="#setup" class="anchor"></a>Setup</h2>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
 <p>To ensure that you have the necessary software installed, try running the following lines of code in an R console (you need the latest version of the package):</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"zonebuilders/zonebuilder"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"itsleeds/pct"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"zonebuilders/zonebuilder"</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"itsleeds/pct"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/zonebuilders/zonebuilder">zonebuilder</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mtennekes/tmap">tmap</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/zonebuilders/zonebuilder" class="external-link">zonebuilder</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mtennekes/tmap" class="external-link">tmap</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tmap_mode.html" class="external-link">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></code></pre></div>
 <p>Ideas for hackathon:</p>
 <ul>
 <li>Explore results from automated zoning of a range of cities
@@ -130,69 +126,69 @@
 <li>Demonstrate aggregagation of OD data into zoning system</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">zones_west_yorkshire</span> <span class="op">=</span> <span class="fu">pct</span><span class="fu">::</span><span class="fu"><a href="https://itsleeds.github.io/pct/reference/get_pct_zones.html">get_pct_zones</a></span><span class="op">(</span><span class="st">"west-yorkshire"</span><span class="op">)</span>
-<span class="va">zones_leeds_official</span> <span class="op">=</span> <span class="va">zones_west_yorkshire</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">lad_name</span> <span class="op">==</span> <span class="st">"Leeds"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">zones_west_yorkshire</span> <span class="op">=</span> <span class="fu">pct</span><span class="fu">::</span><span class="fu"><a href="https://itsleeds.github.io/pct/reference/get_pct_zones.html" class="external-link">get_pct_zones</a></span><span class="op">(</span><span class="st">"west-yorkshire"</span><span class="op">)</span>
+<span class="va">zones_leeds_official</span> <span class="op">=</span> <span class="va">zones_west_yorkshire</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">lad_name</span> <span class="op">==</span> <span class="st">"Leeds"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">leeds_centroid</span> <span class="op">=</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/geocode_OSM.html">geocode_OSM</a></span><span class="op">(</span>q <span class="op">=</span> <span class="st">"Leeds"</span>, as.sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">leeds_centroid</span> <span class="op">=</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/geocode_OSM.html" class="external-link">geocode_OSM</a></span><span class="op">(</span>q <span class="op">=</span> <span class="st">"Leeds"</span>, as.sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>You can get and plot the output of the preceding code chunk with:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">leeds_centroid</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/leeds_centroid.Rds"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">zones_leeds_official</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/zones_leeds_official.Rds"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">zone_outline</span> <span class="op">=</span> <span class="va">zones_leeds_official</span> <span class="op">%&gt;%</span>
-  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html">st_buffer</a></span><span class="op">(</span>dist <span class="op">=</span> <span class="fl">0.0001</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">leeds_centroid</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/leeds_centroid.Rds"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">zones_leeds_official</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/zones_leeds_official.Rds"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">zone_outline</span> <span class="op">=</span> <span class="va">zones_leeds_official</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span>dist <span class="op">=</span> <span class="fl">0.0001</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html" class="external-link">st_union</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">zones_leeds_zb</span> <span class="op">=</span> <span class="fu"><a href="../reference/zb_zone.html">zb_zone</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">zone_outline</span>, point <span class="op">=</span> <span class="va">leeds_centroid</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">zones_leeds_zb</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"label"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">zones_leeds_zb</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_text.html" class="external-link">tm_text</a></span><span class="op">(</span><span class="st">"label"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="explore-results-of-automated-zoning-system" class="section level2">
-<h2 class="hasAnchor">
-<a href="#explore-results-of-automated-zoning-system" class="anchor"></a>Explore results of automated zoning system</h2>
-<div id="generate-zones-for-different-cities" class="section level3">
-<h3 class="hasAnchor">
-<a href="#generate-zones-for-different-cities" class="anchor"></a>Generate zones for different cities</h3>
+<div class="section level2">
+<h2 id="explore-results-of-automated-zoning-system">Explore results of automated zoning system<a class="anchor" aria-label="anchor" href="#explore-results-of-automated-zoning-system"></a>
+</h2>
+<div class="section level3">
+<h3 id="generate-zones-for-different-cities">Generate zones for different cities<a class="anchor" aria-label="anchor" href="#generate-zones-for-different-cities"></a>
+</h3>
 <p>The zoning systems works well to represent cities that have a clear centre (monocentric cities) with city zones connected by radial and circular orbital routes, such as Erbil:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">city_name</span> <span class="op">=</span> <span class="st">"Erbil"</span>
-<span class="va">city_centre</span> <span class="op">=</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/geocode_OSM.html">geocode_OSM</a></span><span class="op">(</span><span class="va">city_name</span>, as.sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">city_centre</span> <span class="op">=</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/geocode_OSM.html" class="external-link">geocode_OSM</a></span><span class="op">(</span><span class="va">city_name</span>, as.sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">zones_erbil</span> <span class="op">=</span> <span class="fu"><a href="../reference/zb_zone.html">zb_zone</a></span><span class="op">(</span>point <span class="op">=</span> <span class="va">city_centre</span>, n_circles <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> 
-<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">zones_erbil</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"label"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_tiles.html">tm_basemap</a></span><span class="op">(</span>server <span class="op">=</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/leaflet/man/providers.html">providers</a></span><span class="op">$</span><span class="va">OpenStreetMap</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">zones_erbil</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_text.html" class="external-link">tm_text</a></span><span class="op">(</span><span class="st">"label"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_tiles.html" class="external-link">tm_basemap</a></span><span class="op">(</span>server <span class="op">=</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/leaflet/man/providers.html" class="external-link">providers</a></span><span class="op">$</span><span class="va">OpenStreetMap</span><span class="op">)</span>
 <span class="co"># zb_view(zones_erbil)</span></code></pre></div>
 <p>The zoning system works less well for other cities, e.g. cities with asymetric and polycentric urban morphologies such as Dhakar, shown below.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">city_name</span> <span class="op">=</span> <span class="st">"Dhaka"</span>
-<span class="va">city_centre</span> <span class="op">=</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/geocode_OSM.html">geocode_OSM</a></span><span class="op">(</span><span class="va">city_name</span>, as.sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">city_centre</span> <span class="op">=</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/geocode_OSM.html" class="external-link">geocode_OSM</a></span><span class="op">(</span><span class="va">city_name</span>, as.sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">zones_dhaka</span> <span class="op">=</span> <span class="fu"><a href="../reference/zb_zone.html">zb_zone</a></span><span class="op">(</span>point <span class="op">=</span> <span class="va">city_centre</span>, n_circles <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">zones_dhaka</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"label"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_tiles.html">tm_basemap</a></span><span class="op">(</span>server <span class="op">=</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/leaflet/man/providers.html">providers</a></span><span class="op">$</span><span class="va">OpenStreetMap</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">zones_dhaka</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_text.html" class="external-link">tm_text</a></span><span class="op">(</span><span class="st">"label"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_tiles.html" class="external-link">tm_basemap</a></span><span class="op">(</span>server <span class="op">=</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/leaflet/man/providers.html" class="external-link">providers</a></span><span class="op">$</span><span class="va">OpenStreetMap</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="how-many-supermarkets-in-different-zones-of-the-city" class="section level3">
-<h3 class="hasAnchor">
-<a href="#how-many-supermarkets-in-different-zones-of-the-city" class="anchor"></a>How many supermarkets in different zones of the city?</h3>
+<div class="section level3">
+<h3 id="how-many-supermarkets-in-different-zones-of-the-city">How many supermarkets in different zones of the city?<a class="anchor" aria-label="anchor" href="#how-many-supermarkets-in-different-zones-of-the-city"></a>
+</h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"itsleeds/geofabrik"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">geofabrik</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ibarraespinosa.github.io/geofabrik/" class="external-link">geofabrik</a></span><span class="op">)</span>
 <span class="va">leeds_shop_polygons</span> <span class="op">=</span> <span class="fu">get_geofabrik</span><span class="op">(</span><span class="va">leeds_centroid</span>, layer <span class="op">=</span> <span class="st">"multipolygons"</span>, key <span class="op">=</span> <span class="st">"shop"</span>, value <span class="op">=</span> <span class="st">"supermarket"</span><span class="op">)</span></code></pre></div>
 <p>We have pre-saved the results as follows:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">leeds_shop_polygons</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/leeds_shop_polygons.Rds"</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">leeds_shop_polygons</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/leeds_shop_polygons.Rds"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">z</span> <span class="op">=</span> <span class="fu"><a href="../reference/zb_zone.html">zb_zone</a></span><span class="op">(</span><span class="va">zones_leeds_official</span>, point <span class="op">=</span> <span class="va">leeds_centroid</span>, n_circles <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-<span class="va">z_supermarkets</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/aggregate.sf.html">aggregate</a></span><span class="op">(</span><span class="va">leeds_shop_polygons</span><span class="op">[</span><span class="st">"shop"</span><span class="op">]</span>, <span class="va">z</span>, FUN <span class="op">=</span> <span class="va">length</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">z_supermarkets</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"shop"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, title <span class="op">=</span> <span class="st">"N. Supermarkets"</span><span class="op">)</span></code></pre></div>
+<span class="va">z_supermarkets</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/aggregate.sf.html" class="external-link">aggregate</a></span><span class="op">(</span><span class="va">leeds_shop_polygons</span><span class="op">[</span><span class="st">"shop"</span><span class="op">]</span>, <span class="va">z</span>, FUN <span class="op">=</span> <span class="va">length</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">z_supermarkets</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_polygons</a></span><span class="op">(</span><span class="st">"shop"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, title <span class="op">=</span> <span class="st">"N. Supermarkets"</span><span class="op">)</span></code></pre></div>
 <!-- ![](https://user-images.githubusercontent.com/1825120/74724776-bb289f00-5234-11ea-9915-54cf0c5b75e4.png) -->
-<div id="explore-how-mode-and-distance-of-travel-changes-depending-on-city-zones" class="section level4">
-<h4 class="hasAnchor">
-<a href="#explore-how-mode-and-distance-of-travel-changes-depending-on-city-zones" class="anchor"></a>Explore how mode and distance of travel changes depending on city zones</h4>
+<div class="section level4">
+<h4 id="explore-how-mode-and-distance-of-travel-changes-depending-on-city-zones">Explore how mode and distance of travel changes depending on city zones<a class="anchor" aria-label="anchor" href="#explore-how-mode-and-distance-of-travel-changes-depending-on-city-zones"></a>
+</h4>
 <p>Robin to create UK example</p>
 </div>
-<div id="demo-dutch-cities-and-commuting" class="section level4">
-<h4 class="hasAnchor">
-<a href="#demo-dutch-cities-and-commuting" class="anchor"></a>Demo Dutch cities and commuting</h4>
-<p>See <a href="https://zonebuilders.github.io/zonebuilder/articles/demo_dutch_cities.html">demo Dutch cities vignette</a></p>
+<div class="section level4">
+<h4 id="demo-dutch-cities-and-commuting">Demo Dutch cities and commuting<a class="anchor" aria-label="anchor" href="#demo-dutch-cities-and-commuting"></a>
+</h4>
+<p>See <a href="https://zonebuilders.github.io/zonebuilder/articles/demo_dutch_cities.html" class="external-link">demo Dutch cities vignette</a></p>
 </div>
 </div>
 </div>
@@ -209,11 +205,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Robin Lovelace, Martijn Tennekes.</p>
+  <p></p>
+<p>Developed by Robin Lovelace, Martijn Tennekes.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -221,6 +219,8 @@
 
   
 
+
+  
 
   </body>
 </html>
