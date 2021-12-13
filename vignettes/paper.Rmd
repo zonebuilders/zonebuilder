@@ -127,18 +127,21 @@ Gerrymandering has since been the topic of countless academic papers that is the
 Research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
 The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
 Prior work has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualized to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
-In fact, this problem is a concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021] .
-Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria) the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
+In fact, this problem is a concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021].
+Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria), the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
 
 The problem that we tackle in this paper is different, however.
 It is 'zoning from scratch': the division of geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
 The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in 'pre-packaged' small areas and because creating zones from nothing is a harder problem.
-We disagree with the statement that "existence of individual or non-spatially aggregated data is rare in geography" [@openshaw_optimal_1977], pointing to car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as 'point pattern processes'.
+The statement that "existence of individual or non-spatially aggregated data is rare in geography", used by @openshaw_optimal_1977 to justify the BSU grouping approach, may have been true in the 1970s when it was written.
+Today disaggregated geographic datasets are common.
+Open datasets exist on phenomena including as car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as 'point pattern processes'.
 And with advances in computer hardware and software, the 'starting from scratch' approach to zoning systems is more feasible.
 
 A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualisation purposes, with a variety of applications.
 Functional zone classification is common in the field of remote sensing and associated sub-fields involved in analysing and classifying raster datasets [@ciglic_evaluating_2019; @hesselbarth_landscapemetrics_2019].
 While such pixel-based approaches can yield complex and flexible results (depending on the geographic resolution of the input data), they are still constrained by the building blocks of the pixels, which can be seen as a particular type of areal unit, a uniformly sized and shaped BSU.
+Approaches to creating zoning systems *starting from* origin-destination have also been developed [@zhang_detecting_2021] and, although these approaches tend also to start from BSUs, they could be extended to generate 'bottom up' datasets starting from individual-level GPS type datasets. 
 
 In this paper we are interested in the division of *continuous space* into completely new areal systems.
 This has been done using contour lines to represent lines of equal height, and the concept's generalisation to lines of equal journey time from locations (isochrones) [@long_modeling_2018], population density (isopleths) [@lin_cartographic_2017] and model parameters which continuous geographical space [@paez_exploring_2006].
