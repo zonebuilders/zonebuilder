@@ -599,7 +599,7 @@ knitr::include_graphics(f)
 <!-- ## Mobility analysis -->
 
 
-# Discussion and conclusion
+# Discussion and conclusion {#discussion}
 
 The ClockBoard zoning system presented in this paper was designed to overcome some well known and long standing issues associated with commonly available administrative zoning systems [@openshaw_optimal_1977; @jelinski_modifiable_1996].
 Despite over 100 years of use in some places, and their design not responding to growth in changes in cities in many others, administrative zoning systems are still often used as the default unit of analysis for urban analysis in many parts of the world.
