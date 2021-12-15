@@ -125,7 +125,9 @@ In the 19th Century, zoning systems became known for political reasons, with 'ge
 Gerrymandering has since been the topic of countless academic papers that is the beyond the scope of the present paper.
 
 Research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
-The gerrymandering problem (in itself is a manifestation of the modifiable area unit problem) can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
+The gerrymandering problem, tself is a manifestation of the modifiable area unit problem (MAUP), can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
+Our aim in this paper is not to tackle the MAUP directly, but to provide a 'ready made' zoning system that can demonstrate some of its effects by providing another way to aggregate and present data.
+
 Prior work has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualized to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
 In fact, this problem is a concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021].
 Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria), the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
@@ -170,8 +172,9 @@ Like the zoning system presented in this paper, grid tiles depend on a CRS and m
 Another downside from a statistical perspective is that population density tends to increase towards a central point.
 As a consequence, smaller zones are often preferable in denser areas, which often means towards the city center: for this reason administrative regions are often smaller in central areas and larger on the outskirts of cities, as illustrated with reference to London in Figure \@ref(fig:cityscale).
 
-The approach presented in this paper aims to minimize data requirements, generate consistent zones comparable between widely varying urban systems, and provide geographically contiguous areal units.
-The motivations for generating a new zoning system and use cases envisioned include:
+The overall aim of this paper is to highlight the potential for new zoning systems to support urban analysis.
+We do this by presenting a zoning system that enables inter-city comparison using zones of the same size and shape regardless of the city's location, which can be generated rapidly and reproducibly with minimal data requirements.
+The specific motivations for embarking on the idea, and its implementation in open source software, were as follows:
 
 -   Locating phenomena in cities.
     Automated zoning systems based on a clear centrepoint can support map interpretation by making it immediately clear where the city centre is, and what the scale of the city is.

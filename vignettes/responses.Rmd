@@ -130,7 +130,7 @@ It's still not clear to me what is the primary motive for creating these
 zones are, as none of them seem to address the MAUP problem of
 regionalizing space.
 
-    **Response:** 
+    **Response:** The overall aim of the paper is now more clearly stated as follows: "The overall aim of this paper is to highlight the potential for new zoning systems to support urban analysis." We think it relevant to metnion the history of approaches to generate zones and have updated the introduction to make it clear that our aim is not to tackly the MAUP directly, but to provide a new way of demonstrating its effects (visible in the figure of air polution data in London aggregated by administrative zones and by ClockBoard zones).
 
 1. While I think this may be beyond the scope of this paper, I think a true
 evaluation of the success of this framework would be something along the
@@ -139,7 +139,7 @@ behind these spatial configurations. I see the main use case of the
 ClockBoard aligned with subjects like UX/UI design or a Lynchian study
 of how people make mental maps and navigate the city [^1].
 
-    **Response:** 
+    **Response:** We agree that this would be a useful next step for the research and have...
 
 1. One aspect of the design of the framework that was unclear to me is the
 monocentric orientation of the city, with each region created based on
