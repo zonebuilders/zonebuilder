@@ -130,12 +130,10 @@ Prior work has demonstrated the sensitivity of urban analysis outcomes to zone s
 In fact, this problem is a concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021].
 Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria), the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
 
-Pre-existing zoning systems are often based on administrative regions.
-Although those zoning systems are usually in line with the hierarchical organizational structure of statistical agencies, and therefore may work well for policy making, there are a couple of downsides to using such zoning systems.
-First, since a city and its politics change over time, the administrative regions often change accordingly.
-This makes it harder to do time series analysis.
-Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward.
-Moreover, comparing administrative regions across cities is even more challenging: the average surface area of a administrative zones varies from city to city.
+Pre-existing zoning systems are often based on administrative regions and reflect the hierarchical organizational structure of statistical agencies.
+Well-designed administrative zones are advantageous for many applications, especially in relation to aggregated administrative datasets, but have disadvantages for certain applications.
+First, the administrative regions often change over time, hindering spatio-temporal analysis.
+Second, since the administrative zones have different sizes and shapes in different cities, they may not be ideal when comparing cities.
 
 In order to address these shortcomings of zoning systems based on administrative regions, our aim in this paper is to build a zoning system from scratch, i.e. to divide a *continuous* geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
 

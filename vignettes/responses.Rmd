@@ -62,7 +62,7 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
 
 1. P 3: Paragraph starting with “Pre-existing zoning systems” does not seem to belong here. It seems to need to come earlier.
 
-    **Response:** 
+    **Response:** We agree and have moved the paragraph to earlier in the introduction. We have also shortened and simplified what was a rather clunky paragraph.
 
 1. P 4: “Modelling urban cities…” bullet point is quite vague and I’m not sure what it adds.
 
