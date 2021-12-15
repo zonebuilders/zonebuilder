@@ -134,7 +134,6 @@ Pre-existing zoning systems are often based on administrative regions and reflec
 Well-designed administrative zones are advantageous for many applications, especially in relation to aggregated administrative datasets, but have disadvantages for certain applications.
 First, the administrative regions often change over time, hindering spatio-temporal analysis.
 Second, since the administrative zones have different sizes and shapes in different cities, they may not be ideal when comparing cities.
-
 In order to address these shortcomings of zoning systems based on administrative regions, our aim in this paper is to build a zoning system from scratch, i.e. to divide a *continuous* geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
 
 The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in 'pre-packaged' small areas and because creating zones from nothing is a harder problem.
@@ -160,27 +159,16 @@ The visualisation of direction has been driven by new navigational requirements 
 
 The approach we present in this paper is more closely analogous to 'grid sample' approaches used in ecological and population research [@hirzel_which_2002] . Historically, environmental researchers have used rectangular (and usually square) grids to divide up space and decide sampling strategies. Limitations associated with this simplistic strategy have been documented since at least the 1960s, with a prominent paper on geographic sampling strategies outlining advantages and disadvantages of simple random, systematic and stratified sampling techniques in 1967 [@holmes_problems_1967]. Starting with data at the level of raster grid cells and BSUs, a related approach is to sample from within available 'pixels' to generate a representative sample [@thomson_gridsample_2017].
 
-Unlike BSU based zoning systems, grid sampling strategies require no prior zones.
+Unlike BSU based zoning systems, the use of rectangular grids or 'quadrats' was common [@holmes_problems_1967].
+The approach was particularly useful before administrative zones became widespread.
 Unlike 'procedurally generated' areas, grid-based strategies generate areal units of consistent sizes and shapes.
 However, grid-based strategies are limited in their applicability to urban research because they seldom generate geographically contiguous results and do not account for the strong tendency of human settlements to have a (more-or-less clearly demarcated) central location with higher levels of activity.
 
-Pre-existing zoning systems are often based on administrative regions.
-Although those zoning systems are usually in line with the hierarchical organization structure of governmental organizations, and therefore may work well for policy making, there are a couple of downsides to using such zoning systems.
-First of all, since a city and its politics change over time, the administrative regions often change accordingly.
-This makes it harder to do time series analysis.
-Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward.
-Moreover, comparing administrative regions across cities is even more challenging: the average surface area of a administrative zones varies from city to city.
-
-Grid tiles are popular in spatial statistics for a number of reasons.
-Most importantly the tiles have a constant area size, which makes comparably possible.
-Moreover, the grid tiles will not change over time like administrative regions.
-However, one downside is that a grid requires a coordinate reference system (CRS), enforcing (approximately) equal area size.
-For continents or large countries, a CRS is always a compromise.
-Therefore, the areas of the tiles may vary, or the shape of the tiles may be sheared or warped.
-
-Another downside from a statistical point of view is that population densities are not uniform within a urban area, but concentrated around a centre.
-As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statistics in other parts of the city.
-That is the reason why administrative regions are often smaller in dense areas.
+However, grid tiles are popular in spatial statistics for a number of reasons.
+Most importantly the tiles have a constant area size, which makes comparably possible; specifying the lines that define them ensures that they do not change over time, unlike administrative regions.
+Like the zoning system presented in this paper, grid tiles depend on a CRS and may become distorted over large (continental) spatial scales (this is not much of an issue for zoning systems that only aim to provide zones for a single city at a time like that presented here).
+Another downside from a statistical perspective is that population density tends to increase towards a central point.
+As a consequence, smaller zones are often preferable in denser areas, which often means towards the city center: for this reason administrative regions are often smaller in central areas and larger on the outskirts of cities, as illustrated with reference to London in Figure \@ref(fig:cityscale).
 
 The approach presented in this paper aims to minimize data requirements, generate consistent zones comparable between widely varying urban systems, and provide geographically contiguous areal units.
 The motivations for generating a new zoning system and use cases envisioned include:
