@@ -79,7 +79,7 @@ RefManageR::WriteBib(refs, "vignettes/references.bib")
 u = "www.zotero.org/styles/open-geospatial-data-software-and-standards"
 download.file(u, "vignettes/josis.csl")
 piggyback::pb_upload("cities_p1.png")
-piggyback::pb_upload("cities_p2.png")
+piggyback::pb_upload("cities_p2-scale.png")
 piggyback::pb_download_url("cities_p1.png")
 # [1] "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p1.png"
 
@@ -264,8 +264,8 @@ t2$`Outer annuli label` = LETTERS[1:9]
 t2$`N. zones` = t2$`N. annuli` * 12 - 11
 t2$`Radius (km)` = zonebuilder::zb_100_triangular_numbers[1:9]
 t2$`Area (sqkm)` = pi * t2$`Radius (km)`^2
-t2$`Average zone size (km)` = t2$`Area (sqkm)` / t2$`N. zones`
-knitr::kable(t2, booktabs = TRUE, caption = "Key attributes of first 9 rings used in the ClockBoard zoning system.", digits = 0)
+t2$`Av. zone size (km)` = t2$`Area (sqkm)` / t2$`N. zones`
+knitr::kable(t2, booktabs = TRUE, caption = "Key attributes of the ClockBoard zoning system, highlighting its flexibility ranging from a single central zone (zone A is a circle with radius of 1 km) to a zoning system with a radius of 45 km and 97 zones. The number of rings can be varied to match the size of the city under investigation.", digits = 0)
 ```
 
 ## Number of segments
@@ -276,7 +276,7 @@ On the other hand, too many segments would result in small zones and make the zo
 
 Another advantage of using 12 segments is that the angular distance between segments are well understood.
 The 'clock position' system describes bearings with reference to the face of a clock, relative to the direction of travel or, as is the case with the ClockBoard zoning system, relative to true North.
-Under this system, well established in navigation, "12 O'clock" means true North and 3, 6 and 9 O'clock mean East, South and West respectively [@hart_use_1991].
+Under this system, well established in navigation, "12 o'clock" means true North and 3, 6 and 9 o'clock mean East, South and West respectively [@hart_use_1991].
 Following this convention, the ClockBoard zoning system aligns segment 12 with true North, enabling users to approximate their location in a city with reference to clock position .
 
 ## ClockBoard zones for segmenting urban areas
@@ -310,7 +310,10 @@ library(zonebuilder)
 ```
 
 
-A simple zoning system for Tokyo can be created as follows, resulting in the map shown in Figure \@ref(fig:tokyo):
+A simple zoning system for Tokyo is created and plotted in the R code chunk below, resulting in the map shown in Figure \@ref(fig:tokyo).
+In the code chunk below, the character string "Tokyo" is the first argument in the `zb_zone()` function (which can also be a spatial point object).
+When the first argument is a text string, as is the case here, the package automatically converts it into a geographic location using the Nominatim online service, which is based on data from OpenStreetMap; the `zb_view()` function creates an interactive map.
+
 
 ```{r, echo=FALSE, eval=FALSE}
 tokyo = tmaptools::geocode_OSM("tokyo", as.sf = TRUE)
@@ -321,8 +324,9 @@ tokyo_area = osmdata::getbb ('tokyo', format_out = 'sf_polygon')
 mapview::mapview(tokyo_area$multipolygon)
 ```
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 ClockBoard_tokyo = zb_zone("Tokyo", n_circles = 5)
+zb_view(ClockBoard_tokyo, alpha = 0.8)
 ```
 
 ```{r, eval=FALSE}
@@ -400,7 +404,7 @@ The zoning system presented in this paper is a specific implementation concentri
 The zoning system presented, and modifications of the system, could be useful in a range of other areas.
 The examples below are designed to provide an insight into how the zoning system could be used.
 
-## Navigation and location
+## Describing location
 
 A potential application of the zoning system is to indicate approximate locations with reference to a known central point or area, e.g. to describe a segment of a city.
 ClockBoard zones offer a level of intermediate-to-low accuracy in between the simple use of quadrants to identify parts of a city verbally on one hand, and more sophisticated ways of communicating location to the nearest few metres on the other.
@@ -497,8 +501,8 @@ Addressing issues associated with reporting only number of casualties per unit a
 
 ```{r intercity, fig.width=7, message=FALSE, warning=FALSE, fig.cap="Comparison of administrative zones (top) and zones in the ClockBoard zoning system (bottom) to support inter-city comparison of policy-relevant data, on road traffic casualties. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.", out.width="85%", fig.show='hold'}
 # download preprocessed data (processing script /data-raw/crashes.R)
-uk = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/uk.rds")))
-thames = readRDS(gzcon(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/thames.rds")))
+uk = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/uk.rds"))
+thames = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/0.0.1/thames.rds"))
 # df = readRDS("ksi_bkm_zone.rds")
 # uk = readRDS("uk.rds")
 # thames = readRDS("thames.rds")
@@ -556,8 +560,8 @@ While these cities have similar total official populations (of 5.8 and 5.3 milli
 
 <!-- Do we want to say anything else about this here? -->
 
-```{r popdens, fig.cap="ClockBoard for 36 cities. The blue raster grid cells represent open access population estimates from the WorldPop project.", out.width="100%"}
-u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p2.png"
+```{r popdens, fig.cap="ClockBoard zoning systems with 7 rings (A to G) supplied used to communicate the spatial distribution of populations for for 36 cities. The blue raster grid cells represent open access population estimates from the WorldPop project.", out.width="100%"}
+u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p2-scale.png"
 
 # # For HTML version:
 # knitr::include_graphics(u)

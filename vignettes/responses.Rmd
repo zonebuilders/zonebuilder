@@ -74,19 +74,19 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
 
 1. Table 1: Please make it clearer that N. zones is cumulative.
 
-    **Response:** 
+    **Response:** Good point that we missed. We tried altering the column heading to say (cumulative) but found that this issue is best resolved by making it clear from the table caption what the datasets are referring to. The meaning of the table is now clearer and mentions concrete examples that should make it clear that ClockBoard systems of different sizes are appropriate for cities of different sizes.
 
 1.  —one part of ‘o clock may need to be lowercased.
 
-    **Response:** 
+    **Response:** Godo point, just realised: o'clock is correct, not O'clock. Fixed!
 
 1. -P 8: does “Tokyo” call anything when it’s used as a variable in ClockBoard_Tokyo? Please clarify.
 
-    **Response:** 
+    **Response:** Yes, it calls the Nominatim geolation service. This is now explained.
 
 1. -Fig 8: Could you please provide a scale bar?
 
-    **Response:** 
+    **Response:** A scale bar, highlighting the fact that the radius of a ClockBoard system with 7 zones is 28 km, has been added.
 
 
 # Reviewer C:
