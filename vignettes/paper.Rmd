@@ -134,7 +134,7 @@ Pre-existing zoning systems are often based on administrative regions and reflec
 Well-designed administrative zones are advantageous for many applications, especially in relation to aggregated administrative datasets, but have disadvantages for certain applications.
 First, the administrative regions often change over time, hindering spatio-temporal analysis.
 Second, since the administrative zones have different sizes and shapes in different cities, they may not be ideal when comparing cities.
-In order to address these shortcomings of zoning systems based on administrative regions, our aim in this paper is to build a zoning system from scratch, i.e. to divide a *continuous* geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
+In order to address these shortcomings of zoning systems based on administrative regions, our aim in this paper is to build a zoning system from scratch, i.e. to divide a *continuous* geographic space into zones **starting from a blank slate**.
 
 The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in 'pre-packaged' small areas and because creating zones from nothing is a harder problem.
 The statement that "existence of individual or non-spatially aggregated data is rare in geography", used by @openshaw_optimal_1977 to justify the BSU grouping approach, may have been true in the 1970s when it was written.
@@ -173,7 +173,7 @@ As a consequence, smaller zones are often preferable in denser areas, which ofte
 The approach presented in this paper aims to minimize data requirements, generate consistent zones comparable between widely varying urban systems, and provide geographically contiguous areal units.
 The motivations for generating a new zoning system and use cases envisioned include:
 
--   Locating cities.
+-   Locating phenomena in cities.
     Automated zoning systems based on a clear centrepoint can support map interpretation by making it immediately clear where the city centre is, and what the scale of the city is.
 
 -   Reference system for everyday life.
@@ -181,11 +181,12 @@ The motivations for generating a new zoning system and use cases envisioned incl
     E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7".
     Moreover, the zones indicate whether walking and cycling is a feasible option regarding the distance.
 
--   Aggregation for descriptive statistics / comparability over cities.
-    By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared to each other.
+-   Aggregation for descriptive statistics.
+    It is often useful or necessary to present geographical data in an aggregate form.
+    A consistently sized and shaped set of zones can support attractive, clear and meaningful visualization.
 
--   Modelling urban cities.
-    The zoning system can be used to model urban mobility.
+-   Comparing cities.
+    By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared.
 
 The paper is structured as follows.
 The next section outlines the approach, which requires only 2 inputs: the coordinates of the central place in the urban system under investigation, and the minimum radius from that central point that the zoning system should extend.

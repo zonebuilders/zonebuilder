@@ -66,7 +66,7 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
 
 1. P 4: “Modelling urban cities…” bullet point is quite vague and I’m not sure what it adds.
 
-    **Response:** 
+    **Response:** We agree and have removed the bullet point. We also noticed that the preceding bullet point contained to points and have divided it in two.
 
 1. P 6: “The trueism is often reflected….” Census zones are way more popular than TAZes, I found this odd to mention TAZes instead.
 
