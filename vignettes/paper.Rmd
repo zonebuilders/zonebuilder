@@ -248,8 +248,7 @@ Each annuli is defined by its inner and outer circle.
 Given that the radius of the inner circle must the same as the radius of the preceding annuli to ensure geographically contiguity (no gaps) --- except in the special case of the first and central annuli which has no inner circle (or an inner circle with a radius of zero) --- the annuli sizes can be wholly defined by the sequence of numbers defining their out circle radii.
 
 This sequence of numbers can increase by a fixed amount --- e.g. with the outer border of each annuli being 1 km from the centre than the preceding annulus, as shown in Figure \@ref(fig:options) (C) --- or by varying amounts.
-In many cases it is useful for zones to be smaller near the centre of the study region surrounding cities.
-This truism is often reflected in traffic analysis zones (TAZ) used for transport modelling, which tend to be smaller near central areas where more detail is most important for policy-relevant outputs [@chandra_multi-objective_2021].
+In many cases it is useful for zones to be smaller near the centre of the study region surrounding cities, whether the zones are used for the publication of statistical data (often referred to as 'census tracts' in the USA and 'output areas' in the UK, for example) or transport models, which often use dedicated zones referred to as traffic analysis zones (TAZ) [@chandra_multi-objective_2021].
 
 After experimenting with various ways of incrementing the annuli width,
 <!-- including in proportion to the square of the annuli index, -->

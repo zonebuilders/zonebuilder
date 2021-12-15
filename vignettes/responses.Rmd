@@ -70,7 +70,7 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
 
 1. P 6: “The trueism is often reflected….” Census zones are way more popular than TAZes, I found this odd to mention TAZes instead.
 
-    **Response:** 
+    **Response:** we have re-worded this section and indeed the paragraph to make it clearer. TAZs are, like other types of zoning system, designed with a particular use in mind and this is worthy of mention.
 
 1. Table 1: Please make it clearer that N. zones is cumulative.
 
