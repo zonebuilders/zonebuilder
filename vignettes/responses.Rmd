@@ -89,18 +89,13 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
     **Response:** 
 
 
-    # Reviewer C:
+# Reviewer C:
 
-    This paper proposes a new process for subdividing metropolitan areas
-into monocentric, areally consistent regions to enable more easy
-cognition and orientation. I will provide comments below in the
-framework JOSIS provides.
+This paper proposes a new process for subdividing metropolitan areas into monocentric, areally consistent regions to enable more easy cognition and orientation. I will provide comments below in the framework JOSIS provides.
 
-    **Scientific and technical quality:** Is the submission technically
-sound? Are the submission\'s claims and conclusions adequately
-supported?
+**Scientific and technical quality:** Is the submission technically sound? Are the submission\'s claims and conclusions adequately supported?
 
-    The submission is technically comprehensive in terms of explaining the
+The submission is technically comprehensive in terms of explaining the
 logics for deducing the rings and segments within each ring and how this
 would be comparable across cities. Fundamentally, this paper seems to be
 addressing the modifiable areal unit problem (MAUP) and makes an attempt
@@ -117,9 +112,11 @@ why the areal unit is problematic and it would be helpful for the reader
 to be explicit about stating this. The same holds true for authors'
 mention of "continuous space" and why it is particularly important.
 
-    **Response:** 
+    **Response:** We agree that the problem statement can be made more explicitly. Therefore, we reorganized the introduction to make the problem statement clearer.
 
-    **Evaluation:** Does the paper present an objective (experimental or
+**Evaluation:** 
+    
+Does the paper present an objective (experimental or
 theoretical) evaluation of its results? If not, how are the results
 evaluated, and is the evaluation convincing?
 
@@ -158,7 +155,7 @@ Another way to think about the city, for residents of a city, who might
 have a different mental map that is ego-centric, may be composed on
 landmarks around the city familiar to them.
 
-    **Response:** 
+    **Response:**
 
     We agree that we were at times too vague and sweeping in our statements about the utility of the zoning system presented.
     We have made the discussion of applications more specific and clear, including with reference to an updated Figure 7, which now demonstrates specifically the advantages of the zoning system presented over UK administrative boundaries. 
@@ -249,6 +246,8 @@ understand this paper.
     \- pg.4 'miniminput' should be 'minimum input' ?
 
     \- p.2 Not sure what 'heigh' is in reference to?
+    
+    **Response:** Thanks for these issues. We fixed all of them. 
 
     **Scope and relevance to JOSIS:** Is the paper closely related to the
 themes of the journal? Is the content interesting to the journal

@@ -39,7 +39,7 @@ abstract: |
   often highly variable in size and shape, reducing their
   utility for inter-city comparison; and 3) official zoning systems in many places
   simply do not exist or are unavailable.
-  We set out to develop a fexible, open and scalable solution to these problems.
+  We set out to develop a flexible, open and scalable solution to these problems.
   The result is the ClockBoard zoning system, which
   consists of 12 segments emanating from a central place and divided by concentric rings
   with radii that increase in line with the triangular number sequence (1, 3, 6 km etc).
@@ -130,8 +130,15 @@ Prior work has demonstrated the sensitivity of urban analysis outcomes to zone s
 In fact, this problem is a concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021].
 Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria), the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
 
-The problem that we tackle in this paper is different, however.
-It is 'zoning from scratch': the division of geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
+Pre-existing zoning systems are often based on administrative regions.
+Although those zoning systems are usually in line with the hierarchical organizational structure of statistical agencies, and therefore may work well for policy making, there are a couple of downsides to using such zoning systems.
+First, since a city and its politics change over time, the administrative regions often change accordingly.
+This makes it harder to do time series analysis.
+Since the administrative regions have heterogeneous characteristics, for instance population size, area size, proximity to the city centre, comparing different administrative regions within a city is not straightforward.
+Moreover, comparing administrative regions across cities is even more challenging: the average surface area of a administrative zones varies from city to city.
+
+In order to address these shortcomings of zoning systems based on administrative regions, our aim in this paper is to build a zoning system from scratch, i.e. to divide a *continuous* geographic space into zones **starting from a blank slate**, without reference to pre-existing areal units.
+
 The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in 'pre-packaged' small areas and because creating zones from nothing is a harder problem.
 The statement that "existence of individual or non-spatially aggregated data is rare in geography", used by @openshaw_optimal_1977 to justify the BSU grouping approach, may have been true in the 1970s when it was written.
 Today disaggregated geographic datasets are common.
@@ -150,14 +157,10 @@ The boundaries created by these various 'iso' maps are 'procedurally generated' 
 Procedural generation, which involves the generation of data through a repeated and sometimes randomized computational process has long been used to represent physical phenomena [@onrust_ecologically_2017]. The approach has been used to generate spatial entities including roads [@galin_procedural_2010], indoor layouts of buildings [@anderson_augmented_2018] and urban layouts [@mustafa_procedural_2020]. Algorithms have also been developed to place linear features on a map, as illustrated by an algorithm that optimizes the placement of overlapping linear features for cartographic visualisation [@teulade-denantes_routes_2015].
 However, no previous research has demonstrated the creation of zoning systems specifically for the purposes of urban analysis.
 
-There is demand for visualisations techniques to represent new urban datasets within and cities, with the shift away from single-city case studies towards multi-city comparison research [@boeing_spatial_2021], between cities.
-The visualisation of direction has been driven by new navigational requirements and datasets, with circular compasses and displays common in land and sea navigational systems since the mid 1900s [@honick_pictorial_1967]. Circular visualisation techniques, in the form of rose diagrams, were used in a more recent study to indicate the most common road directions relative to North [@boeing_spatial_2021]. The resulting visualisations are attractive and easy to interpret, but are not geographical, in the sense that they cannot meaningfully be overlaid on mapped data.
+New visualisation techniques are needed to represent new (or newly quantifiable) concepts and emerging datasets (such as OpenStreetMap) in urban analysis.
+The visualisation of direction has been driven by new navigational requirements and datasets, with circular compasses and displays common in land and sea navigational systems since the mid 1900s [@honick_pictorial_1967]. Circular visualisation techniques, in the form of rose diagrams, were used in a more recent study to indicate the most common road directions relative to North [@boeing_spatial_2021]. The resulting visualisations are attractive and easy to interpret, but are not geographical, in the sense that they cannot meaningfully be overlaid on mapped data. 
 
-The approach we present in this paper is more closely analogous to 'grid sample' approaches used in ecological and population research [@hirzel_which_2002].
-Historically, environmental researchers have used rectangular (and usually square) grids to divide up space and decide sampling strategies.
-Limitations associated with this simplistic strategy have been documented since at least the 1960s.
-A prominent paper on geographic sampling strategies outlining advantages and disadvantages of simple random, systematic and stratified sampling techniques in 1967, for example, found that the common confusion between 'area sampling' (in which entire areas from a more-or-less arbitrary zoning system or 'quadrats' are included or excluded) and 'location sampling' causes hidden biases in the selection of samples aiming to be representative of geographic phenomena [@holmes_problems_1967].
-Starting with data at the level of raster grid cells and BSUs, a related approach is to sample from within available 'pixels' to generate a representative sample [@thomson_gridsample_2017].
+The approach we present in this paper is more closely analogous to 'grid sample' approaches used in ecological and population research [@hirzel_which_2002] . Historically, environmental researchers have used rectangular (and usually square) grids to divide up space and decide sampling strategies. Limitations associated with this simplistic strategy have been documented since at least the 1960s, with a prominent paper on geographic sampling strategies outlining advantages and disadvantages of simple random, systematic and stratified sampling techniques in 1967 [@holmes_problems_1967]. Starting with data at the level of raster grid cells and BSUs, a related approach is to sample from within available 'pixels' to generate a representative sample [@thomson_gridsample_2017].
 
 Unlike BSU based zoning systems, grid sampling strategies require no prior zones.
 Unlike 'procedurally generated' areas, grid-based strategies generate areal units of consistent sizes and shapes.
@@ -181,7 +184,7 @@ Another downside from a statistical point of view is that population densities a
 As a consequence, high resolution statistics is preferable in the dense areas, i.e. the centre, and lower resolution statistics in other parts of the city.
 That is the reason why administrative regions are often smaller in dense areas.
 
-The approach presented in this paper aims to miniminput data requirements, generate consistent zones comparable between widely varying urban systems, and provide geographically contiguous areal units.
+The approach presented in this paper aims to minimize data requirements, generate consistent zones comparable between widely varying urban systems, and provide geographically contiguous areal units.
 The motivations for generating a new zoning system and use cases envisioned include:
 
 -   Locating cities.
