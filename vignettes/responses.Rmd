@@ -46,17 +46,19 @@ This paper is relevant to JOSIS because it takes on a fundamental GIScience repr
 
 1. The presentation is generally good and clear to follow. Again, the limitations section should be more forthright, as this new method does have some significant drawbacks. I have a few recommendations:
 
+    **Response:** We have rewritten much of content on limitations, which is now more clear and direct.
+
 1. P 2: “…to represent lines of equal height, and…population density.” I found it odd to bring up contour lines when the authors are specifically talking about continuous space. I realize that these lines demarcate continuous space, but they are rarely used to actually do this. Please remove. At the same time, it is very undervalued that you cannot do table joins with the clockboard method, as you could when aggregating to existing units. (More for the limitations.)
 
-    **Response:** 
+    **Response:** We agree, this was not helpful. The sentence is now shorter and clearer: "This has been done using lines representing points with equal journey time from locations (isochrones) and the areas bound by them"
 
 1. P 3: OSM is also odd to bring up as ‘emerging datasets’---it doesn’t have any thematic data, which I think is a big selling point of your method. At least the case studies on pollution and traffic suggest so. Please substitute it.
 
-    **Response:** 
+    **Response:** We agree, OSM was not the most relevant example. We have rewritten the text to highlight the impact of new datasets and approaches for comparing multiple cities, now supported by a new citation: "There is demand for visualisations techniques to represent new urban datasets within and cities, with the shift away from single-city case studies towards multi-city comparison research"
 
 1. P 3: Can you elaborate on reference [21], it sounds important.
 
-    **Response:** 
+    **Response:** This is indeed an important (and we believe under-cited) reference. We have updated the text to explain the core findings from this paper.
 
 1. P 3: Paragraph starting with “Pre-existing zoning systems” does not seem to belong here. It seems to need to come earlier.
 
