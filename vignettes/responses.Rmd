@@ -174,7 +174,7 @@ broader metropolitan region is beyond its jurisdiction, which is not
 necessarily a limitation of administrative boundaries but the nature of
 governance systems.
 
-    **Response:** 
+    **Response:** We agree that this paragraph was not clear. We have removed it and made the comment in the discussion, which is the more appropriate place for it.
 
     **Significance:** How important is the work reported? Does the
 submission address a challenging theoretical or practical issue? Does
@@ -190,7 +190,9 @@ problem but a governance or civic administration issue. Moreover, it is
 unclear why the authors choose to highlight the "blank slate" quality of
 this approach.
 
-    **Response:** 
+    **Response:** We have updated the introduction and discussion sections to clarify the problems that the approach sets out to tackle, the motivation, and the overall aim of the paper (which is NOT to solve the MAUP).
+    Overall, the paper is now more modest and specific in its scope.
+    The 'blank slate' nature of the approach is worth highlighting, we believe, because it differs from the 'BSU grouping' approach that seems to predominate in the literature.
 
 1. Fundamentally, the overall objective, target audience, and use cases are
 perhaps not what the authors suggest. The authors suggest a somewhat
@@ -202,7 +204,7 @@ with these zones for inter-city comparison as the sample size is small.
 Thus, there is a discordance between the stated objective and what this
 framework produces.
 
-    **Response:** 
+    **Response:** We have rewritten relevant parts of the paper to emphasise the fact that there are a range of possible users, alongside the limitation that we have not done formal user-testing. We have now cited a paper that makes use of the zoning system in an urban analysis project to support visualisation of active travel provision in the area directly surrounding new housing developments: see https://actdev.cyipt.bike/ebbsfleet/accessibility,buildings/#11.69/51.4359/0.3065 for an example of how the zoning system can support visualisation. While we believe it has use cases in urban analysis, we are not sure it will catch on or if other use cases will emerge. In face of this uncertainty our approach is to try to be specific and humble about the possibilies of the system, while advocating research into alternative zoning systems that overcome some of the limitations associate with the ClockBoard system.
 
     **Originality:** Does the submission address a new issue, present a new
 approach to an issue, or put forward a novel combination of existing

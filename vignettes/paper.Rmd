@@ -177,7 +177,7 @@ We do this by presenting a zoning system that enables inter-city comparison usin
 The specific motivations for embarking on the idea, and its implementation in open source software, were as follows:
 
 -   Locating phenomena in cities.
-    Automated zoning systems based on a clear centrepoint can support map interpretation by making it immediately clear where the city centre is, and what the scale of the city is.
+    Automated zoning systems based on a clear centerpoint can support map interpretation by making it immediately clear where the city center is, and what the scale of the city is.
 
 -   Reference system for everyday life.
     The zone name contains information about the distance to the center as well as the cardinal direction.
@@ -206,10 +206,10 @@ To enable flexibility, and to encourage other zoning systems building on it, the
 Considering urban analysis, modelling and wider research, visualisation and communication requirements of zoning systems, we developed the following criteria for successful zoning systems.
 Zoning systems for urban analysis should:
 
--   contain intuitively named zones, enabling public communication of research, e.g. with reference common perceptions of space in terms of distance from the city centre and direction relative to North
+-   contain intuitively named zones, enabling public communication of research, e.g. with reference common perceptions of space in terms of distance from the city center and direction relative to North
 -   have a well-balanced number of zones since too many or too few zones may cause issues with analysis and visualisation
 be easy to visualize without too many or too few zones
--   include zones of consistent and useful sizes, for example with zone areas increasing with distance from the urban centres to reflect relatively high densities in central locations
+-   include zones of consistent and useful sizes, for example with zone areas increasing with distance from the urban centers to reflect relatively high densities in central locations
 -   be 'scale agnostic', capable of representing a range of urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong
 -   be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs
 
@@ -250,14 +250,14 @@ qtm(zb_zone(london_c(), n_segments = z1_areas_relative, labeling = "clock", dist
 Each annuli is defined by its inner and outer circle.
 Given that the radius of the inner circle must the same as the radius of the preceding annuli to ensure geographically contiguity (no gaps) --- except in the special case of the first and central annuli which has no inner circle (or an inner circle with a radius of zero) --- the annuli sizes can be wholly defined by the sequence of numbers defining their out circle radii.
 
-This sequence of numbers can increase by a fixed amount --- e.g. with the outer border of each annuli being 1 km from the centre than the preceding annulus, as shown in Figure \@ref(fig:options) (C) --- or by varying amounts.
-In many cases it is useful for zones to be smaller near the centre of the study region surrounding cities, whether the zones are used for the publication of statistical data (often referred to as 'census tracts' in the USA and 'output areas' in the UK, for example) or transport models, which often use dedicated zones referred to as traffic analysis zones (TAZ) [@chandra_multi-objective_2021].
+This sequence of numbers can increase by a fixed amount --- e.g. with the outer border of each annuli being 1 km from the center than the preceding annulus, as shown in Figure \@ref(fig:options) (C) --- or by varying amounts.
+In many cases it is useful for zones to be smaller near the center of the study region surrounding cities, whether the zones are used for the publication of statistical data (often referred to as 'census tracts' in the USA and 'output areas' in the UK, for example) or transport models, which often use dedicated zones referred to as traffic analysis zones (TAZ) [@chandra_multi-objective_2021].
 
 After experimenting with various ways of incrementing the annuli width,
 <!-- including in proportion to the square of the annuli index, -->
 and considering the importance of easy to remember distances from central points from the perspective of readability, interpretation and simplicity of the system, we settled on linear increases in width as a sensible default for the ClockBoard zoning system.
 This linear growth leads to distances between the outer circles of each annuli and the central point following in the [triangular number sequence](https://en.wikipedia.org/wiki/Triangular_number) [@ross_dicuil_2019].
-This means that all points in the first annuli (labelled A) are up to 1 km away from the city centre; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas [@vinoth_kumar_spatio-temporal_2007].
+This means that all points in the first annuli (labelled A) are up to 1 km away from the city center; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas [@vinoth_kumar_spatio-temporal_2007].
 The furthest points from the central point of the next 8 subsequent annuli in the system (annuli B to I) are 3, 6, 10, 15, 21, 28, 36 and 45 km respectively, meaning that even a large city such as London requires only 8 annuli to cover it entirely (Figure \@ref(fig:london)).
 This and other other attributes of the first set of 9 zones in the ClockBoard zoning system in Table \@ref(tab:t1).
 
@@ -419,7 +419,7 @@ Like the quadrant approach, the ClockBoard system relies on a central point.
 The ClockBoard system shares the advantage of the quadrant approach to locating objects that the location can worked out by people without reliance on a computer to translate coordinates into a geohash, although the calculation is substantially harder, requiring memorization or quick calculation of the triangular number sequence (1, 3, 6, 10, 15 etc) and knowledge of the boundaries of a clock face such that "E03" is understood as being between 10 and 15 km East of the center.
 
 An illustration of using the ClockBoard zoning system to locate places is presented in Figure \@ref(fig:location).
-This shows how it could be used to communicate key locations, including a train station (zone A) a park (zone C01) and the center of a neighboring city (zone E09), with reference to the city centre of Leeds, UK.
+This shows how it could be used to communicate key locations, including a train station (zone A) a park (zone C01) and the center of a neighboring city (zone E09), with reference to the city center of Leeds, UK.
 In a hypothetical use case, the example could be used to communicate the fact that the park is relatively close to the rail station (between 3 and 6 km from the city center) while Bradford in zone E09 is between 10 and 15 km from central Leeds.
 Of course, the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed descriptions of locations such as directions from key landmarks or coordinates are used.
 
@@ -464,7 +464,7 @@ In this context and with reference to Figure \@ref(fig:cityscale), the ClockBoar
 
 - Simple and consistent zone shapes for easy map reading
 - The circular shape of zone boundaries make the results easy to place, requiring a 1:1 aspect ratio (except when the zones are clipped, as in map D)
-- The shape of the zones draws attention to citywide spatial patterns, with map C highlighting the clear tendency for air quality to improve with distance from the city centre and the comparatively poor air quality in segments 3 and 9
+- The shape of the zones draws attention to citywide spatial patterns, with map C highlighting the clear tendency for air quality to improve with distance from the city center and the comparatively poor air quality in segments 3 and 9
 
 The final advantage is particularly notable when comparing the ClockBoard zoning system with large official zone (borough) boundaries in London.
 Because of the large and irregular zone shapes in map B, the strength of the relationship between distance from central London and air quality is not as clear as when using ClockBoard zones as the frame of reference in maps C and D in Figure \@ref(fig:cityscale).
@@ -486,7 +486,7 @@ knitr::include_graphics(f) # for local high-res version, not working
 # knitr::include_graphics(u)
 ```
 
-The example of air quality presented in Figure \@ref(fig:cityscale) highlights that the ClockBoard zoning system is well suited for the analysis and visualisation of phenomena in which a central place (London city centre in this case) plays a major role, directly or indirectly.
+The example of air quality presented in Figure \@ref(fig:cityscale) highlights that the ClockBoard zoning system is well suited for the analysis and visualisation of phenomena in which a central place (London city center in this case) plays a major role, directly or indirectly.
 (Not all cities have a 'monocentric' structure, something we discuss in Section \@ref(discussion).)
 The prevalence of particulate matter in the air relates to the level of industrial, transport and other activities in the surrounding area, which clearly increases with proximity to central London.
 The same can be said of many other phenomena which become more, less, or more and then less, common with distance from central places.
@@ -552,14 +552,14 @@ The results for London presented at the level of ClockBoard zones show a clearer
 The ClockBoard zoning system also allows for aggregation at a consistent spatial resolution, enabling the identification of potential crash hotspots in specific parts of Birmingham (zones D12 and E06) and Sheffield (zone D11).
 
 Another example of using ClockBoards to compare cities (and phenomena that take place in them) is shown in Figure \@ref(fig:popdens), which shows population density in 36 major cities using the ClockBoard zoning system not as unit for aggregation but as a reference grid.
-The 7 rings A to G cover a radius up to 28 km from the city centre.
+The 7 rings A to G cover a radius up to 28 km from the city center.
 The colors of the panel labels in Figure \@ref(fig:popdens) indicate the continent of the city.
 The value of comparing cities in a single geographic frame of reference is shown by inspecting Singapore and Sydney with reference to ClockBoard zones.
-While these cities have similar total official populations (of 5.8 and 5.3 million people, respectively), based on the number of people with their respective administrative boundaries, the size and shape of each city is very different, highlighted by the fact that in Singapore there are few people beyond ring F (located 15 to 20 km from the centre), while in Sydney (and many other cities) there are substantial numbers of people living in ring I (located 36 to 45 km from the centre).
+While these cities have similar total official populations (of 5.8 and 5.3 million people, respectively), based on the number of people with their respective administrative boundaries, the size and shape of each city is very different, highlighted by the fact that in Singapore there are few people beyond ring F (located 15 to 20 km from the center), while in Sydney (and many other cities) there are substantial numbers of people living in ring I (located 36 to 45 km from the center).
 
 
 <!-- Another benefit of the ClockBoard system is illustrated in the maps of Bangkok and Mexico City. -->
-<!-- While the administrative borders do not reflect the population density very well as some high populated areas are not included in the administrative city borders, the ClockBoard zones include all areas that are within a certain distance from the city centre. -->
+<!-- While the administrative borders do not reflect the population density very well as some high populated areas are not included in the administrative city borders, the ClockBoard zones include all areas that are within a certain distance from the city center. -->
 
 <!-- Do we want to say anything else about this here? -->
 
@@ -577,12 +577,6 @@ knitr::include_graphics(f)
 
 The administrative borders of six cities shown in Figure \@ref(fig:popdens) are depicted as red lines in Figure \@ref(fig:popdens2), highlighting the importance of sometimes arbitrary city boundaries.
 The ClockBoard zones applied to Amsterdam not only cover Amsterdam but also a few other small Dutch cities and towns. Most of them are economically attached to Amsterdam, but a few of them also to other major Dutch cites.
-
-The benefits of using a single zoning systems across multiple cities is highlighted by comparing London and Paris.
-Official figures suggest that the two cities have very different sizes: the population within their official boundaries depicted in Figure \@ref(fig:popdens2) are 9 million (Greater London) and 2 million (Paris).
-However, the metropolitan population, which we define as the population living in the ClockBoard zones (within 28 km from the city centre) of those two cities are similar (about 10 million each).
-The example highlights the utility of ClockBoard for communicating not only inter-city differences in the magnitude and spatial distribution of phenomena, but also geographical extent.
-
 
 ```{r popdens2, fig.cap="ClockBoard for 6 cities with boundaries shown in red. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders.", out.width="70%"}
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p1.png"
@@ -613,12 +607,12 @@ appropriate output geography" [@martin_optimizing_1998], we started from scratch
 Our criteria, based on our work in the broadly defined field or Urban Analytics, were: intuitively labelled and easy-to-communicate zones, consistently sized and shaped zones for creating readable and easy-to-interpret maps, and a system that would be accessible for use and modification.
 
 The zones in the ClockBoard zoning system were designed to be sufficiently large so that each could be seen when printed in a low resolution map representing a large city.
-The relatively large zones (which get bigger further from the city centre as density of urban phenomena tends to decrease) also enable zone labels containubg only three characters (with the exception of zone A).
-Zone label give insight into their location, with the ClockBoard zone 'E09 Leeds' illustrated in Figure \@ref(fig:location) indicating the fact that it is located between 10 and 15 km West of the city centre.
+The relatively large zones (which get bigger further from the city center as density of urban phenomena tends to decrease) also enable zone labels containubg only three characters (with the exception of zone A).
+Zone label give insight into their location, with the ClockBoard zone 'E09 Leeds' illustrated in Figure \@ref(fig:location) indicating the fact that it is located between 10 and 15 km West of the city center.
 The equivalent official 'MSOA' zone code is 'E02002221': longer, harder to remember, and devoid of geographic meaning.
 
-<!-- Based on these criteria we developed the ClockBoard zoning system, which consists of regularly spaced rings forming 'dohnuts' (technically annuli) emanating from the city centre and labelled A, B, C etc. -->
-<!-- At the centre of the ClockBoard zoning system lies zone A, a circle measuring 1 km in radius and from which emanate 12 evenly spaced segments labelled 1 to 12, with segment 12 representing the area due North of the zone A. -->
+<!-- Based on these criteria we developed the ClockBoard zoning system, which consists of regularly spaced rings forming 'dohnuts' (technically annuli) emanating from the city center and labelled A, B, C etc. -->
+<!-- At the center of the ClockBoard zoning system lies zone A, a circle measuring 1 km in radius and from which emanate 12 evenly spaced segments labelled 1 to 12, with segment 12 representing the area due North of the zone A. -->
 It is important to emphasise that ClockBoard zoning system is a specific implementation of an approach to zone creation that we label 'concentric segmented annuli' and that a wide family of zoning systems could be created based on the approach: variations can be obtained by adjusting the sequence of outer ring radii (so they have values other than 1, 3, 6, 10, 15 and 21 km, resulting from the triangular number sequence used in the ClockBoard system) and number of segments (with values other than 1 for the central annuli and 12 for all others).
 To encourage use of and adaptation of the system, we have implemented methods for creating 'ClockBoards' and other zoning systems based on concentric segmented annuli in R and Python packages, and Rust crate `zonebuilder`.
 These can be installed from the '[CRAN](https://cran.r-project.org/package=zonebuilder)', '[crates.io](https://crates.io/crates/zonebuilder)', and '[PyPI](https://pypi.org/project/zonebuilder/)' repositories, respectively.
@@ -637,25 +631,33 @@ The approach leads to zones are more internally diverse than official zone syste
 Another potential disadvantage of zoning systems that are invariant from place to place is that city borders are usually irregular.
 Clipping the zones to official city boundaries can address this issue, but creates an additional problem: unhelpfully shaped and sized zones in the periphery of large cities, also shown in Figure \@ref(fig:london).
 To benefit from the standardized zones provided by ClockBoard, we recommend using the system without clipping: ignoring the historic boundary and defining the city bounds with reference to distance from the center can enable inter-city comparison, without being constrained by their historic boundaries.
+The benefits of using a consistent bounding area when comparing multiple cities is highlighted by comparing London and Paris.
+Official figures suggest that the two cities have very different sizes: the population within their official boundaries depicted in Figure \@ref(fig:popdens2) are 9 million (Greater London) and 2 million (Paris).
+However, the metropolitan populations of the two cities --- defined as the population living in a ClockBoard system with 7 rings (within 28 km from the city center) --- are similar (about 10 million each).
+
 <!-- Indeed, any circular zoning system can provide a consistent geographic frame of reference for monocentric cities. -->
 
 <!-- The even growth of rings also enable understanding of the scale of cities and urban phenomena within them, regardless of the size of often arbitrary and historic official boundaries; the first nine rings in the zoning systems (labelled A, B, ... I) grow at constant rate, with radii of 1, 3, 6, 10, 15, 21, 28, 36 and 45 km. -->
-<!-- These ring diameters are not only useful to know and relatively easy to remember (with the phrase "in zone D8" instantly communicating the fact that the phenomena is happening between 6 and 10 km from the centre), but also capture the common utility of higher resolution data close to urban centres where population density and complexity is higher. -->
+<!-- These ring diameters are not only useful to know and relatively easy to remember (with the phrase "in zone D8" instantly communicating the fact that the phenomena is happening between 6 and 10 km from the center), but also capture the common utility of higher resolution data close to urban centers where population density and complexity is higher. -->
 <!-- The consistency of zone sizes and shapes, and the uniform sizes of all ClockBoards that share the same number of rings, could enable more objective and easier to interpret inter-city comparison projects. -->
-A broader limitation is the implicit assumption that cities are monocentric entities in which urban activity (and hence the need for spatial resolution) declines gradually with distance from the city centre.
-While this assumption broadly holds for phenomena such as air pollution in London, as illustrated in Figure \@ref(fig:cityscale), many cities are polycentric [@alidadi_beyond_2018].
-The ClockBoard zoning system can thus be seen as a zoning system best suited for the analysis of monocentric cities, rather than polycentric conurbations.
+A another limitation of the approach is the implicit assumption that cities are monocentric entities in which urban activity (and hence the need for spatial resolution) declines gradually with distance from the city center.
+While this assumption broadly holds for many cities such as London and other cities illustrated in this paper, many cities are polycentric [@alidadi_beyond_2018].
+The zoning system is unsuited to polycentric conurbations and the countryside, limiting its uses substantially, to urban analytics focused on monocentric cities.
 
-A question for further research is how to fit one or several ClockBoards to a dense urban area consisting of several cities, of which none is clearly dominant.
+Consideration of polycentric settlements raises the question of how to fit one or several ClockBoards to a dense urban area consisting of several cities, of which none is clearly dominant.
 For instance, the four major cities in the Netherlands (Amsterdam, Rotterdam, The Hague and Utrecht) are small and located about 40 kilometers from each other, with even smaller cities and towns in between. 
-In this example, there is no dominant "gravitational force" to construct one ClockBoard around. 
-ClockBoards could be constructed for each of these four cities, raising the question:
-how to design zoning systems for polycentric regions, or large regions that contain multiple monocentric settlements [@chandra_multi-objective_2021]?
+In this example, there is no dominant "gravitational force" to construct one ClockBoard around, making this a much harder challenge than designing a zoning system for a single city [@chandra_multi-objective_2021].
+<!-- ClockBoards could be constructed for each of these four citiesm by ow to design zoning systems for polycentric regions, or large regions that contain multiple monocentric settlements? -->
 We explored the possibility of 'joining' ClockBoard systems that met, with the 'dominant' ClockBoard associated with the larger city, but the results were not promising and we suspect that a new approach altogether, perhaps building on experience from Computational Fluid Dynamics, where grid generation procedures need to take into account multiltiple factors [@hernandez-perez_grid_2011].
 
-An alternative and approach to developing zoning systems for complex and polycentric settlements not implemented in this paper is to build them on exisiting Discrete Global Grid Systems (DGGS) such as the S2 and H3 global zoning systems developed by Google and Uber respectively [@bondaruk_assessing_2020], and the [QTM Generator](https://github.com/paulojraposo/QTM) developed by Paulo Raposo [@raposo_virtual_2019].
+A broader limitation is that the zoning system has not been tested or assessed, other than in informal settings and in a prototype web application, publicly available at [actdev.cyipt.bike](https://actdev.cyipt.bike/ebbsfleet/accessibility,buildings/#11.69/51.4359/0.3065), to present data on aggregate statistics on the quality active travel provision in the areas surrounding new housing developments [@talbot_active_2021].
+While informal and anecdotal feedback has been positive, user testing is needed to identify for which of the potential applications outlined in this paper the ClockBoard system is best suited.
+Such user testing could be based on established approaches for evaluating digital products, including focus groups, surveys or interviews with potential users [@trigg_focus_2007].
+Such user testing is beyond the scope of the present paper, but represents a promising future direction of research to establish how the approach could be used in the real world and future research priorities around zoning systems for urban analysis.
+
+An alternative and approach to developing zoning systems for complex and polycentric settlements not implemented in this paper is to build them on existing Discrete Global Grid Systems (DGGS) such as the S2 and H3 global zoning systems developed by Google and Uber respectively [@bondaruk_assessing_2020], and the [QTM Generator](https://github.com/paulojraposo/QTM) developed by Paulo Raposo [@raposo_virtual_2019].
 This would have advantages for flexibility, with DGGSs able to generate grids with zone sizes that are more evidence-based, for example by respondingM to geographic data such as population density.
-DGGS based zoning systems would also enable greater determinism, with each of S2's ~7 quintillion ($6 * 4^{30}$ or $\approx6.9*10^{18}$) and H3's ~700 trillion ($\approx5.7 * 10^{14}$) base zones having a unique reference code that is machine readable (ClockBoards are arguably deterministic with 'zone B12, Leeds, UK' referring to an unambiguous area, although ClockBoards depend on an unambiguous definition of 'city centre' which may not be available or requires a single unique source of city centre points).
+DGGS based zoning systems would also enable greater determinism, with each of S2's ~7 quintillion ($6 * 4^{30}$ or $\approx6.9*10^{18}$) and H3's ~700 trillion ($\approx5.7 * 10^{14}$) base zones having a unique reference code that is machine readable (ClockBoards are arguably deterministic with 'zone B12, Leeds, UK' referring to an unambiguous area, although ClockBoards depend on an unambiguous definition of 'city center' which may not be available or requires a single unique source of city center points).
 Theses beneficial features would be gained at the expense of simplicity: DGGSs are complex and have hard-to-remember cell IDs such as [e66ef376f790adf8a5af7fca9e6e422c03c9143f](https://developers.google.com/maps/documentation/gaming/concepts_playable_locations) (S2) and [8a283082a677fff](https://h3geo.org/docs/quickstart) (H3); they also have high computational requirements [@bondaruk_assessing_2020], compared with the comparatively simple ClockBoard system.
 
 While the utility of the zoning system is likely to be limited in many settings by the limitations outlined above, we believe that there are settings in which ClockBoard could provide substantial benefits, as demonstrated in three example applications.
