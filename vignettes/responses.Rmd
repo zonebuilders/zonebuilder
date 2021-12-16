@@ -141,7 +141,7 @@ of how people make mental maps and navigate the city [^1].
 
     **Response:** We agree that this would be a useful next step for the research.
     The fact that there are different possible use cases for the proposed system makes evaluation based on user survey or other means of data collection would be worthwhile.
-    While that study is beyond the scope of this paper, which focusses on the design of the proposed zoning system and discussion of the importance of alternative zoning systems for urban analysis, we would like to take the ideas forward in future work and have rewritten parts of the discussion accordingly.
+    While that study is beyond the scope of this paper, which focusses on the design of the proposed zoning system and discussion of the importance of alternative zoning systems for urban analysis, we would like to take the ideas forward in future work and have outlined new ideas for that motivated by this comment in the discussion.
 
 1. One aspect of the design of the framework that was unclear to me is the
 monocentric orientation of the city, with each region created based on

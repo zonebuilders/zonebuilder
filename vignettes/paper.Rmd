@@ -607,57 +607,43 @@ The ClockBoard zoning system presented in this paper was designed to provide a n
 Issues associated with administrative zoning systems are well known [@openshaw_optimal_1977; @jelinski_modifiable_1996] yet accessible zoning systems that highlight the importance of areal units are comparatively rare.
 Great strides have been made in the design of administrative zoning systems systems and they are understandably the default unit of analysis for urban analysis in many parts of the world [@martin_application_2001; @mokhele_development_2016].
 The dominance of administrative zones in urban analysis has advantages, but also has unintended consequences, including making it hard for people to refer to specific administrative units, irregular sizes and shapes, and lack of comparability between geographically aggregated results from city to city.
+
 Instead of tackling these problems by developing additional approaches for the "re-aggregation of the raw data into a more
 appropriate output geography" [@martin_optimizing_1998], we started from scratch focussing on the key spatial attributes of distance and and bearing from the center.
 Our criteria, based on our work in the broadly defined field or Urban Analytics, were: intuitively labelled and easy-to-communicate zones, consistently sized and shaped zones for creating readable and easy-to-interpret maps, and a system that would be accessible for use and modification.
 
-Based on these criteria we developed the ClockBoard zoning system, which consists of regularly spaced rings forming 'dohnuts' (technically annuli) emanating from the city centre and labelled A, B, C etc.
-At the centre of the ClockBoard zoning system lies zone A, a circle measuring 1 km in radius and from which emanate 12 evenly spaced segments labelled 1 to 12, with segment 12 representing the area due North of the zone A.
-The ClockBoard zoning system is a specific implementation of an approach to zone creation that we label 'concentric segmented annuli'.
+The zones in the ClockBoard zoning system were designed to be sufficiently large so that each could be seen when printed in a low resolution map representing a large city.
+The relatively large zones (which get bigger further from the city centre as density of urban phenomena tends to decrease) also enable zone labels containubg only three characters (with the exception of zone A).
+Zone label give insight into their location, with the ClockBoard zone 'E09 Leeds' illustrated in Figure \@ref(fig:location) indicating the fact that it is located between 10 and 15 km West of the city centre.
+The equivalent official 'MSOA' zone code is 'E02002221': longer, harder to remember, and devoid of geographic meaning.
 
-A wide family of zoning systems could be created based on concentric segmented annuli: variations can be obtained by adjusting the sequence of outer ring radii (so they have values other than 1, 3, 6, 10, 15 and 21 km, resulting from the triangular number sequence used in the ClockBoard system) and number of segments (with values other than 1 for the central annuli and 12 for all others).
+<!-- Based on these criteria we developed the ClockBoard zoning system, which consists of regularly spaced rings forming 'dohnuts' (technically annuli) emanating from the city centre and labelled A, B, C etc. -->
+<!-- At the centre of the ClockBoard zoning system lies zone A, a circle measuring 1 km in radius and from which emanate 12 evenly spaced segments labelled 1 to 12, with segment 12 representing the area due North of the zone A. -->
+It is important to emphasise that ClockBoard zoning system is a specific implementation of an approach to zone creation that we label 'concentric segmented annuli' and that a wide family of zoning systems could be created based on the approach: variations can be obtained by adjusting the sequence of outer ring radii (so they have values other than 1, 3, 6, 10, 15 and 21 km, resulting from the triangular number sequence used in the ClockBoard system) and number of segments (with values other than 1 for the central annuli and 12 for all others).
 To encourage use of and adaptation of the system, we have implemented methods for creating 'ClockBoards' and other zoning systems based on concentric segmented annuli in R and Python packages, and Rust crate `zonebuilder`.
 These can be installed from the '[CRAN](https://cran.r-project.org/package=zonebuilder)', '[crates.io](https://crates.io/crates/zonebuilder)', and '[PyPI](https://pypi.org/project/zonebuilder/)' repositories, respectively.
 To further reduce barriers to entry in the creation of ClockBoards to meet specific needs and for fun/education, we have created a simple web application available at [zonebuilders.github.io/zonebuilder-rust](https://zonebuilders.github.io/zonebuilder-rust/) that allows the user to create and download as .geojson files zoning systems based on concentric segmented annuli anywhere in the world.
 
-The approach is not without limitations, and these include limitations with the specific ClockBoard system, limitations with concentric segmented annuli, and limitations associated with 'from scratch' zoning system that do not follow local features such as rivers and historic boundaries.
-In terms of the limitations of the *ClockBoard implementation of the concentric segmented annuli approach*, it is associated with a fairly wide range of zone sizes and shapes, with zone areas ranging from 2 km^2^ in for zones in dohnut B to 33 km^2^ on the outermost dohnut E in a ClockBoard system with 5 rings (and a radius of 28 km).
+The approach is not without limitations, and these include limitations with the specific ClockBoard system, limitations with concentric segmented annuli and 'from scratch' zoning systems that do not follow local features such as rivers and historic boundaries.
+In terms of the limitations of the *ClockBoard implementation of the concentric segmented annuli approach*, it is associated with a fairly wide range of zone sizes and shapes, with zone areas ranging from 2 km^2^ in for zones in dohnut B to 33 km^2^ on the outermost dohnut E in a ClockBoard system with 5 rings (and a radius of 18 km).
 This variability makes the system unsuitable for analyses requiring uniform areas or uniform populations.
-Raster grid cells or administrative zones that keep the population within each zone relatively fixed may be more appropriate in these cases. 
+Raster grid cells or administrative zones that keep the population within each zone relatively fixed may be more appropriate in these cases.
 
-The ClockBoard system is in no way optimal: it is the result of an organic process of trial and error that included testing a range of alternative parameters that generated zones based on concentric segmented annuli.
-<!-- Different approaches were discussed informally with others, including in a hackathon attended by around a dozen self selected people. -->
-It aims to balance the need for comparatively small zones (compared with city quadrants) and simplicity.
-The balanced is tipped towards simplicity, with 'readability' perhaps being the most important criteria in its design.
-ClockBoards enable communication about locations within city with only 3 characters and a simple mental model based on the widely understood concept of a clock.
-Likewise, the triangular number sequence was selected for annuli radii because it resulted in a manageable number of zones even for large cities (ClockBoard zones composed of 10 concentric circles reach 55 km from the central point, reaching outer London, yet are composed of only 109 zones).
+A broader set of limitations apply to *the general approach of using zones of the same size and shape in many to many cities*:
+zone boundaries do not follow local features, with ClockBoard zones covering both sides of the River Thames in London, as illustrated in Figure \@ref(fig:london).
+This results in 'zone islands', with areas separated from the rest of the zone of which they are part by physical barriers such as rivers and large roads.
+The approach leads to zones are more internally diverse than official zone systems, which tend to include similar types of places into the same zone, wish disadvantages when analysing systems that require cohesive zones.
 
-Another limitation of our approach is that it has not been testedt generated subjectively better results when used to visualise datasets that we were using and interested in, such as the air pollution dataset presented in Figure \@ref(fig:cityscale), than when using administrative zones or other zoning systems based on concentric segmented annuli.
-We acknowledge that other input parameters, and indeed other zoning system designs altogether, could have generated better results.
-A specific (and deliberate) limitation of the ClockBoard zoning system is that it works best for phenomena such as mobility behaviour, air pollution, and other human activities that tend to become more dense near city centres, making it poorly suited to the analysis of geographic systems that lack a clearly defined central areas such as rural areas, polycentric conurbations, and countries.
-ClockBoard is therefore useful only for a rather narrow set of urban analytics use cases: the analysis of geographic data in monocentric urban systems and inter-city comparison projects.
+Another potential disadvantage of zoning systems that are invariant from place to place is that city borders are usually irregular.
+Clipping the zones to official city boundaries can address this issue, but creates an additional problem: unhelpfully shaped and sized zones in the periphery of large cities, also shown in Figure \@ref(fig:london).
+To benefit from the standardized zones provided by ClockBoard, we recommend using the system without clipping: ignoring the historic boundary and defining the city bounds with reference to distance from the center can enable inter-city comparison, without being constrained by their historic boundaries.
+<!-- Indeed, any circular zoning system can provide a consistent geographic frame of reference for monocentric cities. -->
 
-A broader set of limitations apply to *concentric segmented annuli for creating zoning systems in general*:
-the approach, by definition, results in curved zones that do not follow local contours.
-The division of London into ClockBoard zones, as illustrated in Figure \@ref(fig:london), creates zones covering both sides of the River Thames, for example.
-Not only does this result in unusually shaped zones pieces and 'zone islands' separated from the rest of the zone of which they are part by physical barriers such as rivers and large roads, it also results in zones that may be more internally diverse than official zone systems which tend to (and are often designed to) include similar types of places into the same zone, with advantaged and disadvantages that depend on the application.
-Zones based on concentric segmented annuli is that they have regular curved edges while in practice city borders are usually irregular.
-Clipping the zones to official city boundaries can address this issue, but creates an additional problem: unhelpfully shaped and sized zones in the periphery of large cities.
-For this reason, and to benefit from the standardised zones provided by ClockBoard, we recommend using the system without clipping in most cases: ignoring the historic boundary and defining the city bounds with reference to distance from the centre, as the ClockBoard system does can help think about urban systems in new ways and directly compare cities with different geographic extents according to their official boundaries, such as London and Paris.
-A broader limitation of uniform grids that are not informed by local datasets, is that the zone shapes and sizes cannot respond to variables such as population density.
-While this may be a major limitation for research projects involving only one city, it could be considered as an advantage when comparing multiple cities.
-
-Any such circular zoning system can provide a consistent geographic frame of reference for monocentric cities, or indeed any geographic system with a clear central point.
-The zones in the ClockBoard zoning system were designed to be sufficiently large so that each could be seen when printed in a low resolution map representing a large city.
-The relatively large zones (which get bigger further from the city centre as density of urban phenomena tends to decrease) also enables labels that are easy to communicate.
-Zone labels contain only three characters (with the exception of zone A) and and clearly demarcate the location of phenomena in terms of angle and distance from the centre, with zone C09 located between 3 and 6 km to the West of the city centre.
-The even growth of rings also enable understanding of the scale of cities and urban phenomena within them, regardless of the size of often arbitrary and historic official boundaries; the first nine rings in the zoning systems (labelled A, B, ... I) grow at constant rate, with radii of 1, 3, 6, 10, 15, 21, 28, 36 and 45 km.
+<!-- The even growth of rings also enable understanding of the scale of cities and urban phenomena within them, regardless of the size of often arbitrary and historic official boundaries; the first nine rings in the zoning systems (labelled A, B, ... I) grow at constant rate, with radii of 1, 3, 6, 10, 15, 21, 28, 36 and 45 km. -->
 <!-- These ring diameters are not only useful to know and relatively easy to remember (with the phrase "in zone D8" instantly communicating the fact that the phenomena is happening between 6 and 10 km from the centre), but also capture the common utility of higher resolution data close to urban centres where population density and complexity is higher. -->
-The consistency of zone sizes and shapes, and the uniform sizes of all ClockBoards that share the same number of rings, could enable more objective and easier to interpret inter-city comparison projects.
-
-The ClockBoard zoning system is not without limitations, however: it represents a series of compromises in which the tendency was towards simplicity and ease of understanding.
-Perhaps the biggest limitation of the system is its implicit assumption that cities are monocentric entities in which urban activity (and hence the need for spatial resolution) declines gradually with distance from the city centre.
-While this assumption broadly holds for phenomena such as air pollution in London, as illustrated in Figure \@ref(fig:cityscale), it needs to be relaxed in many other cases [@alidadi_beyond_2018].
+<!-- The consistency of zone sizes and shapes, and the uniform sizes of all ClockBoards that share the same number of rings, could enable more objective and easier to interpret inter-city comparison projects. -->
+A broader limitation is the implicit assumption that cities are monocentric entities in which urban activity (and hence the need for spatial resolution) declines gradually with distance from the city centre.
+While this assumption broadly holds for phenomena such as air pollution in London, as illustrated in Figure \@ref(fig:cityscale), many cities are polycentric [@alidadi_beyond_2018].
 The ClockBoard zoning system can thus be seen as a zoning system best suited for the analysis of monocentric cities, rather than polycentric conurbations.
 
 A question for further research is how to fit one or several ClockBoards to a dense urban area consisting of several cities, of which none is clearly dominant.
