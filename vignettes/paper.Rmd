@@ -627,11 +627,12 @@ Raster grid cells or administrative zones that keep the population within each z
 
 The ClockBoard system is in no way optimal: it is the result of an organic process of trial and error that included testing a range of alternative parameters that generated zones based on concentric segmented annuli.
 <!-- Different approaches were discussed informally with others, including in a hackathon attended by around a dozen self selected people. -->
-It aims to balance the need for comparatively small zones (compared with city quadrants) and simplicity, with simplicity and 'readability' perhaps being the most important criteria in its design.
-ClockBoards enable communication about locations within city with only 3 characters and a simple mental model based on the widely understood concept of a clock was a key reason why the 12 segment system was chosen;
-likewise, the triangular number sequence was selected for annuli radii because it resulted in a manageable number of zones even for large cities (ClockBoard zones composed of 10 concentric circles reach 55 km from the central point, reaching outer London, yet are composed of only 109 zones).
+It aims to balance the need for comparatively small zones (compared with city quadrants) and simplicity.
+The balanced is tipped towards simplicity, with 'readability' perhaps being the most important criteria in its design.
+ClockBoards enable communication about locations within city with only 3 characters and a simple mental model based on the widely understood concept of a clock.
+Likewise, the triangular number sequence was selected for annuli radii because it resulted in a manageable number of zones even for large cities (ClockBoard zones composed of 10 concentric circles reach 55 km from the central point, reaching outer London, yet are composed of only 109 zones).
 
-We do not believe that ClockBoard is in any way an 'optimal' zoning system: it generated subjectively better results when used to visualise datasets that we were using and interested in, such as the air pollution dataset presented in Figure \@ref(fig:cityscale), than when using administrative zones or other zoning systems based on concentric segmented annuli.
+Another limitation of our approach is that it has not been testedt generated subjectively better results when used to visualise datasets that we were using and interested in, such as the air pollution dataset presented in Figure \@ref(fig:cityscale), than when using administrative zones or other zoning systems based on concentric segmented annuli.
 We acknowledge that other input parameters, and indeed other zoning system designs altogether, could have generated better results.
 A specific (and deliberate) limitation of the ClockBoard zoning system is that it works best for phenomena such as mobility behaviour, air pollution, and other human activities that tend to become more dense near city centres, making it poorly suited to the analysis of geographic systems that lack a clearly defined central areas such as rural areas, polycentric conurbations, and countries.
 ClockBoard is therefore useful only for a rather narrow set of urban analytics use cases: the analysis of geographic data in monocentric urban systems and inter-city comparison projects.
