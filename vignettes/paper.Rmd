@@ -125,7 +125,7 @@ In the 19th Century, zoning systems became known for political reasons, with 'ge
 Gerrymandering has since been the topic of countless academic papers that is the beyond the scope of the present paper.
 
 Research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
-The gerrymandering problem is manifestation of the modifiable area unit problem (MAUP), can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
+The gerrymandering problem is a manifestation of the modifiable area unit problem (MAUP), can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
 Our aim in this paper is not to tackle the MAUP directly, but to provide a 'ready made' zoning system that can demonstrate some of its effects by providing another way to aggregate and present data.
 
 Prior work has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualized to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
