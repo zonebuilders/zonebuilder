@@ -117,15 +117,15 @@ setwd(wd_old)
 
 # Introduction
 
-Zoning systems have long been used for a variety of administrative and practical purposes.
-Zones demarcating parcels of land have been integral to land ownership, rents and urban policies for centuries, forming the basis of a range of social and economic practices.
+Zoning is the process of generating areal units for aggregating, visualisating and potentially modelling geographic datasets.
+The resulting zones --- also commonly referred to as 'areal units' or 'small areas' in the literature --- have long been used to support analysis of human systems.
 Historical examples highlighting the importance of zone layouts include 'tithe maps' determining land ownership and taxes in 18th Century England [@bryant_worcestershire_2007] and the division of cities into discrete areas including legally defined "business, industrial, and residential zones" to tame chaotic urban growth in the exploding US cities in the early 1900s [@baker_zoning_1925].
 
 In the 19th Century, zoning systems became known for political reasons, with 'gerrymandering' entering public discourse and academic research following Elbridge Gerry's apparent attempt to gain political advantage by creating an electoral district in an odd shape that was said to resemble a salamander (hence the term's name combining 'Gerry' and 'salamander') in 1812 [@orr_persistence_1969].
 Gerrymandering has since been the topic of countless academic papers that is the beyond the scope of the present paper.
 
 Research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
-The gerrymandering problem, tself is a manifestation of the modifiable area unit problem (MAUP), can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
+The gerrymandering problem is manifestation of the modifiable area unit problem (MAUP), can be described as a mathematical optimization problem: "$n$ units are grouped into $k$ zones such that some cost function is optimized, subject to constraints on the topology of the zones" [@chou_taming_2006].
 Our aim in this paper is not to tackle the MAUP directly, but to provide a 'ready made' zoning system that can demonstrate some of its effects by providing another way to aggregate and present data.
 
 Prior work has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualized to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 

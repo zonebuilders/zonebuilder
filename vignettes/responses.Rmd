@@ -217,7 +217,7 @@ and frameworks that are relevant. I think the authors should take care
 to limit the use cases and promises of this framework, for reasons
 previously mentioned.
 
-    **Response:** 
+    **Response:** We agree and, in line with other comments, have reframed key parts of the paper, including its aims, target use cases (not navigating around a city!) and potential uses. We have also beefed up the limitations and future research that could help overcome these limitations.
 
     **Style and presentation:** Is the submission clearly written and
 logically structured? Does the submission provide adequate motivation
@@ -232,7 +232,8 @@ the framework, the "continuous space" issue, all of which seem somewhat
 tangentially related to the core questions at hand. Also, as I mentioned
 above, the objective of this paper is unclear.
 
-    **Response:** 
+    **Response:** We have have updated the introduction to make the objectives more clear and narrowly focused.
+    I think the 'blank slate' vs 'continuous space' issue could be a bit confusing and we have focussed more on the 'blank slate' zoning system vs 'BSU grouping' approaches to generating zones for urban analysis.
 
 1. Another major source of confusion is the use of the term 'zones' or
 'zoning'., In the urban context, it generally refers to a system of
@@ -241,7 +242,7 @@ specification of regions, and not necessarily the concept of
 discretizing space that addresses the MAUP problem suggested here, as I
 understand this paper.
 
-    **Response:** 
+    **Response:** We have now defined 'zone' and 'zoning' upfront. We agree the terminology was at times confusing and we have tightened it up in this updated submission.
 
 1. Other minor stylistic notes:
 
@@ -258,14 +259,12 @@ themes of the journal? Is the content interesting to the journal
 readership? Is the submission written in a form readable for a
 multi-disciplinary audience?
 
-    **Response:** 
-
 1. With some reframing and reworking of the structure, I think this paper
 is appropriate for JOSIS and the content would be interesting to the
 journal's readership. It presents applications that may be of interest
 to a general audience.
 
-    **Response:** 
+    **Response:** We agree that this paper will be of interest to JOSIS readers and thank the reviewer for the suggestions that we think have improved the structure and framing.
 
 [^1]: Kevin Lynch, *The Image of the City*, vol. 11 (Cambridge, MA: MIT
     press, 1960).
