@@ -141,7 +141,7 @@ In order to address these shortcomings of zoning systems based on administrative
 The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in 'pre-packaged' small areas and because creating zones from nothing is a harder problem.
 The statement that "existence of individual or non-spatially aggregated data is rare in geography", used by @openshaw_optimal_1977 to justify the BSU grouping approach, may have been true in the 1970s when it was written.
 Today disaggregated geographic datasets are common.
-Open datasets exist on phenomena including as car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as 'point pattern processes'.
+Open datasets exist on phenomena including car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as 'point pattern processes'.
 And with advances in computer hardware and software, the 'starting from scratch' approach to zoning systems is more feasible.
 
 A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualisation purposes, with a variety of applications.
@@ -410,7 +410,7 @@ The examples below are designed to provide an insight into how the zoning system
 ## Describing location
 
 A potential application of the zoning system is to indicate approximate locations with reference to a known central point or area, e.g. to describe a segment of a city.
-ClockBoard zones offer a level of intermediate-to-low accuracy in between the simple use of quadrants to identify parts of a city verbally on one hand, and more sophisticated ways of communicating location to the nearest few metres on the other.
+ClockBoard zones offer a level of intermediate-to-low accuracy in between the simple use of quadrants to identify parts of a city verbally on one hand, and more sophisticated ways of communicating location to the nearest few meters on the other.
 Dividing cities into quadrants and referring to them with names such as 'north', 'northeast', etc. is common in everyday speech and academic writing: a paper on the impact of open spaces on house prices stated that traffic noise was expected to have a negative impact on house prices in "south-east, north-east, and north Portland", with reference to an accompanying map, for example [@bolitzer_impact_2000].
 Location services such as 'what3words' and open source implementations such as 'whatfreewords' and '[goehashphrase](https://www.qalocate.com/solutions/geohashphrase/)' take the concept of converting coordinates into memorable words/phrases a step further, offering accuracy measured in meters rather than kilometers in situations where coordinates may not be appropriate or possible [@raposo_virtual_2019].
 
@@ -500,7 +500,7 @@ The ClockBoard zoning system can enable effective comparison between cities by p
 While official boundaries can vary greatly in size and shape, based on sometimes arbitrary factors such as historic boundaries (as shown in Figure \@ref(fig:intercity), top), ClockBoard zones are always the same size, shape and orientation (as shown in Figure \@ref(fig:intercity), bottom).
 Using the system can provide a basis of evidence-based discussion of geographically aggregated results representing urban phenomena.
 The example demonstrates this with reference to a policy-relevant example: the number of people killed and seriously injured while cycling in major UK cities.
-Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled [@mindell_exposure-based_2012], we show data on the number of people killed and seriously injured while cycling per billion kilometres based on estimates from the Propensity to Cycle Tool [@lovelace_propensity_2017].
+Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled [@mindell_exposure-based_2012], we show data on the number of people killed and seriously injured while cycling per billion kilometers based on estimates from the Propensity to Cycle Tool [@lovelace_propensity_2017].
 
 ```{r intercity, fig.width=7, message=FALSE, warning=FALSE, fig.cap="Comparison of administrative zones (top) and zones in the ClockBoard zoning system (bottom) to support inter-city comparison of policy-relevant data, on road traffic casualties. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.", out.width="85%", fig.show='hold'}
 # download preprocessed data (processing script /data-raw/crashes.R)
