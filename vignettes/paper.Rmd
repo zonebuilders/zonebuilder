@@ -14,7 +14,7 @@ author:
    - name: Martijn Tennekes
      affiliation: Department of Methodology, Statistics Netherlands, The Netherlands
    - name: Dustin Carlino
-     affiliation: Independent Software Engineer, Lead Developer of A/B Street, USA
+     affiliation: Alan Turing Institute, London, UK
 vignette: >
   %\VignetteIndexEntry{ClockBoard: a zoning system for urban analysis}
   %\VignetteEngine{knitr::rmarkdown}
