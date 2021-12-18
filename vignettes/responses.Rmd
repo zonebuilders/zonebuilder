@@ -1,10 +1,11 @@
 ---
-output: github_document
+output: pdf_document
 ---
 
 ```{r, echo=FALSE, eval=FALSE}
 # render the output to github
 rmarkdown::render(input = "vignettes/responses.Rmd", output_file = "responses.md")
+rmarkdown::render(input = "vignettes/responses.Rmd", output_file = "responses.pdf")
 ```
 
 Dear Editor,
