@@ -447,7 +447,7 @@ knitr::include_graphics("navigation.png")
 ```
 
 The ClockBoard zoning system was not designed for locating objects in space in this way; the real world utility of such low resolution indications of spatial location has yet to be tested; and understanding of the zoning system would need to be widespread for it to catch on.
-However, the example demonstrates how the system communicates potentially useful location data with a small amount of verbal information (3 characters).
+However, the example demonstrates how the system communicates potentially useful location data with a small amount of verbal information.
 More plausible use cases include exploring city scale data (covered in the next section) and inter-city comparisons of geographically variable phenomena (covered in the section after).
 
 ## Exploring city scale data
