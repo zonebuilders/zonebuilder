@@ -130,7 +130,7 @@ Our aim in this paper is not to tackle the MAUP directly, but to provide a 'read
 
 Prior work has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualised to the [impact of the nature of 'traffic analysis zones' on transport model outputs](http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf). 
 In fact, this problem is a concise definition of the broader "zoning problem" that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) [@jelinski_modifiable_1996; @chandra_multi-objective_2021].
-Although the range of outcomes is a finite combinatorial optimisation problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria), the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
+Although the range of outcomes is a finite combinatorial optimization problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria), the zoning problem is still hard: "there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations" [@openshaw_optimal_1977].
 
 Pre-existing zoning systems are often based on administrative regions and reflect the hierarchical organizational structure of statistical agencies.
 Well-designed administrative zones are advantageous for many applications, especially in relation to aggregated administrative datasets, but have disadvantages for certain applications.
@@ -144,7 +144,7 @@ Today disaggregated geographic datasets are common.
 Open datasets exist on phenomena including car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as 'point pattern processes'.
 And with advances in computer hardware and software, the 'starting from scratch' approach to zoning systems is more feasible.
 
-A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualisation purposes, with a variety of applications.
+A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualization purposes, with a variety of applications.
 Functional zone classification is common in the field of remote sensing and associated sub-fields involved in analysing and classifying raster datasets [@ciglic_evaluating_2019; @hesselbarth_landscapemetrics_2019].
 While such pixel-based approaches can yield complex and flexible results (depending on the geographic resolution of the input data), they are still constrained by the building blocks of the pixels, which can be seen as a particular type of areal unit, a uniformly sized and shaped BSU.
 Approaches to creating zoning systems *starting from* origin-destination have also been developed [@zhang_detecting_2021] and, although these approaches tend also to start from BSUs, they could be extended to generate 'bottom up' datasets starting from individual-level GPS type datasets. 
