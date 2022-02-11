@@ -516,6 +516,13 @@ thames = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/downl
 df = readRDS(url("https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/ksi_cycl_per_admin_zone.Rds"))
 df_filtered = df %>% 
   mutate(ksi_bkm = ifelse((bkm_yr * 1e09) < 2e04, NA, ksi_bkm))
+
+city_outlines = df_filtered %>% 
+  sf::st_buffer(dist = 100) %>% 
+  group_by(city) %>% 
+  summarise(n = n())
+# plot(city_outlines)
+
 tmap_mode("plot")
 tm_shape(uk) +
  tm_fill(col = "white") +
@@ -541,8 +548,9 @@ tm_shape(df_filtered, is.master = TRUE) +
   tm_borders(lwd = 1, col = "black", lty = 3) +
   tm_shape(thames) +
   tm_lines(lwd = 1, col = "black", lty = 3) +
-  tm_layout(bg.color = "lightblue")
-
+  tm_shape(city_outlines) +
+  tm_borders(lwd = 2, col = "black") +
+  tm_layout(bg.color = "lightblue") 
 ```
 
 The results presented in Figure \@ref(fig:intercity) (top) using administrative zones demonstrate the issues with using commonly available zones provided by statistical authorities: areal units vary dramatically in terms of size and shape; and the definition of each city's boundary distorts the results, with Manchester represented by a long and thin region that does not fit well within facetted maps.
