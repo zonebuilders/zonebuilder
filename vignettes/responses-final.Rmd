@@ -18,3 +18,13 @@ In fact we discuss in the limitations the fact that the system has not been eval
 Such user testing could be based on established approaches for evaluating digital products, including focus groups, surveys or interviews with potential users
 
 However, we agree that academics, the most likely audience of the paper, will primarily find the system useful for comparing cities and have acted on this insight accordingly.
+
+In terms of the specifice comments:
+
+- We have updated the text referring to the effects of the MAUP, which is now more clear: "The aim is to provide a 'ready made' zoning system that can demonstrate and to some extent control for (between cities) the effects of the MAUP by providing another way to aggregate and present data."
+
+- Good point about impact of irregular shapes and variability. We have updated the prose to make it clear that irregular shapes can disguise spatial patterns, as illustrated in Figure 6.
+
+- We agree, it's not about locating phenomena so much as spatial entities and places, good point. We have updated the prose accordingly.
+
+- 
