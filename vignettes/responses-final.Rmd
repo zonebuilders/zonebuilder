@@ -2,3 +2,19 @@ We are very happy to resubmit the paper with minor updates requested.
 
 We have updated Figure 7, which we agree looks much better with the city boundaries overlaid over the ClockBoard zones.
 
+We agree the inter-city comparison aspect of the zoning system is the strongest unique feature of the approach.
+We are less sure than Reviewer 2 that others will not find it useful for other purposes, and cannot predict how people will use it.
+In response to the critique, which we broadly agree with, we have emphasized inter-city comparison aspects of the system.
+
+We have updated the abstract to mention inter-city comparisons.
+We have updated the bullet points outlining the motivations for the paper to make it clear that inter-city comparison was the most important motivation.
+There is an interesting debate to be had about the extent to which the ClockBoard zoning system lives up to the motivating principles that initiated the research, that we engage in towards the end of the paper.
+However, we think it important to state upfront the motivations.
+
+We disagree that we evaluate the system based on legibility.
+In fact we discuss in the limitations the fact that the system has not been evaluated, and suggest ways to evaluate the approach and its uses in future research:
+
+> While informal and anecdotal feedback has been positive, user testing is needed to identify for which of the potential applications outlined in this paper the ClockBoard system is best suited.
+Such user testing could be based on established approaches for evaluating digital products, including focus groups, surveys or interviews with potential users
+
+However, we agree that academics, the most likely audience of the paper, will primarily find the system useful for comparing cities and have acted on this insight accordingly.

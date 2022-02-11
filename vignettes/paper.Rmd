@@ -39,7 +39,9 @@ abstract: |
   often highly variable in size and shape, reducing their
   utility for inter-city comparison; and 3) official zoning systems in many places
   simply do not exist or are unavailable.
-  We set out to develop a flexible, open and scalable solution to these problems.
+  We set out to develop a flexible, open and scalable solution to these problems
+  that enables comparison of geographic phenomena across different cities with
+  zones of consistent and visually appealing sizes and shapes.
   The result is the ClockBoard zoning system, which
   consists of 12 segments emanating from a central place and divided by concentric rings
   with radii that increase in line with the triangular number sequence (1, 3, 6 km etc).
@@ -174,7 +176,15 @@ As a consequence, smaller zones are often preferable in denser areas, which ofte
 
 The overall aim of this paper is to highlight the potential for new zoning systems to support urban analysis.
 We do this by presenting a zoning system that enables inter-city comparison using zones of the same size and shape regardless of the city's location, which can be generated rapidly and in a reproducible manner with minimal data requirements.
-The specific motivations for embarking on the idea, and its implementation in open source software, were as follows:
+The specific motivations for embarking on the idea, and its implementation in open source software, in descending order of importance, were as follows:
+
+-   Comparing cities.
+    By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared.
+    
+-   Aggregation for descriptive statistics.
+    It is often useful or necessary to present geographical data in an aggregate form.
+    A consistently sized and shaped set of zones can support attractive, clear and meaningful visualization.
+
 
 -   Locating phenomena in cities.
     Automated zoning systems based on a clear center-point can support map interpretation by making it immediately clear where the city center is, and what the scale of the city is.
@@ -183,13 +193,6 @@ The specific motivations for embarking on the idea, and its implementation in op
     The zone name contains information about the distance to the center as well as the cardinal direction.
     E.g "I live in C12 and work in B3." or "The train station is in the center and our hotel is in B7".
     Moreover, the zones indicate whether walking and cycling is a feasible option regarding the distance.
-
--   Aggregation for descriptive statistics.
-    It is often useful or necessary to present geographical data in an aggregate form.
-    A consistently sized and shaped set of zones can support attractive, clear and meaningful visualization.
-
--   Comparing cities.
-    By using the zoning system to aggregate statistics (e.g. on population density, air quality, bicycle use, number of dwellings), cities can easily be compared.
 
 The paper is structured as follows.
 The next section outlines the approach, which requires only 2 inputs: the coordinates of the central place in the urban system under investigation, and the minimum radius from that central point that the zoning system should extend.
