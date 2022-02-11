@@ -23,8 +23,8 @@ In terms of the specifice comments:
 
 - We have updated the text referring to the effects of the MAUP, which is now more clear: "The aim is to provide a 'ready made' zoning system that can demonstrate and to some extent control for (between cities) the effects of the MAUP by providing another way to aggregate and present data."
 
-- Good point about impact of irregular shapes and variability. We have updated the prose to make it clear that irregular shapes can disguise spatial patterns, as illustrated in Figure 6.
+- Good point about impact of irregular shapes and variability. We have updated the prose to make it clear that irregular shapes can disguise spatial patterns, as illustrated in Figure 6, which we now use as a concrete example of what we're talking about.
 
 - We agree, it's not about locating phenomena so much as spatial entities and places, good point. We have updated the prose accordingly.
 
-- 
+- We think that the uniqueness of the zoning system is not relevant to the motivations and we think that the uniqueness or otherwise of the system is covered well in other places in the paper, particularly in the discussion.  However, we have emphasised that the comparison between cities is a key contribution.
