@@ -1,4 +1,4 @@
-We are very happy to resubmit the paper with minor updates requested.
+We are very happy to resubmit the paper with minor updates requested, please find the updated version in a [zip here](https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/clockboard-paper-resubmission-final-corrections.zip) and the comments on the very useful final comments below.
 
 We have updated Figure 7, which we agree looks much better with the city boundaries overlaid over the ClockBoard zones.
 
@@ -28,3 +28,5 @@ In terms of the specifice comments:
 - We agree, it's not about locating phenomena so much as spatial entities and places, good point. We have updated the prose accordingly.
 
 - We think that the uniqueness of the zoning system is not relevant to the motivations and we think that the uniqueness or otherwise of the system is covered well in other places in the paper, particularly in the discussion.  However, we have emphasised that the comparison between cities is a key contribution.
+
+Find our corrected version, with all source files for typesetting, here: https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/clockboard-paper-resubmission-final-corrections.zip
