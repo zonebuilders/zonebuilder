@@ -1,0 +1,4 @@
+We are very happy to resubmit the paper with minor updates requested.
+
+We have updated Figure 7, which we agree looks much better with the city boundaries overlaid over the ClockBoard zones.
+
