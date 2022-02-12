@@ -1,0 +1,856 @@
+%% josis.tex 1.4   2016-09-15    JoSIS latex template
+%------------------------------------------------------------------
+% Filename: josis_template.tex
+%
+% This file is intended as a template for typesetting articles for the
+%
+%                        Journal of Spatial Information Science.
+%
+% Please edit this template to generate your own formatted manuscripts
+% for submission to JOSIS. See http://josis.org for further details.
+%
+
+
+%%% JOSIS checks in typesetting
+%%% * All titles and sections lower case *EXCEPT short title  [ ]
+%%% * Remove author postal addresses, only have geographic places and institutions [ ]
+%%% * Consistent use of Section, Figure, Table (capitalized and in full) [ ]
+%%% * 10 keywords (and all lower case) [ ]
+%%% * Remove all avoidable footnotes [ ]
+%%% * Use double quotation marks (``'' not "" or `') [ ]
+%%% * Punctuation inside quotations [ ]
+%%% * E.g. and i.e. followed by comma [ ]
+%%% * cf. followed by tilde [ ]
+%%% * Itemize and enumerate correctly punctuated [e.g., "1. x, 2. y, and 3. x." ]
+%%% * And/or lists using American English punctuation (e.g., "x, y, and z") [ ]
+%%% * Bibliography (e.g., en-dashes for number ranges, consistent "Proc.~" for Proceedings of..., etc.) []
+%%% * Acknowledgment style use section* [ ]
+%%% * et al. no italics, but with dot  [ ]
+%%% * All captions end with full stop  [ ]
+%%% * Table captions under, not over table  [ ]
+%%% * Adjust urls with burlalt [ ]
+%%% * Check correct use of hyphens, emdashes, endashes  [ ]
+%%% * Perform spell check  [ ]
+
+%%% JOSIS checks directly before publication
+%%% Check DOI, page numbers on article and web site. [ ]
+%%% Update web site with final title, abstract, keywords. [ ]
+%%% Build with distiller for DOI links. [ ]
+
+
+% Required documentclass definition for JOSIS
+\documentclass{josis}
+\usepackage{hyperref}
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage[T1]{fontenc}
+\usepackage{cite}
+
+% Suggested packages for algorithm formatting
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+
+
+\usepackage[table]{xcolor}
+\usepackage{amssymb,amsmath}
+
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+
+% Page setup and overhangs
+\sloppy
+\widowpenalty=10000
+\clubpenalty=10000
+\hyphenpenalty=75
+
+% For figures and more when knitting from .Rmd:
+% https://stackoverflow.com/questions/41052687/
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{longtable,booktabs,array}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+% Article details for accepted manuscripts will be added by editorial staff
+% Omit year if article in press
+% Omit number if article under review
+\josisdetails{%
+   number=N, year=YYYY, firstpage=xx, lastpage=yy,
+  doi={10.5311/JOSIS.YYYY.II.NNN},
+   received={August 12, 2021},
+   returned={November 6, 2021},
+   revised={January 12, 2022},
+   accepted={February 11, 2022}, }
+
+\newcommand{\mydoi}[1]{\href{http://dx.doi.org/#1}{doi:\protect\detokenize{#1}}}
+
+%\renewcommand{\UrlLeft}{http:\sslash}
+%\DeclareUrlCommand\myurl{\def\UrlLeft{}\def\UrlRight{}%
+%\urlstyle{tt}}
+
+\urlstyle{rm}
+\makeatletter
+% Inspired by http://anti.teamidiot.de/nei/2009/09/latex_url_slash_spacingkerning/
+% but slightly less kern and shorter underscore
+\let\UrlSpecialsOld\UrlSpecials
+\def\UrlSpecials{\UrlSpecialsOld\do\/{\Url@slash}\do\_{\Url@underscore}}%
+\def\Url@slash{\@ifnextchar/{\kern-.11em\mathchar47\kern-.2em}%
+    {\kern-.0em\mathchar47\kern-.08em\penalty\UrlBigBreakPenalty}}
+\def\Url@underscore{\nfss@text{\leavevmode \kern.06em\vbox{\hrule\@width.3em}}}
+\makeatother
+
+\hypersetup{
+colorlinks=true,
+linkcolor=black,
+citecolor=black,
+urlcolor=black
+}
+
+% Add the running author and running title information
+\runningauthor{\begin{minipage}{.9\textwidth}\centering , \end{minipage}}
+\runningtitle{The ClockBoard Zoning System}
+
+% Document begins
+\begin{document}
+%\setcounter{page}{33}
+
+
+% Insert your own title
+\title{ClockBoard: a zoning system for urban analysis}
+
+% Insert your manuscipts authors, affiliations, and addresses
+  \author{Robin Lovelace}\affil{Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK}
+  \author{Martijn Tennekes}\affil{Department of Methodology, Statistics Netherlands, The Netherlands}
+  \author{Dustin Carlino}\affil{Independent Software Engineer, Lead Developer of A/B Street, USA}
+
+\maketitle
+
+% Add 5-10 keywords for every submission
+\keywords{zoning, areal data, zoning systems, modifiable area unit problem}
+
+% Add a short abstract of 150-250 words
+\begin{abstract}
+Zones are the building blocks of urban analysis. Fields ranging from
+demographics to transport planning routinely use zones --- spatially
+contiguous areal units that break-up continuous space into discrete
+chunks --- as the foundation for diverse analysis techniques. Key
+methods such as origin-destination analysis and choropleth mapping
+rely on zones with appropriate sizes, shapes and coverage. However,
+existing zoning systems are sub-optimal in many urban analysis
+contexts, for three main reasons: 1) administrative zoning systems are
+often based on somewhat arbitrary factors; 2) zoning systems that are
+evidence-based (e.g.~based on equal population size) are
+often highly variable in size and shape, reducing their
+utility for inter-city comparison; and 3) official zoning systems in many places
+simply do not exist or are unavailable.
+We set out to develop a flexible, open and scalable solution to these problems.
+The result is the ClockBoard zoning system, which
+consists of 12 segments emanating from a central place and divided by concentric rings
+with radii that increase in line with the triangular number sequence (1, 3, 6 km etc).
+`ClockBoards' thus create a consistent visual frame of reference
+for monocentric cities that is reminiscent of clocks and a dartboard.
+This paper outlines the design and potential uses of the ClockBoard
+zoning system in the historical context, and
+discusses future avenues for research into the design and assessment of zoning systems.
+\end{abstract}
+
+\newpage
+
+\begin{verbatim}
+
+Note: this paper has been accepted for publication in JOSIS.
+Please cite it as follows for now:
+
+Lovelace, Robin, Martijn Tennekes, and Dustin Carlino. 2022.
+‘ClockBoard: A Zoning System for Urban Analysis’. OSF Preprints:
+https://doi.org/10.31219/osf.io/vncgw.
+
+In summer 2022 full citation details will be available from 
+JOSIS: http://josis.xyz/index.php/josis
+
+@article{lovelace_clockboard_2022,
+  title = {{{ClockBoard}}: A Zoning System for Urban Analysis},
+  shorttitle = {{{ClockBoard}}},
+  author = {Lovelace, Robin and Tennekes, Martijn and Carlino, Dustin},
+  date = {2022},
+  publisher = {{OSF Preprints}},
+  doi = {10.31219/osf.io/vncgw},
+  url = {https://osf.io/vncgw/},
+}
+\end{verbatim}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Zoning is the process of generating areal units for aggregating, visualizing, and potentially modeling geographic datasets.
+The resulting zones --- also commonly referred to as `areal units' or `small areas' in the literature --- have long been used to support analysis of human systems.
+Historical examples highlighting the importance of zone layouts include `tithe maps' determining land ownership and taxes in 18th Century England {[}1{]} and the division of cities into discrete areas including legally defined ``business, industrial, and residential zones'' to tame chaotic urban growth in the exploding US cities in the early 1900s {[}2{]}.
+
+In the 19th Century, zoning systems became known for political reasons, with `gerrymandering' entering public discourse and academic research following Elbridge Gerry's apparent attempt to gain political advantage by creating an electoral district in an odd shape that was said to resemble a salamander (hence the term's name combining `Gerry' and `salamander') in 1812 {[}3{]}.
+Gerrymandering has since been the topic of countless academic papers that is the beyond the scope of the present paper.
+
+Research has made great progress in mathematical analysis of zones and more objective assessment of the impacts that the nature of zoning systems can have on zone-based statistics (such as number of votes for a particular party in each zone) and outcomes.
+The gerrymandering problem is a manifestation of the modifiable area unit problem (MAUP), can be described as a mathematical optimization problem: ``\(n\) units are grouped into \(k\) zones such that some cost function is optimized, subject to constraints on the topology of the zones'' {[}4{]}.
+Our aim in this paper is not to tackle the MAUP directly, but to provide a `ready made' zoning system that can demonstrate some of its effects by providing another way to aggregate and present data.
+
+Prior work has demonstrated the sensitivity of urban analysis outcomes to zone system design, from the way cities are visualized to the \href{http://www.iasi.cnr.it/ewgt/13conference/145_binetti.pdf}{impact of the nature of `traffic analysis zones' on transport model outputs}.
+In fact, this problem is a concise definition of the broader ``zoning problem'' that starts from the assumption that zones are to be composed of one or more basic statistical units (BSUs) {[}5,6{]}.
+Although the range of outcomes is a finite combinatorial optimization problem (which combination of BSU-zone aggregations satisfy/optimize some pre-determined criteria), the zoning problem is still hard: ``there are a tremendously large number of alternative partitions, a similar number of different results, and only a slightly smaller number of different interpretations'' {[}7{]}.
+
+Pre-existing zoning systems are often based on administrative regions and reflect the hierarchical organizational structure of statistical agencies.
+Well-designed administrative zones are advantageous for many applications, especially in relation to aggregated administrative datasets, but have disadvantages for certain applications.
+First, the administrative regions often change over time, hindering spatio-temporal analysis.
+Second, since the administrative zones have different sizes and shapes in different cities, they may not be ideal when comparing cities.
+In order to address these shortcomings of zoning systems based on administrative regions, our aim in this paper is to build a zoning system from scratch, i.e.~to divide a \emph{continuous} geographic space into zones \textbf{starting from a blank slate}.
+
+The focus of much preceding zoning research on BSU partitioning can be explained by the fact that much geographic data available to academics comes in `pre-packaged' small areas and because creating zones from nothing is a harder problem.
+The statement that ``existence of individual or non-spatially aggregated data is rare in geography'', used by {[}7{]} to justify the BSU grouping approach, may have been true in the 1970s when it was written.
+Today dis-aggregated geographic datasets are common.
+Open datasets exist on phenomena including car crashes, shop locations, species identification data and dozens of other phenomena that can be understood as `point pattern processes'.
+And with advances in computer hardware and software, the `starting from scratch' approach to zoning systems is more feasible.
+
+A number of approaches have tackled the question of how to best divide up geographical space for analysis and visualization purposes, with a variety of applications.
+Functional zone classification is common in the field of remote sensing and associated sub-fields involved in analyzing and classifying raster datasets {[}8,9{]}.
+While such pixel-based approaches can yield complex and flexible results (depending on the geographic resolution of the input data), they are still constrained by the building blocks of the pixels, which can be seen as a particular type of areal unit, a uniformly sized and shaped BSU.
+Approaches to creating zoning systems \emph{starting from} origin-destination have also been developed {[}10{]} and, although these approaches tend also to start from BSUs, they could be extended to generate `bottom up' datasets starting from individual-level GPS type datasets.
+
+In this paper we are interested in the division of \emph{continuous space} into completely new areal systems.
+This has been done using lines representing points with equal journey time from locations (isochrones) and the areas bound by them {[}11{]}, population density (isopleths) {[}12{]} and model parameters which continuous geographical space {[}13{]}.
+The boundaries created by these various `iso' maps are `procedurally generated' areal units of the type that this paper focuses, but their variability and often irregular shapes make them impractical for many types of urban analysis.
+
+Procedural generation, which involves the generation of data through a repeated and sometimes randomized computational process has long been used to represent physical phenomena {[}14{]}. The approach has been used to generate spatial entities including roads {[}15{]}, indoor layouts of buildings {[}16{]} and urban layouts {[}17{]}. Algorithms have also been developed to place linear features on a map, as illustrated by an algorithm that optimizes the placement of overlapping linear features for cartographic visualization {[}18{]}.
+However, no previous research has demonstrated the creation of zoning systems specifically for the purposes of urban analysis.
+
+New visualization techniques are needed to represent new (or newly quantifiable) concepts and emerging datasets (such as OpenStreetMap) in urban analysis.
+The visualization of direction has been driven by new navigational requirements and datasets, with circular compasses and displays common in land and sea navigational systems since the mid 1900s {[}19{]}. Circular visualization techniques, in the form of rose diagrams, were used in a more recent study to indicate the most common road directions relative to North {[}20{]}. The resulting visualizations are attractive and easy to interpret, but are not geographical, in the sense that they cannot meaningfully be overlaid on mapped data.
+
+The approach we present in this paper is more closely analogous to `grid sample' approaches used in ecological and population research {[}21{]} . Historically, environmental researchers have used rectangular (and usually square) grids to divide up space and decide sampling strategies. Limitations associated with this simplistic strategy have been documented since at least the 1960s, with a prominent paper on geographic sampling strategies outlining advantages and disadvantages of simple random, systematic and stratified sampling techniques in 1967 {[}22{]}. Starting with data at the level of raster grid cells and BSUs, a related approach is to sample from within available `pixels' to generate a representative sample {[}23{]}.
+
+Unlike BSU based zoning systems, the use of rectangular grids or `quadrats' was common {[}22{]}.
+The approach was particularly useful before administrative zones became widespread.
+Unlike `procedurally generated' areas, grid-based strategies generate areal units of consistent sizes and shapes.
+However, grid-based strategies are limited in their applicability to urban research because they seldom generate geographically contiguous results and do not account for the strong tendency of human settlements to have a (more-or-less clearly demarcated) central location with higher levels of activity.
+
+However, grid tiles are popular in spatial statistics for a number of reasons.
+Most importantly the tiles have a constant area size, which makes comparably possible; specifying the lines that define them ensures that they do not change over time, unlike administrative regions.
+Like the zoning system presented in this paper, grid tiles depend on a CRS and may become distorted over large (continental) spatial scales (this is not much of an issue for zoning systems that only aim to provide zones for a single city at a time like that presented here).
+Another downside from a statistical perspective is that population density tends to increase towards a central point.
+As a consequence, smaller zones are often preferable in denser areas, which often means towards the city center: for this reason administrative regions are often smaller in central areas and larger on the outskirts of cities, as illustrated with reference to London in Figure \ref{fig:cityscale}.
+
+The overall aim of this paper is to highlight the potential for new zoning systems to support urban analysis.
+We do this by presenting a zoning system that enables inter-city comparison using zones of the same size and shape regardless of the city's location, which can be generated rapidly and in a reproducible manner with minimal data requirements.
+The specific motivations for embarking on the idea, and its implementation in open source software, were as follows:
+
+\begin{itemize}
+\item
+  Locating phenomena in cities.
+  Automated zoning systems based on a clear center-point can support map interpretation by making it immediately clear where the city center is, and what the scale of the city is.
+\item
+  Reference system for everyday life.
+  The zone name contains information about the distance to the center as well as the cardinal direction.
+  E.g ``I live in C12 and work in B3.'' or ``The train station is in the center and our hotel is in B7''.
+  Moreover, the zones indicate whether walking and cycling is a feasible option regarding the distance.
+\item
+  Aggregation for descriptive statistics.
+  It is often useful or necessary to present geographical data in an aggregate form.
+  A consistently sized and shaped set of zones can support attractive, clear and meaningful visualization.
+\item
+  Comparing cities.
+  By using the zoning system to aggregate statistics (e.g.~on population density, air quality, bicycle use, number of dwellings), cities can easily be compared.
+\end{itemize}
+
+The paper is structured as follows.
+The next section outlines the approach, which requires only 2 inputs: the coordinates of the central place in the urban system under investigation, and the minimum radius from that central point that the zoning system should extend.
+Section 3 describes a number of potential applications, ranging from rudimentary navigation and location identification to mobility analysis.
+Finally, in Section 4, we discuss limitations of the approach and possible directions of research and development to generate additional zoning systems for urban analysis.
+
+\hypertarget{clockzs}{%
+\section{The ClockBoard zoning system}\label{clockzs}}
+
+The aim of the ClockBoard zoning system is to tackle the issues associated with available zoning systems and to provide a standard template for research and communication purposes.
+The requirements of urban analysts, geographers, transport modelers and others working with geographic data across cities are diverse, but all rely on zoning systems as a foundation for modeling and visualization.
+To enable flexibility, and to encourage other zoning systems building on it, the ClockBoard zoning system described in this paper is presented as a specific implementation of a more general concept (segmented concentric annuli) and implemented in open source software which can be extended in a range of ways (see Discussion).
+Considering urban analysis, modeling and wider research, visualization and communication requirements of zoning systems, we developed the following criteria for successful zoning systems.
+Zoning systems for urban analysis should:
+
+\begin{itemize}
+\tightlist
+\item
+  contain intuitively named zones, enabling public communication of research, e.g.~with reference common perceptions of space in terms of distance from the city center and direction relative to North
+\item
+  have a well-balanced number of zones since too many or too few zones may cause issues with analysis and visualization
+  be easy to visualize without too many or too few zones
+\item
+  include zones of consistent and useful sizes, for example with zone areas increasing with distance from the urban centers to reflect relatively high densities in central locations
+\item
+  be `scale agnostic', capable of representing a range of urban forms ranging from extensive cities such as Mexico City to compact cities such as Hong Kong
+\item
+  be extensible and based on open source software, enabling others to create alternative zoning systems suited to diverse needs
+\end{itemize}
+
+Considering the above criteria, we explored many zoning options, some of which are illustrated in Figure \ref{fig:options}.
+Two key concepts that make up the zoning system described in this paper are concentric annuli and segments defined by radii.
+
+\begin{itemize}
+\item
+  \textbf{Concentric rings} --- formally called `concentric annuli' --- which emphasize central locations and have been used to explore the relationships between the characteristics of `focal trees' and surrounding trees in ecological research {[}24{]}, as shown in Figure \ref{fig:options} (A).
+\item
+  \textbf{Segments}, defined by radial lines emanating from the central point of the settlement (or other geographic entity) to be divided into zones, as shown in Figure \ref{fig:options} (B).
+\end{itemize}
+
+Combining these two concepts creates a general approach to zone creation that can be described as `segmented concentric annuli', an implementation of which that we considered early in the process of designing the ClockBoard system with roughly equally sized zones (not the ClockBoard system) is shown in Figure \ref{fig:options} (C).
+After a period of informal testing and feedback that lasted approximately six months, we developed and refined the `ClockBoard' zoning system presented in this paper, which is a specific implementation of the segmented concentric annuli approach to zone creation.
+
+The parameters that define the ClockBoard zoning system were developed in an iterative process.
+We experimented with a range of ways of dividing the concentric annuli into different zones by modifying the distances between rings (the annuli borders) and the number of segments per annulus.
+It became apparent that zoning systems based on the two organizing principles (and modifiable parameters) of concentric annuli and segments held promise, but selecting appropriate settings for each was key to the development of the ClockBoad zoning system, as outlined below.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.32\linewidth]{paper_files/figure-latex/options-1} \includegraphics[width=0.32\linewidth]{paper_files/figure-latex/options-2} \includegraphics[width=0.32\linewidth]{paper_files/figure-latex/options-3} 
+
+}
+
+\caption{Illustration of ideas explored in the lead-up to the development of the ClockBoard zoning system, highlighting the incremental and iterative evolution of the approach.}\label{fig:options}
+\end{figure}
+
+\hypertarget{annuli-radii}{%
+\subsection{Annuli radii}\label{annuli-radii}}
+
+Each annuli is defined by its inner and outer circle.
+Given that the radius of the inner circle must the same as the radius of the preceding annuli to ensure geographically contiguity (no gaps) --- except in the special case of the first and central annuli which has no inner circle (or an inner circle with a radius of zero) --- the annuli sizes can be wholly defined by the sequence of numbers defining their out circle radii.
+
+This sequence of numbers can increase by a fixed amount --- e.g.~with the outer border of each annuli being 1 km from the center than the preceding annulus, as shown in Figure \ref{fig:options} (C) --- or by varying amounts.
+In many cases it is useful for zones to be smaller near the center of the study region surrounding cities, whether the zones are used for the publication of statistical data (often referred to as `census tracts' in the USA and `output areas' in the UK, for example) or transport models, which often use dedicated zones referred to as traffic analysis zones (TAZ) {[}6{]}.
+
+After experimenting with various ways to increment annuli width,
+and considering the importance of easy to remember distances from central points from the perspective of readability, interpretation and simplicity of the system, we settled on linear increases in width as a sensible default for the ClockBoard zoning system.
+This linear growth leads to distances between the outer circles of each annuli and the central point following in the \href{https://en.wikipedia.org/wiki/Triangular_number}{triangular number sequence} {[}25{]}.
+This means that all points in the first annuli (labelled A) are up to 1 km away from the city center; a circle with a diameter of 1 km is an easy to remember (albeit not always accurate) way to define the central area of urban areas {[}26{]}.
+The furthest points from the central point of the next 8 subsequent annuli in the system (annuli B to I) are 3, 6, 10, 15, 21, 28, 36 and 45 km respectively, meaning that even a large city such as London requires only 8 annuli to cover it entirely (Figure \ref{fig:london}).
+This and other other attributes of the first set of 9 zones in the ClockBoard zoning system in Table \ref{tab:t1}.
+
+\begin{table}
+
+\caption{\label{tab:t1}Key attributes of the ClockBoard zoning system, highlighting its flexibility ranging from a single central zone (zone A is a circle with radius of 1 km) to a zoning system with a radius of 45 km and 97 zones. The number of rings can be varied to match the size of the city under investigation.}
+\centering
+\begin{tabular}[t]{rlrrrr}
+\toprule
+N. annuli & Outer annuli label & N. zones & Radius (km) & Area (sqkm) & Av. zone size (km)\\
+\midrule
+1 & A & 1 & 1 & 3 & 3\\
+2 & B & 13 & 3 & 28 & 2\\
+3 & C & 25 & 6 & 113 & 5\\
+4 & D & 37 & 10 & 314 & 8\\
+5 & E & 49 & 15 & 707 & 14\\
+\addlinespace
+6 & F & 61 & 21 & 1385 & 23\\
+7 & G & 73 & 28 & 2463 & 34\\
+8 & H & 85 & 36 & 4072 & 48\\
+9 & I & 97 & 45 & 6362 & 66\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hypertarget{number-of-segments}{%
+\subsection{Number of segments}\label{number-of-segments}}
+
+As its name suggests, the ClockBoard zoning system has 12 segments, representing a compromise between specificity of zone identification and ease of comprehension.
+On one hand, too few segments result in large and/or unusually shaped zones, as illustrated in a segmented concentric annuli zoning system with four segments per annuli developed by {[}26{]} to model urban expansion.
+On the other hand, too many segments would result in small zones and make the zone codes harder to understand: imagine a system with 256 segments and saying ``I'm in zone E173''!
+
+Another advantage of using 12 segments is that the angular distance between segments are well understood.
+The `clock position' system describes bearings with reference to the face of a clock, relative to the direction of travel or, as is the case with the ClockBoard zoning system, relative to true North.
+Under this system, well established in navigation, ``12 o'clock'' means true North and 3, 6 and 9 o'clock mean East, South and West respectively {[}27{]}.
+Following this convention, the ClockBoard zoning system aligns segment 12 with true North, enabling users to approximate their location in a city with reference to clock position .
+
+\hypertarget{clockboard-zones-for-segmenting-urban-areas}{%
+\subsection{ClockBoard zones for segmenting urban areas}\label{clockboard-zones-for-segmenting-urban-areas}}
+
+The result of applying 12 segments and n concentric rings with external diameter increasing as triangular numbers, with n being sufficient to cover the city extent with, is the Clockboard zoning system.
+As outlined in the Introduction, the primary motivation for developing the system was urban analysis and the description, visualization and exploratory analysis of large cities with well-defined central areas such as London, as illustrated in Figure \ref{fig:london}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{paper_files/figure-latex/london-1} 
+
+}
+
+\caption{The clockboard zoning system, applied to Greater London, UK.}\label{fig:london}
+\end{figure}
+
+\hypertarget{using-the-clockboard-zoning-system}{%
+\subsection{Using the ClockBoard zoning system}\label{using-the-clockboard-zoning-system}}
+
+To enable easy access to the ClockBoard zoning system, we implemented techniques needed to create them in free and open source software.
+The tools described below allow people to create ClockBoards in a reproducible way from command line environments and even from a web browser, to minimize barriers to entry.
+
+\hypertarget{the-zonebuilder-r-package}{%
+\subsubsection{The zonebuilder R package}\label{the-zonebuilder-r-package}}
+
+The concepts were initially implemented in the statistical programming language R, which is available from the Comprehensive R Archive Network (\href{https://cran.r-project.org/package=zonebuilder}{CRAN}) and can be installed from the R command line as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"zonebuilder"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+After the package has been installed, its functions can be attached (made available) to the user's workspace as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(zonebuilder)}
+\end{Highlighting}
+\end{Shaded}
+
+A simple zoning system for Tokyo is created and plotted in the R code chunk below, resulting in the map shown in Figure \ref{fig:tokyo}.
+In the code chunk below, the character string ``Tokyo'' is the first argument in the \texttt{zb\_zone()} function (which can also be a spatial point object).
+When the first argument is a text string, as is the case here, the package automatically converts it into a geographic location using the Nominatim online service, which is based on data from OpenStreetMap; the \texttt{zb\_view()} function creates an interactive map.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ClockBoard\_tokyo }\OtherTok{=} \FunctionTok{zb\_zone}\NormalTok{(}\StringTok{"Tokyo"}\NormalTok{, }\AttributeTok{n\_circles =} \DecValTok{5}\NormalTok{)}
+\FunctionTok{zb\_view}\NormalTok{(ClockBoard\_tokyo, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{tokyo} 
+
+}
+
+\caption{ClockBoard zoning system applied to Tokyo, the result of running the reproducible code used to demonstrate the zonebuilder R package.}\label{fig:tokyo}
+\end{figure}
+
+Note that the \texttt{n\_circles} argument was set to 5, resulting in a zoning system 15 km in radius (see Table \ref{tab:t1}).
+This can be changed; replacing \texttt{5} with \texttt{9}, for example, would results in a zoning system with an outer circle radius of 45 km.
+Furthermore, passing an object representing the geographic extent of Tokyo as a polygon to the \texttt{area} argument of the \texttt{zb\_zone()} function would result in a zoning system that is intersected by Tokyo's boundary.
+
+\hypertarget{the-zonebuilder-rust-crate}{%
+\subsubsection{The zonebuilder Rust crate}\label{the-zonebuilder-rust-crate}}
+
+To make the project and resulting zones available to more people, we subsequently developed a Rust crate, that enables the creation of ClockBoard zones on all major platforms using a command line interface.
+See \href{https://github.com/zonebuilders/zonebuilder-rust}{github.com/zonebuilders/zonebuilder-rust} for details.
+The crate is available on the main Rust package repository crates.io and can be installed on any computer that already has the Rust toolchain installed from the system command line as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{cargo}\NormalTok{ install zonebuilder}
+\end{Highlighting}
+\end{Shaded}
+
+After installing the \texttt{zonebuilder} crate and assuming that \texttt{cargo} is executable the following commands will print instructions on how to use the command line interface and generate zones for Leeds, UK, respectively:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{zonebuilder} \AttributeTok{{-}h}               \CommentTok{\# see usage instructions}
+\ExtensionTok{zonebuilder} \OperatorTok{\textgreater{}}\NormalTok{ zones.geojson  }\CommentTok{\# create zones.geojson zone object}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{interactive-zonebuilder-web-application}{%
+\subsubsection{Interactive zonebuilder web application}\label{interactive-zonebuilder-web-application}}
+
+To enable creation of ClockBoard zones for non-programmers and to encourage people to explore alternative zoning systems, we created a simple web application hosted at \href{https://zonebuilders.github.io/zonebuilder-rust/}{zonebuilders.github.io/zonebuilder-rust/} (see Figure \ref{fig:interactive}). This app leverages the Rust implementation for generating ClockBoards, compiling it to WebAssembly and using the standard open-source \href{https://leafletjs.com}{leafletjs.com} mapping library as an interface.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth]{128508694-5b5485ca-6f1b-4c21-bdb6-9269a7981dd5} 
+
+}
+
+\caption{Screenshot of the zonebuilder web application for creating and downloading ClockBoard zones interactively. The example shows Erbil, Northern Iraq, which was found to have a road layout resembling the ClockBoard zoning system, highlighting the importance of interactive alignment and selection of number of rints. See the interactive version at zonebuilders.github.io/zonebuilder-rust/.}\label{fig:interactive}
+\end{figure}
+
+\hypertarget{applications}{%
+\section{Applications}\label{applications}}
+
+The zoning system presented in this paper is a specific implementation concentric segmented annuli, that was designed to support description, exploration and visualization of monocentric cities.
+The zoning system presented, and modifications of the system, could be useful in a range of other areas.
+The examples below are designed to provide an insight into how the zoning system could be used.
+
+\hypertarget{describing-location}{%
+\subsection{Describing location}\label{describing-location}}
+
+A potential application of the zoning system is to indicate approximate locations with reference to a known central point or area, e.g.~to describe a segment of a city.
+ClockBoard zones offer a level of intermediate-to-low accuracy in between the simple use of quadrants to identify parts of a city verbally on one hand, and more sophisticated ways of communicating location to the nearest few meters on the other.
+Dividing cities into quadrants and referring to them with names such as `north', `northeast', etc. is common in everyday speech and academic writing: a paper on the impact of open spaces on house prices stated that traffic noise was expected to have a negative impact on house prices in ``south-east, north-east, and north Portland'', with reference to an accompanying map, for example {[}28{]}.
+Location services such as `what3words' and open source implementations such as `whatfreewords' and `\href{https://www.qalocate.com/solutions/geohashphrase/}{goehashphrase}' take the concept of converting coordinates into memorable words/phrases a step further, offering accuracy measured in meters rather than kilometers in situations where coordinates may not be appropriate or possible {[}29{]}.
+
+With 49 zones covering an area just over 700 square km, the ClockBoard system offers an intermediate level of resolution between the simple quadrant method and complex `geohash' approaches to referring to locations outlined above.
+Like the quadrant approach, the ClockBoard system relies on a central point.
+The ClockBoard system shares the advantage of the quadrant approach to locating objects that the location can worked out by people without reliance on a computer to translate coordinates into a geohash, although the calculation is substantially harder, requiring memorization or quick calculation of the triangular number sequence (1, 3, 6, 10, 15 etc) and knowledge of the boundaries of a clock face such that ``E03'' is understood as being between 10 and 15 km East of the center.
+
+An illustration of using the ClockBoard zoning system to locate places is presented in Figure \ref{fig:location}.
+This shows how it could be used to communicate key locations, including a train station (zone A) a park (zone C01) and the center of a neighboring city (zone E09), with reference to the city center of Leeds, UK.
+In a hypothetical use case, the example could be used to communicate the fact that the park is relatively close to the rail station (between 3 and 6 km from the city center) while Bradford in zone E09 is between 10 and 15 km from central Leeds.
+Of course, the locations are not geographically specific; the zones would be used a broad brush descriptions of place locations before more detailed descriptions of locations such as directions from key landmarks or coordinates are used.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth]{navigation} 
+
+}
+
+\caption{Illustration of how the ClockBoard system could be used to describe the approximate location of places. In this hypothetical example, the system is used to locate places in and around Leeds: the train station in the central zone A, Roundhay Park wich is located around 5 km North of the center in zone C01, and central Bradford which is located around 14 km due East of the center in zone E09.}\label{fig:location}
+\end{figure}
+
+The ClockBoard zoning system was not designed for locating objects in space in this way; the real world utility of such low resolution indications of spatial location has yet to be tested; and understanding of the zoning system would need to be widespread for it to catch on.
+However, the example demonstrates how the system communicates potentially useful location data with a small amount of verbal information.
+More plausible use cases include exploring city scale data (covered in the next section) and inter-city comparisons of geographically variable phenomena (covered in the section after).
+
+\hypertarget{exploring-city-scale-data}{%
+\subsection{Exploring city scale data}\label{exploring-city-scale-data}}
+
+The ClockBoard zoning system is well suited to exploratory analysis of city-scale spatial data.
+An example that demonstrates how the system can simplify the presentation of spatially variable data is shown in Figure \ref{fig:cityscale}, which presents open access data on air quality from the London Atmospheric Emissions Inventory.
+The presentation of the same data at four different levels of geographic resolution highlights the impacts that zoning system choice can have on data analysis, with each having advantages and disadvantages.
+The most geographically detailed zoning system in which the data is available is the rectangular grid shown in the far left facet (A).
+This presentation of the data is ideal for many purposes, demonstrating the variability in air quality over relatively small areas (1 km grid cells) across London.
+
+In cases when geographic aggregation is required, e.g.~to present the data in small graphics that will be printed at low resolution (e.g.~newspaper visualizations and infographics), two common approaches are to use an existing administrative zoning system (with well known London Borough boundaries used to aggregate the data presented in facet B in Figure \ref{fig:cityscale}) and to use a simplified geographical representation or geographically arranged facets {[}30{]}.
+Both approaches have advantages, with existing and well-known zoning systems enabling map readers familiar with the city to orient themselves and interpret the map.
+In this context and with reference to Figure \ref{fig:cityscale}, the ClockBoard zoning system has the following advantages as a basis for choropleth maps:
+
+\begin{itemize}
+\tightlist
+\item
+  Simple and consistent zone shapes for easy map reading
+\item
+  The circular shape of zone boundaries make the results easy to place, requiring a 1:1 aspect ratio (except when the zones are clipped, as in map D)
+\item
+  The shape of the zones draws attention to citywide spatial patterns, with map C highlighting the clear tendency for air quality to improve with distance from the city center and the comparatively poor air quality in segments 3 and 9
+\end{itemize}
+
+The final advantage is particularly notable when comparing the ClockBoard zoning system with large official zone (borough) boundaries in London.
+Because of the large and irregular zone shapes in map B, the strength of the relationship between distance from central London and air quality is not as clear as when using ClockBoard zones as the frame of reference in maps C and D in Figure \ref{fig:cityscale}.
+This benefit is especially noticeable towards the outskirts of London, where large outer boroughs such as Bromley (far southeast London) fail to communicate the fact that PM10 levels drop below 1 ug/m\^{}3 in outer London.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{cityscale} 
+
+}
+
+\caption{Illustration of the ClockBoard zoning system used to visualize a geographically dependendent phenomena: air quality, measured in mass of PM10 particles, measured in micrograms per cubic meter, from the London Atmospheric Emissions Inventory (LAEI). The facets show the data in spatial grid available from the LAEI, facet Am and aggregated to London boroughs B, to ClockBoard zones covering all the input data shown in C, and ClockBoard zones clipped by the administrative boundary of Greater London in D.}\label{fig:cityscale}
+\end{figure}
+
+The example of air quality presented in Figure \ref{fig:cityscale} highlights that the ClockBoard zoning system is well suited for the analysis and visualization of phenomena in which a central place (London city center in this case) plays a major role, directly or indirectly.
+(Not all cities have a `monocentric' structure, something we discuss in Section \ref{discussion}.)
+The prevalence of particulate matter in the air relates to the level of industrial, transport and other activities in the surrounding area, which clearly increases with proximity to central London.
+The same can be said of many other phenomena which become more, less, or more and then less, common with distance from central places.
+The tragic phenomena of road traffic casualties --- which relate to travel volumes, speeds and transport infrastructure design --- also relates (albeit in different ways in different cities) to proximity to central places, something we explore in the next subsection to highlight another use of the ClockBoard zoning system: comparison between cities.
+
+\hypertarget{inter-city-comparison-of-geographically-variable-phenomena}{%
+\subsection{Inter-city comparison of geographically variable phenomena}\label{inter-city-comparison-of-geographically-variable-phenomena}}
+
+The ClockBoard zoning system can enable effective comparison between cities by providing a consistent frame of reference.
+While official boundaries can vary greatly in size and shape, based on sometimes arbitrary factors such as historic boundaries (as shown in Figure \ref{fig:intercity}, top), ClockBoard zones are always the same size, shape and orientation (as shown in Figure \ref{fig:intercity}, bottom).
+Using the system can provide a basis of evidence-based discussion of geographically aggregated results representing urban phenomena.
+The example demonstrates this with reference to a policy-relevant example: the number of people killed and seriously injured while cycling in major UK cities.
+Addressing issues associated with reporting only number of casualties per unit area, a practice that can miss dangerous places which have a high casualty rate per unit time or distance cycled {[}31{]}, we show data on the number of people killed and seriously injured while cycling per billion kilometers based on estimates from the Propensity to Cycle Tool {[}32{]}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.85\linewidth]{paper_files/figure-latex/intercity-1} \includegraphics[width=0.85\linewidth]{paper_files/figure-latex/intercity-2} 
+
+}
+
+\caption{Comparison of administrative zones (top) and zones in the ClockBoard zoning system (bottom) to support inter-city comparison of policy-relevant data, on road traffic casualties. The maps show the spatial distribution of cycling casualties per billion km cycled, a measure that requires spatial data aggregation for meaningful results.}\label{fig:intercity}
+\end{figure}
+
+The results presented in Figure \ref{fig:intercity} (top) using administrative zones demonstrate the issues with using commonly available zones provided by statistical authorities: areal units vary dramatically in terms of size and shape; and the definition of each city's boundary distorts the results, with Manchester represented by a long and thin region that does not fit well within facetted maps.
+The results aggregated at the level of ClockBoard zones, illustrated in Figure \ref{fig:intercity} (bottom), show overcome these issues.
+Because of its high population density and size, London has many small administrative zones that made it hard to understand the levels and spatial distributions of cycling safety in the city.
+The results for London presented at the level of ClockBoard zones show a clearer picture that can be compared with other cities: while London has a high absolute crash rate, it is relatively safe per km cycled.
+The ClockBoard zoning system also allows for aggregation at a consistent spatial resolution, enabling the identification of potential crash hotspots in specific parts of Birmingham (zones D12 and E06) and Sheffield (zone D11).
+
+Another example of using ClockBoards to compare cities (and phenomena that take place in them) is shown in Figure \ref{fig:popdens}, which shows population density in 36 major cities using the ClockBoard zoning system not as unit for aggregation but as a reference grid.
+The 7 rings A to G cover a radius up to 28 km from the city center.
+The colors of the panel labels in Figure \ref{fig:popdens} indicate the continent of the city.
+The value of comparing cities in a single geographic frame of reference is shown by inspecting Singapore and Sydney with reference to ClockBoard zones.
+While these cities have similar total official populations (of 5.8 and 5.3 million people, respectively), based on the number of people with their respective administrative boundaries, the size and shape of each city is very different, highlighted by the fact that in Singapore there are few people beyond ring F (located 15 to 20 km from the center), while in Sydney (and many other cities) there are substantial numbers of people living in ring I (located 36 to 45 km from the center).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{cities_p2-scale} 
+
+}
+
+\caption{ClockBoard zoning systems with 7 rings (A to G) supplied used to communicate the spatial distribution of populations for for 36 cities. The blue raster grid cells represent open access population estimates from the WorldPop project.}\label{fig:popdens}
+\end{figure}
+
+The administrative borders of six cities shown in Figure \ref{fig:popdens} are depicted as red lines in Figure \ref{fig:popdens2}, highlighting the importance of sometimes arbitrary city boundaries.
+The ClockBoard zones applied to Amsterdam not only cover Amsterdam but also a few other small Dutch cities and towns. Most of them are economically attached to Amsterdam, but a few of them also to other major Dutch cites.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{cities_p1} 
+
+}
+
+\caption{ClockBoard for 6 cities with boundaries shown in red. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders.}\label{fig:popdens2}
+\end{figure}
+
+\hypertarget{discussion}{%
+\section{Discussion and conclusion}\label{discussion}}
+
+The ClockBoard zoning system presented in this paper was designed to provide a new tool for visualizing and communicated about geographic data in relation to cities and, more broadly, to provoke discussion of the pros and cons of different zoning systems including possible future systems that have yet to be developed.
+Issues associated with administrative zoning systems are well known {[}5,7{]} yet accessible zoning systems that highlight the importance of areal units are comparatively rare.
+Great strides have been made in the design of administrative zoning systems systems and they are understandably the default unit of analysis for urban analysis in many parts of the world {[}33,34{]}.
+The dominance of administrative zones in urban analysis has advantages, but also has unintended consequences, including making it hard for people to refer to specific administrative units, irregular sizes and shapes, and lack of comparability between geographically aggregated results from city to city.
+
+Instead of tackling these problems by developing additional approaches for the ``re-aggregation of the raw data into a more
+appropriate output geography'' {[}35{]}, we started from scratch focusing on the key spatial attributes of distance and and bearing from the center.
+Our criteria, based on our work in the broadly defined field or Urban Analytics, were: intuitively labelled and easy-to-communicate zones, consistently sized and shaped zones for creating readable and easy-to-interpret maps, and a system that would be accessible for use and modification.
+
+The zones in the ClockBoard zoning system were designed to be sufficiently large so that each could be seen when printed in a low resolution map representing a large city.
+The relatively large zones (which get bigger further from the city center as density of urban phenomena tends to decrease) also enable zone labels with only three characters (with the exception of zone A).
+Zone label give insight into their location, with the ClockBoard zone `E09 Leeds' illustrated in Figure \ref{fig:location} indicating the fact that it is located between 10 and 15 km West of the city center.
+The equivalent official `MSOA' zone code is `E02002221': longer, harder to remember, and devoid of geographic meaning.
+
+It is important to emphasize that ClockBoard zoning system is a specific implementation of an approach to zone creation that we label `concentric segmented annuli' and that a wide family of zoning systems could be created based on the approach: variations can be obtained by adjusting the sequence of outer ring radii (so they have values other than 1, 3, 6, 10, 15 and 21 km, resulting from the triangular number sequence used in the ClockBoard system) and number of segments (with values other than 1 for the central annuli and 12 for all others).
+To encourage use of and adaptation of the system, we have implemented methods for creating `ClockBoards' and other zoning systems based on concentric segmented annuli in R and Python packages, and Rust crate \texttt{zonebuilder}.
+These can be installed from the `\href{https://cran.r-project.org/package=zonebuilder}{CRAN}', `\href{https://crates.io/crates/zonebuilder}{crates.io}', and `\href{https://pypi.org/project/zonebuilder/}{PyPI}' repositories, respectively.
+To further reduce barriers to entry in the creation of ClockBoards to meet specific needs and for fun/education, we have created a simple web application available at \href{https://zonebuilders.github.io/zonebuilder-rust/}{zonebuilders.github.io/zonebuilder-rust} that allows the user to create and download as .geojson files zoning systems based on concentric segmented annuli anywhere in the world.
+
+The approach is not without limitations, and these include limitations with the specific ClockBoard system, limitations with concentric segmented annuli and `from scratch' zoning systems that do not follow local features such as rivers and historic boundaries.
+In terms of the limitations of the \emph{ClockBoard implementation of the concentric segmented annuli approach}, it is associated with a fairly wide range of zone sizes and shapes, with zone areas ranging from 2 km\textsuperscript{2} in for zones in doughnut B to 33 km\textsuperscript{2} on the outermost doughnut E in a ClockBoard system with 5 rings (and a radius of 18 km).
+This variability makes the system unsuitable for analyses requiring uniform areas or uniform populations.
+Raster grid cells or administrative zones that keep the population within each zone relatively fixed may be more appropriate in these cases.
+
+A broader set of limitations apply to \emph{the general approach of using zones of the same size and shape in many to many cities}:
+zone boundaries do not follow local features, with ClockBoard zones covering both sides of the River Thames in London, as illustrated in Figure \ref{fig:london}.
+This results in `zone islands', with areas separated from the rest of the zone of which they are part by physical barriers such as rivers and large roads.
+The approach leads to zones are more internally diverse than official zone systems, which tend to include similar types of places into the same zone, wish disadvantages when analyzing systems that require cohesive zones.
+
+Another potential disadvantage of zoning systems that are invariant from place to place is that city borders are usually irregular.
+Clipping the zones to official city boundaries can address this issue, but creates an additional problem: unhelpfully shaped and sized zones in the periphery of large cities, also shown in Figure \ref{fig:london}.
+To benefit from the standardized zones provided by ClockBoard, we recommend using the system without clipping: ignoring the historic boundary and defining the city bounds with reference to distance from the center can enable inter-city comparison, without being constrained by their historic boundaries.
+The benefits of using a consistent bounding area when comparing multiple cities is highlighted by comparing London and Paris.
+Official figures suggest that the two cities have very different sizes: the population within their official boundaries depicted in Figure \ref{fig:popdens2} are 9 million (Greater London) and 2 million (Paris).
+However, the metropolitan populations of the two cities --- defined as the population living in a ClockBoard system with 7 rings (within 28 km from the city center) --- are similar (about 10 million each).
+
+A another limitation of the approach is the implicit assumption that cities are monocentric entities in which urban activity (and hence the need for spatial resolution) declines gradually with distance from the city center.
+While this assumption broadly holds for many cities such as London and other cities illustrated in this paper, many cities are polycentric {[}36{]}.
+The zoning system is unsuited to polycentric conurbations and the countryside, limiting its uses substantially, to urban analytics focused on monocentric cities.
+
+Consideration of polycentric settlements raises the question of how to fit one or several ClockBoards to a dense urban area consisting of several cities, of which none is clearly dominant.
+For instance, the four major cities in the Netherlands (Amsterdam, Rotterdam, The Hague and Utrecht) are small and located about 40 kilometers from each other, with even smaller cities and towns in between.
+In this example, there is no dominant ``gravitational force'' to construct one ClockBoard around, making this a much harder challenge than designing a zoning system for a single city {[}6{]}.
+We explored the possibility of `joining' ClockBoard systems that met, with the `dominant' ClockBoard associated with the larger city, but the results were not promising and we suspect that a new approach altogether, perhaps building on experience from Computational Fluid Dynamics, where grid generation procedures need to take into account multiple factors {[}37{]}.
+
+A broader limitation is that the zoning system has not been tested or assessed, other than in informal settings and in a prototype web application, publicly available at \href{https://actdev.cyipt.bike/ebbsfleet/accessibility,buildings/\#11.69/51.4359/0.3065}{actdev.cyipt.bike}, to present data on aggregate statistics on the quality active travel provision in the areas surrounding new housing developments {[}38{]}.
+While informal and anecdotal feedback has been positive, user testing is needed to identify for which of the potential applications outlined in this paper the ClockBoard system is best suited.
+Such user testing could be based on established approaches for evaluating digital products, including focus groups, surveys or interviews with potential users {[}39{]}.
+Such user testing is beyond the scope of the present paper, but represents a promising future direction of research to establish how the approach could be used in the real world and future research priorities around zoning systems for urban analysis.
+
+An alternative and approach to developing zoning systems for complex and polycentric settlements not implemented in this paper is to build them on existing Discrete Global Grid Systems (DGGS) such as the S2 and H3 global zoning systems developed by Google and Uber respectively {[}40{]}, and the \href{https://github.com/paulojraposo/QTM}{QTM Generator} developed by Paulo Raposo {[}29{]}.
+This would have advantages for flexibility, with DGGSs able to generate grids with zone sizes that are more evidence-based, for example by responding to geographic data such as population density.
+DGGS based zoning systems would also enable greater determinism, with each of S2's \textasciitilde7 quintillion (\(6 * 4^{30}\) or \(\approx6.9*10^{18}\)) and H3's \textasciitilde700 trillion (\(\approx5.7 * 10^{14}\)) base zones having a unique reference code that is machine readable (ClockBoards are arguably deterministic with `zone B12, Leeds, UK' referring to an unambiguous area, although ClockBoards depend on an unambiguous definition of `city center' which may not be available or requires a single unique source of city center points).
+Theses beneficial features would be gained at the expense of simplicity: DGGSs are complex and have hard-to-remember cell IDs such as \href{https://developers.google.com/maps/documentation/gaming/concepts_playable_locations}{e66ef376f790adf8a5af7fca9e6e422c03c9143f} (S2) and \href{https://h3geo.org/docs/quickstart}{8a283082a677fff} (H3); they also have high computational requirements {[}40{]}, compared with the comparatively simple ClockBoard system.
+
+While the utility of the zoning system is likely to be limited in many settings by the limitations outlined above, we believe that there are settings in which ClockBoard could provide substantial benefits, as demonstrated in three example applications.
+These demonstrated potential use cases for informal communication about and navigation within cities; exploratory data analysis and visualization of geographic data within a single city; and visual and quantitative comparison of geographic phenomena between cities.
+Of these, we expect that the last application of ClockBoard, and similar zoning systems, will be of most use to urban analysts and others working with city-scaled datasets.
+A direction of future research could be to explore the use of ClockBoard and other discrete geometric zoning systems for other applications, for example as the basis of spatial interaction models, building on established work exploring different zoning systems based on BSUs {[}7{]}.
+A broader point is that too much academic research focuses only on a single city, without going to the effort of generalizing the findings to multiple cities {[}6,36{]}.
+
+We hope that the concept of the ClockBoard zoning system presented in this paper, and the ease with which open access data representing `ClockBoards' for different cities can be created, will encourage more quantitative urban analytical research comparing different cities, building on recent work in the field {[}20{]}.
+Moreover, we hope that the implementation of the concept in open source software encourages other zoning systems with different attributes to be developed, to meet different criteria than those that motivated the design of the ClockBoard system.
+The ongoing experience of developing and testing the system suggests that there is a need for such `artificial' and consistent systems and we believe that a range of approaches, ranging from procedural generation to custom zoning systems co-created by citizens to meet specific need, will help develop the diversity of zoning systems that will be needed to meet some of the urban analysis and communication needs of the 21\textsuperscript{st} Century.
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-bryant_worcestershire_2007}{}}%
+1. Bryant V, Noke M. \href{https://doi.org/gkb5qs}{The {Worcestershire} {Tithe} and {Enclosure} {Map} {Project}: Creating a research resource}. Landscape History. 2007;29:89--92.
+
+\leavevmode\vadjust pre{\hypertarget{ref-baker_zoning_1925}{}}%
+2. Baker NF. Zoning {Legislation}. Cornell Law Review. 1925;11:164.
+
+\leavevmode\vadjust pre{\hypertarget{ref-orr_persistence_1969}{}}%
+3. Orr DMJr. The {Persistence} of the {Gerrymander} in {North} {Carolina} {Congressional} {Redistricting}. Southeastern Geographer {[}Internet{]}. 1969 {[}cited 2021 Feb 7{]};9:39--54. Available from: \url{https://muse.jhu.edu/article/525615}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chou_taming_2006}{}}%
+4. Chou C-I, Li SP. Taming the {Gerrymander}---{Statistical} physics approach to {Political} {Districting} {Problem}. Physica A: Statistical Mechanics and its Applications {[}Internet{]}. 2006 {[}cited 2021 Feb 7{]};369:799--808. Available from: \url{https://www.sciencedirect.com/science/article/pii/S0378437106001555}
+
+\leavevmode\vadjust pre{\hypertarget{ref-jelinski_modifiable_1996}{}}%
+5. Jelinski DE, Wu J. The modifiable areal unit problem and implications for landscape ecology. Landscape Ecology {[}Internet{]}. 1996 {[}cited 2021 Jul 15{]};11:129--40. Available from: \url{https://doi.org/10.1007/BF02447512}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chandra_multi-objective_2021}{}}%
+6. Chandra A, Sharath MN, Pani A, Sahu PK. A multi-objective genetic algorithm approach to design optimal zoning systems for freight transportation planning. Journal of Transport Geography {[}Internet{]}. 2021 {[}cited 2021 Jul 15{]};92:103037. Available from: \url{https://linkinghub.elsevier.com/retrieve/pii/S0966692321000909}
+
+\leavevmode\vadjust pre{\hypertarget{ref-openshaw_optimal_1977}{}}%
+7. Openshaw S. Optimal zoning systems for spatial interaction models. Environment and Planning A {[}Internet{]}. 1977;9:169--84. Available from: \url{http://www.envplan.com/abstract.cgi?id=a090169}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ciglic_evaluating_2019}{}}%
+8. Ciglic R, Strumbelj E, Cesnovar R, Hrvatin M, Perko D. Evaluating existing manually constructed natural landscape classification with a machine learning-based approach. Journal of Spatial Information Science. 2019;2019:31--56.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hesselbarth_landscapemetrics_2019}{}}%
+9. Hesselbarth MH, Sciaini M, With KA, Wiegand K, Nowosad J. \href{https://doi.org/gf4n9j}{Landscapemetrics: An open-source {R} tool to calculate landscape metrics}. Ecography. 2019;42:1648--57.
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhang_detecting_2021}{}}%
+10. Zhang H, Zhou X, Tang G, Zhang X, Qin J, Xiong L. Detecting {Colocation} {Flow} {Patterns} in the {Geographical} {Interaction} {Data}. Geographical Analysis {[}Internet{]}. 2021 {[}cited 2021 Dec 13{]};n/a. Available from: \url{https://onlinelibrary.wiley.com/doi/abs/10.1111/gean.12274}
+
+\leavevmode\vadjust pre{\hypertarget{ref-long_modeling_2018}{}}%
+11. Long JA. Modeling movement probabilities within heterogeneous spatial fields. Journal of Spatial Information Science. 2018;2018:85--116.
+
+\leavevmode\vadjust pre{\hypertarget{ref-lin_cartographic_2017}{}}%
+12. Lin J, Hanink DM, Cromley RG. A cartographic modeling approach to isopleth mapping. International Journal of Geographical Information Science {[}Internet{]}. 2017 {[}cited 2021 Mar 8{]};31:849--66. Available from: \url{https://doi.org/10.1080/13658816.2016.1207776}
+
+\leavevmode\vadjust pre{\hypertarget{ref-paez_exploring_2006}{}}%
+13. P'aez A. Exploring contextual variations in land use and transport analysis using a probit model with geographical weights. Journal of Transport Geography {[}Internet{]}. 2006 {[}cited 2021 Mar 8{]};14:167--76. Available from: \url{https://www.sciencedirect.com/science/article/pii/S0966692305000906}
+
+\leavevmode\vadjust pre{\hypertarget{ref-onrust_ecologically_2017}{}}%
+14. Onrust B, Bidarra R, Rooseboom R, van de Koppel J. Ecologically {Sound} {Procedural} {Generation} of {Natural} {Environments}. International Journal of Computer Games Technology {[}Internet{]}. 2017 {[}cited 2021 Mar 8{]};2017:e7057141. Available from: \url{https://www.hindawi.com/journals/ijcgt/2017/7057141/}
+
+\leavevmode\vadjust pre{\hypertarget{ref-galin_procedural_2010}{}}%
+15. Galin E, Peytavie A, Mar'echal N, Gu'erin E. Procedural {Generation} of {Roads}. Computer Graphics Forum {[}Internet{]}. 2010 {[}cited 2021 Mar 8{]};29:429--38. Available from: \url{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8659.2009.01612.x}
+
+\leavevmode\vadjust pre{\hypertarget{ref-anderson_augmented_2018}{}}%
+16. Anderson C, Bailey C, Heumann A, Davis D. Augmented space planning: {Using} procedural generation to automate desk layouts. International Journal of Architectural Computing {[}Internet{]}. 2018 {[}cited 2021 Mar 8{]};16:164--77. Available from: \url{https://doi.org/10.1177/1478077118778586}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mustafa_procedural_2020}{}}%
+17. Mustafa A, Wei Zhang X, Aliaga DG, Bruwier M, Nishida G, Dewals B, et al. Procedural generation of flood-sensitive urban layouts. Environment and Planning B: Urban Analytics and City Science {[}Internet{]}. 2020 {[}cited 2021 Mar 8{]};47:889--911. Available from: \url{https://doi.org/10.1177/2399808318812458}
+
+\leavevmode\vadjust pre{\hypertarget{ref-teulade-denantes_routes_2015}{}}%
+18. Teulade-Denantes J, Maudet A, Duchêne C. Routes visualization: {Automated} placement of multiple route symbols along a physical network infrastructure. Journal of Spatial Information Science {[}Internet{]}. 2015 {[}cited 2021 Mar 8{]};2015:53--79. Available from: \url{http://www.josis.org/index.php/josis/article/view/230}
+
+\leavevmode\vadjust pre{\hypertarget{ref-honick_pictorial_1967}{}}%
+19. Honick KR. Pictorial {Navigation} {Displays}. The Cartographic Journal {[}Internet{]}. 1967 {[}cited 2021 Feb 6{]};4:72--81. Available from: \url{https://doi.org/10.1179/caj.1967.4.2.72}
+
+\leavevmode\vadjust pre{\hypertarget{ref-boeing_spatial_2021}{}}%
+20. Boeing G. Spatial information and the legibility of urban form: {Big} data in urban morphology. International Journal of Information Management {[}Internet{]}. 2021 {[}cited 2021 Feb 19{]};56:102013. Available from: \url{https://www.sciencedirect.com/science/article/pii/S0268401219302154}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hirzel_which_2002}{}}%
+21. Hirzel A, Guisan A. Which is the optimal sampling strategy for habitat suitability modelling. Ecological Modelling {[}Internet{]}. 2002 {[}cited 2021 Mar 16{]};157:331--41. Available from: \url{https://www.sciencedirect.com/science/article/pii/S030438000200203X}
+
+\leavevmode\vadjust pre{\hypertarget{ref-holmes_problems_1967}{}}%
+22. Holmes J. Problems in {Location} {Sampling}. Annals of the Association of American Geographers {[}Internet{]}. 1967 {[}cited 2021 Mar 16{]};57:757--80. Available from: \url{https://doi.org/10.1111/j.1467-8306.1967.tb00635.x}
+
+\leavevmode\vadjust pre{\hypertarget{ref-thomson_gridsample_2017}{}}%
+23. Thomson DR, Stevens FR, Ruktanonchai NW, Tatem AJ, Castro MC. {GridSample}: An {R} package to generate household survey primary sampling units ({PSUs}) from gridded population data. International Journal of Health Geographics {[}Internet{]}. 2017 {[}cited 2021 Mar 16{]};16:25. Available from: \url{https://doi.org/10.1186/s12942-017-0098-4}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wills_persistence_2016}{}}%
+24. Wills C, Harms KE, Wiegand T, Punchi-Manage R, Gilbert GS, Erickson D, et al. Persistence of {Neighborhood} {Demographic} {Influences} over {Long} {Phylogenetic} {Distances} {May} {Help} {Drive} {Post}-{Speciation} {Adaptation} in {Tropical} {Forests}. PLOS ONE {[}Internet{]}. 2016 {[}cited 2021 Apr 10{]};11:e0156913. Available from: \url{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0156913}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ross_dicuil_2019}{}}%
+25. Ross HE, Knott BI. Dicuil (9th century) on triangular and square numbers. British Journal for the History of Mathematics {[}Internet{]}. 2019 {[}cited 2021 Feb 6{]};34:79--94. Available from: \url{https://doi.org/10.1080/26375451.2019.1598687}
+
+\leavevmode\vadjust pre{\hypertarget{ref-vinoth_kumar_spatio-temporal_2007}{}}%
+26. Vinoth Kumar JA, Pathan SK, Bhanderi RJ. Spatio-temporal analysis for monitoring urban growth -- a case study of {Indore} {City}. Journal of the Indian Society of Remote Sensing {[}Internet{]}. 2007 {[}cited 2021 Jul 25{]};35:11--20. Available from: \url{https://doi.org/10.1007/BF02991829}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hart_use_1991}{}}%
+27. Hart SG, Battiste V. The use of visual cues for vehicle control and navigation {[}Internet{]}. NASA; 1991 Apr. Report No.: N92-21468. Available from: \url{https://ntrs.nasa.gov/citations/19920012225}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bolitzer_impact_2000}{}}%
+28. Bolitzer B, Netusil NR. The impact of open spaces on property values in {Portland}, {Oregon}. Journal of Environmental Management {[}Internet{]}. 2000 {[}cited 2021 Dec 12{]};59:185--93. Available from: \url{https://www.sciencedirect.com/science/article/pii/S0301479700903517}
+
+\leavevmode\vadjust pre{\hypertarget{ref-raposo_virtual_2019}{}}%
+29. Raposo P, C. Robinson A, Brown R. A {Virtual} {Globe} {Using} a {Discrete} {Global} {Grid} {System} to {Illustrate} the {Modifiable} {Areal} {Unit} {Problem}. Cartographica: The International Journal for Geographic Information and Geovisualization {[}Internet{]}. 2019 {[}cited 2021 Jul 30{]};54:51--62. Available from: \url{https://www.utpjournals.press/doi/full/10.3138/cart.54.1.2018-0015}
+
+\leavevmode\vadjust pre{\hypertarget{ref-dorling_area_2011}{}}%
+30. Dorling D. \href{https://doi.org/bmhcfj}{Area {Cartograms}: {Their} {Use} and {Creation}}. The Map Reader: Theories of Mapping Practice and Cartographic Representation. 2011;252--60.
+
+\leavevmode\vadjust pre{\hypertarget{ref-mindell_exposure-based_2012}{}}%
+31. Mindell JS, Leslie D, Wardlaw M. Exposure-{Based}, {``{Like}-for-{Like}''} {Assessment} of {Road} {Safety} by {Travel} {Mode} {Using} {Routine} {Health} {Data}. PLOS ONE {[}Internet{]}. 2012 {[}cited 2016 Mar 10{]};7:e50606. Available from: \url{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0050606}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lovelace_propensity_2017}{}}%
+32. Lovelace R, Goodman A, Aldred R, Berkoff N, Abbas A, Woodcock J. The {Propensity} to {Cycle} {Tool}: {An} open source online system for sustainable transport planning. Journal of Transport and Land Use {[}Internet{]}. 2017 {[}cited 2017 Jun 1{]};10. Available from: \url{https://www.jtlu.org/index.php/jtlu/article/view/862}
+
+\leavevmode\vadjust pre{\hypertarget{ref-martin_application_2001}{}}%
+33. Martin D, Nolan A, Tranmer M. \href{https://doi.org/fr8qtc}{The application of zone-design methodology in the 2001 {UK} {Census}}. Environment and Planning A. 2001;33:1949--62.
+
+\leavevmode\vadjust pre{\hypertarget{ref-mokhele_development_2016}{}}%
+34. Mokhele T, Mutanga O, Ahmed F. Development of census output areas with {AZTool} in {South} {Africa}. South African Journal of Science. 2016;112:1--7.
+
+\leavevmode\vadjust pre{\hypertarget{ref-martin_optimizing_1998}{}}%
+35. Martin D. \href{https://doi.org/bqqm35}{Optimizing census geography: The separation of collection and output geographies}. International Journal of Geographical Information Science. 1998;12:673--85.
+
+\leavevmode\vadjust pre{\hypertarget{ref-alidadi_beyond_2018}{}}%
+36. Alidadi M, Dadashpoor H. Beyond monocentricity: Examining the spatial distribution of employment in {Tehran} metropolitan region, {Iran}. International Journal of Urban Sciences {[}Internet{]}. 2018 {[}cited 2021 Aug 7{]};22:38--58. Available from: \url{https://doi.org/10.1080/12265934.2017.1329024}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hernandez-perez_grid_2011}{}}%
+37. Hernandez-Perez V, Abdulkadir M, Azzopardi BJ. Grid {Generation} {Issues} in the {CFD} {Modelling} of {Two}-{Phase} {Flow} in a {Pipe}. The Journal of Computational Multiphase Flows {[}Internet{]}. 2011 {[}cited 2021 Aug 7{]};3:13--26. Available from: \url{https://doi.org/10.1260/1757-482X.3.1.13}
+
+\leavevmode\vadjust pre{\hypertarget{ref-talbot_active_2021}{}}%
+38. Talbot J, Lucas-Smith M, Speakman A, Streb M, Nuttall S, Carlino D, et al. Active {Travel} {Oriented} {Development}: {Assessing} the suitability of sites for new homes {[}Internet{]}. OSF Preprints; 2021 Sep. Available from: \url{https://osf.io/7fuq5/}
+
+\leavevmode\vadjust pre{\hypertarget{ref-trigg_focus_2007}{}}%
+39. Trigg SN, Roy DP. A focus group study of factors that promote and constrain the use of satellite-derived fire products by resource managers in southern {Africa}. Journal of Environmental Management {[}Internet{]}. 2007 {[}cited 2021 Dec 16{]};82:95--110. Available from: \url{https://www.sciencedirect.com/science/article/pii/S0301479706000144}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bondaruk_assessing_2020}{}}%
+40. Bondaruk B, Roberts SA, Robertson C. Assessing the state of the art in {Discrete} {Global} {Grid} {Systems}: {OGC} criteria and present functionality. Geomatica {[}Internet{]}. 2020 {[}cited 2021 Aug 12{]};74:9--30. Available from: \url{https://cdnsciencepub.com/doi/abs/10.1139/geomat-2019-0015}
+
+\end{CSLReferences}
+
+\bibliographystyle{josisacm}
+\bibliography{references.bib}
+
+\end{document}
