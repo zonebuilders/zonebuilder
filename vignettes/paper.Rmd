@@ -488,6 +488,12 @@ f = basename(u)
 if(!file.exists(f)) download.file(url = u, destfile = f)
 knitr::include_graphics(f) # for local high-res version, not working
 # knitr::include_graphics(u)
+
+# zip the file
+zip(zipfile = "clockboard-complete.zip", flags = "-r", files = "clockboard-paper-resubmission-final-corrections")
+piggyback::pb_upload("clockboard-complete.zip")
+piggyback::pb_download_url("clockboard-complete.zip")
+# https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/clockboard-complete.zip
 ```
 
 The example of air quality presented in Figure \@ref(fig:cityscale) highlights that the ClockBoard zoning system is well suited for the analysis and visualization of phenomena in which a central place (London city center in this case) plays a major role, directly or indirectly.
