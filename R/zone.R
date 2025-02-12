@@ -28,20 +28,9 @@
 #' @examples
 #' # default settings
 #' z = zb_zone(london_c(), london_a())
-#' \donttest{
-#' zb_plot(z)
-#' if (require(tmap)) {
-#'   zb_view(z)
-#'   
-#'   z = zb_zone("Berlin")
-#'   zb_view(z)
-#'}
-#' 
-#' # variations
 #' zb_plot(zb_zone(london_c(), london_a(), n_circles = 2))
 #' zb_plot(zb_zone(london_c(), london_a(), n_circles = 4, distance = 2, distance_growth = 0))
 #' zb_plot(zb_zone(london_c(), london_a(), n_circles = 3, n_segments = c(1,4,8)))
-#' }
 zb_zone = function(x = NULL,
                    area = NULL,
                    n_circles = NA,

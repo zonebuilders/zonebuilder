@@ -17,9 +17,6 @@ qtm(sf::st_make_valid(z))
 tmap_options(check.and.fix = TRUE)
 qtm(z)
 
-zb_view(z)
-
-
 lnd_a = zonebuilder::london_a()
 sf::st_is_valid(lnd_a)
 sf::st_is_valid(london_c())
