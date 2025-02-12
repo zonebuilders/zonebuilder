@@ -39,7 +39,6 @@ Suggests:
     rmarkdown,
     tmap,
     tmaptools,
-    pct,
     dplyr,
     lwgeom,
     leaflet,
