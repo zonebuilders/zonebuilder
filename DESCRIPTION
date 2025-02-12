@@ -1,6 +1,6 @@
 Package: zonebuilder
 Title: Create and Explore Geographic Zoning Systems
-Version: 0.0.2.9001
+Version: 0.1.0
 Authors@R: 
     c(person(given = "Robin",
              family = "Lovelace",

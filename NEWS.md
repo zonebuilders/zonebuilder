@@ -1,4 +1,4 @@
-# zonebuilder (development version)
+# zonebuilder 0.1.0
 
 # zonebuilder 0.0.2
 
