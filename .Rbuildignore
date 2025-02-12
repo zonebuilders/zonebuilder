@@ -19,3 +19,4 @@
 ^zonebuilder-paper_files$
 ^vignettes/josis*$
 ^\.ccache$
+^CRAN-SUBMISSION$
