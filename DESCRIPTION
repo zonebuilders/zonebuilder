@@ -13,6 +13,8 @@ Authors@R:
              email = "mtennekes@gmail.com"))
 Description: Functions, documentation and example data to help divide
     geographic space into discrete polygons (zones).
+    The package supports new zoning systems that are documented in the
+    accompanying paper <doi:10.5311/JOSIS.2022.24.172>.
     The functions are motivated by research into the merits of different zoning systems
     <doi:10.1068/a090169>. A flexible 'ClockBoard' zoning system is
     provided, which breaks-up space by concentric rings
