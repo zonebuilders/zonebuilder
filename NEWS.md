@@ -1,4 +1,8 @@
-# zonebuilder 0.1.0
+# zonebuilder 0.1.0 (2025-02)
+
+* Various issues fixed for CRAN (#36)
+* Removal of `zb_view()` function
+* Addition of citation to documentation
 
 # zonebuilder 0.0.2
 
