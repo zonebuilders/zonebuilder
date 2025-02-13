@@ -1,3 +1,12 @@
+#' Azimuthal Equidistant Projection
+#'
+#' @title Azimuthal Equidistant Projection
+#' @name geo_select_aeq
+#' @description Returns a CRS string for an Azimuthal Equidistant projection centered on the midpoint of an sf object's coordinates.
+#'
+#' @param shp An sf object.
+#' @return A CRS string for an Azimuthal Equidistant projection.
+#' @export
 geo_select_aeq.sf = function (shp) {
   #cent <- sf::st_geometry(shp)
   coords <- sf::st_coordinates(shp)
@@ -8,7 +17,8 @@ geo_select_aeq.sf = function (shp) {
   sf::st_crs(aeqd)
 }
 
-
+#' @rdname geo_select_aeq
+#' @export
 geo_select_aeq.sfc = function (shp) {
   #cent <- sf::st_geometry(shp)
   coords <- sf::st_coordinates(shp)
@@ -19,6 +29,7 @@ geo_select_aeq.sfc = function (shp) {
   sf::st_crs(aeqd)
 }
 
+#' @rdname geo_select_aeq
 geo_select_aeq = function (shp) {
   UseMethod("geo_select_aeq")
 }
@@ -26,5 +37,5 @@ geo_select_aeq = function (shp) {
 
 geo_project = function(shp) {
   crs = geo_select_aeq(shp)
-  st_transform(shp, crs = crs)
+  sf::st_transform(shp, crs = crs)
 }

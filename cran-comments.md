@@ -1,4 +1,6 @@
-Resubmitting after fixes to enable the package to work with sf 1.0-1 and beyond.
+Many updates enabling tests to pass on CRAN, after the package was removed due to failing tests.
+
+I have fixed broken URLs since last submission.
 
 ## Test environments
 * local R installation, R 4.1.0

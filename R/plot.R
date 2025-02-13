@@ -35,55 +35,6 @@ zb_color = function(z, palette = c("rings", "hcl", "dartboard")) {
   }
 }
 
-
-
-#' View zones
-#' 
-#' This function opens an interactive map of the zones
-#' 
-#' @param z An `sf` object containing zones covering the region
-#' @param alpha Alpha transparency, number between 0 (fully transparent) and 1 (not transparent)
-#' @param palette Palette type, one of \code{"hcl"} (a palette based on the HCL color space), \code{"rings"} (a palette which colors the rings using the YlOrBr color brewer palette), \code{"dartboard"} (a palette which resembles a dartboard)
-#' @param title The title of the plot
-#' @return An interactive map created with `tmap`
-#' @export
-#' @examples
-#' \donttest{
-#' z = zb_zone(london_c(), london_a())
-#' zb_view(z, palette = "rings")
-#' }
-zb_view = function(z, alpha = 0.4, palette = c("rings", "hcl", "dartboard"), title  = NULL) {
-  palette = match.arg(palette)
-  if (requireNamespace("tmap")) {
-    suppressMessages(tmap::tmap_mode("view"))
-    tmap::tmap_options(show.messages = FALSE)
-
-    cent = sf::st_set_crs(sf::st_set_geometry(z, "centroid"), sf::st_crs(z))
-    check_and_fix = tmap::tmap_options()$check.and.fix
-    if(!check_and_fix) {
-      message("Updating tmap settings with:\ntmap::tmap_options(check.and.fix = TRUE)")
-      tmap::tmap_options(check.and.fix = TRUE)
-    }
-    
-    z$color = zb_color(z, palette)
-    tm = tmap::tm_basemap("OpenStreetMap") +
-    tmap::tm_shape(z) + 
-      tmap::tm_fill("color", alpha = alpha, id = "label", group = "colors", popup.vars = c("circle_id", "segment_id", "label")) + 
-      tmap::tm_borders(group = "Borders", col = "black", lwd = 1.5) +
-    tmap::tm_shape(cent) +
-      tmap::tm_text("label", col = "black", size = "circle_id", group = "Labels") +
-      tmap::tm_scale_bar()
-    
-    if (!is.null(title)) {
-      tm + tmap::tm_layout(title = title)
-    } else {
-      tm
-    }
-  } else {
-    stop("Please install tmap")
-  }
-}
-
 #' Plot zones
 #' 
 #' This function opens a static map of the zones
@@ -113,7 +64,7 @@ zb_plot = function(z, palette = c("rings", "hcl", "dartboard"), title = NULL, te
   on.exit(par(oldpar)) # code line i + 1
   p = graphics::par(mar=c(.2,.2,.2,.2))
   plot(sf::st_geometry(z), col = z$color, border = "grey40")
-  co = st_coordinates(cent[sel,])
+  co = sf::st_coordinates(cent[sel,])
   mx = max(z$circle_id[sel])
   cex = seq(text_size[1], text_size[2], length.out = 9)[pmin(9, z$circle_id[sel] + (9-mx))]
   text(co[, 1], co[, 2], cex = cex, labels = z$label[sel])

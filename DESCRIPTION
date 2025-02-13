@@ -1,6 +1,6 @@
 Package: zonebuilder
 Title: Create and Explore Geographic Zoning Systems
-Version: 0.0.2.9001
+Version: 0.1.0
 Authors@R: 
     c(person(given = "Robin",
              family = "Lovelace",
@@ -13,6 +13,8 @@ Authors@R:
              email = "mtennekes@gmail.com"))
 Description: Functions, documentation and example data to help divide
     geographic space into discrete polygons (zones).
+    The package supports new zoning systems that are documented in the
+    accompanying paper <doi:10.5311/JOSIS.2022.24.172>.
     The functions are motivated by research into the merits of different zoning systems
     <doi:10.1068/a090169>. A flexible 'ClockBoard' zoning system is
     provided, which breaks-up space by concentric rings
@@ -39,7 +41,6 @@ Suggests:
     rmarkdown,
     tmap,
     tmaptools,
-    pct,
     dplyr,
     lwgeom,
     leaflet,
@@ -50,4 +51,4 @@ VignetteBuilder:
 URL: https://github.com/zonebuilders/zonebuilder, https://zonebuilders.github.io/zonebuilder/
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.2
