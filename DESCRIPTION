@@ -14,14 +14,15 @@ Authors@R:
 Description: Functions, documentation and example data to help divide
     geographic space into discrete polygons (zones).
     The package supports new zoning systems that are documented in the
-    accompanying paper <doi:10.5311/JOSIS.2022.24.172>.
+    accompanying paper, 
+    Lovelace et al. (2022) <doi:10.5311/JOSIS.2022.24.172>.
     The functions are motivated by research into the merits of different zoning systems
-    <doi:10.1068/a090169>. A flexible 'ClockBoard' zoning system is
+    Openshaw (1977) <doi:10.1068/a090169>. A flexible ClockBoard zoning system is
     provided, which breaks-up space by concentric rings
     and radial lines emanating from a central point.
-    By default, the diameter of the rings grow according the triangular number sequence
-    <doi:10.1080/26375451.2019.1598687> with the first 4 'doughnuts'
-    (or 'annuli') measuring 1, 3, 6, and 10 km wide.
+    By default, the diameter of the rings grow according to the triangular number sequence
+    Tennekes (2019) <doi:10.1080/26375451.2019.1598687> with the first 4 doughnuts
+    (or annuli) measuring 1, 3, 6, and 10 km wide.
     These annuli are subdivided into equal segments (12 by default), creating the
     visual impression of a dartboard. Zones are labelled according to
     distance to the centre and angular distance from North, creating a simple
