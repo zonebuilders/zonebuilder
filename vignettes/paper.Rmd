@@ -101,6 +101,10 @@ remotes::install_github("paleolimbot/rbbt")
 # rbbt::bbt_update_bib(path_rmd = "vignettes/paper.Rmd")
 ```
 
+# Published paper
+
+**Note: this is a fully reproducible version of the paper "ClockBoard: a zoning system for urban analysis" by @lovelace_clockboard_2022 published in the Journal of Open Source Software. The paper is available at [doi:10.5311/JOSIS.2022.24.172](https://doi.org/10.5311/JOSIS.2022.24.172).**
+
 # Introduction
 
 Zoning systems have long been used for a variety of administrative and practical purposes.
@@ -331,6 +335,7 @@ zb_view(ClockBoard_tokyo, alpha = 0.8)
 # pngquant -f --ext .png --quality 60-85 vignettes/tokyo.png 
 knitr::include_graphics("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png")
 # LaTeX version:
+# 856 KB
 # download.file("https://user-images.githubusercontent.com/1825120/128613050-96fd8882-10c5-47d8-af2f-90fceeba8d81.png", "tokyo.png")
 # knitr::include_graphics("tokyo.png")
 ```
@@ -372,6 +377,8 @@ To enable creation of ClockBoard zones for non-programmers and to encourage peop
 # See https://github.com/zonebuilders/zonebuilder-rust/issues/42#issuecomment-886627851
 
 u = "https://user-images.githubusercontent.com/1825120/128508694-5b5485ca-6f1b-4c21-bdb6-9269a7981dd5.png"
+# 779 KB
+# download.file(u, "interactive.png")
 
 # for html version:
 knitr::include_graphics(u)
@@ -420,6 +427,8 @@ Of course the locations are not geographically specific; the zones would be used
 #   "navigation.png"
 # )
 # knitr::include_graphics("navigation.png")
+# 865 kb:
+# download.file("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png", "navigation.png")
 knitr::include_graphics("https://user-images.githubusercontent.com/1825120/127722701-36ca3674-0522-40d6-9a69-e745ca628bca.png")
 ```
 
@@ -455,6 +464,7 @@ This benefit is especially noticeable towards the outskirts of London, where lar
 
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cityscale.png"
 # f = basename(u)
+# 155 kb
 # if(!file.exists(f)) download.file(url = u, destfile = f)
 # knitr::include_graphics(f) # for local high-res version, not working
 knitr::include_graphics(u)
@@ -504,9 +514,9 @@ tm_shape(df_filtered, is.master = TRUE) +
 The results illustrated in Figure \@ref(fig:intercity) show that while London has a high absolute crash rate, it is relatively safe per km cycled.
 The ClockBoard zoning system also allows for aggregation at a consistent spatial resolution, enabling the identification of potential crash hotspots in specific parts of Birmingham (zones D12 and E06) and Sheffield (zone D11).
 
-Another example of using ClockBoards to compare cities (and phenomena that take place in them) is shown in Figure \@ref(fig:popdens), which shows population density in 36 major cities using the ClockBoard zoning system not as unit for aggregation but as a reference grid.
+Another example of using ClockBoards to compare cities (and phenomena that take place in them) is shown in Figure [9 in the published paper](https://josis.org/index.php/josis/article/view/172), which shows population density in 36 major cities using the ClockBoard zoning system not as unit for aggregation but as a reference grid.
 The 7 rings A to G cover a radius up to 28 km from the city centre.
-The colors of the panel labels in Figure \@ref(fig:popdens) indicate the continent of the city.
+The colors of the panel labels in Figure [9 in the published paper](https://josis.org/index.php/josis/article/view/172) indicate the continent of the city.
 The value of comparing cities in a single geographic frame of reference is shown by inspecting Singapore and Sydney with reference to ClockBoard zones.
 While these cities have similar total official populations (of 5.8 and 5.3 million people, respectively), based on the number of people with their respective administrative boundaries, the size and shape of each city is very different, highlighted by the fact that in Singapore there are few people beyond ring F (located 15 to 20 km from the centre), while in Sydney (and many other cities) there are substantial numbers of people living in ring I (located 36 to 45 km from the centre).
 
@@ -516,11 +526,12 @@ While these cities have similar total official populations (of 5.8 and 5.3 milli
 
 <!-- Do we want to say anything else about this here? -->
 
-```{r popdens, fig.cap="ClockBoard for 36 cities. The blue raster grid cells represent open access population estimates from the WorldPop project.", out.width="100%"}
-u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p2.png"
-
+```{r popdens, fig.cap="ClockBoard for 36 cities. The blue raster grid cells represent open access population estimates from the WorldPop project.", out.width="100%", eval=FALSE}
+# u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p2.png"
+# 2.1 MB
+# download.file(u, "cities_p2.png")
 # For HTML version:
-knitr::include_graphics(u)
+# knitr::include_graphics(u)
 
 # # For LaTeX version
 # f = basename(u)
@@ -528,7 +539,7 @@ knitr::include_graphics(u)
 # knitr::include_graphics(f)
 ```
 
-The administrative borders of six cities shown in Figure \@ref(fig:popdens) are depicted as red lines in Figure \@ref(fig:popdens2), highlighting the importance of sometimes arbitrary city boundaries.
+The administrative borders of six cities shown in Figure [9 in the published paper](https://josis.org/index.php/josis/article/view/172) are depicted as red lines in Figure \@ref(fig:popdens2), highlighting the importance of sometimes arbitrary city boundaries.
 The ClockBoard zones applied to Amsterdam not only cover Amsterdam but also a few other small Dutch cities and towns. Most of them are economically attached to Amsterdam, but a few of them also to other major Dutch cites.
 
 The benefits of using a single zoning systems across multiple cities is highlighted by comparing London and Paris.
@@ -539,7 +550,8 @@ The example highlights the utility of ClockBoard for communicating not only inte
 
 ```{r popdens2, fig.cap="ClockBoard for 6 cities with boundaries shown in red. The blue raster grid cells represent open access population estimates from the WorldPop project; the red lines are administrative borders.", out.width="70%"}
 u = "https://github.com/zonebuilders/zonebuilder/releases/download/v0.0.2.9000/cities_p1.png"
-
+# 1MB:
+# download.file(u, "cities_p1.png")
 # For HTML version:
 knitr::include_graphics(u)
 
