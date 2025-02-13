@@ -1,6 +1,6 @@
 Many updates enabling tests to pass on CRAN, after the package was removed due to failing tests.
 
-I have fixed broken URLs since last submission.
+I have made fixes (to DESCRIPTION and package size) to address the issues raised by CRAN.
 
 ## Test environments
 * local R installation, R 4.1.0
